@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club de la Gente · Curso de Inglés Gratuito · Fusagasugá</title>
+<meta name="description" content="Aprende inglés gratis con 20 cartillas interactivas. Nivel A0 a B1. Club de la Gente, Fusagasugá, Colombia.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --negro:#0A0A0A;
+  --blanco:#FAFAF8;
+  --oro:#D4A847;
+  --oro-claro:#F0C866;
+  --rojo:#C8322B;
+  --azul:#1A56C4;
+  --verde:#1A7A4A;
+  --gris1:#1A1A1A;
+  --gris2:#2E2E2E;
+  --gris3:#888;
+  --borde:rgba(212,168,71,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--negro);
+  color:var(--blanco);
+  overflow-x:hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.03;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,10,10,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--borde);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--oro);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+.nav-logo-text{
+  font-family:'Fraunces',serif;
+  font-size:1rem;font-weight:700;
+  color:var(--blanco);line-height:1.1;
+}
+.nav-logo-sub{font-size:0.62rem;color:var(--gris3);font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;}
+.nav-cta{
+  background:var(--oro);color:var(--negro);
+  padding:8px 20px;border-radius:6px;
+  font-size:0.78rem;font-weight:800;letter-spacing:0.5px;
+  text-decoration:none;transition:all 0.2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--oro-claro);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 24px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,168,71,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,168,71,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(212,168,71,0.12) 0%, transparent 70%);
+  top:-100px;right:-100px;
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;
+  width:400px;height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(26,86,196,0.08) 0%, transparent 70%);
+  bottom:-50px;left:-50px;
+  pointer-events:none;
+}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,168,71,0.1);
+  border:1px solid rgba(212,168,71,0.3);
+  border-radius:20px;padding:6px 16px;
+  font-size:0.72rem;font-weight:700;
+  color:var(--oro);letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.hb-dot{width:6px;height:6px;background:var(--oro);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(3rem,9vw,7rem);
+  font-weight:900;
+  line-height:0.9;
+  margin-bottom:12px;
+}
+.hero h1 .line1{display:block;color:var(--blanco);}
+.hero h1 .line2{display:block;color:var(--oro);font-style:italic;}
+.hero h1 .line3{display:block;color:rgba(255,255,255,0.25);font-size:0.55em;}
+
+.hero-desc{
+  font-size:clamp(1rem,2.5vw,1.25rem);
+  color:rgba(255,255,255,0.55);
+  line-height:1.65;
+  max-width:560px;
+  margin:24px 0 40px;
+  font-weight:400;
+}
+.hero-desc strong{color:var(--blanco);font-weight:700;}
+
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:60px;}
+.btn-primary{
+  background:var(--oro);color:var(--negro);
+  padding:14px 32px;border-radius:8px;
+  font-size:0.9rem;font-weight:800;
+  text-decoration:none;transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{background:var(--oro-claro);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,168,71,0.3);}
+.btn-secondary{
+  border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);
+  padding:14px 28px;border-radius:8px;
+  font-size:0.9rem;font-weight:600;
+  text-decoration:none;transition:all 0.2s;
+}
+.btn-secondary:hover{border-color:var(--oro);color:var(--oro);}
+
+.hero-stats{
+  display:flex;gap:0;
+  border:1px solid var(--borde);
+  border-radius:12px;overflow:hidden;
+  width:fit-content;
+}
+.stat{
+  padding:18px 28px;
+  border-right:1px solid var(--borde);
+  text-align:center;
+}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;color:var(--oro);line-height:1;}
+.stat-l{font-size:0.65rem;color:var(--gris3);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+
+/* ── ACERCA ── */
+.acerca{
+  padding:80px 24px;
+  max-width:900px;margin:0 auto;
+}
+.sec-label{
+  font-size:0.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--oro);margin-bottom:12px;
+}
+.acerca h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;line-height:1;
+  color:var(--blanco);margin-bottom:20px;
+}
+.acerca p{
+  font-size:1.05rem;color:rgba(255,255,255,0.55);
+  line-height:1.75;max-width:620px;margin-bottom:16px;
+}
+.acerca p strong{color:var(--blanco);}
+.pillars{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin-top:36px;
+}
+.pillar{
+  background:var(--gris1);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;padding:20px 18px;
+  transition:border-color 0.2s;
+}
+.pillar:hover{border-color:var(--oro);}
+.pillar-icon{font-size:1.6rem;margin-bottom:10px;}
+.pillar-title{font-size:0.9rem;font-weight:700;color:var(--blanco);margin-bottom:4px;}
+.pillar-desc{font-size:0.76rem;color:var(--gris3);line-height:1.5;}
+
+/* ── SEPARADOR ── */
+.sep{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 24px;}
+
+/* ── CARTILLAS ── */
+.cartillas-sec{padding:80px 24px;}
+.cartillas-wrap{max-width:960px;margin:0 auto;}
+.cartillas-header{margin-bottom:44px;}
+.cartillas-header h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;color:var(--blanco);
+  line-height:1;margin-bottom:12px;
+}
+.cartillas-header p{font-size:1rem;color:rgba(255,255,255,0.45);max-width:480px;line-height:1.6;}
+
+/* Nivel labels */
+.nivel-grupo{margin-bottom:44px;}
+.nivel-label{
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.nivel-tag{
+  font-size:0.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;
+}
+.nivel-a0{background:rgba(26,122,74,0.2);color:#4ADE80;border:1px solid rgba(26,122,74,0.3);}
+.nivel-a1{background:rgba(26,86,196,0.2);color:#93C5FD;border:1px solid rgba(26,86,196,0.3);}
+.nivel-a2{background:rgba(212,168,71,0.15);color:var(--oro);border:1px solid var(--borde);}
+.nivel-b1{background:rgba(200,50,43,0.15);color:#FCA5A5;border:1px solid rgba(200,50,43,0.3);}
+.nivel-line{flex:1;height:1px;background:rgba(255,255,255,0.06);}
+
+.cartillas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:14px;
+}
+
+/* TARJETA DE CARTILLA */
+.c-card{
+  background:var(--gris1);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;overflow:hidden;
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  transition:all 0.22s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+.c-card:hover{
+  border-color:var(--oro);
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,71,0.2);
+}
+.c-card-top{
+  height:7px;
+  background:linear-gradient(90deg, var(--verde), #2AAB6B);
+}
+.c-card-top.a1{background:linear-gradient(90deg,#1A56C4,#4A86E8);}
+.c-card-top.a2{background:linear-gradient(90deg,#B45309,#D97706);}
+.c-card-top.b1{background:linear-gradient(90deg,#9D174D,#DB2777);}
+.c-card-top.final{background:linear-gradient(90deg,var(--oro),var(--oro-claro));}
+
+.c-card-body{padding:20px 18px 16px;flex:1;display:flex;flex-direction:column;}
+.c-num{
+  font-size:0.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gris3);margin-bottom:8px;
+}
+.c-emoji{font-size:1.8rem;margin-bottom:10px;line-height:1;}
+.c-title{
+  font-size:0.98rem;font-weight:800;color:var(--blanco);
+  margin-bottom:4px;line-height:1.2;
+}
+.c-subtitle{font-size:0.72rem;color:var(--oro);font-weight:700;margin-bottom:8px;}
+.c-desc{font-size:0.76rem;color:rgba(255,255,255,0.4);line-height:1.5;flex:1;margin-bottom:14px;}
+
+.c-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.c-tag{
+  font-size:0.58rem;font-weight:700;letter-spacing:0.5px;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.4);
+  white-space:nowrap;
+}
+
+.c-card-footer{
+  padding:12px 18px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cf-info{font-size:0.66rem;color:var(--gris3);}
+.cf-arrow{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(212,168,71,0.1);
+  border:1px solid rgba(212,168,71,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;color:var(--oro);
+  transition:all 0.2s;
+}
+.c-card:hover .cf-arrow{background:var(--oro);color:var(--negro);}
+
+/* CARTILLA FINAL ESPECIAL */
+.c-card.especial{
+  background:linear-gradient(135deg,#1A1400,#2A2000);
+  border-color:rgba(212,168,71,0.3);
+}
+.c-card.especial:hover{border-color:var(--oro);}
+.especial .c-title{color:var(--oro-claro);}
+
+/* ── METODOLOGÍA ── */
+.metodo{background:var(--gris1);padding:80px 24px;}
+.metodo-wrap{max-width:900px;margin:0 auto;}
+.metodo h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+  color:var(--blanco);margin-bottom:12px;
+}
+.metodo-sub{font-size:1rem;color:rgba(255,255,255,0.45);margin-bottom:44px;line-height:1.6;max-width:520px;}
+.metodo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.metodo-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;padding:22px 18px;
+}
+.mc-step{
+  font-size:0.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--oro);margin-bottom:12px;
+}
+.mc-icon{font-size:1.5rem;margin-bottom:10px;}
+.mc-title{font-size:0.92rem;font-weight:700;color:var(--blanco);margin-bottom:6px;}
+.mc-desc{font-size:0.76rem;color:rgba(255,255,255,0.4);line-height:1.55;}
+
+/* ── FOOTER ── */
+footer{
+  padding:60px 24px 40px;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.footer-wrap{max-width:900px;margin:0 auto;}
+.footer-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:32px;margin-bottom:40px;
+}
+.footer-brand{}
+.fb-logo{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.fb-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--oro);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.fb-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:900;color:var(--blanco);}
+.fb-sub{font-size:0.72rem;color:var(--gris3);}
+.fb-desc{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.6;max-width:280px;}
+.footer-links h4{font-size:0.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gris3);margin-bottom:14px;}
+.footer-links ul{list-style:none;}
+.footer-links li{margin-bottom:8px;}
+.footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--oro);}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);
+}
+.fb-copy{font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.fb-made{font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.fb-made strong{color:var(--oro);}
+
+/* ── SCROLL ANIMATION ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+
+@media(max-width:600px){
+  .hero-stats{flex-wrap:wrap;}
+  .stat{flex:1;min-width:80px;}
+  .footer-top{flex-direction:column;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  nav{padding:12px 16px;}
+  .nav-cta{padding:7px 14px;font-size:0.72rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🇨🇴</div>
+    <div>
+      <div class="nav-logo-text">Club de la Gente</div>
+      <div class="nav-logo-sub">Fusagasugá · Cundinamarca</div>
+    </div>
+  </div>
+  <a href="#cartillas" class="nav-cta">Ver las 20 Cartillas →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hb-dot"></span>
+      Curso 100% gratuito · Fusagasugá, Colombia
+    </div>
+    <h1>
+      <span class="line1">Aprende</span>
+      <span class="line2">Inglés</span>
+      <span class="line3">con Club de la Gente</span>
+    </h1>
+    <p class="hero-desc">
+      20 cartillas interactivas para llevar tu inglés de <strong>cero a nivel B1</strong>. Sin cuotas, sin registro, sin límites. Diseñadas para colombianos, con ejemplos de <strong>Fusagasugá y Colombia</strong>.
+    </p>
+    <div class="hero-actions">
+      <a href="#cartillas" class="btn-primary">🚀 Empezar el curso</a>
+      <a href="#acerca" class="btn-secondary">¿Qué es Club de la Gente?</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">20</div><div class="stat-l">Cartillas</div></div>
+      <div class="stat"><div class="stat-n">A0→B1</div><div class="stat-l">Nivel</div></div>
+      <div class="stat"><div class="stat-n">300+</div><div class="stat-l">Palabras</div></div>
+      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Costo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACERCA -->
+<section class="acerca fade-in" id="acerca">
+  <div class="sec-label">Quiénes somos</div>
+  <h2>Corporación Club<br>de la Gente</h2>
+  <p>Somos una organización de impacto social con sede en <strong>Fusagasugá, Cundinamarca</strong>. Nuestro propósito es conectar a nuestra comunidad con oportunidades de aprendizaje, cooperación internacional y desarrollo de habilidades del siglo XXI.</p>
+  <p>Este curso de inglés es <strong>100% gratuito</strong> y está diseñado especialmente para colombianos hispanohablantes — con pronunciación fonética colombiana, contextos locales y personajes de Fusagasugá.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🌍</div>
+      <div class="pillar-title">Inglés & Francés</div>
+      <div class="pillar-desc">Formación en idiomas con certificaciones internacionales Cambridge, IELTS y TOEFL.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">💻</div>
+      <div class="pillar-title">Habilidades Digitales</div>
+      <div class="pillar-desc">IA, herramientas digitales y competencias del mundo laboral moderno.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🤝</div>
+      <div class="pillar-title">Cooperación Internacional</div>
+      <div class="pillar-desc">Alianzas con GIZ, USAID, UNESCO y otras organizaciones globales.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🇨🇴</div>
+      <div class="pillar-title">Impacto Local</div>
+      <div class="pillar-desc">Arraigados en Fusagasugá — transformamos nuestra comunidad desde adentro.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CARTILLAS -->
+<section class="cartillas-sec" id="cartillas">
+  <div class="cartillas-wrap">
+    <div class="cartillas-header fade-in">
+      <div class="sec-label">El curso completo</div>
+      <h2>20 Cartillas Interactivas</h2>
+      <p>Cada cartilla incluye vocabulario con pronunciación, gramática explicada, diálogos reales, tarjetas de memorización y un quiz. Sin instalaciones — abre en cualquier navegador.</p>
+    </div>
+
+    <!-- NIVEL A0 -->
+    <div class="nivel-grupo fade-in">
+      <div class="nivel-label">
+        <span class="nivel-tag nivel-a0">Nivel A0 — Principiante absoluto</span>
+        <div class="nivel-line"></div>
+      </div>
+      <div class="cartillas-grid">
+        <a href="cartilla-0-ingles.html" class="c-card">
+          <div class="c-card-top"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 00</div>
+            <div class="c-emoji">🔤</div>
+            <div class="c-title">Bienvenida al inglés</div>
+            <div class="c-subtitle">Welcome to English</div>
+            <div class="c-desc">El alfabeto de 26 letras, vocales, sonidos difíciles y pronunciación básica.</div>
+            <div class="c-tags"><span class="c-tag">Alfabeto</span><span class="c-tag">Vocales</span><span class="c-tag">Pronunciación</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 15 min · 6 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-1-saludos.html" class="c-card">
+          <div class="c-card-top"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 01</div>
+            <div class="c-emoji">👋</div>
+            <div class="c-title">Saludos y presentaciones</div>
+            <div class="c-subtitle">Greetings & Introductions</div>
+            <div class="c-desc">Hello, goodbye, nice to meet you. Pronombres he/she y posesivos básicos.</div>
+            <div class="c-tags"><span class="c-tag">Saludos</span><span class="c-tag">He/She</span><span class="c-tag">Posesivos</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 20 min · 8 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-2-numeros.html" class="c-card">
+          <div class="c-card-top"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 02</div>
+            <div class="c-emoji">🔢</div>
+            <div class="c-title">Los Números</div>
+            <div class="c-subtitle">Numbers 1–100</div>
+            <div class="c-desc">Del 1 al 100, la fórmula de decenas -teen/-ty y juego numérico interactivo.</div>
+            <div class="c-tags"><span class="c-tag">1–100</span><span class="c-tag">-teen/-ty</span><span class="c-tag">Juego</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 20 min · 8 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-3-colores.html" class="c-card">
+          <div class="c-card-top"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 03</div>
+            <div class="c-emoji">🎨</div>
+            <div class="c-title">Los Colores</div>
+            <div class="c-subtitle">Colors & Adjectives</div>
+            <div class="c-desc">15 colores, orden adjetivo+sustantivo (the red bag) y pronunciación crítica.</div>
+            <div class="c-tags"><span class="c-tag">15 colores</span><span class="c-tag">Adjetivos</span><span class="c-tag">Orden</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 20 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NIVEL A1 -->
+    <div class="nivel-grupo fade-in">
+      <div class="nivel-label">
+        <span class="nivel-tag nivel-a1">Nivel A1 — Básico</span>
+        <div class="nivel-line"></div>
+      </div>
+      <div class="cartillas-grid">
+        <a href="cartilla-4-familia.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 04</div>
+            <div class="c-emoji">👨‍👩‍👧‍👦</div>
+            <div class="c-title">La Familia</div>
+            <div class="c-subtitle">Family Members</div>
+            <div class="c-desc">Árbol genealógico interactivo, 18 miembros, posesivos y pronombres.</div>
+            <div class="c-tags"><span class="c-tag">18 miembros</span><span class="c-tag">Árbol interactivo</span><span class="c-tag">Posesivos</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 22 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-5-cuerpo.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 05</div>
+            <div class="c-emoji">🫀</div>
+            <div class="c-title">El Cuerpo Humano</div>
+            <div class="c-subtitle">The Human Body</div>
+            <div class="c-desc">Figura SVG interactiva con 25 partes, frases médicas de emergencia.</div>
+            <div class="c-tags"><span class="c-tag">25 partes</span><span class="c-tag">Figura interactiva</span><span class="c-tag">Emergencias</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 22 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-6-casa.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 06</div>
+            <div class="c-emoji">🏠</div>
+            <div class="c-title">La Casa</div>
+            <div class="c-subtitle">The House</div>
+            <div class="c-desc">Plano interactivo por habitación, There is/are, preposiciones de lugar.</div>
+            <div class="c-tags"><span class="c-tag">Plano interactivo</span><span class="c-tag">There is/are</span><span class="c-tag">Preposiciones</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 22 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-7-comida.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 07</div>
+            <div class="c-emoji">🍽️</div>
+            <div class="c-title">La Comida</div>
+            <div class="c-subtitle">Food & Restaurant</div>
+            <div class="c-desc">Menú restaurante interactivo, 40 alimentos, to eat/drink, frases de restaurante.</div>
+            <div class="c-tags"><span class="c-tag">Menú interactivo</span><span class="c-tag">40 alimentos</span><span class="c-tag">Restaurante</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-8-rutina.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 08</div>
+            <div class="c-emoji">⏰</div>
+            <div class="c-title">Rutina Diaria</div>
+            <div class="c-subtitle">Daily Routine</div>
+            <div class="c-desc">Línea de tiempo diaria, presente simple, adverbios de frecuencia, Do/Does.</div>
+            <div class="c-tags"><span class="c-tag">Línea de tiempo</span><span class="c-tag">Pres. simple</span><span class="c-tag">Do/Does</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-9-trabajo.html" class="c-card">
+          <div class="c-card-top a1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 09</div>
+            <div class="c-emoji">💼</div>
+            <div class="c-title">El Trabajo</div>
+            <div class="c-subtitle">Work & Jobs</div>
+            <div class="c-desc">20 profesiones, What do you do?, artículo a/an, diálogo de entrevista laboral.</div>
+            <div class="c-tags"><span class="c-tag">20 profesiones</span><span class="c-tag">What do you do?</span><span class="c-tag">A vs AN</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NIVEL A2 -->
+    <div class="nivel-grupo fade-in">
+      <div class="nivel-label">
+        <span class="nivel-tag nivel-a2">Nivel A2 — Elemental</span>
+        <div class="nivel-line"></div>
+      </div>
+      <div class="cartillas-grid">
+        <a href="cartilla-10-ciudad.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 10</div>
+            <div class="c-emoji">🏙️</div>
+            <div class="c-title">La Ciudad</div>
+            <div class="c-subtitle">The City & Directions</div>
+            <div class="c-desc">20 lugares urbanos, pedir y dar direcciones, turn left/right, go straight.</div>
+            <div class="c-tags"><span class="c-tag">20 lugares</span><span class="c-tag">Direcciones</span><span class="c-tag">Turn left/right</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-11-transporte.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 11</div>
+            <div class="c-emoji">✈️</div>
+            <div class="c-title">El Transporte</div>
+            <div class="c-subtitle">Transport & Airport</div>
+            <div class="c-desc">15 medios de transporte, BY car/bus/plane, ON foot (excepción), aeropuerto.</div>
+            <div class="c-tags"><span class="c-tag">15 medios</span><span class="c-tag">BY + transporte</span><span class="c-tag">Aeropuerto</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-12-tiempo-libre.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 12</div>
+            <div class="c-emoji">🎮</div>
+            <div class="c-title">Tiempo Libre</div>
+            <div class="c-subtitle">Hobbies & Free Time</div>
+            <div class="c-desc">20 hobbies, Love/Like/Hate + gerundio -ING, reglas de formación del gerundio.</div>
+            <div class="c-tags"><span class="c-tag">20 hobbies</span><span class="c-tag">Love/Like/Hate</span><span class="c-tag">Gerundio -ING</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-13-compras.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 13</div>
+            <div class="c-emoji">🛒</div>
+            <div class="c-title">De Compras</div>
+            <div class="c-subtitle">Shopping & Prices</div>
+            <div class="c-desc">How much is it?, comparativos bigger/cheaper/better, mercado de Fusagasugá.</div>
+            <div class="c-tags"><span class="c-tag">How much?</span><span class="c-tag">Comparativos</span><span class="c-tag">Mercado</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-14-salud.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 14</div>
+            <div class="c-emoji">🏥</div>
+            <div class="c-title">La Salud</div>
+            <div class="c-subtitle">Health & Past Simple</div>
+            <div class="c-desc">Síntomas, en el médico, pasado simple regular e irregular (felt/went/took/slept).</div>
+            <div class="c-tags"><span class="c-tag">Síntomas</span><span class="c-tag">Pasado simple</span><span class="c-tag">felt/went/slept</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-15-clima.html" class="c-card">
+          <div class="c-card-top a2"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 15</div>
+            <div class="c-emoji">⛅</div>
+            <div class="c-title">El Clima</div>
+            <div class="c-subtitle">Weather & Future WILL</div>
+            <div class="c-desc">Vocabulario climático, What's the weather like?, futuro con WILL/WON'T.</div>
+            <div class="c-tags"><span class="c-tag">12 climas</span><span class="c-tag">WILL/WON'T</span><span class="c-tag">Celsius/°F</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NIVEL B1 -->
+    <div class="nivel-grupo fade-in">
+      <div class="nivel-label">
+        <span class="nivel-tag nivel-b1">Nivel B1 — Intermedio</span>
+        <div class="nivel-line"></div>
+      </div>
+      <div class="cartillas-grid">
+        <a href="cartilla-16-viajes.html" class="c-card">
+          <div class="c-card-top b1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 16</div>
+            <div class="c-emoji">🌍</div>
+            <div class="c-title">Viajes</div>
+            <div class="c-subtitle">Travel & Present Perfect</div>
+            <div class="c-desc">Have you ever been to…? Presente perfecto, participios been/seen/eaten/flown.</div>
+            <div class="c-tags"><span class="c-tag">Have you ever?</span><span class="c-tag">Pres. perfecto</span><span class="c-tag">Participios</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-17-tecnologia.html" class="c-card">
+          <div class="c-card-top b1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 17</div>
+            <div class="c-emoji">💻</div>
+            <div class="c-title">Tecnología</div>
+            <div class="c-subtitle">Tech & CAN / CAN'T</div>
+            <div class="c-desc">Vocabulario digital, Can/Can't para habilidades, reunión virtual con GIZ.</div>
+            <div class="c-tags"><span class="c-tag">CAN/CAN'T</span><span class="c-tag">Vocab digital</span><span class="c-tag">Reunión virtual</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+        <a href="cartilla-18-cultura.html" class="c-card">
+          <div class="c-card-top b1"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 18</div>
+            <div class="c-emoji">🎭</div>
+            <div class="c-title">Cultura y Ocio</div>
+            <div class="c-subtitle">Culture & Would you like?</div>
+            <div class="c-desc">Arte y entretenimiento, Would you like to…?, cultura colombiana en inglés.</div>
+            <div class="c-tags"><span class="c-tag">Would you like?</span><span class="c-tag">Invitaciones</span><span class="c-tag">🇨🇴 Cultura</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 25 min · 10 preguntas</span><span class="cf-arrow">→</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FINAL ESPECIAL -->
+    <div class="nivel-grupo fade-in">
+      <div class="nivel-label">
+        <span class="nivel-tag" style="background:rgba(212,168,71,0.15);color:var(--oro);border:1px solid var(--borde);">🏆 Evaluación Final</span>
+        <div class="nivel-line"></div>
+      </div>
+      <div class="cartillas-grid">
+        <a href="cartilla-19-repaso-final.html" class="c-card especial" style="grid-column:1/-1;max-width:520px;">
+          <div class="c-card-top final"></div>
+          <div class="c-card-body">
+            <div class="c-num">Cartilla 19 · FINAL</div>
+            <div class="c-emoji">🏆</div>
+            <div class="c-title">Gran Repaso Final</div>
+            <div class="c-subtitle">Final Review · A0 → B1 Complete</div>
+            <div class="c-desc">Resumen de toda la gramática, vocabulario por categorías, las 16 frases maestras, evaluación final de 20 preguntas y <strong>diploma digital</strong> al completar.</div>
+            <div class="c-tags"><span class="c-tag">20 preguntas</span><span class="c-tag">Todo el curso</span><span class="c-tag">🎓 Diploma</span><span class="c-tag">Repaso completo</span></div>
+          </div>
+          <div class="c-card-footer"><span class="cf-info">⏱ 40 min · Evaluación completa</span><span class="cf-arrow">🏆</span></div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- METODOLOGÍA -->
+<section class="metodo fade-in">
+  <div class="metodo-wrap">
+    <div class="sec-label">Cómo funciona</div>
+    <h2>Metodología del<br>Aprendizaje Acelerado</h2>
+    <p class="metodo-sub">Cada cartilla aplica técnicas pedagógicas validadas para maximizar la retención y hacer el aprendizaje efectivo y natural.</p>
+    <div class="metodo-grid">
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 01</div>
+        <div class="mc-icon">📦</div>
+        <div class="mc-title">Método CHUNK</div>
+        <div class="mc-desc">Vocabulario en grupos de 3–4 palabras relacionadas. El cerebro procesa grupos, no listas largas.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 02</div>
+        <div class="mc-icon">❤️</div>
+        <div class="mc-title">Anclaje Emocional</div>
+        <div class="mc-desc">Contextos reales de Colombia: el mercado de Fusa, el aeropuerto El Dorado, la familia y el trabajo.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 03</div>
+        <div class="mc-icon">🔄</div>
+        <div class="mc-title">Repetición Espaciada</div>
+        <div class="mc-desc">El mismo vocabulario aparece 3 veces en diferentes contextos: hoy, mañana y en 3 días.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 04</div>
+        <div class="mc-icon">🗣️</div>
+        <div class="mc-title">Pronunciación Fonética</div>
+        <div class="mc-desc">Cada palabra tiene su pronunciación escrita en español colombiano. "Uáter" en vez de "water".</div>
+      </div>
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 05</div>
+        <div class="mc-icon">📖</div>
+        <div class="mc-title">Historia Narrativa</div>
+        <div class="mc-desc">Carlos de Fusagasugá y Sarah de Nueva York aparecen en todas las cartillas, creando continuidad.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="mc-step">Técnica 06</div>
+        <div class="mc-icon">🃏</div>
+        <div class="mc-title">Tarjetas Flip</div>
+        <div class="mc-desc">12 tarjetas interactivas por cartilla para memorización visual y kinestésica. Toca y aprende.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-logo">
+          <div class="fb-icon">🇨🇴</div>
+          <div>
+            <div class="fb-name">Club de la Gente</div>
+            <div class="fb-sub">Corporación · Fusagasugá, Cundinamarca</div>
+          </div>
+        </div>
+        <p class="fb-desc">Organización de impacto social comprometida con el desarrollo educativo y la cooperación internacional de Fusagasugá y la región.</p>
+      </div>
+      <div class="footer-links">
+        <h4>El Curso</h4>
+        <ul>
+          <li><a href="cartilla-0-ingles.html">Cartilla 0 — Alfabeto</a></li>
+          <li><a href="cartilla-1-saludos.html">Cartilla 1 — Saludos</a></li>
+          <li><a href="cartilla-7-comida.html">Cartilla 7 — Comida</a></li>
+          <li><a href="cartilla-14-salud.html">Cartilla 14 — Salud</a></li>
+          <li><a href="cartilla-19-repaso-final.html">Cartilla 19 — Final 🏆</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Niveles</h4>
+        <ul>
+          <li><a href="#cartillas">A0 — Principiante (C0–C3)</a></li>
+          <li><a href="#cartillas">A1 — Básico (C4–C9)</a></li>
+          <li><a href="#cartillas">A2 — Elemental (C10–C15)</a></li>
+          <li><a href="#cartillas">B1 — Intermedio (C16–C18)</a></li>
+          <li><a href="cartilla-19-repaso-final.html">Gran Repaso Final</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fb-copy">© 2025 Corporación Club de la Gente · Fusagasugá, Cundinamarca, Colombia · Uso libre con atribución</div>
+      <div class="fb-made">Curso creado con ❤️ para <strong>Fusagasugá</strong> 🇨🇴</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
