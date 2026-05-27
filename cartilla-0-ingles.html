@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 0 — ¡Aprende Inglés! 🇨🇴→🇺🇸</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amarillo: #FFD93D;
+    --azul: #1B4FFF;
+    --rojo: #FF4D4D;
+    --verde: #2ECC71;
+    --naranja: #FF8C00;
+    --morado: #9B59B6;
+    --celeste: #E8F4FD;
+    --crema: #FFFDF0;
+    --gris: #F5F5F5;
+    --texto: #1A1A2E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  /* ── PORTADA ── */
+  .portada {
+    background: linear-gradient(135deg, #1B4FFF 0%, #0A2A8C 100%);
+    color: white;
+    padding: 40px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .portada::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,217,61,0.18);
+    border-radius: 50%;
+  }
+  .portada::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,77,77,0.15);
+    border-radius: 50%;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--texto);
+    font-weight: 900;
+    font-size: 13px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .portada h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .portada h1 span { color: var(--amarillo); }
+  .portada .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.88;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .flags { font-size: 2.4rem; letter-spacing: 8px; margin-bottom: 10px; }
+  .nivel-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── SECCIÓN GENÉRICA ── */
+  .seccion {
+    padding: 30px 16px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .seccion-titulo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--azul);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .seccion-titulo .icon { font-size: 1.5rem; }
+  .seccion-desc {
+    color: #555;
+    font-size: 0.97rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .divisor {
+    height: 4px;
+    background: linear-gradient(90deg, var(--amarillo), var(--azul), var(--rojo));
+    border-radius: 4px;
+    margin: 0 auto 30px;
+    max-width: 760px;
+  }
+
+  /* ── ¿POR QUÉ INGLÉS? ── */
+  .razon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .razon-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px 16px;
+    border-left: 5px solid var(--azul);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .razon-card:nth-child(2) { border-color: var(--rojo); }
+  .razon-card:nth-child(3) { border-color: var(--verde); }
+  .razon-card:nth-child(4) { border-color: var(--naranja); }
+  .razon-icon { font-size: 2rem; flex-shrink: 0; }
+  .razon-card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 4px; }
+  .razon-card p { font-size: 0.82rem; color: #666; line-height: 1.4; }
+
+  /* ── MAPA DE CARTILLAS ── */
+  .mapa-bg {
+    background: linear-gradient(135deg, #0f2460 0%, #1B4FFF 100%);
+    padding: 30px 16px;
+    text-align: center;
+  }
+  .mapa-bg .seccion-titulo { color: var(--amarillo); justify-content: center; }
+  .mapa-bg .seccion-desc { color: rgba(255,255,255,0.8); text-align: center; }
+  .cartillas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .cartilla-chip {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 10px 6px;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .cartilla-chip .num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.4rem;
+    display: block;
+    line-height: 1;
+    color: var(--amarillo);
+  }
+  .cartilla-chip.activa {
+    background: var(--amarillo);
+    border-color: var(--amarillo);
+    color: var(--texto);
+    transform: scale(1.08);
+    box-shadow: 0 4px 20px rgba(255,217,61,0.5);
+  }
+  .cartilla-chip.activa .num { color: var(--texto); }
+
+  /* ── ALFABETO ── */
+  .alfabeto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  .letra-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--azul);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+  }
+  .letra-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.13); }
+  .letra-card:nth-child(5n+1) { border-color: #FF4D4D; }
+  .letra-card:nth-child(5n+2) { border-color: #1B4FFF; }
+  .letra-card:nth-child(5n+3) { border-color: #2ECC71; }
+  .letra-card:nth-child(5n+4) { border-color: #FF8C00; }
+  .letra-card:nth-child(5n+5) { border-color: #9B59B6; }
+  .letra-grande {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--texto);
+  }
+  .letra-small { font-size: 1.1rem; color: #777; font-weight: 700; }
+  .letra-pron {
+    font-size: 0.75rem;
+    color: var(--azul);
+    font-weight: 700;
+    margin-top: 4px;
+    background: #E8F4FD;
+    border-radius: 6px;
+    padding: 2px 6px;
+    display: inline-block;
+  }
+  .letra-ejemplo {
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 3px;
+  }
+  .letra-emoji { font-size: 1.2rem; }
+
+  /* ── VOCALES ESPECIALES ── */
+  .vocales-section {
+    background: linear-gradient(135deg, #fff9e6, #fff3cc);
+    border-radius: 20px;
+    padding: 24px 20px;
+    border: 2px solid var(--amarillo);
+    margin-bottom: 20px;
+  }
+  .vocal-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e0d090;
+  }
+  .vocal-row:last-child { border-bottom: none; }
+  .vocal-big {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    width: 44px;
+    text-align: center;
+    color: var(--naranja);
+  }
+  .vocal-sounds { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+  .sound-chip {
+    background: white;
+    border: 2px solid var(--naranja);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--texto);
+  }
+  .sound-chip .en { color: var(--azul); }
+  .sound-chip .es { color: #888; font-size: 0.74rem; }
+
+  /* ── SONIDOS DIFÍCILES ── */
+  .dificil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .dificil-card {
+    background: white;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--rojo);
+  }
+  .dificil-card:nth-child(even) { border-color: var(--morado); }
+  .dificil-letra {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--rojo);
+  }
+  .dificil-card:nth-child(even) .dificil-letra { color: var(--morado); }
+  .dificil-tip {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .dificil-tip strong { color: var(--texto); }
+  .ejemplo-word {
+    display: inline-block;
+    background: #FFF0F0;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--rojo);
+    margin-top: 6px;
+  }
+  .dificil-card:nth-child(even) .ejemplo-word { background: #F3EAF9; color: var(--morado); }
+
+  /* ── PRIMERA PALABRA ── */
+  .primera-bg {
+    background: linear-gradient(135deg, #2ECC71, #1aaa5e);
+    padding: 30px 16px;
+    text-align: center;
+  }
+  .primera-bg .seccion-titulo { color: white; justify-content: center; }
+  .palabras-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .palabra-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px 20px;
+    text-align: center;
+    min-width: 130px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .palabra-emoji { font-size: 2.5rem; }
+  .palabra-en {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--azul);
+    margin-top: 6px;
+  }
+  .palabra-pron {
+    font-size: 0.78rem;
+    color: var(--naranja);
+    font-weight: 700;
+    background: #FFF3E0;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 4px 0;
+    display: inline-block;
+  }
+  .palabra-es { font-size: 0.85rem; color: #888; font-weight: 600; }
+
+  /* ── QUIZ ── */
+  .quiz-section {
+    background: #1A1A2E;
+    padding: 30px 16px;
+    text-align: center;
+  }
+  .quiz-section .seccion-titulo { color: var(--amarillo); justify-content: center; }
+  .quiz-section .seccion-desc { color: rgba(255,255,255,0.7); text-align: center; }
+  .quiz-box {
+    background: rgba(255,255,255,0.06);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .quiz-pregunta {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .quiz-opciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .quiz-btn {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-btn:hover { background: rgba(255,255,255,0.18); }
+  .quiz-btn.correcto { background: #2ECC71; border-color: #2ECC71; }
+  .quiz-btn.incorrecto { background: #FF4D4D; border-color: #FF4D4D; }
+  .quiz-feedback {
+    font-size: 1rem;
+    font-weight: 700;
+    min-height: 28px;
+    color: var(--amarillo);
+  }
+  .quiz-next {
+    background: var(--amarillo);
+    color: var(--texto);
+    border: none;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 12px;
+    display: none;
+    transition: transform 0.15s;
+  }
+  .quiz-next:hover { transform: scale(1.04); }
+  .quiz-score {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* ── PROGRESO ── */
+  .progreso-bar-wrap {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-width: 760px;
+    margin: 0 auto 16px;
+  }
+  .prog-label { font-size: 0.85rem; font-weight: 700; color: #888; margin-bottom: 6px; }
+  .prog-bar {
+    height: 12px;
+    background: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--azul), #5C8AFF);
+    border-radius: 8px;
+    transition: width 0.6s ease;
+  }
+
+  /* ── FOOTER ── */
+  .footer-cartilla {
+    background: #1A1A2E;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+  }
+  .footer-cartilla strong { color: var(--amarillo); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .razon-grid { grid-template-columns: 1fr; }
+    .cartillas-grid { grid-template-columns: repeat(4, 1fr); }
+    .dificil-grid { grid-template-columns: 1fr; }
+    .alfabeto-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .quiz-opciones { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="badge">🇨🇴 Para colombianos · Nivel Principiante</div>
+  <div class="flags">🇨🇴 → 🇺🇸</div>
+  <h1>¡Aprende<br><span>Inglés!</span></h1>
+  <p class="subtitle">Tu primer paso hacia el mundo angloparlante</p>
+  <div class="nivel-tag">📗 Cartilla 0 de 19 · Bienvenida & Alfabeto</div>
+</div>
+
+<!-- PROGRESO GENERAL -->
+<div class="seccion">
+  <div class="progreso-bar-wrap">
+    <div class="prog-label">Tu progreso total en el curso</div>
+    <div class="prog-bar"><div class="prog-fill" style="width: 5%"></div></div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;">
+      <span style="font-size:0.8rem;color:#888;">Cartilla 0 — Inicio</span>
+      <span style="font-size:0.8rem;font-weight:700;color:var(--azul);">5% completado</span>
+    </div>
+  </div>
+</div>
+
+<!-- POR QUÉ INGLÉS -->
+<div class="divisor"></div>
+<div class="seccion">
+  <div class="seccion-titulo"><span class="icon">🌍</span> ¿Por qué aprender inglés?</div>
+  <p class="seccion-desc">El inglés abre puertas en Colombia y en todo el mundo. Aquí te contamos por qué vale la pena:</p>
+  <div class="razon-grid">
+    <div class="razon-card">
+      <div class="razon-icon">💼</div>
+      <div>
+        <h3>Mejores empleos</h3>
+        <p>En Colombia, hablar inglés puede aumentar tu salario hasta un 60% más.</p>
+      </div>
+    </div>
+    <div class="razon-card">
+      <div class="razon-icon">✈️</div>
+      <div>
+        <h3>Viaja con confianza</h3>
+        <p>El inglés es el idioma oficial en más de 60 países y el más usado en aeropuertos.</p>
+      </div>
+    </div>
+    <div class="razon-card">
+      <div class="razon-icon">🎓</div>
+      <div>
+        <h3>Estudia en el exterior</h3>
+        <p>Becas, universidades y cursos internacionales te esperan si hablas inglés.</p>
+      </div>
+    </div>
+    <div class="razon-card">
+      <div class="razon-icon">🌐</div>
+      <div>
+        <h3>Internet en inglés</h3>
+        <p>El 55% del contenido de internet está en inglés. Accede a todo sin barreras.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAPA DE CARTILLAS -->
+<div class="mapa-bg">
+  <div class="seccion-titulo">🗺️ Tu ruta de aprendizaje</div>
+  <p class="seccion-desc" style="margin-bottom:20px;">20 cartillas para llevarte del nivel cero hasta comunicarte con fluidez básica</p>
+  <div class="cartillas-grid">
+    <div class="cartilla-chip activa"><span class="num">0</span>Bienvenida & Alfabeto</div>
+    <div class="cartilla-chip"><span class="num">1</span>Saludos básicos</div>
+    <div class="cartilla-chip"><span class="num">2</span>Números 1–100</div>
+    <div class="cartilla-chip"><span class="num">3</span>Colores</div>
+    <div class="cartilla-chip"><span class="num">4</span>La familia</div>
+    <div class="cartilla-chip"><span class="num">5</span>El cuerpo</div>
+    <div class="cartilla-chip"><span class="num">6</span>La casa</div>
+    <div class="cartilla-chip"><span class="num">7</span>La comida</div>
+    <div class="cartilla-chip"><span class="num">8</span>Rutina diaria</div>
+    <div class="cartilla-chip"><span class="num">9</span>El trabajo</div>
+    <div class="cartilla-chip"><span class="num">10</span>La ciudad</div>
+    <div class="cartilla-chip"><span class="num">11</span>Transporte</div>
+    <div class="cartilla-chip"><span class="num">12</span>Tiempo libre</div>
+    <div class="cartilla-chip"><span class="num">13</span>De compras</div>
+    <div class="cartilla-chip"><span class="num">14</span>La salud</div>
+    <div class="cartilla-chip"><span class="num">15</span>El clima</div>
+    <div class="cartilla-chip"><span class="num">16</span>Viajes</div>
+    <div class="cartilla-chip"><span class="num">17</span>Tecnología</div>
+    <div class="cartilla-chip"><span class="num">18</span>Cultura & ocio</div>
+    <div class="cartilla-chip"><span class="num">19</span>¡Gran repaso!</div>
+  </div>
+</div>
+
+<!-- EL ALFABETO -->
+<div class="divisor" style="margin-top:30px;"></div>
+<div class="seccion">
+  <div class="seccion-titulo"><span class="icon">🔤</span> El Alfabeto en Inglés</div>
+  <p class="seccion-desc">El inglés tiene <strong>26 letras</strong>. La pronunciación está escrita como suena en español. ¡Toca cada letra!</p>
+  <div class="alfabeto-grid" id="alfabetoGrid">
+    <!-- JS lo genera -->
+  </div>
+</div>
+
+<!-- VOCALES -->
+<div class="divisor"></div>
+<div class="seccion">
+  <div class="seccion-titulo"><span class="icon">🎵</span> Las Vocales — ¡Cuidado!</div>
+  <p class="seccion-desc">Las vocales en inglés tienen <strong>varios sonidos</strong> según la palabra. Aquí los más importantes:</p>
+  <div class="vocales-section">
+    <div class="vocal-row">
+      <div class="vocal-big">A</div>
+      <div class="vocal-sounds">
+        <div class="sound-chip"><span class="en">apple</span><br><span class="es">→ "áepol" (a corta)</span></div>
+        <div class="sound-chip"><span class="en">cake</span><br><span class="es">→ "kéik" (a larga)</span></div>
+      </div>
+    </div>
+    <div class="vocal-row">
+      <div class="vocal-big" style="color:#1B4FFF">E</div>
+      <div class="vocal-sounds">
+        <div class="sound-chip" style="border-color:#1B4FFF"><span class="en">egg</span><br><span class="es">→ "eg" (e corta)</span></div>
+        <div class="sound-chip" style="border-color:#1B4FFF"><span class="en">he</span><br><span class="es">→ "ji" (i larga)</span></div>
+      </div>
+    </div>
+    <div class="vocal-row">
+      <div class="vocal-big" style="color:#2ECC71">I</div>
+      <div class="vocal-sounds">
+        <div class="sound-chip" style="border-color:#2ECC71"><span class="en">it</span><br><span class="es">→ "it" (i corta)</span></div>
+        <div class="sound-chip" style="border-color:#2ECC71"><span class="en">ice</span><br><span class="es">→ "áis" (ai)</span></div>
+      </div>
+    </div>
+    <div class="vocal-row">
+      <div class="vocal-big" style="color:#9B59B6">O</div>
+      <div class="vocal-sounds">
+        <div class="sound-chip" style="border-color:#9B59B6"><span class="en">hot</span><br><span class="es">→ "jot" (o abierta)</span></div>
+        <div class="sound-chip" style="border-color:#9B59B6"><span class="en">home</span><br><span class="es">→ "jóum" (ou)</span></div>
+      </div>
+    </div>
+    <div class="vocal-row">
+      <div class="vocal-big" style="color:#E74C3C">U</div>
+      <div class="vocal-sounds">
+        <div class="sound-chip" style="border-color:#E74C3C"><span class="en">up</span><br><span class="es">→ "ap" (a suave)</span></div>
+        <div class="sound-chip" style="border-color:#E74C3C"><span class="en">use</span><br><span class="es">→ "iús" (iu)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SONIDOS DIFÍCILES -->
+<div class="divisor"></div>
+<div class="seccion">
+  <div class="seccion-titulo"><span class="icon">⚠️</span> Sonidos Difíciles para Hispanohablantes</div>
+  <p class="seccion-desc">Estos sonidos <strong>no existen en español</strong>. ¡Con práctica los dominarás!</p>
+  <div class="dificil-grid">
+    <div class="dificil-card">
+      <div class="dificil-letra">TH</div>
+      <div class="dificil-tip">
+        <strong>Cómo hacerlo:</strong> Saca un poquito la lengua entre los dientes y sopla.<br>
+        Como si dijeras una "d" muy suave.
+      </div>
+      <div class="ejemplo-word">the → "de" (suave)</div>
+      <div class="ejemplo-word">think → "zink"</div>
+    </div>
+    <div class="dificil-card">
+      <div class="dificil-letra">W</div>
+      <div class="dificil-tip">
+        <strong>No es como "v" en español.</strong><br>
+        Redondea los labios como para soplar. Es como una "u" muy rápida.
+      </div>
+      <div class="ejemplo-word">water → "uóter"</div>
+      <div class="ejemplo-word">women → "uímen"</div>
+    </div>
+    <div class="dificil-card">
+      <div class="dificil-letra">R</div>
+      <div class="dificil-tip">
+        <strong>No se vibra como en español.</strong><br>
+        La lengua NO toca el paladar. Va hacia atrás y arriba.
+      </div>
+      <div class="ejemplo-word">red → "red" (sin vibrar)</div>
+      <div class="ejemplo-word">run → "ran"</div>
+    </div>
+    <div class="dificil-card">
+      <div class="dificil-letra">H</div>
+      <div class="dificil-tip">
+        <strong>Siempre se pronuncia.</strong><br>
+        Es como un soplo suave de aire. Similar a la "j" española pero más suave.
+      </div>
+      <div class="ejemplo-word">hello → "jelóu"</div>
+      <div class="ejemplo-word">happy → "jáepi"</div>
+    </div>
+    <div class="dificil-card">
+      <div class="dificil-letra">V</div>
+      <div class="dificil-tip">
+        <strong>Muerde el labio inferior.</strong><br>
+        Los dientes de arriba tocan el labio de abajo. Vibra.
+      </div>
+      <div class="ejemplo-word">very → "véri"</div>
+      <div class="ejemplo-word">love → "lov"</div>
+    </div>
+    <div class="dificil-card">
+      <div class="dificil-letra">Æ</div>
+      <div class="dificil-tip">
+        <strong>Sonido "ae" (a+e juntas).</strong><br>
+        Letras como "a" en <em>cat, bad, man</em>. Más abierto que la "a" española.
+      </div>
+      <div class="ejemplo-word">cat → "kaet"</div>
+      <div class="ejemplo-word">bad → "baed"</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMERAS PALABRAS -->
+<div class="primera-bg">
+  <div class="seccion-titulo">✨ Tus primeras 8 palabras en inglés</div>
+  <p class="seccion-desc" style="color:rgba(255,255,255,0.85);text-align:center;margin-bottom:20px;">La pronunciación entre paréntesis está escrita como suena en español</p>
+  <div class="palabras-row">
+    <div class="palabra-card">
+      <div class="palabra-emoji">👋</div>
+      <div class="palabra-en">Hello</div>
+      <div class="palabra-pron">Je-lóu</div>
+      <div class="palabra-es">Hola</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">👍</div>
+      <div class="palabra-en">Yes</div>
+      <div class="palabra-pron">Yes</div>
+      <div class="palabra-es">Sí</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">👎</div>
+      <div class="palabra-en">No</div>
+      <div class="palabra-pron">Nou</div>
+      <div class="palabra-es">No</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">🙏</div>
+      <div class="palabra-en">Please</div>
+      <div class="palabra-pron">Pliís</div>
+      <div class="palabra-es">Por favor</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">😊</div>
+      <div class="palabra-en">Thanks</div>
+      <div class="palabra-pron">Zanks</div>
+      <div class="palabra-es">Gracias</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">👋</div>
+      <div class="palabra-en">Bye</div>
+      <div class="palabra-pron">Bái</div>
+      <div class="palabra-es">Adiós</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">🆗</div>
+      <div class="palabra-en">OK</div>
+      <div class="palabra-pron">Ou-kéi</div>
+      <div class="palabra-es">Está bien</div>
+    </div>
+    <div class="palabra-card">
+      <div class="palabra-emoji">❓</div>
+      <div class="palabra-en">Sorry</div>
+      <div class="palabra-pron">Sóri</div>
+      <div class="palabra-es">Perdón</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ INTERACTIVO -->
+<div class="quiz-section">
+  <div class="seccion-titulo">🧠 ¡Pon a prueba lo aprendido!</div>
+  <p class="seccion-desc">Mini quiz de la Cartilla 0 · Responde las preguntas</p>
+  <div class="quiz-box">
+    <div class="quiz-pregunta" id="quizPregunta">Cargando...</div>
+    <div class="quiz-opciones" id="quizOpciones"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <button class="quiz-next" id="quizNext" onclick="siguientePregunta()">Siguiente →</button>
+    <div class="quiz-score" id="quizScore">Pregunta 1 de 6</div>
+  </div>
+</div>
+
+<!-- CONSEJO FINAL -->
+<div class="seccion" style="text-align:center;padding-bottom:40px;">
+  <div style="background:white;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.1);border:3px solid var(--amarillo);">
+    <div style="font-size:2.5rem;margin-bottom:10px;">💡</div>
+    <div style="font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--azul);margin-bottom:8px;">Consejo del profe</div>
+    <p style="color:#555;line-height:1.6;font-size:0.95rem;">
+      No te preocupes por tener acento. <strong>Todos los hispanohablantes tienen acento al principio.</strong><br>
+      Lo importante es que te entiendan. Practica los sonidos difíciles 5 minutos al día frente al espejo. 
+      ¡En la Cartilla 1 ya estarás saludando en inglés! 🚀
+    </p>
+    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <div style="background:#E8F4FD;border-radius:10px;padding:10px 16px;font-size:0.85rem;font-weight:700;color:var(--azul);">📅 Estudia 15 min/día</div>
+      <div style="background:#FFF0F0;border-radius:10px;padding:10px 16px;font-size:0.85rem;font-weight:700;color:var(--rojo);">🔊 Practica en voz alta</div>
+      <div style="background:#EAFAF1;border-radius:10px;padding:10px 16px;font-size:0.85rem;font-weight:700;color:var(--verde);">✍️ Escribe lo que aprendes</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-cartilla">
+  <strong>Club de la Gente · Fusagasugá, Colombia</strong><br>
+  Cartilla 0 de 19 · Programa de Inglés · Nivel A0 → A1
+</div>
+
+<script>
+// ── ALFABETO DATA ──
+const letras = [
+  { L: 'A', p: 'éi', ej: 'apple 🍎' },
+  { L: 'B', p: 'bi', ej: 'ball ⚽' },
+  { L: 'C', p: 'si', ej: 'cat 🐱' },
+  { L: 'D', p: 'di', ej: 'dog 🐶' },
+  { L: 'E', p: 'i', ej: 'egg 🥚' },
+  { L: 'F', p: 'ef', ej: 'fish 🐟' },
+  { L: 'G', p: 'yi', ej: 'girl 👧' },
+  { L: 'H', p: 'éich', ej: 'hat 🎩' },
+  { L: 'I', p: 'ái', ej: 'ice 🧊' },
+  { L: 'J', p: 'yéi', ej: 'juice 🥤' },
+  { L: 'K', p: 'kéi', ej: 'key 🔑' },
+  { L: 'L', p: 'el', ej: 'love ❤️' },
+  { L: 'M', p: 'em', ej: 'moon 🌙' },
+  { L: 'N', p: 'en', ej: 'night 🌃' },
+  { L: 'O', p: 'ou', ej: 'orange 🍊' },
+  { L: 'P', p: 'pi', ej: 'pen ✏️' },
+  { L: 'Q', p: 'kiú', ej: 'queen 👑' },
+  { L: 'R', p: 'ar', ej: 'rain 🌧️' },
+  { L: 'S', p: 'es', ej: 'sun ☀️' },
+  { L: 'T', p: 'ti', ej: 'tree 🌳' },
+  { L: 'U', p: 'iú', ej: 'umbrella ☂️' },
+  { L: 'V', p: 'vi', ej: 'van 🚐' },
+  { L: 'W', p: 'dábol-iú', ej: 'water 💧' },
+  { L: 'X', p: 'eks', ej: 'x-ray 🩻' },
+  { L: 'Y', p: 'uái', ej: 'yellow 💛' },
+  { L: 'Z', p: 'si/zed', ej: 'zoo 🦁' },
+];
+
+const grid = document.getElementById('alfabetoGrid');
+letras.forEach(l => {
+  const card = document.createElement('div');
+  card.className = 'letra-card';
+  card.innerHTML = `
+    <div class="letra-grande">${l.L}</div>
+    <div class="letra-small">${l.L.toLowerCase()}</div>
+    <div class="letra-pron">${l.p}</div>
+    <div class="letra-ejemplo">${l.ej}</div>
+  `;
+  grid.appendChild(card);
+});
+
+// ── QUIZ DATA ──
+const preguntas = [
+  {
+    q: '¿Cómo se dice "Hola" en inglés?',
+    ops: ['Hello', 'Bye', 'Sorry', 'Thanks'],
+    r: 0, ex: '👋 Hello = Hola. Se pronuncia "Je-lóu"'
+  },
+  {
+    q: '¿Cuántas letras tiene el alfabeto inglés?',
+    ops: ['25', '26', '27', '28'],
+    r: 1, ex: '✅ El inglés tiene 26 letras, igual que el español pero sin la Ñ'
+  },
+  {
+    q: '¿Cómo se pronuncia la letra W en inglés?',
+    ops: ['"uve"', '"be"', '"dábol-iú"', '"ge"'],
+    r: 2, ex: '🔤 La W se llama "double U" → "dábol-iú"'
+  },
+  {
+    q: 'El sonido TH en inglés se hace:',
+    ops: ['Como la T española', 'Sacando la lengua entre los dientes', 'Como la CH', 'Como la S'],
+    r: 1, ex: '👅 ¡Saca un poquito la lengua! Es el sonido más característico del inglés'
+  },
+  {
+    q: '¿Cómo se pronuncia "Thanks"?',
+    ops: ['"Tanks"', '"Sanks"', '"Zanks"', '"Danks"'],
+    r: 2, ex: '🙏 Thanks se pronuncia "Zanks" — recuerda el sonido TH como "z" suave'
+  },
+  {
+    q: '¿Qué significa "Please"?',
+    ops: ['Gracias', 'Hola', 'Adiós', 'Por favor'],
+    r: 3, ex: '🙏 Please = Por favor. Se pronuncia "Pliís"'
+  },
+];
+
+let qIdx = 0, score = 0, respondida = false;
+
+function cargarPregunta() {
+  const q = preguntas[qIdx];
+  document.getElementById('quizPregunta').textContent = q.q;
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizNext').style.display = 'none';
+  document.getElementById('quizScore').textContent = `Pregunta ${qIdx + 1} de ${preguntas.length}  •  ✅ ${score} correctas`;
+  respondida = false;
+  const ops = document.getElementById('quizOpciones');
+  ops.innerHTML = '';
+  q.ops.forEach((op, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-btn';
+    btn.textContent = op;
+    btn.onclick = () => responder(i, btn);
+    ops.appendChild(btn);
+  });
+}
+
+function responder(i, btn) {
+  if (respondida) return;
+  respondida = true;
+  const q = preguntas[qIdx];
+  const btns = document.querySelectorAll('.quiz-btn');
+  btns.forEach(b => b.style.pointerEvents = 'none');
+  if (i === q.r) {
+    btn.classList.add('correcto');
+    document.getElementById('quizFeedback').textContent = '🎉 ¡Correcto! ' + q.ex;
+    score++;
+  } else {
+    btn.classList.add('incorrecto');
+    btns[q.r].classList.add('correcto');
+    document.getElementById('quizFeedback').textContent = '❌ Casi. ' + q.ex;
+  }
+  document.getElementById('quizNext').style.display = 'inline-block';
+  if (qIdx === preguntas.length - 1) document.getElementById('quizNext').textContent = '¡Ver resultado!';
+}
+
+function siguientePregunta() {
+  qIdx++;
+  if (qIdx < preguntas.length) {
+    cargarPregunta();
+  } else {
+    const pct = Math.round((score / preguntas.length) * 100);
+    const emoji = pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪';
+    document.getElementById('quizPregunta').textContent = `${emoji} Resultado: ${score}/${preguntas.length} (${pct}%)`;
+    document.getElementById('quizOpciones').innerHTML = '';
+    document.getElementById('quizFeedback').textContent = pct >= 80 ? '¡Excelente! Estás listo para la Cartilla 1 🚀' : pct >= 50 ? 'Bien hecho. Repasa los sonidos y continúa 📖' : 'Sigue practicando. ¡Tú puedes! 💛';
+    document.getElementById('quizNext').style.display = 'none';
+    document.getElementById('quizScore').textContent = `Cartilla 0 completada`;
+  }
+}
+
+cargarPregunta();
+</script>
+</body>
+</html>

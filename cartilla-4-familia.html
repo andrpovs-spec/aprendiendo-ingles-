@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 4 — La Familia en Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --naranja:#FF6B35;--amarillo:#FFD166;--verde:#06D6A0;--azul:#118AB2;
+  --rosa:#FF6B9D;--morado:#845EC2;--fondo:#FFF8F0;--carta:#FFFFFF;
+  --texto:#1A1035;--suave:#F5EFE6;--borde:#E8DDD0;--sombra:rgba(255,107,53,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);overflow-x:hidden;}
+.hero{background:linear-gradient(145deg,#1A1035 0%,#2D1B69 60%,#1A1035 100%);
+  padding:44px 20px 50px;text-align:center;position:relative;overflow:hidden;}
+.hero-blob1{position:absolute;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,107,53,0.25),transparent 70%);top:-80px;left:-60px;}
+.hero-blob2{position:absolute;width:250px;height:250px;border-radius:50%;
+  background:radial-gradient(circle,rgba(6,214,160,0.2),transparent 70%);bottom:-60px;right:-40px;}
+.hero-chip{display:inline-block;background:var(--amarillo);color:var(--texto);
+  font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:20px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Righteous',cursive;font-size:clamp(2.4rem,9vw,4.8rem);
+  color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--amarillo);font-style:normal;display:block;}
+.hero-sub{color:rgba(255,255,255,0.55);font-size:0.9rem;margin-top:12px;position:relative;z-index:1;font-weight:600;}
+.hero-emojis{font-size:2.2rem;letter-spacing:6px;margin:16px 0 8px;position:relative;z-index:1;}
+.hero-tecnicas{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.ht{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+  color:rgba(255,255,255,0.75);font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--naranja),#FF4757);padding:16px 20px;text-align:center;}
+.story p{color:white;font-size:0.9rem;font-weight:600;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--amarillo);}
+.wrap{max-width:800px;margin:0 auto;padding:0 16px;}
+.sec{padding:32px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.sec-num{width:32px;height:32px;border-radius:50%;background:var(--naranja);color:white;
+  font-family:'Righteous',cursive;font-size:0.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-title{font-family:'Righteous',cursive;font-size:1.4rem;color:var(--texto);}
+.sec-badge{margin-left:auto;font-size:0.65rem;font-weight:800;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 10px;border-radius:4px;white-space:nowrap;}
+.b-vocab{background:var(--azul);color:white;}.b-gram{background:var(--morado);color:white;}
+.b-pron{background:var(--naranja);color:white;}.b-uso{background:var(--verde);color:var(--texto);}
+.hint{background:var(--suave);border-left:4px solid var(--naranja);border-radius:0 10px 10px 0;
+  padding:10px 14px;font-size:0.83rem;color:#555;font-weight:600;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--texto);}.hint .warn{color:var(--naranja);font-weight:800;}.hint .good{color:var(--verde);font-weight:800;}
+.divider{border:none;border-top:2px dashed var(--borde);margin:28px 0 0;}
+
+/* ÁRBOL */
+.arbol-wrap{background:var(--carta);border-radius:20px;padding:24px 16px;
+  box-shadow:0 4px 24px var(--sombra);border:2px solid var(--borde);overflow-x:auto;}
+.gen-label{text-align:center;font-size:0.65rem;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:#ccc;margin-bottom:10px;margin-top:18px;}
+.gen-row{display:flex;justify-content:center;gap:12px;}
+.nodo{text-align:center;cursor:pointer;min-width:70px;}
+.nodo-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.7rem;border:3px solid white;
+  box-shadow:0 3px 12px rgba(0,0,0,0.15);transition:transform 0.2s;margin:0 auto 5px;}
+.nodo:hover .nodo-avatar{transform:scale(1.12);}
+.nodo-en{font-family:'Righteous',cursive;font-size:0.72rem;color:var(--texto);line-height:1.1;}
+.nodo-pron{font-size:0.58rem;font-weight:700;color:var(--naranja);background:#FFF0E8;
+  border-radius:3px;padding:1px 4px;display:inline-block;margin:1px 0;}
+.nodo-es{font-size:0.6rem;color:#aaa;font-weight:600;}
+.gen0 .nodo-avatar{background:linear-gradient(135deg,#C77DFF,#9B5DE5);}
+.gen1m .nodo-avatar{background:linear-gradient(135deg,#4895EF,#0077B6);}
+.gen1f .nodo-avatar{background:linear-gradient(135deg,#FF6B9D,#C9184A);}
+.gen2m .nodo-avatar{background:linear-gradient(135deg,#06D6A0,#007F5F);}
+.gen2f .nodo-avatar{background:linear-gradient(135deg,#FFD166,#FB8500);}
+.gen3 .nodo-avatar{background:linear-gradient(135deg,#FF6B35,#D62828);}
+.linea-v{width:2px;background:var(--borde);margin:4px auto;}
+.arbol-pop{display:none;background:var(--texto);color:white;border-radius:12px;
+  padding:14px 18px;margin-top:12px;text-align:center;}
+.ap-en{font-family:'Righteous',cursive;font-size:1.3rem;}
+.ap-pron{font-size:0.75rem;color:var(--naranja);font-weight:700;margin:4px 0;}
+.ap-es{font-size:0.82rem;color:rgba(255,255,255,0.55);}
+.ap-frase{font-size:0.78rem;color:var(--amarillo);margin-top:6px;font-weight:700;}
+
+/* CHUNKS */
+.chunks-wrap{display:flex;flex-direction:column;gap:14px;}
+.chunk-gen{background:var(--carta);border-radius:16px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,0.06);}
+.chunk-header{padding:12px 16px;display:flex;align-items:center;gap:10px;}
+.ch-icon{font-size:1.4rem;}.ch-title{font-family:'Righteous',cursive;font-size:0.95rem;color:white;flex:1;}
+.ch-badge{font-size:0.65rem;font-weight:800;background:rgba(255,255,255,0.2);color:white;padding:2px 8px;border-radius:10px;}
+.ch-abuelos{background:linear-gradient(90deg,#845EC2,#6B3FA0);}
+.ch-padres{background:linear-gradient(90deg,#FF6B9D,#C9184A);}
+.ch-hermanos{background:linear-gradient(90deg,#06D6A0,#028A60);}
+.ch-extendida{background:linear-gradient(90deg,#FF6B35,#D62828);}
+.chunk-body{padding:14px 16px;}
+.mr{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--suave);}
+.mr:last-child{border-bottom:none;}
+.mr-e{font-size:1.4rem;width:28px;text-align:center;flex-shrink:0;}
+.mr-en{font-family:'Righteous',cursive;font-size:0.95rem;color:var(--texto);min-width:110px;}
+.mr-pron{font-size:0.68rem;font-weight:700;color:var(--naranja);background:#FFF0E8;
+  border-radius:4px;padding:2px 6px;display:inline-block;white-space:nowrap;}
+.mr-es{font-size:0.76rem;color:#888;flex:1;}
+.mr-truco{font-size:0.68rem;color:#bbb;font-style:italic;line-height:1.3;text-align:right;max-width:160px;}
+
+/* GRAMÁTICA HE/SHE/THEY */
+.gram-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.gram-card{border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.gc-head{padding:14px;text-align:center;}
+.gc-pronoun{font-family:'Righteous',cursive;font-size:2rem;color:white;}
+.gc-label{font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.75);margin-top:2px;}
+.gc-head.he{background:linear-gradient(135deg,#118AB2,#005F88);}
+.gc-head.she{background:linear-gradient(135deg,#FF6B9D,#C9184A);}
+.gc-head.they{background:linear-gradient(135deg,#845EC2,#5A3090);}
+.gc-body{background:white;padding:10px 12px;}
+.gc-ej{font-size:0.76rem;color:var(--texto);padding:5px 0;border-bottom:1px solid var(--suave);line-height:1.4;}
+.gc-ej:last-child{border-bottom:none;}
+.gc-ej .pr{font-weight:800;color:var(--azul);}
+.gc-ej .pr-she{font-weight:800;color:var(--rosa);}
+.gc-ej .pr-they{font-weight:800;color:var(--morado);}
+.gram-alerta{background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border:2px solid var(--amarillo);
+  border-radius:12px;padding:16px;margin-top:10px;}
+.ga-title{font-family:'Righteous',cursive;font-size:0.95rem;color:var(--naranja);margin-bottom:10px;}
+.ga-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ga-col{border-radius:8px;padding:12px;}
+.ga-col.mal{background:rgba(255,107,53,0.1);border:1.5px solid rgba(255,107,53,0.3);}
+.ga-col.bien{background:rgba(6,214,160,0.1);border:1.5px solid rgba(6,214,160,0.3);}
+.ga-tag{font-size:0.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.ga-col.mal .ga-tag{color:var(--naranja);}.ga-col.bien .ga-tag{color:var(--verde);}
+.ga-en{font-size:0.88rem;font-weight:800;line-height:1.5;}
+.ga-col.mal .ga-en{color:var(--naranja);}.ga-col.bien .ga-en{color:#007A50;}
+.ga-es{font-size:0.7rem;color:#888;margin-top:3px;}
+
+/* POSESIVOS */
+.pos-table{width:100%;border-collapse:collapse;background:var(--carta);
+  border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);}
+.pos-table th{background:var(--texto);color:white;padding:10px 12px;
+  font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:left;}
+.pos-table td{padding:9px 12px;border-bottom:1px solid var(--suave);font-size:0.84rem;vertical-align:middle;}
+.pos-table tr:last-child td{border-bottom:none;}
+.pos-table tr:hover td{background:var(--suave);}
+.pt-pos{font-family:'Righteous',cursive;font-size:1rem;color:var(--morado);}
+.pt-es{color:#999;}.pt-ej{font-weight:700;}.pt-pron{font-size:0.7rem;color:var(--naranja);font-weight:700;}
+
+/* DIÁLOGO */
+.dialogo-scene{background:var(--suave);border-radius:20px;padding:20px;border:2px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.65rem;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:#ccc;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.12);}
+.av.c{background:linear-gradient(135deg,#118AB2,#005F88);}
+.av.s{background:linear-gradient(135deg,#FF6B9D,#C9184A);}
+.burbuja{max-width:75%;background:white;border-radius:16px 16px 16px 4px;
+  padding:10px 13px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--texto);}
+.b-en{font-size:0.9rem;font-weight:700;color:var(--texto);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.73rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.62rem;font-weight:800;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* FLIP */
+.flip-intro{background:var(--texto);border-radius:10px;padding:12px 16px;
+  color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-intro strong{color:var(--amarillo);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:116px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px rgba(0,0,0,0.09);}
+.ff-e{font-size:2rem;}.ff-en{font-family:'Righteous',cursive;font-size:0.9rem;color:var(--texto);margin-top:4px;}
+.ff-h{font-size:0.58rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--texto);transform:rotateY(180deg);box-shadow:0 2px 12px rgba(0,0,0,0.2);}
+.fb-es{color:var(--amarillo);font-size:0.88rem;font-weight:800;}
+.fb-pron{font-size:0.68rem;color:var(--naranja);font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.6rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* QUIZ */
+.quiz-wrap{background:var(--texto);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-num{width:32px;height:32px;border-radius:50%;background:var(--amarillo);color:var(--texto);
+  font-family:'Righteous',cursive;font-size:0.9rem;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Righteous',cursive;font-size:1.4rem;color:white;}
+.qw-sub{font-size:0.82rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:4px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--naranja),var(--amarillo));border-radius:4px;transition:width 0.4s;}
+.q-tipo{font-size:0.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-family:'Righteous',cursive;font-size:1.2rem;color:white;text-align:center;line-height:1.3;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);
+  color:white;padding:12px 10px;border-radius:10px;font-family:'Nunito',sans-serif;
+  font-size:0.88rem;font-weight:700;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.14);}
+.q-btn.ok{background:rgba(6,214,160,0.2);border-color:var(--verde);color:#06D6A0;}
+.q-btn.mal{background:rgba(255,107,53,0.2);border-color:var(--naranja);color:#FF6B35;}
+.q-feedback{font-size:0.82rem;font-weight:700;color:var(--amarillo);min-height:22px;text-align:center;line-height:1.4;}
+.q-next{display:none;margin:12px auto 0;background:var(--amarillo);color:var(--texto);border:none;
+  padding:11px 28px;border-radius:10px;font-family:'Righteous',cursive;font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* REPASO */
+.repaso-bg{background:linear-gradient(135deg,var(--verde),#028A60);padding:28px 16px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;max-width:800px;margin:14px auto 0;}
+.rep-c{background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);border-radius:12px;padding:12px 8px;text-align:center;}
+.rep-e{font-size:1.5rem;margin-bottom:3px;}.rep-en{font-family:'Righteous',cursive;font-size:0.82rem;color:white;}
+.rep-pron{font-size:0.6rem;color:rgba(255,255,255,0.6);font-weight:700;}
+.rep-es{font-size:0.66rem;color:rgba(255,255,255,0.5);margin-top:1px;}
+
+/* TIP */
+.tip{max-width:560px;margin:26px auto 30px;background:var(--carta);border-radius:14px;
+  padding:22px 20px;box-shadow:0 2px 14px rgba(0,0,0,0.08);border-top:5px solid var(--naranja);text-align:center;}
+.tip h3{font-family:'Righteous',cursive;font-size:1rem;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#666;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.73rem;font-weight:800;}
+.footer{background:var(--texto);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--amarillo);}
+@media(max-width:500px){
+  .gram-trio{grid-template-columns:1fr;}.ga-compare{grid-template-columns:1fr;}
+  .q-ops{grid-template-columns:1fr;}.gen-row{gap:6px;}
+  .nodo-avatar{width:46px;height:46px;font-size:1.3rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-blob1"></div><div class="hero-blob2"></div>
+  <div class="hero-chip">🧠 Anclaje Emocional + Árbol Visual + He/She + Posesivos</div>
+  <h1>La Familia<br><em>The Family</em></h1>
+  <div class="hero-emojis">👴👵 👨👩 👦👧</div>
+  <p class="hero-sub">Cartilla 4 · Nivel A1 · 18 palabras · Gramática he/she/they + posesivos · ≈ 25 min</p>
+  <div class="hero-tecnicas">
+    <span class="ht">🌳 Árbol interactivo</span>
+    <span class="ht">👫 He vs She (¡clave!)</span>
+    <span class="ht">📦 Chunks por generación</span>
+    <span class="ht">❤️ Anclaje emocional</span>
+    <span class="ht">🔄 Posesivos en contexto</span>
+  </div>
+</div>
+
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Sarah le pregunta a Carlos sobre su familia. Carlos le cuenta sobre sus padres, hermanos y abuelos. <strong>Tú eres Carlos — vas a hablar de TU familia en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- 1. ÁRBOL -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">1</div>
+    <div class="sec-title">El árbol de la familia — The Family Tree</div>
+    <div class="sec-badge b-vocab">Visual</div>
+  </div>
+  <div class="hint">🧠 <strong>Memoria espacial:</strong> Un árbol activa el área del cerebro más potente para recordar relaciones. Toca cada persona para ver su nombre en inglés con pronunciación.</div>
+  <div class="arbol-wrap">
+    <!-- ABUELOS -->
+    <div class="gen-label">🟣 Grandparents — Abuelos</div>
+    <div class="gen-row">
+      <div class="nodo gen0" onclick="popArbol('grandfather')">
+        <div class="nodo-avatar">👴</div>
+        <div class="nodo-en">Grandfather</div>
+        <div class="nodo-pron">Gránd-fazer</div>
+        <div class="nodo-es">Abuelo</div>
+      </div>
+      <div style="display:flex;align-items:center;padding-top:10px;color:#ddd;margin:0 6px;">💜</div>
+      <div class="nodo gen0" onclick="popArbol('grandmother')">
+        <div class="nodo-avatar">👵</div>
+        <div class="nodo-en">Grandmother</div>
+        <div class="nodo-pron">Gránd-mader</div>
+        <div class="nodo-es">Abuela</div>
+      </div>
+    </div>
+    <div class="linea-v" style="height:18px;"></div>
+    <!-- PADRES -->
+    <div class="gen-label">🔴 Parents — Padres</div>
+    <div class="gen-row">
+      <div class="nodo gen1m" onclick="popArbol('father')">
+        <div class="nodo-avatar">👨</div>
+        <div class="nodo-en">Father / Dad</div>
+        <div class="nodo-pron">Fáder / Daed</div>
+        <div class="nodo-es">Padre / Papá</div>
+      </div>
+      <div style="display:flex;align-items:center;padding-top:10px;color:#ddd;margin:0 6px;">❤️</div>
+      <div class="nodo gen1f" onclick="popArbol('mother')">
+        <div class="nodo-avatar">👩</div>
+        <div class="nodo-en">Mother / Mom</div>
+        <div class="nodo-pron">Máder / Mom</div>
+        <div class="nodo-es">Madre / Mamá</div>
+      </div>
+    </div>
+    <div class="linea-v" style="height:18px;"></div>
+    <!-- HIJOS -->
+    <div class="gen-label">🟢 Children — Hijos</div>
+    <div class="gen-row" style="gap:14px;flex-wrap:wrap;">
+      <div class="nodo gen1f" onclick="popArbol('sister')">
+        <div class="nodo-avatar">👧</div>
+        <div class="nodo-en">Sister</div>
+        <div class="nodo-pron">Síster</div>
+        <div class="nodo-es">Hermana</div>
+      </div>
+      <div class="nodo gen2m" onclick="popArbol('brother')">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#4895EF,#0077B6);">👦</div>
+        <div class="nodo-en">Brother</div>
+        <div class="nodo-pron">Bráder</div>
+        <div class="nodo-es">Hermano</div>
+      </div>
+      <div class="nodo gen3" onclick="popArbol('me')">
+        <div class="nodo-avatar">🙋</div>
+        <div class="nodo-en">Me / I</div>
+        <div class="nodo-pron">Mii / Ái</div>
+        <div class="nodo-es">¡Tú eres este!</div>
+      </div>
+    </div>
+    <!-- EXTENDIDA -->
+    <div class="linea-v" style="height:18px;"></div>
+    <div class="gen-label">🟡 Extended Family — Familia extendida</div>
+    <div class="gen-row" style="gap:8px;flex-wrap:wrap;">
+      <div class="nodo" onclick="popArbol('uncle')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#F77F00,#D62828);width:48px;height:48px;font-size:1.3rem;">👨‍🦳</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Uncle</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Ánkol</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Tío</div>
+      </div>
+      <div class="nodo" onclick="popArbol('aunt')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#7B2D8B,#C77DFF);width:48px;height:48px;font-size:1.3rem;">👩‍🦳</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Aunt</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Ant</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Tía</div>
+      </div>
+      <div class="nodo" onclick="popArbol('cousin')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#4CAF50,#1B5E20);width:48px;height:48px;font-size:1.3rem;">🧒</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Cousin</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Kázin</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Primo/a</div>
+      </div>
+      <div class="nodo" onclick="popArbol('nephew')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#FF8A65,#E64A19);width:48px;height:48px;font-size:1.3rem;">👦</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Nephew</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Néfiu</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Sobrino</div>
+      </div>
+      <div class="nodo" onclick="popArbol('niece')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#F48FB1,#AD1457);width:48px;height:48px;font-size:1.3rem;">👧</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Niece</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Niis</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Sobrina</div>
+      </div>
+      <div class="nodo" onclick="popArbol('husband')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#29B6F6,#0277BD);width:48px;height:48px;font-size:1.1rem;">💍👨</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Husband</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Jásband</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Esposo</div>
+      </div>
+      <div class="nodo" onclick="popArbol('wife')" style="min-width:60px;">
+        <div class="nodo-avatar" style="background:linear-gradient(135deg,#EF9A9A,#B71C1C);width:48px;height:48px;font-size:1.1rem;">💍👩</div>
+        <div class="nodo-en" style="font-size:0.68rem;">Wife</div>
+        <div class="nodo-pron" style="font-size:0.56rem;">Uáif</div>
+        <div class="nodo-es" style="font-size:0.58rem;">Esposa</div>
+      </div>
+    </div>
+    <!-- POP -->
+    <div class="arbol-pop" id="arbol-pop">
+      <div class="ap-en" id="ap-en"></div>
+      <div class="ap-pron" id="ap-pron"></div>
+      <div class="ap-es" id="ap-es"></div>
+      <div class="ap-frase" id="ap-frase"></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 2. CHUNKS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">2</div>
+    <div class="sec-title">Aprende por generaciones — Chunks</div>
+    <div class="sec-badge b-vocab">Vocabulario</div>
+  </div>
+  <div class="hint">🧠 <strong>Técnica Chunk por generación:</strong> Agrupar la familia por niveles es como tu cerebro la organiza naturalmente. Aprende el grupo, no la lista.</div>
+  <div class="chunks-wrap">
+    <div class="chunk-gen">
+      <div class="chunk-header ch-abuelos"><div class="ch-icon">👴👵</div><div class="ch-title">Grandparents — Abuelos</div><div class="ch-badge">Chunk 1</div></div>
+      <div class="chunk-body">
+        <div class="mr"><div class="mr-e">👴</div><div class="mr-en">Grandfather</div><div class="mr-pron">Gránd-fazer</div><div class="mr-es">Abuelo</div><div class="mr-truco">Grand + father = "el gran padre"</div></div>
+        <div class="mr"><div class="mr-e">👵</div><div class="mr-en">Grandmother</div><div class="mr-pron">Gránd-mader</div><div class="mr-es">Abuela</div><div class="mr-truco">Grand + mother = "la gran madre"</div></div>
+        <div class="mr"><div class="mr-e">👶</div><div class="mr-en">Grandchild</div><div class="mr-pron">Gránd-chaild</div><div class="mr-es">Nieto/a</div><div class="mr-truco">Grand + child (niño/a)</div></div>
+      </div>
+    </div>
+    <div class="chunk-gen">
+      <div class="chunk-header ch-padres"><div class="ch-icon">👨👩</div><div class="ch-title">Parents — Padres</div><div class="ch-badge">Chunk 2</div></div>
+      <div class="chunk-body">
+        <div class="mr"><div class="mr-e">👨</div><div class="mr-en">Father / Dad</div><div class="mr-pron">Fáder / Daed</div><div class="mr-es">Padre / Papá</div><div class="mr-truco">Father = formal · Dad = informal</div></div>
+        <div class="mr"><div class="mr-e">👩</div><div class="mr-en">Mother / Mom</div><div class="mr-pron">Máder / Mom</div><div class="mr-es">Madre / Mamá</div><div class="mr-truco">Mother = formal · Mom = informal</div></div>
+        <div class="mr"><div class="mr-e">💍👨</div><div class="mr-en">Husband</div><div class="mr-pron">Jásband</div><div class="mr-es">Esposo</div><div class="mr-truco">Band = argolla = matrimonio</div></div>
+        <div class="mr"><div class="mr-e">💍👩</div><div class="mr-en">Wife</div><div class="mr-pron">Uáif</div><div class="mr-es">Esposa</div><div class="mr-truco">W suena U. "Uáif"</div></div>
+        <div class="mr"><div class="mr-e">👫</div><div class="mr-en">Parents</div><div class="mr-pron">Pérents</div><div class="mr-es">Los padres (ambos)</div><div class="mr-truco">⚠️ Parents ≠ parientes</div></div>
+      </div>
+    </div>
+    <div class="chunk-gen">
+      <div class="chunk-header ch-hermanos"><div class="ch-icon">👦👧</div><div class="ch-title">Siblings — Hermanos</div><div class="ch-badge">Chunk 3</div></div>
+      <div class="chunk-body">
+        <div class="mr"><div class="mr-e">👦</div><div class="mr-en">Brother</div><div class="mr-pron">Bráder</div><div class="mr-es">Hermano</div><div class="mr-truco">He is my brother</div></div>
+        <div class="mr"><div class="mr-e">👧</div><div class="mr-en">Sister</div><div class="mr-pron">Síster</div><div class="mr-es">Hermana</div><div class="mr-truco">She is my sister</div></div>
+        <div class="mr"><div class="mr-e">👶</div><div class="mr-en">Son / Daughter</div><div class="mr-pron">San / Dóter</div><div class="mr-es">Hijo / Hija</div><div class="mr-truco">gh en Daughter = muda</div></div>
+        <div class="mr"><div class="mr-e">👶👶</div><div class="mr-en">Children / Kids</div><div class="mr-pron">Chíldren / Kids</div><div class="mr-es">Hijos / Niños</div><div class="mr-truco">Kids = informal (como "chinos")</div></div>
+      </div>
+    </div>
+    <div class="chunk-gen">
+      <div class="chunk-header ch-extendida"><div class="ch-icon">🌳</div><div class="ch-title">Extended Family — Familia extendida</div><div class="ch-badge">Chunk 4</div></div>
+      <div class="chunk-body">
+        <div class="mr"><div class="mr-e">👨‍🦳</div><div class="mr-en">Uncle</div><div class="mr-pron">Ánkol</div><div class="mr-es">Tío</div><div class="mr-truco">Suena "ankle" (tobillo)</div></div>
+        <div class="mr"><div class="mr-e">👩‍🦳</div><div class="mr-en">Aunt</div><div class="mr-pron">Ant</div><div class="mr-es">Tía</div><div class="mr-truco">⚠️ Suena igual que ant (hormiga)</div></div>
+        <div class="mr"><div class="mr-e">🧒</div><div class="mr-en">Cousin</div><div class="mr-pron">Kázin</div><div class="mr-es">Primo o Prima</div><div class="mr-truco">⚠️ Mismo para hombre y mujer</div></div>
+        <div class="mr"><div class="mr-e">👦</div><div class="mr-en">Nephew</div><div class="mr-pron">Néfiu</div><div class="mr-es">Sobrino</div><div class="mr-truco">ph suena F: "Néfiu"</div></div>
+        <div class="mr"><div class="mr-e">👧</div><div class="mr-en">Niece</div><div class="mr-pron">Niis</div><div class="mr-es">Sobrina</div><div class="mr-truco">Suena como "nice" ✓</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3. HE / SHE / THEY -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">3</div>
+    <div class="sec-title">He / She / They — El error #1 del hispanohablante</div>
+    <div class="sec-badge b-gram">Gramática ★</div>
+  </div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> En español "él habla / ella habla" → mismo verbo. En inglés <span class="warn">HE y SHE son distintos</span> y nunca se intercambian. Es el error más frecuente de los colombianos al hablar inglés.</div>
+  <div class="gram-trio">
+    <div class="gram-card">
+      <div class="gc-head he"><div class="gc-pronoun">HE</div><div class="gc-label">♂ Hombres</div></div>
+      <div class="gc-body">
+        <div class="gc-ej"><span class="pr">He</span> is my father.</div>
+        <div class="gc-ej"><span class="pr">He</span> is my brother.</div>
+        <div class="gc-ej"><span class="pr">He</span> is my uncle.</div>
+        <div class="gc-ej" style="font-size:0.68rem;color:#aaa;font-style:italic;">Masculino singular</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head she"><div class="gc-pronoun">SHE</div><div class="gc-label">♀ Mujeres</div></div>
+      <div class="gc-body">
+        <div class="gc-ej"><span class="pr-she">She</span> is my mother.</div>
+        <div class="gc-ej"><span class="pr-she">She</span> is my sister.</div>
+        <div class="gc-ej"><span class="pr-she">She</span> is my aunt.</div>
+        <div class="gc-ej" style="font-size:0.68rem;color:#aaa;font-style:italic;">Femenino singular</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head they"><div class="gc-pronoun">THEY</div><div class="gc-label">♂♀ Grupos</div></div>
+      <div class="gc-body">
+        <div class="gc-ej"><span class="pr-they">They</span> are my parents.</div>
+        <div class="gc-ej"><span class="pr-they">They</span> are my siblings.</div>
+        <div class="gc-ej"><span class="pr-they">They</span> are my grandparents.</div>
+        <div class="gc-ej" style="font-size:0.68rem;color:#aaa;font-style:italic;">Plural — mixto o no</div>
+      </div>
+    </div>
+  </div>
+  <div class="gram-alerta">
+    <div class="ga-title">⚠️ El error más frecuente — memoriza este contraste</div>
+    <div class="ga-compare">
+      <div class="ga-col mal">
+        <div class="ga-tag">❌ Error común</div>
+        <div class="ga-en">He is my sister. ✗<br>She is my father. ✗</div>
+        <div class="ga-es">Confundir por descuido</div>
+      </div>
+      <div class="ga-col bien">
+        <div class="ga-tag">✅ Siempre correcto</div>
+        <div class="ga-en">She is my sister. ✓<br>He is my father. ✓</div>
+        <div class="ga-es">He = hombre · She = mujer. Siempre.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 4. POSESIVOS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">4</div>
+    <div class="sec-title">Posesivos — My, Your, His, Her, Our, Their</div>
+    <div class="sec-badge b-gram">Gramática</div>
+  </div>
+  <div class="hint">🧠 <strong>Gramática invisible:</strong> Los posesivos se aprenden usándolos, no memorizando una lista. Cada frase muestra a Carlos hablando de SU familia — tú haces lo mismo con la tuya.</div>
+  <table class="pos-table">
+    <thead><tr><th>Posesivo</th><th>Español</th><th>Ejemplo real</th><th>Pronunciación</th></tr></thead>
+    <tbody>
+      <tr><td class="pt-pos">My</td><td class="pt-es">Mi / Mis</td><td class="pt-ej">My mother is from Fusagasugá.</td><td class="pt-pron">Mái máder is from…</td></tr>
+      <tr><td class="pt-pos">Your</td><td class="pt-es">Tu / Tus</td><td class="pt-ej">Is your father at home?</td><td class="pt-pron">Ior fáder is at jóum?</td></tr>
+      <tr><td class="pt-pos">His</td><td class="pt-es">Su (de él)</td><td class="pt-ej">His brother lives in Bogotá.</td><td class="pt-pron">Jis bráder livs in…</td></tr>
+      <tr><td class="pt-pos">Her</td><td class="pt-es">Su (de ella)</td><td class="pt-ej">Her sister is a nurse.</td><td class="pt-pron">Jer síster is a ners</td></tr>
+      <tr><td class="pt-pos">Our</td><td class="pt-es">Nuestro/a</td><td class="pt-ej">Our grandparents live in Fusagasugá.</td><td class="pt-pron">Áuer gránd-pérents liv…</td></tr>
+      <tr><td class="pt-pos">Their</td><td class="pt-es">Su (de ellos)</td><td class="pt-ej">Their children are very young.</td><td class="pt-pron">Der chíldren ar véri iong</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- 5. DIÁLOGO -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">5</div>
+    <div class="sec-title">Carlos habla de su familia — Diálogo completo</div>
+    <div class="sec-badge b-uso">Uso real</div>
+  </div>
+  <div class="hint">🧠 <strong>Repetición espaciada:</strong> Todo el vocabulario de hoy aparece aquí en contexto real. Léelo hoy, mañana y en 3 días. La tercera vez lo entenderás sin traducción.</div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📍 Parque de Fusagasugá · Tarde soleada</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos, do you have a big family?</div><span class="b-pron">Carlos, du iú jav a big fámili?</span><div class="b-es">Carlos, ¿tienes una familia grande?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! My family is big. I have my parents, two brothers and one sister.</div><span class="b-pron">Ies! Mái fámili is big. Ái jav mái pérents, túu bráders end uán síster.</span><div class="b-es">¡Sí! Mi familia es grande. Tengo mis padres, dos hermanos y una hermana.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">And your grandparents? Are they close?</div><span class="b-pron">End ior gránd-pérents? Ar dei klóus?</span><div class="b-es">¿Y tus abuelos? ¿Viven cerca?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">My grandfather lives here. He is 78 years old. My grandmother passed away.</div><span class="b-pron">Mái gránd-fazer livs jiir. Ji is séven-ti-éit íers old. Mái gránd-mader past auéi.</span><div class="b-es">Mi abuelo vive aquí. Tiene 78 años. Mi abuela falleció.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">What does your sister do?</div><span class="b-pron">Uot das ior síster dúu?</span><div class="b-es">¿A qué se dedica tu hermana?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">She is a nurse. Her husband is a teacher. They have two kids — a son and a daughter.</div><span class="b-pron">Shi is a ners. Jer jásband is a tíicher. Dei jav túu kids — a san end a dóter.</span><div class="b-es">Ella es enfermera. Su esposo es profesor. Tienen dos hijos — un niño y una niña.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">So you are an uncle! How old is your nephew?</div><span class="b-pron">Sou iú ar an ánkol! Jáu old is ior néfiu?</span><div class="b-es">¡Entonces eres tío! ¿Cuántos años tiene tu sobrino?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">My nephew is 5 and my niece is 3. They are adorable!</div><span class="b-pron">Mái néfiu is fáiv end mái niis is zríi. Dei ar adorábol!</span><div class="b-es">Mi sobrino tiene 5 y mi sobrina tiene 3. ¡Son adorables!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 6. FLIP -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-num">6</div>
+    <div class="sec-title">Memoriza — Toca las tarjetas</div>
+    <div class="sec-badge b-vocab">Práctica</div>
+  </div>
+  <div class="flip-intro">👆 Mira el emoji → recuerda la palabra en inglés → toca para confirmar. <strong>Hazlo 3 veces para fijar la memoria.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-num">?</div><div class="qw-title">¡Quiz de La Familia!</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · He/She/They · Posesivos · Pronunciación</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div>
+      <div class="q-icon" id="qicon">👨‍👩‍👧</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- REPASO -->
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="sec-head" style="justify-content:center;margin-bottom:14px;">
+      <div class="sec-num" style="background:rgba(255,255,255,0.3);color:white;">★</div>
+      <div class="sec-title" style="color:white;">Las 18 palabras clave de esta cartilla</div>
+    </div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">👴</div><div class="rep-en">Grandfather</div><div class="rep-pron">Gránd-fazer</div><div class="rep-es">Abuelo</div></div>
+      <div class="rep-c"><div class="rep-e">👵</div><div class="rep-en">Grandmother</div><div class="rep-pron">Gránd-mader</div><div class="rep-es">Abuela</div></div>
+      <div class="rep-c"><div class="rep-e">👨</div><div class="rep-en">Father / Dad</div><div class="rep-pron">Fáder / Daed</div><div class="rep-es">Padre</div></div>
+      <div class="rep-c"><div class="rep-e">👩</div><div class="rep-en">Mother / Mom</div><div class="rep-pron">Máder / Mom</div><div class="rep-es">Madre</div></div>
+      <div class="rep-c"><div class="rep-e">💍👨</div><div class="rep-en">Husband</div><div class="rep-pron">Jásband</div><div class="rep-es">Esposo</div></div>
+      <div class="rep-c"><div class="rep-e">💍👩</div><div class="rep-en">Wife</div><div class="rep-pron">Uáif</div><div class="rep-es">Esposa</div></div>
+      <div class="rep-c"><div class="rep-e">👦</div><div class="rep-en">Brother</div><div class="rep-pron">Bráder</div><div class="rep-es">Hermano</div></div>
+      <div class="rep-c"><div class="rep-e">👧</div><div class="rep-en">Sister</div><div class="rep-pron">Síster</div><div class="rep-es">Hermana</div></div>
+      <div class="rep-c"><div class="rep-e">👶</div><div class="rep-en">Son</div><div class="rep-pron">San</div><div class="rep-es">Hijo</div></div>
+      <div class="rep-c"><div class="rep-e">👧</div><div class="rep-en">Daughter</div><div class="rep-pron">Dóter</div><div class="rep-es">Hija</div></div>
+      <div class="rep-c"><div class="rep-e">👨‍🦳</div><div class="rep-en">Uncle</div><div class="rep-pron">Ánkol</div><div class="rep-es">Tío</div></div>
+      <div class="rep-c"><div class="rep-e">👩‍🦳</div><div class="rep-en">Aunt</div><div class="rep-pron">Ant</div><div class="rep-es">Tía</div></div>
+      <div class="rep-c"><div class="rep-e">🧒</div><div class="rep-en">Cousin</div><div class="rep-pron">Kázin</div><div class="rep-es">Primo/a</div></div>
+      <div class="rep-c"><div class="rep-e">👦</div><div class="rep-en">Nephew</div><div class="rep-pron">Néfiu</div><div class="rep-es">Sobrino</div></div>
+      <div class="rep-c"><div class="rep-e">👧</div><div class="rep-en">Niece</div><div class="rep-pron">Niis</div><div class="rep-es">Sobrina</div></div>
+      <div class="rep-c"><div class="rep-e">👨‍👩‍👧‍👦</div><div class="rep-en">Family</div><div class="rep-pron">Fámili</div><div class="rep-es">Familia</div></div>
+      <div class="rep-c"><div class="rep-e">👶👶</div><div class="rep-en">Children</div><div class="rep-pron">Chíldren</div><div class="rep-es">Hijos</div></div>
+      <div class="rep-c"><div class="rep-e">👫</div><div class="rep-en">Siblings</div><div class="rep-pron">Síblings</div><div class="rep-es">Hermanos</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:2rem;margin-bottom:8px;">🏆</div>
+    <h3>Reto del maestro — Esta semana</h3>
+    <p>La familia es el tema más emocional — y el cerebro fija lo que le importa. Haz esto hoy:</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">📸 Abre una foto familiar</div>
+      <div class="tip-paso">👆 Señala a cada persona</div>
+      <div class="tip-paso">🗣️ Di en inglés quién es</div>
+      <div class="tip-paso">✍️ Escribe 5 frases "My…"</div>
+      <div class="tip-paso">🔄 Repite en 3 días</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer"><strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 4 de 19 · La Familia · Nivel A1</div>
+
+<script>
+// ÁRBOL POP
+const arbolDB={
+  grandfather:{en:'Grandfather',pron:'🔊 Gránd-fazer',es:'Abuelo',frase:'💬 He is 78 years old. He lives in Fusagasugá.'},
+  grandmother:{en:'Grandmother',pron:'🔊 Gránd-mader',es:'Abuela',frase:'💬 She was a great cook.'},
+  father:{en:'Father / Dad',pron:'🔊 Fáder / Daed',es:'Padre / Papá',frase:'💬 He works in Bogotá.'},
+  mother:{en:'Mother / Mom',pron:'🔊 Máder / Mom',es:'Madre / Mamá',frase:'💬 She is from Fusagasugá.'},
+  sister:{en:'Sister',pron:'🔊 Síster',es:'Hermana',frase:'💬 She is a nurse in Bogotá.'},
+  brother:{en:'Brother',pron:'🔊 Bráder',es:'Hermano',frase:'💬 He is a student.'},
+  me:{en:'Me / I',pron:'🔊 Mii / Ái',es:'¡Tú eres este!',frase:'💬 I have a big family!'},
+  uncle:{en:'Uncle',pron:'🔊 Ánkol',es:'Tío',frase:'💬 He lives in Medellín.'},
+  aunt:{en:'Aunt',pron:'🔊 Ant',es:'Tía',frase:'💬 She is a great cook.'},
+  cousin:{en:'Cousin',pron:'🔊 Kázin',es:'Primo o Prima (sin género)',frase:'💬 My cousin studies in Bogotá.'},
+  nephew:{en:'Nephew',pron:'🔊 Néfiu',es:'Sobrino',frase:'💬 My nephew is 5 years old.'},
+  niece:{en:'Niece',pron:'🔊 Niis',es:'Sobrina',frase:'💬 My niece loves to dance.'},
+  husband:{en:'Husband',pron:'🔊 Jásband',es:'Esposo',frase:'💬 Her husband is a teacher.'},
+  wife:{en:'Wife',pron:'🔊 Uáif',es:'Esposa',frase:'💬 His wife works at the hospital.'},
+};
+function popArbol(k){
+  const d=arbolDB[k];const p=document.getElementById('arbol-pop');
+  document.getElementById('ap-en').textContent=d.en;
+  document.getElementById('ap-pron').textContent=d.pron;
+  document.getElementById('ap-es').textContent=d.es;
+  document.getElementById('ap-frase').textContent=d.frase;
+  p.style.display='block';
+}
+
+// FLIP
+const fd=[
+  {e:'👴',en:'Grandfather',es:'Abuelo',pron:'Gránd-fazer',ctx:'Grand + father'},
+  {e:'👵',en:'Grandmother',es:'Abuela',pron:'Gránd-mader',ctx:'Grand + mother'},
+  {e:'👨',en:'Father / Dad',es:'Padre / Papá',pron:'Fáder / Daed',ctx:'Formal / Informal'},
+  {e:'👩',en:'Mother / Mom',es:'Madre / Mamá',pron:'Máder / Mom',ctx:'Formal / Informal'},
+  {e:'👦',en:'Brother',es:'Hermano',pron:'Bráder',ctx:'He is my brother'},
+  {e:'👧',en:'Sister',es:'Hermana',pron:'Síster',ctx:'She is my sister'},
+  {e:'💍👨',en:'Husband',es:'Esposo',pron:'Jásband',ctx:'Her husband'},
+  {e:'💍👩',en:'Wife',es:'Esposa',pron:'Uáif',ctx:'His wife'},
+  {e:'👶',en:'Son',es:'Hijo',pron:'San',ctx:'My son'},
+  {e:'👧',en:'Daughter',es:'Hija',pron:'Dóter',ctx:'gh es muda'},
+  {e:'👨‍🦳',en:'Uncle',es:'Tío',pron:'Ánkol',ctx:'He is my uncle'},
+  {e:'🧒',en:'Cousin',es:'Primo/a',pron:'Kázin',ctx:'♂ y ♀ igual'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{
+  const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);
+});
+
+// QUIZ
+const preguntas=[
+  {t:'VOCABULARIO',i:'👶',q:'¿Cómo se dice "Hija" en inglés?',ctx:'La hija de Carlos trabaja en Bogotá',ops:['Son','Niece','Daughter','Sister'],r:2,ex:'✅ Daughter = Hija. Se pronuncia "Dóter". La gh es completamente muda en inglés.'},
+  {t:'HE / SHE ★',i:'👩',q:'"Mi hermana es enfermera." ¿Cómo lo digo en inglés?',ctx:'Recuerda: She para mujeres, He para hombres — ¡nunca al revés!',ops:['He is my sister, he is a nurse.','She is my sister, she is a nurse.','They is my sister, she is nurse.','Her is my sister, she is nurse.'],r:1,ex:'✅ She is my sister, she is a nurse. She = ella/mujeres. Siempre. Sin excepción.'},
+  {t:'VOCABULARIO',i:'👨‍🦳',q:'¿Cómo se dice "Tío" en inglés?',ctx:'El tío de Carlos vive en Medellín',ops:['Nephew','Cousin','Uncle','Brother'],r:2,ex:'✅ Uncle = Tío. Pronunciación: "Ánkol". Curiosidad: suena igual que "ankle" (tobillo).'},
+  {t:'POSESIVOS ★',i:'🏠',q:'Completa: "___ mother is from Fusagasugá." — Mi madre',ctx:'¿Cuál posesivo indica "de mí"?',ops:['Your','His','Her','My'],r:3,ex:'✅ My = Mi/Mis. Posesivo de primera persona. My mother, my father, my family, my life.'},
+  {t:'VOCABULARIO',i:'🧒',q:'"Cousin" en español significa:',ctx:'¡Ojo! En inglés cousin sirve para hombre Y mujer',ops:['Sobrino','Tío','Primo o Prima','Hermano'],r:2,ex:'✅ Cousin = Primo o Prima. En inglés NO se distingue el género del primo. Una sola palabra para los dos.'},
+  {t:'HE / SHE ★',i:'👨',q:'"Mi abuelo tiene 78 años." ¿Cómo lo digo?',ctx:'Abuelo = hombre → ¿qué pronombre usas?',ops:['She is 78 years old.','They is 78 years old.','He is 78 years old.','His is 78 years old.'],r:2,ex:'✅ He is 78 years old. He = él (masculino). They = plural. She = ella. His = posesivo de él.'},
+  {t:'VOCABULARIO',i:'👧',q:'¿Cómo se dice "Sobrina" en inglés?',ctx:'La hija de tu hermano o hermana',ops:['Niece','Nephew','Cousin','Daughter'],r:0,ex:'✅ Niece = Sobrina. Pronunciación: "Niis" (suena como "nice"). Nephew = Sobrino (masculino).'},
+  {t:'POSESIVOS ★',i:'👩',q:'"___ husband is a teacher." — El esposo de ella',ctx:'Sarah habla del esposo de la hermana de Carlos',ops:['His','My','Her','Their'],r:2,ex:'✅ Her = Su (de ella). Her husband = el esposo de ella. His = de él. Their = de ellos. ¡No los confundas!'},
+  {t:'PRONUNCIACIÓN',i:'🔊',q:'¿Cómo se pronuncia "Grandfather"?',ctx:'Cuidado con la TH y con la R inglesa',ops:['"Gran-pa-dre"','"Gránd-fazer"','"Grand-faser" (r vibrada)','"Grandfa-ther" normal'],r:1,ex:'✅ Gránd-fazer. La TH suena como una D/F suave. La R inglesa NO vibra — la lengua va hacia atrás sin tocar el paladar.'},
+  {t:'PRODUCCIÓN ★',i:'👨‍👩‍👧‍👦',q:'Carlos describe a sus padres. ¿Cuál frase es correcta?',ctx:'Padres = plural → ¿He, She o They?',ops:['My parents, he is from Colombia.','My parents, they are from Colombia.','My parents, she are from Colombia.','Their parents, they is Colombia.'],r:1,ex:'✅ My parents, they are from Colombia. Parents es plural → They ARE (no "is"). My = mis. ¡Dos reglas en una frase!'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){
+  const q=preguntas[qi];
+  document.getElementById('qpf').style.width=(qi/preguntas.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;
+  document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;
+  document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${preguntas.length}  ·  ✅ ${qs} correctas`;
+  qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});
+}
+function qResp(i,btn){
+  if(qr)return;qr=true;
+  const q=preguntas[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';
+  if(qi===preguntas.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';
+}
+function qNext(){
+  qi++;
+  if(qi<preguntas.length){qLoad();}
+  else{
+    const pct=Math.round(qs/preguntas.length*100);
+    document.getElementById('qpf').style.width='100%';
+    document.getElementById('qtipo').textContent='RESULTADO FINAL';
+    document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+    document.getElementById('qpregunta').textContent=`${qs}/${preguntas.length} correctas — ${pct}%`;
+    document.getElementById('qctx').textContent=pct>=80?'¡Dominas la familia en inglés! Listo para Cartilla 5 🚀':pct>=60?'Bien hecho. Refuerza las secciones He/She y Posesivos.':'Revisa las secciones 3 y 4 sobre He/She y posesivos antes de continuar.';
+    document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent='Cartilla 4 completada ✓';
+  }
+}
+qLoad();
+</script>
+</body>
+</html>

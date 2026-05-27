@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 1 — Saludos & Presentaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sol: #F5A623;
+  --cielo: #00C2FF;
+  --tierra: #2D4A22;
+  --menta: #00E5A0;
+  --coral: #FF5252;
+  --crema: #FEFAF2;
+  --noche: #0D1B2A;
+  --papel: #FFF8EE;
+  --sombra: rgba(0,0,0,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--crema); color:var(--noche); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--noche);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,194,255,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 30%, rgba(245,166,35,0.18) 0%, transparent 55%);
+}
+.hero-chip {
+  background: var(--sol);
+  color: var(--noche);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.hero h1 {
+  font-family:'Fraunces',serif;
+  font-size: clamp(2rem, 8vw, 3.8rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1.05;
+  position: relative;
+}
+.hero h1 em { color: var(--sol); font-style:normal; }
+.hero-sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.95rem;
+  margin-top: 10px;
+  font-weight: 500;
+  position: relative;
+}
+.tecnica-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 18px;
+  position: relative;
+}
+.tecnica-pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── STORY BANNER ── */
+.story-banner {
+  background: linear-gradient(135deg, #00C2FF 0%, #0080CC 100%);
+  padding: 20px 20px;
+  text-align: center;
+}
+.story-banner p {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.story-banner strong { font-weight: 700; }
+
+/* ── SECCIONES ── */
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+.section { padding: 32px 0 8px; }
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.section-num {
+  background: var(--sol);
+  color: var(--noche);
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--noche);
+}
+.section-hint {
+  background: #F0FFF8;
+  border-left: 3px solid var(--menta);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+  font-size: 0.83rem;
+  color: #2D6B4F;
+  font-weight: 500;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.section-hint strong { color: var(--tierra); }
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--sol), var(--cielo), var(--menta));
+  border-radius: 2px;
+  margin: 28px 0 0;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── CHUNK BLOCKS ── */
+.chunk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.chunk {
+  background: white;
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 3px 16px var(--sombra);
+  transition: transform 0.2s;
+}
+.chunk:hover { transform: translateY(-2px); }
+.chunk-header {
+  padding: 12px 16px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+}
+.chunk-header.manana { background: linear-gradient(90deg, #FF8C00, #FFB800); }
+.chunk-header.tarde  { background: linear-gradient(90deg, #00A8E8, #0070C0); }
+.chunk-header.noche2 { background: linear-gradient(90deg, #1B1F3A, #3A3F6E); }
+.chunk-header.informal { background: linear-gradient(90deg, #00C07A, #009060); }
+.chunk-body { padding: 14px 16px; }
+.frase-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #F2F2F2;
+}
+.frase-row:last-child { border-bottom: none; }
+.frase-emoji { font-size: 1.4rem; flex-shrink: 0; width: 28px; text-align:center; }
+.frase-en {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--noche);
+  line-height: 1.2;
+}
+.frase-pron {
+  font-size: 0.72rem;
+  color: var(--sol);
+  font-weight: 700;
+  background: #FFF7E6;
+  padding: 2px 7px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 2px 0;
+}
+.frase-es { font-size: 0.8rem; color: #888; font-weight: 500; }
+
+/* ── TARJETAS FLIP ── */
+.flip-intro {
+  background: var(--noche);
+  border-radius: 16px;
+  padding: 16px 20px;
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.flip-intro span { color: var(--sol); font-weight: 700; }
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+.flip-card {
+  perspective: 600px;
+  height: 110px;
+  cursor: pointer;
+}
+.flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute; inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+.flip-front {
+  background: white;
+  box-shadow: 0 3px 14px var(--sombra);
+  border: 2px solid transparent;
+}
+.flip-front .fe { font-size: 2rem; }
+.flip-front .fen {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--noche);
+}
+.flip-front .fhint {
+  font-size: 0.65rem;
+  color: #bbb;
+  margin-top: 2px;
+}
+.flip-back {
+  background: var(--noche);
+  transform: rotateY(180deg);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.25);
+}
+.flip-back .fes {
+  color: var(--menta);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.flip-back .fpron {
+  color: var(--sol);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 4px;
+  background: rgba(255,255,255,0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.flip-back .fctx {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.65rem;
+  margin-top: 6px;
+}
+
+/* ── DIÁLOGO ── */
+.dialogo-scene {
+  background: var(--papel);
+  border-radius: 20px;
+  padding: 24px;
+  border: 2px solid #F0E8D0;
+  margin-bottom: 16px;
+}
+.dialogo-titulo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #C0A060;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.burbuja-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  align-items: flex-end;
+}
+.burbuja-row.der { flex-direction: row-reverse; }
+.av {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.av.c { background: linear-gradient(135deg, #00C2FF, #0080CC); }
+.av.s { background: linear-gradient(135deg, #FF9500, #FF5252); }
+.burbuja {
+  max-width: 72%;
+  background: white;
+  border-radius: 16px 16px 16px 4px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 10px var(--sombra);
+}
+.burbuja-row.der .burbuja {
+  border-radius: 16px 16px 4px 16px;
+  background: var(--noche);
+}
+.b-en {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--noche);
+  line-height: 1.3;
+}
+.burbuja-row.der .b-en { color: white; }
+.b-pron {
+  font-size: 0.72rem;
+  color: var(--sol);
+  font-weight: 600;
+  margin: 3px 0 2px;
+  display: block;
+}
+.b-es { font-size: 0.78rem; color: #999; }
+.burbuja-row.der .b-es { color: rgba(255,255,255,0.55); }
+.nombre-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #bbb;
+  margin-bottom: 4px;
+  padding-left: 2px;
+}
+.burbuja-row.der .nombre-tag { text-align: right; }
+
+/* ── PATRÓN ESTRUCTURA ── */
+.patron-box {
+  background: linear-gradient(135deg, #0D1B2A, #1A3050);
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: white;
+}
+.patron-titulo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--sol);
+  margin-bottom: 6px;
+}
+.patron-sub { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 18px; }
+.patron-formula {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+.pf-block {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.pf-block.suj { background: #FF5252; color: white; }
+.pf-block.ver { background: var(--sol); color: var(--noche); }
+.pf-block.comp { background: var(--menta); color: var(--noche); }
+.pf-block.opt { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); border: 1px dashed rgba(255,255,255,0.2); }
+.pf-plus { color: rgba(255,255,255,0.3); font-size: 1rem; }
+.patron-ejemplos { display: flex; flex-direction: column; gap: 8px; }
+.pe-row {
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.pe-es { font-size: 0.8rem; color: rgba(255,255,255,0.5); width: 120px; flex-shrink: 0; }
+.pe-en { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: white; }
+.pe-pron { font-size: 0.75rem; color: var(--sol); margin-top: 1px; }
+
+/* ── TRUCO MNEMÓNICO ── */
+.truco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.truco-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 16px;
+  box-shadow: 0 2px 14px var(--sombra);
+  border-top: 4px solid var(--sol);
+  position: relative;
+  overflow: hidden;
+}
+.truco-card:nth-child(2) { border-color: var(--cielo); }
+.truco-card:nth-child(3) { border-color: var(--menta); }
+.truco-card:nth-child(4) { border-color: var(--coral); }
+.truco-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sol);
+  margin-bottom: 6px;
+}
+.truco-card:nth-child(2) .truco-tag { color: var(--cielo); }
+.truco-card:nth-child(3) .truco-tag { color: #00A070; }
+.truco-card:nth-child(4) .truco-tag { color: var(--coral); }
+.truco-en {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--noche);
+  margin-bottom: 4px;
+}
+.truco-text { font-size: 0.8rem; color: #666; line-height: 1.5; }
+.truco-text strong { color: var(--noche); }
+.truco-ancora {
+  margin-top: 8px;
+  background: #FFFBF0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: #A06010;
+  font-weight: 600;
+}
+.truco-card:nth-child(2) .truco-ancora { background: #F0FAFF; color: #0060A0; }
+.truco-card:nth-child(3) .truco-ancora { background: #F0FFF8; color: #007050; }
+.truco-card:nth-child(4) .truco-ancora { background: #FFF0F0; color: #C03030; }
+
+/* ── SITUACIONES REALES COL ── */
+.situacion-list { display: flex; flex-direction: column; gap: 12px; }
+.situacion {
+  background: white;
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 2px 10px var(--sombra);
+  border-left: 4px solid var(--cielo);
+}
+.situacion:nth-child(2) { border-color: var(--sol); }
+.situacion:nth-child(3) { border-color: var(--menta); }
+.sit-icon { font-size: 2rem; flex-shrink: 0; }
+.sit-lugar {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cielo);
+  margin-bottom: 4px;
+}
+.situacion:nth-child(2) .sit-lugar { color: var(--sol); }
+.situacion:nth-child(3) .sit-lugar { color: #00A070; }
+.sit-frases { display: flex; flex-direction: column; gap: 6px; }
+.sit-frase {
+  font-family: 'Fraunces', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--noche);
+}
+.sit-pron { font-size: 0.72rem; color: var(--sol); font-weight: 600; }
+.sit-es { font-size: 0.78rem; color: #999; }
+
+/* ── QUIZ ── */
+.quiz-wrap {
+  background: var(--noche);
+  padding: 32px 16px;
+}
+.quiz-wrap .section-title { color: var(--sol); }
+.quiz-wrap .section-hint { background: rgba(255,255,255,0.05); border-color: var(--sol); color: rgba(255,255,255,0.7); }
+.q-box {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.q-icon { font-size: 2.5rem; text-align:center; margin-bottom:8px; }
+.q-pregunta {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.q-contexto {
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.82rem;
+  margin-bottom: 20px;
+}
+.q-ops { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.q-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  color: white;
+  padding: 14px 10px;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  line-height: 1.3;
+}
+.q-btn:hover { background: rgba(255,255,255,0.15); }
+.q-btn.ok { background: #00C07A; border-color: #00C07A; }
+.q-btn.mal { background: #FF4444; border-color: #FF4444; }
+.q-feedback {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--sol);
+  min-height: 24px;
+  text-align: center;
+  line-height: 1.4;
+}
+.q-next {
+  display: none;
+  margin: 12px auto 0;
+  background: var(--sol);
+  color: var(--noche);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.q-next:hover { transform: scale(1.04); }
+.q-score { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-align:center; margin-top:10px; }
+.q-progress {
+  height: 5px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.q-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sol), var(--menta));
+  border-radius: 5px;
+  transition: width 0.4s;
+}
+
+/* ── REPASO FINAL ── */
+.repaso-bg {
+  background: linear-gradient(135deg, #00C07A, #007A4C);
+  padding: 30px 16px;
+}
+.repaso-bg .section-title { color: white; }
+.repaso-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; max-width: 780px; margin: 0 auto; }
+.rep-card {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  color: white;
+}
+.rep-en {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.rep-pron { font-size: 0.7rem; color: var(--sol); font-weight: 600; margin: 3px 0; }
+.rep-es { font-size: 0.78rem; opacity: 0.7; }
+
+/* ── CONSEJO ── */
+.tip-box {
+  background: white;
+  border-radius: 20px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 20px var(--sombra);
+  border: 2.5px solid var(--sol);
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 30px;
+}
+.tip-box h3 { font-family:'Fraunces',serif; font-size:1.1rem; font-weight:900; color:var(--noche); margin-bottom:8px; }
+.tip-box p { font-size:0.88rem; color:#666; line-height:1.6; }
+.tip-steps { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+.tip-step { background:var(--crema); border:1.5px solid #E0D8C8; border-radius:10px; padding:8px 14px; font-size:0.78rem; font-weight:700; color:var(--noche); }
+
+.footer { background:var(--noche); padding:18px; text-align:center; color:rgba(255,255,255,0.4); font-size:0.75rem; }
+.footer strong { color:var(--sol); }
+
+@media(max-width:480px){
+  .chunk-grid { grid-template-columns:1fr; }
+  .truco-grid { grid-template-columns:1fr; }
+  .q-ops { grid-template-columns:1fr; }
+  .patron-formula { gap:4px; }
+  .pe-es { width:80px; font-size:0.72rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip">🧠 Técnica CHUNK + Anclaje Emocional</div>
+  <h1>Saludos &<br><em>Presentaciones</em></h1>
+  <p class="hero-sub">Cartilla 1 · Nivel A0→A1 · ~25 frases · ≈ 20 min</p>
+  <div class="tecnica-bar">
+    <span class="tecnica-pill">📦 Chunks de 3</span>
+    <span class="tecnica-pill">🎭 Historia real</span>
+    <span class="tecnica-pill">🔄 Repetición x3</span>
+    <span class="tecnica-pill">🇨🇴 Contexto colombiano</span>
+  </div>
+</div>
+
+<!-- HISTORIA CONTEXTO -->
+<div class="story-banner">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos de Fusagasugá viaja a Bogotá y conoce a Sarah, una turista estadounidense. Vamos a aprender exactamente lo que dice Carlos. <strong>Tú eres Carlos.</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- BLOQUE 1: SALUDOS POR HORA -->
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">1</div>
+    <div class="section-title">Saludos según la hora</div>
+  </div>
+  <div class="section-hint">
+    🧠 <strong>Técnica CHUNK:</strong> En vez de memorizar frases sueltas, aprende los 4 bloques de horario. Tu cerebro los organiza como "cajitas" y los recuerda mejor.
+  </div>
+  <div class="chunk-grid">
+    <div class="chunk">
+      <div class="chunk-header manana">☀️ Mañana (5am–12pm)</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">🌅</div><div><div class="frase-en">Good morning!</div><div class="frase-pron">Gud mórning</div><div class="frase-es">¡Buenos días!</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">☕</div><div><div class="frase-en">Good morning, how are you?</div><div class="frase-pron">Gud mórning, jáu ar iú?</div><div class="frase-es">¡Buenos días, ¿cómo estás?</div></div></div>
+      </div>
+    </div>
+    <div class="chunk">
+      <div class="chunk-header tarde">🌤️ Tarde (12pm–6pm)</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">🍽️</div><div><div class="frase-en">Good afternoon!</div><div class="frase-pron">Gud áfternun</div><div class="frase-es">¡Buenas tardes!</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">👋</div><div><div class="frase-en">Good afternoon, nice to meet you.</div><div class="frase-pron">Gud áfternun, náis tu miit iú</div><div class="frase-es">Buenas tardes, mucho gusto.</div></div></div>
+      </div>
+    </div>
+    <div class="chunk">
+      <div class="chunk-header noche2">🌙 Noche (6pm–12am)</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">🌆</div><div><div class="frase-en">Good evening!</div><div class="frase-pron">Gud íivning</div><div class="frase-es">¡Buenas noches! (al llegar)</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">😴</div><div><div class="frase-en">Good night!</div><div class="frase-pron">Gud náit</div><div class="frase-es">¡Buenas noches! (al irse)</div></div></div>
+      </div>
+    </div>
+    <div class="chunk">
+      <div class="chunk-header informal">😄 Informal (siempre)</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">👋</div><div><div class="frase-en">Hey! / Hi!</div><div class="frase-pron">Jéi / Jái</div><div class="frase-es">¡Hola! (casual)</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">🤙</div><div><div class="frase-en">What's up?</div><div class="frase-pron">Uóts ap?</div><div class="frase-es">¿Qué más? / ¿Qué hubo?</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BLOQUE 2: CÓMO ESTÁS -->
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">2</div>
+    <div class="section-title">¿Cómo estás? — How are you?</div>
+  </div>
+  <div class="section-hint">
+    🧠 <strong>Anclaje emocional:</strong> Cada respuesta tiene un emoji que representa el sentimiento. Tu cerebro recuerda emociones antes que palabras. Asocia el emoji y recuerdas la frase.
+  </div>
+  <div class="chunk-grid">
+    <div class="chunk">
+      <div class="chunk-header informal">💬 Te preguntan</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">❓</div><div><div class="frase-en">How are you?</div><div class="frase-pron">Jáu ar iú?</div><div class="frase-es">¿Cómo estás?</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">❓</div><div><div class="frase-en">How are you doing?</div><div class="frase-pron">Jáu ar iú dúing?</div><div class="frase-es">¿Cómo te está yendo?</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">❓</div><div><div class="frase-en">How's it going?</div><div class="frase-pron">Jáus it góing?</div><div class="frase-es">¿Cómo va todo?</div></div></div>
+      </div>
+    </div>
+    <div class="chunk">
+      <div class="chunk-header manana">💬 Tú respondes</div>
+      <div class="chunk-body">
+        <div class="frase-row"><div class="frase-emoji">😁</div><div><div class="frase-en">I'm great, thanks!</div><div class="frase-pron">Áim gréit, zanks!</div><div class="frase-es">¡Muy bien, gracias!</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">🙂</div><div><div class="frase-en">I'm fine, thank you.</div><div class="frase-pron">Áim fáin, zank iú</div><div class="frase-es">Bien, gracias.</div></div></div>
+        <div class="frase-row"><div class="frase-emoji">😐</div><div><div class="frase-en">Not bad, and you?</div><div class="frase-pron">Not baed, end iú?</div><div class="frase-es">No me quejo, ¿y tú?</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BLOQUE 3: TARJETAS FLIP -->
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">3</div>
+    <div class="section-title">Presentaciones — ¡Toca las tarjetas!</div>
+  </div>
+  <div class="flip-intro">
+    🃏 Toca cada tarjeta para ver la traducción. <span>La memoria táctil ayuda a retener 40% más.</span> Intenta recordar antes de girar.
+  </div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PATRÓN ESTRUCTURAL -->
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">4</div>
+    <div class="section-title">El patrón mágico de presentación</div>
+  </div>
+  <div class="section-hint">
+    🧠 <strong>Chunking estructural:</strong> El inglés para presentarse sigue SIEMPRE el mismo patrón. Aprende la estructura una vez y construye miles de frases distintas.
+  </div>
+  <div class="patron-box">
+    <div class="patron-titulo">📐 La fórmula universal</div>
+    <div class="patron-sub">Así se presenta cualquier persona en inglés — igual que en español</div>
+    <div class="patron-formula">
+      <div class="pf-block suj">I / My name</div>
+      <div class="pf-plus">+</div>
+      <div class="pf-block ver">am / is</div>
+      <div class="pf-plus">+</div>
+      <div class="pf-block comp">tu nombre</div>
+      <div class="pf-plus">+</div>
+      <div class="pf-block opt">lugar / profesión</div>
+    </div>
+    <div class="patron-ejemplos">
+      <div class="pe-row">
+        <div class="pe-es">Yo me llamo Carlos</div>
+        <div><div class="pe-en">My name is Carlos.</div><div class="pe-pron">Mai néim is Carlos</div></div>
+      </div>
+      <div class="pe-row">
+        <div class="pe-es">Soy de Colombia</div>
+        <div><div class="pe-en">I'm from Colombia.</div><div class="pe-pron">Áim from Colombia</div></div>
+      </div>
+      <div class="pe-row">
+        <div class="pe-es">Soy estudiante</div>
+        <div><div class="pe-en">I'm a student.</div><div class="pe-pron">Áim a stiúdent</div></div>
+      </div>
+      <div class="pe-row">
+        <div class="pe-es">Tengo 25 años</div>
+        <div><div class="pe-en">I'm 25 years old.</div><div class="pe-pron">Áim tuénti-fáiv íers old</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TRUCOS MNEMÓNICOS -->
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">5</div>
+    <div class="section-title">Trucos para NO olvidar</div>
+  </div>
+  <div class="section-hint">
+    🧠 <strong>Mnemotecnia:</strong> Tu cerebro recuerda mejor lo absurdo, gracioso o asociado a algo conocido. Estos trucos funcionan comprobados.
+  </div>
+  <div class="truco-grid">
+    <div class="truco-card">
+      <div class="truco-tag">🔑 Truco</div>
+      <div class="truco-en">Good morning</div>
+      <div class="truco-text">Imagina que cada mañana le das un <strong>"GOOD"</strong> (bueno) a tu tinto de la mañana. <em>Morning = mañana</em> suena a "mornin'" como "mornido" (madrugado).</div>
+      <div class="truco-ancora">☕ "Le doy un good a mi tinto del morning"</div>
+    </div>
+    <div class="truco-card">
+      <div class="truco-tag">🔑 Truco</div>
+      <div class="truco-en">Nice to meet you</div>
+      <div class="truco-text"><strong>Nice</strong> suena a "náis" como "nais" en jerga colombiana = bacano. <strong>Meet</strong> = conocer (como "mitin" = reunión). Mucho gusto = "qué nais conocerte".</div>
+      <div class="truco-ancora">🤝 "Qué nais, ya nos mitimos"</div>
+    </div>
+    <div class="truco-card">
+      <div class="truco-tag">🔑 Truco</div>
+      <div class="truco-en">What's your name?</div>
+      <div class="truco-text"><strong>What's</strong> = ¿Qué es? <strong>Your</strong> = tu (suena a "yor" como "yor teléfono"). <strong>Name</strong> = nombre (suena a "néim" como la firma que pones = nombre).</div>
+      <div class="truco-ancora">📝 "¿Qué es yor néim?" = ¿Cuál es tu nombre?</div>
+    </div>
+    <div class="truco-card">
+      <div class="truco-tag">🔑 Truco</div>
+      <div class="truco-en">I'm from…</div>
+      <div class="truco-text"><strong>I'm</strong> = Soy/Estoy (contracción de I am). <strong>From</strong> = de / procedente de. Suena a "from" como "¿de dónde froom?" Solo recuerda: <em>Áim from = Soy de</em>.</div>
+      <div class="truco-ancora">🗺️ "Áim from Fusagasugá, parce"</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="divider"></div>
+
+<!-- DIÁLOGO COMPLETO -->
+<div class="wrap">
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">6</div>
+    <div class="section-title">Carlos conoce a Sarah — El diálogo completo</div>
+  </div>
+  <div class="section-hint">
+    🧠 <strong>Repetición espaciada:</strong> Todas las frases que aprendiste en esta cartilla aparecen aquí de nuevo en contexto. Léelo 3 veces: 1) Hoy, 2) Mañana, 3) En 3 días.
+  </div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📍 Aeropuerto El Dorado · Bogotá · 10:30am</div>
+    <div class="burbuja-row">
+      <div class="av c">👨🏽</div>
+      <div>
+        <div class="nombre-tag">Carlos 🇨🇴</div>
+        <div class="burbuja">
+          <div class="b-en">Good morning! My name is Carlos.</div>
+          <span class="b-pron">Gud mórning! Mai néim is Carlos.</span>
+          <div class="b-es">¡Buenos días! Me llamo Carlos.</div>
+        </div>
+      </div>
+    </div>
+    <div class="burbuja-row der">
+      <div class="av s">👩🏼</div>
+      <div>
+        <div class="nombre-tag" style="text-align:right">Sarah 🇺🇸</div>
+        <div class="burbuja">
+          <div class="b-en">Hi Carlos! I'm Sarah. Nice to meet you!</div>
+          <span class="b-pron">Jái Carlos! Áim Sarah. Náis tu miit iú!</span>
+          <div class="b-es">¡Hola Carlos! Soy Sarah. ¡Mucho gusto!</div>
+        </div>
+      </div>
+    </div>
+    <div class="burbuja-row">
+      <div class="av c">👨🏽</div>
+      <div>
+        <div class="nombre-tag">Carlos 🇨🇴</div>
+        <div class="burbuja">
+          <div class="b-en">Nice to meet you too, Sarah! How are you?</div>
+          <span class="b-pron">Náis tu miit iú túu! Jáu ar iú?</span>
+          <div class="b-es">¡Igualmente, Sarah! ¿Cómo estás?</div>
+        </div>
+      </div>
+    </div>
+    <div class="burbuja-row der">
+      <div class="av s">👩🏼</div>
+      <div>
+        <div class="nombre-tag" style="text-align:right">Sarah 🇺🇸</div>
+        <div class="burbuja">
+          <div class="b-en">I'm great, thanks! Where are you from?</div>
+          <span class="b-pron">Áim gréit, zanks! Uér ar iú from?</span>
+          <div class="b-es">¡Muy bien, gracias! ¿De dónde eres?</div>
+        </div>
+      </div>
+    </div>
+    <div class="burbuja-row">
+      <div class="av c">👨🏽</div>
+      <div>
+        <div class="nombre-tag">Carlos 🇨🇴</div>
+        <div class="burbuja">
+          <div class="b-en">I'm from Fusagasugá, Colombia. And you?</div>
+          <span class="b-pron">Áim from Fusagasugá, Colombia. End iú?</span>
+          <div class="b-es">Soy de Fusagasugá, Colombia. ¿Y tú?</div>
+        </div>
+      </div>
+    </div>
+    <div class="burbuja-row der">
+      <div class="av s">👩🏼</div>
+      <div>
+        <div class="nombre-tag" style="text-align:right">Sarah 🇺🇸</div>
+        <div class="burbuja">
+          <div class="b-en">I'm from New York. It's nice to meet you, Carlos!</div>
+          <span class="b-pron">Áim from Niu Iork. Its náis tu miit iú!</span>
+          <div class="b-es">Soy de Nueva York. ¡Un gusto conocerte!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SITUACIONES REALES COLOMBIA -->
+<div class="divider"></div>
+<div class="wrap">
+<div class="section">
+  <div class="section-label">
+    <div class="section-num">7</div>
+    <div class="section-title">Úsalo en tu vida diaria 🇨🇴</div>
+  </div>
+  <div class="section-hint">🧠 <strong>Contextualización:</strong> Aprendes 5x más rápido cuando tu cerebro conecta el idioma con situaciones de tu vida real.</div>
+  <div class="situacion-list">
+    <div class="situacion">
+      <div class="sit-icon">🏢</div>
+      <div>
+        <div class="sit-lugar">📍 En el trabajo / empresa</div>
+        <div class="sit-frases">
+          <div><div class="sit-frase">Good morning, I have a meeting with Mr. Johnson.</div><div class="sit-pron">Gud mórning, ai jav a míiting uiz Mister Yónson</div><div class="sit-es">Buenos días, tengo una reunión con el señor Johnson.</div></div>
+          <div><div class="sit-frase">My name is Carlos, nice to meet you.</div><div class="sit-pron">Mai néim is Carlos, náis tu miit iú</div><div class="sit-es">Me llamo Carlos, mucho gusto.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="situacion">
+      <div class="sit-icon">✈️</div>
+      <div>
+        <div class="sit-lugar">📍 En migración / aeropuerto</div>
+        <div class="sit-frases">
+          <div><div class="sit-frase">Good afternoon. I'm from Colombia.</div><div class="sit-pron">Gud áfternun. Áim from Colombia.</div><div class="sit-es">Buenas tardes. Soy de Colombia.</div></div>
+          <div><div class="sit-frase">My name is Carlos García. I'm a tourist.</div><div class="sit-pron">Mai néim is Carlos García. Áim a túrist.</div><div class="sit-es">Me llamo Carlos García. Soy turista.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="situacion">
+      <div class="sit-icon">📱</div>
+      <div>
+        <div class="sit-lugar">📍 En una llamada o videollamada</div>
+        <div class="sit-frases">
+          <div><div class="sit-frase">Hello, this is Carlos speaking.</div><div class="sit-pron">Jelóu, dis is Carlos spíiking.</div><div class="sit-es">Hola, habla Carlos.</div></div>
+          <div><div class="sit-frase">How are you doing today?</div><div class="sit-pron">Jáu ar iú dúing tudéi?</div><div class="sit-es">¿Cómo te está yendo hoy?</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REPASO RÁPIDO -->
+<div class="repaso-bg" style="margin-top:28px;">
+  <div class="wrap">
+    <div class="section-label" style="justify-content:center;margin-bottom:14px;">
+      <div class="section-num">★</div>
+      <div class="section-title" style="color:white;">Las 12 frases esenciales de esta cartilla</div>
+    </div>
+    <div class="repaso-grid">
+      <div class="rep-card"><div class="rep-en">Good morning!</div><div class="rep-pron">Gud mórning</div><div class="rep-es">Buenos días</div></div>
+      <div class="rep-card"><div class="rep-en">Good afternoon!</div><div class="rep-pron">Gud áfternun</div><div class="rep-es">Buenas tardes</div></div>
+      <div class="rep-card"><div class="rep-en">Good evening!</div><div class="rep-pron">Gud íivning</div><div class="rep-es">Buenas noches (llegada)</div></div>
+      <div class="rep-card"><div class="rep-en">How are you?</div><div class="rep-pron">Jáu ar iú?</div><div class="rep-es">¿Cómo estás?</div></div>
+      <div class="rep-card"><div class="rep-en">I'm fine, thanks!</div><div class="rep-pron">Áim fáin, zanks</div><div class="rep-es">Estoy bien, gracias</div></div>
+      <div class="rep-card"><div class="rep-en">My name is…</div><div class="rep-pron">Mai néim is…</div><div class="rep-es">Me llamo…</div></div>
+      <div class="rep-card"><div class="rep-en">Nice to meet you!</div><div class="rep-pron">Náis tu miit iú</div><div class="rep-es">Mucho gusto</div></div>
+      <div class="rep-card"><div class="rep-en">I'm from Colombia.</div><div class="rep-pron">Áim from Colombia</div><div class="rep-es">Soy de Colombia</div></div>
+      <div class="rep-card"><div class="rep-en">What's your name?</div><div class="rep-pron">Uóts yor néim?</div><div class="rep-es">¿Cómo te llamas?</div></div>
+      <div class="rep-card"><div class="rep-en">Where are you from?</div><div class="rep-pron">Uér ar iú from?</div><div class="rep-es">¿De dónde eres?</div></div>
+      <div class="rep-card"><div class="rep-en">I'm a student.</div><div class="rep-pron">Áim a stiúdent</div><div class="rep-es">Soy estudiante</div></div>
+      <div class="rep-card"><div class="rep-en">See you later!</div><div class="rep-pron">Sii iú léiter</div><div class="rep-es">¡Hasta luego!</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="section-label" style="justify-content:center;margin-bottom:6px;">
+      <div class="section-num" style="background:var(--menta)">?</div>
+      <div class="section-title">¡Demuestra lo que aprendiste!</div>
+    </div>
+    <div class="section-hint">8 preguntas · Cada una tiene contexto real colombiano</div>
+    <div class="q-box">
+      <div class="q-progress"><div class="q-progress-fill" id="qpf" style="width:0%"></div></div>
+      <div class="q-icon" id="qicon">👋</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-contexto" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 8</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSEJO FINAL -->
+<div class="wrap" style="padding-top:28px;">
+  <div class="tip-box">
+    <div style="font-size:2rem;margin-bottom:8px;">🗓️</div>
+    <h3>Tu plan de práctica semanal</h3>
+    <p>Con solo <strong>15 minutos al día</strong> puedes memorizar toda esta cartilla en 5 días usando repetición espaciada:</p>
+    <div class="tip-steps">
+      <div class="tip-step">📅 Día 1<br>Lee todo</div>
+      <div class="tip-step">📅 Día 2<br>Repaso rápido</div>
+      <div class="tip-step">📅 Día 3<br>Di en voz alta</div>
+      <div class="tip-step">📅 Día 4<br>Escribe de memoria</div>
+      <div class="tip-step">📅 Día 5<br>¡Úsalo con alguien!</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 1 de 19 · Saludos & Presentaciones · Nivel A0→A1
+</div>
+
+<script>
+// ── FLIP CARDS DATA ──
+const flipData = [
+  { emoji:'👋', en:'Hello!', pron:'Je-lóu', es:'¡Hola!', ctx:'Siempre funciona' },
+  { emoji:'🌅', en:'Good morning', pron:'Gud mórning', es:'Buenos días', ctx:'5am–12pm' },
+  { emoji:'🌤️', en:'Good afternoon', pron:'Gud áfternun', es:'Buenas tardes', ctx:'12pm–6pm' },
+  { emoji:'🌙', en:'Good night', pron:'Gud náit', es:'Buenas noches', ctx:'Al despedirse' },
+  { emoji:'😊', en:'Nice to meet you', pron:'Náis tu miit iú', es:'Mucho gusto', ctx:'Primera vez' },
+  { emoji:'❓', en:'How are you?', pron:'Jáu ar iú?', es:'¿Cómo estás?', ctx:'Saludo seguido' },
+  { emoji:'😁', en:"I'm great!", pron:'Áim gréit', es:'¡Muy bien!', ctx:'Respuesta positiva' },
+  { emoji:'🗺️', en:"I'm from…", pron:'Áim from…', es:'Soy de…', ctx:'Presentación' },
+  { emoji:'👤', en:'My name is…', pron:'Mai néim is…', es:'Me llamo…', ctx:'Presentación' },
+  { emoji:'👋', en:'See you later!', pron:'Sii iú léiter', es:'¡Hasta luego!', ctx:'Despedida' },
+  { emoji:'🤙', en:"What's up?", pron:'Uóts ap?', es:'¿Qué más?', ctx:'Informal' },
+  { emoji:'✌️', en:'Goodbye!', pron:'Gud-bái', es:'¡Adiós!', ctx:'Despedida formal' },
+];
+
+const grid = document.getElementById('flipGrid');
+flipData.forEach((d,i) => {
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `<div class="flip-inner">
+    <div class="flip-front">
+      <div class="fe">${d.emoji}</div>
+      <div class="fen">${d.en}</div>
+      <div class="fhint">👆 toca para ver</div>
+    </div>
+    <div class="flip-back">
+      <div class="fes">${d.es}</div>
+      <div class="fpron">${d.pron}</div>
+      <div class="fctx">${d.ctx}</div>
+    </div>
+  </div>`;
+  card.onclick = () => card.classList.toggle('flipped');
+  grid.appendChild(card);
+});
+
+// ── QUIZ DATA ──
+const qData = [
+  { icon:'🌅', q:'Son las 8am. Carlos ve a su compañera de trabajo. ¿Qué le dice?', ctx:'Contexto: lunes en la oficina de Bogotá', ops:['Good evening!','Good morning!','Good night!','What\'s up, dude?'], r:1, ex:'✅ Good morning = Buenos días. Se usa de 5am a 12pm.' },
+  { icon:'🤝', q:'Carlos conoce al gerente por primera vez. ¿Qué frase usa?', ctx:'Primera reunión de negocios', ops:['See you later!','What\'s up?','Nice to meet you!','Good night!'], r:2, ex:'✅ Nice to meet you = Mucho gusto. Perfecta para primeras presentaciones.' },
+  { icon:'❓', q:'Sarah le pregunta: "How are you?" ¿Cuál es la respuesta correcta de Carlos?', ctx:'Conversación casual en el aeropuerto', ops:['My name is Carlos','I\'m from Colombia','I\'m fine, thanks!','Good afternoon!'], r:2, ex:'✅ I\'m fine, thanks! = Estoy bien, ¡gracias! La respuesta más natural.' },
+  { icon:'📝', q:'Carlos quiere decir "Me llamo Carlos". ¿Cómo lo dice?', ctx:'Presentándose con un cliente internacional', ops:['I\'m from Carlos','My name is Carlos','I am Carlos where','Good morning Carlos'], r:1, ex:'✅ My name is Carlos = Me llamo Carlos. También vale: I\'m Carlos.' },
+  { icon:'🗺️', q:'"I\'m from Colombia" significa:', ctx:'Pregunta de comprensión', ops:['Soy colombiano/a','Soy de Colombia','Quiero ir a Colombia','Me gusta Colombia'], r:1, ex:'✅ From = de (procedencia). I\'m from = Soy de. Áim from Colombia.' },
+  { icon:'🌆', q:'Son las 7pm. Carlos llega a un evento. ¿Con qué saluda?', ctx:'Evento social en Fusagasugá', ops:['Good morning!','Good afternoon!','Good evening!','Good night!'], r:2, ex:'✅ Good evening = al LLEGAR de noche. Good night = al IRSE de noche. ¡No las confundas!' },
+  { icon:'💬', q:'¿Qué significa "What\'s up?"', ctx:'Un amigo colombiano te dice esto en inglés', ops:['¿Qué pasó? (grave)','¿Qué más? ¿Qué hubo? (casual)','¿Qué es eso?','¿A dónde vas?'], r:1, ex:'✅ What\'s up = ¿Qué más? Es muy casual, como "¿Qué hubo?" en Colombia.' },
+  { icon:'👋', q:'Carlos se despide de Sarah. ¿Cuál es la más correcta?', ctx:'Final de la conversación', ops:['Good morning!','Nice to meet you!','How are you?','See you later!'], r:3, ex:'✅ See you later = Hasta luego. También: Goodbye! (Gud-bái) = ¡Adiós!' },
+];
+
+let qi = 0, qs = 0, qr = false;
+
+function qLoad(){
+  const d = qData[qi];
+  document.getElementById('qpf').style.width = (qi/qData.length*100)+'%';
+  document.getElementById('qicon').textContent = d.icon;
+  document.getElementById('qpregunta').textContent = d.q;
+  document.getElementById('qctx').textContent = d.ctx;
+  document.getElementById('qfeedback').textContent = '';
+  document.getElementById('qnext').style.display = 'none';
+  document.getElementById('qscore').textContent = `Pregunta ${qi+1} de ${qData.length}  ·  ✅ ${qs} correctas`;
+  qr = false;
+  const ops = document.getElementById('qops');
+  ops.innerHTML = '';
+  d.ops.forEach((op,i) => {
+    const b = document.createElement('button');
+    b.className = 'q-btn';
+    b.textContent = op;
+    b.onclick = () => qResponder(i, b);
+    ops.appendChild(b);
+  });
+}
+
+function qResponder(i, btn){
+  if(qr) return;
+  qr = true;
+  const d = qData[qi];
+  document.querySelectorAll('.q-btn').forEach(b => b.style.pointerEvents='none');
+  if(i === d.r){
+    btn.classList.add('ok');
+    document.getElementById('qfeedback').textContent = d.ex;
+    qs++;
+  } else {
+    btn.classList.add('mal');
+    document.querySelectorAll('.q-btn')[d.r].classList.add('ok');
+    document.getElementById('qfeedback').textContent = '❌ Casi. ' + d.ex;
+  }
+  document.getElementById('qnext').style.display = 'block';
+  if(qi === qData.length-1) document.getElementById('qnext').textContent = '🏁 Ver resultado';
+}
+
+function qNext(){
+  qi++;
+  if(qi < qData.length){
+    qLoad();
+  } else {
+    const pct = Math.round(qs/qData.length*100);
+    document.getElementById('qpf').style.width = '100%';
+    document.getElementById('qicon').textContent = pct>=80?'🏆':pct>=50?'👍':'💪';
+    document.getElementById('qpregunta').textContent = `${qs}/${qData.length} correctas (${pct}%)`;
+    document.getElementById('qctx').textContent = pct>=80?'¡Excelente! Estás listo/a para la Cartilla 2 🚀':pct>=50?'Buen trabajo. Repasa el diálogo de Carlos y Sarah 📖':'Sigue practicando. Vuelve a leer la cartilla 💛';
+    document.getElementById('qops').innerHTML='';
+    document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent = 'Cartilla 1 completada ✓';
+  }
+}
+
+qLoad();
+</script>
+</body>
+</html>

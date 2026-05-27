@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 2 — Números en Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lima: #C8F135;
+  --viola: #7B2FFF;
+  --carbon: #0E0E12;
+  --gris1: #1A1A22;
+  --gris2: #252530;
+  --gris3: #32323F;
+  --blanco: #F8F8FF;
+  --coral: #FF5C5C;
+  --cyan: #00D4FF;
+  --naranja: #FF9900;
+  --rosa: #FF3CAC;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:var(--carbon);color:var(--blanco);min-height:100vh;}
+
+/* ── HERO ── */
+.hero{
+  min-height:240px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;text-align:center;
+  background: var(--carbon);
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(123,47,255,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(200,241,53,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,212,255,0.15) 0%, transparent 50%);
+}
+.hero-num-bg{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:clamp(120px,30vw,260px);font-weight:800;
+  color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;
+  letter-spacing:-10px;
+}
+.hero-chip{
+  background:var(--lima);color:var(--carbon);
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:14px;position:relative;z-index:1;
+}
+.hero h1{
+  font-family:'Syne',sans-serif;font-size:clamp(2.2rem,9vw,4.5rem);font-weight:800;
+  line-height:1;position:relative;z-index:1;
+}
+.hero h1 em{color:var(--lima);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.9rem;margin-top:10px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.7);font-size:0.7rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+
+/* ── STORY BANNER ── */
+.story{
+  background:linear-gradient(90deg,var(--viola),#4A00CC);
+  padding:18px 20px;text-align:center;
+}
+.story p{color:white;font-size:0.9rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--lima);}
+
+/* ── WRAP ── */
+.wrap{max-width:800px;margin:0 auto;padding:0 16px;}
+
+/* ── SECTION ── */
+.sec{padding:32px 0 8px;}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.sec-num{
+  background:var(--lima);color:var(--carbon);
+  font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:800;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sec-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--blanco);}
+.sec-hint{
+  background:rgba(200,241,53,0.07);border-left:3px solid var(--lima);
+  border-radius:0 10px 10px 0;padding:10px 14px;
+  font-size:0.82rem;color:rgba(255,255,255,0.65);font-weight:500;
+  margin-bottom:18px;line-height:1.5;
+}
+.sec-hint strong{color:var(--lima);}
+.divider{height:1px;background:var(--gris3);max-width:800px;margin:24px auto 0;}
+
+/* ── NÚMEROS 1-10: BLOQUES GRANDES ── */
+.nums-10{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.n-card{
+  background:var(--gris2);border-radius:16px;padding:16px 8px;
+  text-align:center;border:1.5px solid var(--gris3);
+  transition:transform 0.2s,border-color 0.2s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.n-card:hover{transform:translateY(-3px);border-color:var(--lima);}
+.n-card::before{
+  content:'';position:absolute;inset:0;opacity:0;
+  background:linear-gradient(135deg,rgba(200,241,53,0.08),transparent);
+  transition:opacity 0.2s;
+}
+.n-card:hover::before{opacity:1;}
+.n-digit{
+  font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;
+  color:var(--lima);line-height:1;
+}
+.n-emoji{font-size:1.4rem;margin:4px 0;}
+.n-en{font-size:0.95rem;font-weight:700;color:var(--blanco);margin-bottom:2px;}
+.n-pron{
+  font-size:0.68rem;font-weight:600;
+  background:rgba(123,47,255,0.3);border:1px solid rgba(123,47,255,0.5);
+  color:#C8A0FF;border-radius:6px;padding:2px 6px;display:inline-block;margin-top:3px;
+}
+
+/* ── NÚMEROS 11-20 ESPECIALES ── */
+.teens-box{
+  background:var(--gris2);border-radius:20px;padding:20px;
+  border:1.5px solid var(--gris3);
+}
+.teen-row{
+  display:flex;align-items:center;gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--gris3);
+}
+.teen-row:last-child{border-bottom:none;}
+.teen-num{
+  font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;
+  color:var(--cyan);width:42px;text-align:right;flex-shrink:0;
+}
+.teen-en{font-size:1rem;font-weight:700;color:var(--blanco);flex:1;}
+.teen-pron{
+  font-size:0.72rem;font-weight:600;color:#80E8FF;
+  background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);
+  border-radius:6px;padding:3px 8px;
+}
+.teen-truco{font-size:0.72rem;color:rgba(255,255,255,0.4);flex:1;line-height:1.3;}
+
+/* ── DECENAS ── */
+.decs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.dec-card{
+  background:var(--gris2);border-radius:14px;padding:16px;
+  border:1.5px solid var(--gris3);text-align:center;
+  transition:transform 0.2s;
+}
+.dec-card:hover{transform:translateY(-2px);border-color:var(--naranja);}
+.dec-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--naranja);}
+.dec-en{font-size:1rem;font-weight:700;color:var(--blanco);margin:4px 0;}
+.dec-pron{font-size:0.7rem;font-weight:600;color:#FFC966;background:rgba(255,153,0,0.12);border:1px solid rgba(255,153,0,0.25);border-radius:6px;padding:2px 7px;display:inline-block;}
+.dec-truco{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:6px;line-height:1.4;}
+
+/* ── FÓRMULA ── */
+.formula-box{
+  background:linear-gradient(135deg,#1A0A35,#2D1060);
+  border:2px solid rgba(123,47,255,0.4);
+  border-radius:20px;padding:24px 20px;
+}
+.formula-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--lima);margin-bottom:6px;}
+.formula-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:18px;}
+.formula-visual{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  justify-content:center;margin-bottom:18px;
+}
+.fv-block{padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.9rem;text-align:center;}
+.fv-dec{background:var(--naranja);color:var(--carbon);}
+.fv-plus{color:rgba(255,255,255,0.3);font-size:1.2rem;}
+.fv-uni{background:var(--lima);color:var(--carbon);}
+.fv-eq{color:rgba(255,255,255,0.3);font-size:1.2rem;}
+.fv-res{background:rgba(255,255,255,0.1);color:white;border:1px dashed rgba(255,255,255,0.2);}
+.formula-ejemplos{display:flex;flex-direction:column;gap:8px;}
+.fe-row{
+  background:rgba(255,255,255,0.05);border-radius:10px;padding:10px 14px;
+  display:flex;gap:12px;align-items:center;
+}
+.fe-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--lima);width:40px;flex-shrink:0;}
+.fe-en{font-size:0.95rem;font-weight:700;color:white;}
+.fe-pron{font-size:0.72rem;color:#C8A0FF;margin-top:2px;}
+.fe-tip{font-size:0.75rem;color:rgba(255,255,255,0.4);flex:1;text-align:right;}
+
+/* ── SITUACIONES REALES ── */
+.situ-list{display:flex;flex-direction:column;gap:12px;}
+.situ{
+  background:var(--gris2);border-radius:16px;padding:18px;
+  display:flex;gap:14px;align-items:flex-start;
+  border-left:3px solid var(--viola);
+}
+.situ:nth-child(2){border-color:var(--cyan);}
+.situ:nth-child(3){border-color:var(--naranja);}
+.situ:nth-child(4){border-color:var(--rosa);}
+.situ-icon{font-size:2rem;flex-shrink:0;}
+.situ-lugar{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--viola);margin-bottom:6px;}
+.situ:nth-child(2) .situ-lugar{color:var(--cyan);}
+.situ:nth-child(3) .situ-lugar{color:var(--naranja);}
+.situ:nth-child(4) .situ-lugar{color:var(--rosa);}
+.situ-lineas{display:flex;flex-direction:column;gap:7px;}
+.situ-en{font-size:0.95rem;font-weight:700;color:white;line-height:1.3;}
+.situ-pron{font-size:0.7rem;font-weight:600;color:var(--lima);}
+.situ-es{font-size:0.78rem;color:rgba(255,255,255,0.45);}
+
+/* ── JUEGO INTERACTIVO ── */
+.game-box{
+  background:var(--gris1);border:2px solid var(--gris3);
+  border-radius:20px;padding:24px;max-width:540px;margin:0 auto;
+  text-align:center;
+}
+.game-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--lima);margin-bottom:4px;}
+.game-desc{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:20px;}
+.game-numero{
+  font-family:'Syne',sans-serif;font-size:clamp(3.5rem,15vw,6rem);font-weight:800;
+  color:white;line-height:1;margin-bottom:20px;
+  transition:all 0.25s;
+}
+.game-ops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.g-btn{
+  background:var(--gris2);border:1.5px solid var(--gris3);
+  color:white;padding:14px 10px;border-radius:12px;
+  font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:600;
+  cursor:pointer;transition:all 0.18s;
+}
+.g-btn:hover{background:var(--gris3);border-color:rgba(255,255,255,0.2);}
+.g-btn.ok{background:rgba(200,241,53,0.15);border-color:var(--lima);color:var(--lima);}
+.g-btn.mal{background:rgba(255,92,92,0.15);border-color:var(--coral);color:var(--coral);}
+.g-feedback{font-size:0.88rem;font-weight:600;color:var(--lima);min-height:22px;}
+.g-next{
+  display:none;margin:10px auto 0;
+  background:var(--lima);color:var(--carbon);border:none;
+  padding:11px 28px;border-radius:11px;
+  font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:800;
+  cursor:pointer;transition:transform 0.15s;
+}
+.g-next:hover{transform:scale(1.04);}
+.g-score{color:rgba(255,255,255,0.3);font-size:0.78rem;margin-top:8px;}
+.g-prog{height:4px;background:var(--gris3);border-radius:4px;margin-bottom:18px;overflow:hidden;}
+.g-prog-fill{height:100%;background:linear-gradient(90deg,var(--viola),var(--lima));border-radius:4px;transition:width 0.4s;}
+.g-mode-switch{display:flex;gap:8px;justify-content:center;margin-bottom:16px;}
+.g-mode-btn{
+  background:var(--gris3);border:1.5px solid var(--gris3);
+  color:rgba(255,255,255,0.5);font-size:0.75rem;font-weight:600;
+  padding:6px 14px;border-radius:20px;cursor:pointer;transition:all 0.2s;
+}
+.g-mode-btn.active{background:var(--viola);border-color:var(--viola);color:white;}
+
+/* ── TABLA 100 ── */
+.tabla-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--gris3);}
+.tabla-100{width:100%;border-collapse:collapse;background:var(--gris2);font-size:0.82rem;}
+.tabla-100 th{
+  background:var(--gris1);padding:10px 6px;
+  font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:800;
+  color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;
+  border-bottom:2px solid var(--gris3);
+}
+.tabla-100 td{padding:8px 6px;border-bottom:1px solid var(--gris3);text-align:center;vertical-align:middle;}
+.tabla-100 tr:hover td{background:rgba(255,255,255,0.03);}
+.t-num{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--lima);}
+.t-en{font-size:0.82rem;font-weight:700;color:white;}
+.t-pron{font-size:0.66rem;color:rgba(255,255,255,0.35);}
+.t-dec{color:var(--naranja)!important;}
+
+/* ── REPASO ── */
+.repaso-bg{background:var(--viola);padding:28px 16px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  border-radius:12px;padding:12px 8px;text-align:center;
+}
+.rep-digit{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--lima);}
+.rep-en{font-size:0.82rem;font-weight:700;color:white;margin:2px 0;}
+.rep-pron{font-size:0.66rem;color:rgba(255,255,255,0.5);}
+
+/* ── TIP ── */
+.tip-box{
+  background:var(--gris2);border-radius:20px;padding:22px 20px;
+  border:2px solid var(--lima);text-align:center;max-width:560px;margin:0 auto 30px;
+}
+.tip-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--lima);margin-bottom:8px;}
+.tip-box p{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;}
+.tip-steps{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-step{background:var(--gris3);border:1.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.7);}
+
+.footer{background:#080810;padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--lima);}
+
+@media(max-width:480px){
+  .nums-10{grid-template-columns:repeat(5,1fr);gap:6px;}
+  .n-digit{font-size:1.8rem;}
+  .n-en{font-size:0.78rem;}
+  .decs-grid{grid-template-columns:repeat(2,1fr);}
+  .game-ops{grid-template-columns:1fr;}
+  .formula-visual{gap:5px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-num-bg">123</div>
+  <div class="hero-chip">🧠 Método Visual + Patrón + Juego</div>
+  <h1>Los <em>Números</em><br>en Inglés</h1>
+  <p class="hero-sub">Cartilla 2 · Nivel A0→A1 · Del 1 al 100 · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🎨 Colores por grupo</span>
+    <span class="hp">🔢 Fórmula del 21 al 99</span>
+    <span class="hp">🎮 Juego interactivo</span>
+    <span class="hp">🇨🇴 Uso real en Colombia</span>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos va al mercado de Fusagasugá, paga en una tienda, da su número de teléfono y dice su edad. Para todo eso necesita los números. <strong>¡Hoy los dominas!</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- 1–10 -->
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">1</div><div class="sec-title">Del 1 al 10 — La base de todo</div></div>
+  <div class="sec-hint">🧠 <strong>Memoria visual:</strong> Cada número tiene su emoji representativo. Tu cerebro recuerda imágenes 6x más rápido que palabras. Mira el emoji, di el número en inglés.</div>
+  <div class="nums-10">
+    <div class="n-card"><div class="n-digit">1</div><div class="n-emoji">☝️</div><div class="n-en">One</div><div class="n-pron">Uán</div></div>
+    <div class="n-card"><div class="n-digit">2</div><div class="n-emoji">✌️</div><div class="n-en">Two</div><div class="n-pron">Túu</div></div>
+    <div class="n-card"><div class="n-digit">3</div><div class="n-emoji">🤟</div><div class="n-en">Three</div><div class="n-pron">Zríi</div></div>
+    <div class="n-card"><div class="n-digit">4</div><div class="n-emoji">🍀</div><div class="n-en">Four</div><div class="n-pron">Fór</div></div>
+    <div class="n-card"><div class="n-digit">5</div><div class="n-emoji">🖐️</div><div class="n-en">Five</div><div class="n-pron">Fáiv</div></div>
+    <div class="n-card"><div class="n-digit">6</div><div class="n-emoji">🎲</div><div class="n-en">Six</div><div class="n-pron">Siks</div></div>
+    <div class="n-card"><div class="n-digit">7</div><div class="n-emoji">🌈</div><div class="n-en">Seven</div><div class="n-pron">Séven</div></div>
+    <div class="n-card"><div class="n-digit">8</div><div class="n-emoji">🕷️</div><div class="n-en">Eight</div><div class="n-pron">Éit</div></div>
+    <div class="n-card"><div class="n-digit">9</div><div class="n-emoji">🎯</div><div class="n-en">Nine</div><div class="n-pron">Náin</div></div>
+    <div class="n-card"><div class="n-digit">10</div><div class="n-emoji">🔟</div><div class="n-en">Ten</div><div class="n-pron">Ten</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 11–20 ESPECIALES -->
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">2</div><div class="sec-title">Del 11 al 20 — ¡Son especiales, memorízalos!</div></div>
+  <div class="sec-hint">🧠 <strong>Alerta de excepción:</strong> Del 11 al 20 NO siguen ninguna fórmula. Son palabras únicas que debes memorizar. El truco: asocia cada uno a una imagen absurda o gracioso.</div>
+  <div class="teens-box">
+    <div class="teen-row"><div class="teen-num">11</div><div class="teen-en">Eleven</div><div class="teen-pron">Iléven</div><div class="teen-truco">Como "i-leven" → imagina una cancha de fútbol con 11 jugadores. ¡Once!</div></div>
+    <div class="teen-row"><div class="teen-num">12</div><div class="teen-en">Twelve</div><div class="teen-pron">Tuélv</div><div class="teen-truco">"Twelve" → imagina 12 meses del año girando en un reloj.</div></div>
+    <div class="teen-row"><div class="teen-num">13</div><div class="teen-en">Thirteen</div><div class="teen-pron">Zártiin</div><div class="teen-truco">Three + teen → 3 + sufijo teen. ¡De aquí en adelante es fórmula!</div></div>
+    <div class="teen-row"><div class="teen-num">14</div><div class="teen-en">Fourteen</div><div class="teen-pron">Fórtiin</div><div class="teen-truco">Four + teen → 4 patas de gato + teen. Fácil.</div></div>
+    <div class="teen-row"><div class="teen-num">15</div><div class="teen-en">Fifteen</div><div class="teen-pron">Fiftiin</div><div class="teen-truco">Five → fifteen. La V cambia a F. ¡Ojo aquí!</div></div>
+    <div class="teen-row"><div class="teen-num">16</div><div class="teen-en">Sixteen</div><div class="teen-pron">Sikstiin</div><div class="teen-truco">Six + teen → muy sencillo.</div></div>
+    <div class="teen-row"><div class="teen-num">17</div><div class="teen-en">Seventeen</div><div class="teen-pron">Sevntiin</div><div class="teen-truco">Seven + teen → igual de sencillo.</div></div>
+    <div class="teen-row"><div class="teen-num">18</div><div class="teen-en">Eighteen</div><div class="teen-pron">Éitiin</div><div class="teen-truco">Eight → eighteen. ¡Solo une y quita una t!</div></div>
+    <div class="teen-row"><div class="teen-num">19</div><div class="teen-en">Nineteen</div><div class="teen-pron">Náintiin</div><div class="teen-truco">Nine + teen → perfecto.</div></div>
+    <div class="teen-row"><div class="teen-num">20</div><div class="teen-en">Twenty</div><div class="teen-pron">Tuénti</div><div class="teen-truco">"Twenty" → imagina 20 monedas en tus dos manos (10+10). La clave del sistema.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DECENAS -->
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">3</div><div class="sec-title">Las decenas — 30, 40, 50... 100</div></div>
+  <div class="sec-hint">🧠 <strong>Patrón de decenas:</strong> Todas terminan en <strong style="color:var(--lima)">-ty</strong> (suena "ti"). Aprende estas 8 y tienes el 80% del sistema de números.</div>
+  <div class="decs-grid">
+    <div class="dec-card"><div class="dec-num">30</div><div class="dec-en">Thirty</div><div class="dec-pron">Zárti</div><div class="dec-truco">Three → Thirty. La "ee" se vuelve "ty"</div></div>
+    <div class="dec-card"><div class="dec-num">40</div><div class="dec-en">Forty</div><div class="dec-pron">Fórti</div><div class="dec-truco">⚠️ Four → Forty. Sin la U. ¡Excepción!</div></div>
+    <div class="dec-card"><div class="dec-num">50</div><div class="dec-en">Fifty</div><div class="dec-pron">Fifti</div><div class="dec-truco">Five → Fifty. La V se vuelve F.</div></div>
+    <div class="dec-card"><div class="dec-num">60</div><div class="dec-en">Sixty</div><div class="dec-pron">Siksti</div><div class="dec-truco">Six + ty = Sixty. Fácil.</div></div>
+    <div class="dec-card"><div class="dec-num">70</div><div class="dec-en">Seventy</div><div class="dec-pron">Séventi</div><div class="dec-truco">Seven + ty = Seventy.</div></div>
+    <div class="dec-card"><div class="dec-num">80</div><div class="dec-en">Eighty</div><div class="dec-pron">Éiti</div><div class="dec-truco">Eight + y = Eighty.</div></div>
+    <div class="dec-card"><div class="dec-num">90</div><div class="dec-en">Ninety</div><div class="dec-pron">Náinti</div><div class="dec-truco">Nine + ty = Ninety.</div></div>
+    <div class="dec-card"><div class="dec-num">100</div><div class="dec-en">One hundred</div><div class="dec-pron">Uán jándred</div><div class="dec-truco">💯 La meta. Hundred = centena.</div></div>
+    <div class="dec-card"><div class="dec-num">1K</div><div class="dec-en">One thousand</div><div class="dec-pron">Uán záuzand</div><div class="dec-truco">Para precios y cantidades grandes.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FÓRMULA MÁGICA -->
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">4</div><div class="sec-title">La fórmula mágica del 21 al 99</div></div>
+  <div class="sec-hint">🧠 <strong>Chunking estructural:</strong> Una sola regla te da acceso a los 79 números restantes. <strong style="color:var(--lima)">Decena + guion + unidad.</strong> Igual que en español (veinti-uno).</div>
+  <div class="formula-box">
+    <div class="formula-title">📐 DECENA + unidad = cualquier número</div>
+    <div class="formula-sub">Así de simple. Igual que "veinti-uno", "treinta y dos"…</div>
+    <div class="formula-visual">
+      <div class="fv-block fv-dec">Twenty (20)</div>
+      <div class="fv-plus">+</div>
+      <div class="fv-block fv-uni">one (1)</div>
+      <div class="fv-eq">=</div>
+      <div class="fv-block fv-res">Twenty-one (21)</div>
+    </div>
+    <div class="formula-ejemplos">
+      <div class="fe-row"><div class="fe-num">23</div><div><div class="fe-en">Twenty-three</div><div class="fe-pron">Tuénti-zríi</div></div><div class="fe-tip">Twenty + three</div></div>
+      <div class="fe-row"><div class="fe-num">35</div><div><div class="fe-en">Thirty-five</div><div class="fe-pron">Zárti-fáiv</div></div><div class="fe-tip">Thirty + five</div></div>
+      <div class="fe-row"><div class="fe-num">47</div><div><div class="fe-en">Forty-seven</div><div class="fe-pron">Fórti-séven</div></div><div class="fe-tip">Forty + seven</div></div>
+      <div class="fe-row"><div class="fe-num">68</div><div><div class="fe-en">Sixty-eight</div><div class="fe-pron">Siksti-éit</div></div><div class="fe-tip">Sixty + eight</div></div>
+      <div class="fe-row"><div class="fe-num">99</div><div><div class="fe-en">Ninety-nine</div><div class="fe-pron">Náinti-náin</div></div><div class="fe-tip">Ninety + nine</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- USO REAL EN COLOMBIA -->
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">5</div><div class="sec-title">Úsalo en tu vida real 🇨🇴</div></div>
+  <div class="sec-hint">🧠 <strong>Contextualización colombiana:</strong> Los números solo se fijan cuando los usas en situaciones reales. Carlos los usa en 4 contextos de todos los días.</div>
+  <div class="situ-list">
+    <div class="situ">
+      <div class="situ-icon">📱</div>
+      <div>
+        <div class="situ-lugar">📍 Dando el celular</div>
+        <div class="situ-lineas">
+          <div><div class="situ-en">My phone number is three-one-seven, four-five-six, eight-nine-two-one.</div><div class="situ-pron">Mai fóun námber is zríi-uán-séven, fór-fáiv-siks, éit-náin-túu-uán</div><div class="situ-es">Mi número de celular es 317-456-8921.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="situ">
+      <div class="situ-icon">🎂</div>
+      <div>
+        <div class="situ-lugar">📍 Diciendo la edad</div>
+        <div class="situ-lineas">
+          <div><div class="situ-en">I'm twenty-five years old.</div><div class="situ-pron">Áim tuénti-fáiv íers old</div><div class="situ-es">Tengo 25 años.</div></div>
+          <div><div class="situ-en">She's thirty-two years old.</div><div class="situ-pron">Shiis zárti-túu íers old</div><div class="situ-es">Ella tiene 32 años.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="situ">
+      <div class="situ-icon">💵</div>
+      <div>
+        <div class="situ-lugar">📍 En precios (dólares/viaje)</div>
+        <div class="situ-lineas">
+          <div><div class="situ-en">It costs forty-five dollars.</div><div class="situ-pron">It costs fórti-fáiv dólars</div><div class="situ-es">Cuesta cuarenta y cinco dólares.</div></div>
+          <div><div class="situ-en">How much is it? — It's eighty dollars.</div><div class="situ-pron">Jáu mach is it? — Its éiti dólars</div><div class="situ-es">¿Cuánto cuesta? — Son ochenta dólares.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="situ">
+      <div class="situ-icon">🕐</div>
+      <div>
+        <div class="situ-lugar">📍 Diciendo la hora</div>
+        <div class="situ-lineas">
+          <div><div class="situ-en">It's three o'clock. / It's ten fifteen.</div><div class="situ-pron">Its zríi o-klok / Its ten fiftiin</div><div class="situ-es">Son las 3 en punto. / Son las 10:15.</div></div>
+          <div><div class="situ-en">The meeting is at two thirty.</div><div class="situ-pron">De míiting is at túu zárti</div><div class="situ-es">La reunión es a las 2:30.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- JUEGO INTERACTIVO -->
+<div style="background:var(--gris1);padding:32px 16px;margin-top:28px;">
+  <div class="wrap">
+    <div class="sec-label" style="justify-content:center;margin-bottom:6px;">
+      <div class="sec-num">🎮</div>
+      <div class="sec-title">¡Juego de números!</div>
+    </div>
+    <p style="text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:16px;">Elige el modo y pon a prueba tu velocidad</p>
+    <div class="game-box">
+      <div class="g-mode-switch">
+        <button class="g-mode-btn active" onclick="setMode('num2en',this)">🔢 Número → Inglés</button>
+        <button class="g-mode-btn" onclick="setMode('en2num',this)">🔤 Inglés → Número</button>
+      </div>
+      <div class="g-prog"><div class="g-prog-fill" id="gpf" style="width:0%"></div></div>
+      <div class="game-numero" id="gnumero">—</div>
+      <div class="game-ops" id="gops"></div>
+      <div class="g-feedback" id="gfeedback"></div>
+      <button class="g-next" id="gnext" onclick="gNext()">Siguiente →</button>
+      <div class="g-score" id="gscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLA RÁPIDA 1-100 -->
+<div class="wrap">
+<div class="sec">
+  <div class="sec-label"><div class="sec-num">6</div><div class="sec-title">Tabla de referencia rápida 1–100</div></div>
+  <div class="sec-hint">🧠 <strong>Consulta y repaso:</strong> Guarda esta tabla. Úsala cuando necesites un número en inglés hasta que los domines de memoria.</div>
+  <div class="tabla-wrap">
+    <table class="tabla-100" id="tabla100"></table>
+  </div>
+</div>
+</div>
+
+<!-- REPASO -->
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="sec-label" style="justify-content:center;margin-bottom:14px;">
+      <div class="sec-num">★</div>
+      <div class="sec-title" style="color:white;">Los 20 números clave de esta cartilla</div>
+    </div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-digit">1</div><div class="rep-en">One</div><div class="rep-pron">Uán</div></div>
+      <div class="rep-c"><div class="rep-digit">2</div><div class="rep-en">Two</div><div class="rep-pron">Túu</div></div>
+      <div class="rep-c"><div class="rep-digit">5</div><div class="rep-en">Five</div><div class="rep-pron">Fáiv</div></div>
+      <div class="rep-c"><div class="rep-digit">10</div><div class="rep-en">Ten</div><div class="rep-pron">Ten</div></div>
+      <div class="rep-c"><div class="rep-digit">11</div><div class="rep-en">Eleven</div><div class="rep-pron">Iléven</div></div>
+      <div class="rep-c"><div class="rep-digit">12</div><div class="rep-en">Twelve</div><div class="rep-pron">Tuélv</div></div>
+      <div class="rep-c"><div class="rep-digit">15</div><div class="rep-en">Fifteen</div><div class="rep-pron">Fiftiin</div></div>
+      <div class="rep-c"><div class="rep-digit">20</div><div class="rep-en">Twenty</div><div class="rep-pron">Tuénti</div></div>
+      <div class="rep-c"><div class="rep-digit">25</div><div class="rep-en">Twenty-five</div><div class="rep-pron">Tuénti-fáiv</div></div>
+      <div class="rep-c"><div class="rep-digit">30</div><div class="rep-en">Thirty</div><div class="rep-pron">Zárti</div></div>
+      <div class="rep-c"><div class="rep-digit">40</div><div class="rep-en">Forty</div><div class="rep-pron">Fórti</div></div>
+      <div class="rep-c"><div class="rep-digit">50</div><div class="rep-en">Fifty</div><div class="rep-pron">Fifti</div></div>
+      <div class="rep-c"><div class="rep-digit">60</div><div class="rep-en">Sixty</div><div class="rep-pron">Siksti</div></div>
+      <div class="rep-c"><div class="rep-digit">70</div><div class="rep-en">Seventy</div><div class="rep-pron">Séventi</div></div>
+      <div class="rep-c"><div class="rep-digit">75</div><div class="rep-en">Seventy-five</div><div class="rep-pron">Séventi-fáiv</div></div>
+      <div class="rep-c"><div class="rep-digit">80</div><div class="rep-en">Eighty</div><div class="rep-pron">Éiti</div></div>
+      <div class="rep-c"><div class="rep-digit">90</div><div class="rep-en">Ninety</div><div class="rep-pron">Náinti</div></div>
+      <div class="rep-c"><div class="rep-digit">99</div><div class="rep-en">Ninety-nine</div><div class="rep-pron">Náinti-náin</div></div>
+      <div class="rep-c"><div class="rep-digit">100</div><div class="rep-en">One hundred</div><div class="rep-pron">Uán jándred</div></div>
+      <div class="rep-c"><div class="rep-digit">1000</div><div class="rep-en">One thousand</div><div class="rep-pron">Uán záuzand</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSEJO -->
+<div class="wrap" style="padding-top:28px;">
+  <div class="tip-box">
+    <div style="font-size:2rem;margin-bottom:8px;">🎯</div>
+    <h3>Reto de hoy: El reto del precio</h3>
+    <p>Cada vez que veas un precio en pesos o dólares hoy, dilo en inglés en tu cabeza. Si algo cuesta <strong>$45.000</strong>, piensa: <em style="color:var(--lima)">"forty-five thousand pesos"</em>. En 1 semana los dominas sin darte cuenta.</p>
+    <div class="tip-steps">
+      <div class="tip-step">💰 Precios</div>
+      <div class="tip-step">📱 Teléfonos</div>
+      <div class="tip-step">🎂 Edades</div>
+      <div class="tip-step">🕐 Horas</div>
+      <div class="tip-step">📅 Fechas</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 2 de 19 · Los Números · Nivel A0→A1
+</div>
+
+<script>
+// ── DATOS DE NÚMEROS ──
+const nums = {
+  1:'One',2:'Two',3:'Three',4:'Four',5:'Five',
+  6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',
+  11:'Eleven',12:'Twelve',13:'Thirteen',14:'Fourteen',15:'Fifteen',
+  16:'Sixteen',17:'Seventeen',18:'Eighteen',19:'Nineteen',20:'Twenty',
+  21:'Twenty-one',22:'Twenty-two',23:'Twenty-three',24:'Twenty-four',25:'Twenty-five',
+  26:'Twenty-six',27:'Twenty-seven',28:'Twenty-eight',29:'Twenty-nine',30:'Thirty',
+  31:'Thirty-one',32:'Thirty-two',33:'Thirty-three',34:'Thirty-four',35:'Thirty-five',
+  36:'Thirty-six',37:'Thirty-seven',38:'Thirty-eight',39:'Thirty-nine',40:'Forty',
+  41:'Forty-one',42:'Forty-two',43:'Forty-three',44:'Forty-four',45:'Forty-five',
+  46:'Forty-six',47:'Forty-seven',48:'Forty-eight',49:'Forty-nine',50:'Fifty',
+  51:'Fifty-one',52:'Fifty-two',53:'Fifty-three',54:'Fifty-four',55:'Fifty-five',
+  56:'Fifty-six',57:'Fifty-seven',58:'Fifty-eight',59:'Fifty-nine',60:'Sixty',
+  61:'Sixty-one',62:'Sixty-two',63:'Sixty-three',64:'Sixty-four',65:'Sixty-five',
+  66:'Sixty-six',67:'Sixty-seven',68:'Sixty-eight',69:'Sixty-nine',70:'Seventy',
+  71:'Seventy-one',72:'Seventy-two',73:'Seventy-three',74:'Seventy-four',75:'Seventy-five',
+  76:'Seventy-six',77:'Seventy-seven',78:'Seventy-eight',79:'Seventy-nine',80:'Eighty',
+  81:'Eighty-one',82:'Eighty-two',83:'Eighty-three',84:'Eighty-four',85:'Eighty-five',
+  86:'Eighty-six',87:'Eighty-seven',88:'Eighty-eight',89:'Eighty-nine',90:'Ninety',
+  91:'Ninety-one',92:'Ninety-two',93:'Ninety-three',94:'Ninety-four',95:'Ninety-five',
+  96:'Ninety-six',97:'Ninety-seven',98:'Ninety-eight',99:'Ninety-nine',100:'One hundred'
+};
+
+const pron = {
+  1:'Uán',2:'Túu',3:'Zríi',4:'Fór',5:'Fáiv',6:'Siks',7:'Séven',8:'Éit',9:'Náin',10:'Ten',
+  11:'Iléven',12:'Tuélv',13:'Zártiin',14:'Fórtiin',15:'Fiftiin',16:'Sikstiin',
+  17:'Sevntiin',18:'Éitiin',19:'Náintiin',20:'Tuénti',30:'Zárti',40:'Fórti',
+  50:'Fifti',60:'Siksti',70:'Séventi',80:'Éiti',90:'Náinti',100:'Uán jándred'
+};
+
+// ── TABLA 100 ──
+const tabla = document.getElementById('tabla100');
+let html = '<thead><tr><th>N°</th><th>English</th><th>Pronunciación</th><th>N°</th><th>English</th><th>Pronunciación</th></tr></thead><tbody>';
+const decenas = [10,20,30,40,50,60,70,80,90,100];
+for(let i=1;i<=50;i++){
+  const j = i+50;
+  const isDecA = decenas.includes(i);
+  const isDecB = decenas.includes(j);
+  const pA = pron[i] || '';
+  const pB = j<=100 ? (pron[j]||'') : '';
+  html += `<tr>
+    <td class="t-num${isDecA?' t-dec':''}">${i}</td>
+    <td class="t-en${isDecA?' t-dec':''}">${nums[i]}</td>
+    <td class="t-pron">${pA}</td>
+    <td class="t-num${isDecB?' t-dec':''}">${j}</td>
+    <td class="t-en${isDecB?' t-dec':''}">${j<=100?nums[j]:''}</td>
+    <td class="t-pron">${pB}</td>
+  </tr>`;
+}
+html += '</tbody>';
+tabla.innerHTML = html;
+
+// ── JUEGO ──
+let gMode = 'num2en';
+let gQ = 0, gScore = 0, gAnswered = false;
+let gQuestions = [];
+const TOTAL = 10;
+
+function setMode(mode, btn){
+  gMode = mode;
+  document.querySelectorAll('.g-mode-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  gQ=0; gScore=0; gQuestions=[];
+  buildQuestions();
+  gLoad();
+}
+
+function getRandom(exclude, count){
+  const keys = Object.keys(nums).map(Number).filter(n=>!exclude.includes(n));
+  const res=[];
+  while(res.length<count){
+    const k = keys[Math.floor(Math.random()*keys.length)];
+    if(!res.includes(k)) res.push(k);
+  }
+  return res;
+}
+
+function buildQuestions(){
+  gQuestions=[];
+  const pool = Object.keys(nums).map(Number);
+  const selected=[];
+  while(selected.length<TOTAL){
+    const k=pool[Math.floor(Math.random()*pool.length)];
+    if(!selected.includes(k)) selected.push(k);
+  }
+  selected.forEach(n=>{
+    const wrongs = getRandom([n],3);
+    const opts = [n,...wrongs].sort(()=>Math.random()-0.5);
+    gQuestions.push({n, opts});
+  });
+}
+
+function gLoad(){
+  if(!gQuestions.length) buildQuestions();
+  const q = gQuestions[gQ];
+  document.getElementById('gpf').style.width=(gQ/TOTAL*100)+'%';
+  document.getElementById('gfeedback').textContent='';
+  document.getElementById('gnext').style.display='none';
+  document.getElementById('gscore').textContent=`Pregunta ${gQ+1} de ${TOTAL}  ·  ✅ ${gScore}`;
+  gAnswered=false;
+
+  if(gMode==='num2en'){
+    document.getElementById('gnumero').textContent = q.n;
+    const ops=document.getElementById('gops');
+    ops.innerHTML='';
+    q.opts.forEach(o=>{
+      const b=document.createElement('button');
+      b.className='g-btn';
+      b.textContent=nums[o];
+      b.onclick=()=>gResponder(o===q.n,b,nums[q.n]);
+      ops.appendChild(b);
+    });
+  } else {
+    document.getElementById('gnumero').textContent = nums[q.n];
+    const ops=document.getElementById('gops');
+    ops.innerHTML='';
+    q.opts.forEach(o=>{
+      const b=document.createElement('button');
+      b.className='g-btn';
+      b.textContent=o;
+      b.onclick=()=>gResponder(o===q.n,b,q.n);
+      ops.appendChild(b);
+    });
+  }
+}
+
+function gResponder(correct, btn, answer){
+  if(gAnswered) return;
+  gAnswered=true;
+  document.querySelectorAll('.g-btn').forEach(b=>b.style.pointerEvents='none');
+  if(correct){
+    btn.classList.add('ok');
+    document.getElementById('gfeedback').textContent='✅ ¡Perfecto!';
+    gScore++;
+  } else {
+    btn.classList.add('mal');
+    document.getElementById('gfeedback').textContent=`❌ Era: ${answer}`;
+    // mark correct
+    document.querySelectorAll('.g-btn').forEach(b=>{
+      if(gMode==='num2en'&&b.textContent===nums[gQuestions[gQ].n]) b.classList.add('ok');
+      else if(gMode==='en2num'&&b.textContent==gQuestions[gQ].n) b.classList.add('ok');
+    });
+  }
+  document.getElementById('gnext').style.display='block';
+  if(gQ===TOTAL-1) document.getElementById('gnext').textContent='🏁 Ver resultado';
+}
+
+function gNext(){
+  gQ++;
+  if(gQ<TOTAL){ gLoad(); }
+  else {
+    const pct=Math.round(gScore/TOTAL*100);
+    document.getElementById('gpf').style.width='100%';
+    document.getElementById('gnumero').textContent=pct>=80?'🏆':pct>=50?'👍':'💪';
+    document.getElementById('gops').innerHTML='';
+    document.getElementById('gfeedback').textContent=
+      pct>=80?`¡Excelente! ${gScore}/${TOTAL}. ¡Listo para la Cartilla 3! 🚀`:
+      pct>=50?`Bien: ${gScore}/${TOTAL}. Repasa los números del 11 al 20 📖`:
+      `${gScore}/${TOTAL}. ¡Vuelve a practicar con el otro modo! 💛`;
+    document.getElementById('gnext').style.display='none';
+    document.getElementById('gscore').textContent='Cartilla 2 completada ✓';
+  }
+}
+
+buildQuestions();
+gLoad();
+</script>
+</body>
+</html>
