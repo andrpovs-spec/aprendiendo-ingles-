@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 18 — Cultura y Ocio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--dorado:#B45309;--rosa:#DB2777;--verde:#059669;--gris:#1C1917;--crema:#FFFBF5;--borde:#FDE68A;--suave:#FEF3C7;--sombra:rgba(180,83,9,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Lato',sans-serif;background:var(--crema);color:var(--gris);}
+.hero{background:linear-gradient(135deg,#1C1917,#292524);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--dorado);color:white;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:#FDE68A;font-style:italic;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--rosa),#BE185D);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:#FDE68A;}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--gris);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:700;color:var(--borde);}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--dorado);color:white;}.bg{background:var(--gris);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--rosa);color:white;}
+.hint{background:var(--suave);border-left:4px solid var(--dorado);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#78350F;font-weight:400;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+.ocio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;}
+.ocio-card{background:white;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--dorado);transition:transform 0.2s;}
+.ocio-card:hover{transform:translateY(-3px);}
+.oc-emoji{font-size:2rem;margin-bottom:5px;}
+.oc-en{font-size:0.9rem;font-weight:700;color:var(--gris);}
+.oc-pron{font-size:0.64rem;font-weight:700;color:var(--dorado);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.oc-es{font-size:0.7rem;color:#6B7280;}
+.oc-ej{font-size:0.66rem;color:#9CA3AF;font-style:italic;margin-top:2px;}
+
+.would-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.wb-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#FDE68A;margin-bottom:4px;}
+.wb-sub{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:14px;}
+.would-tabla{width:100%;border-collapse:collapse;}
+.would-tabla th{background:rgba(255,255,255,0.08);padding:7px 10px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FDE68A;text-align:left;}
+.would-tabla td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:white;}
+.would-tabla td em{color:#FDE68A;font-style:normal;}
+.would-tabla tr:last-child td{border-bottom:none;}
+.would-ej{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.we-card{background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;}
+.we-title{font-size:0.64rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.we-frase{font-size:0.85rem;color:white;font-weight:600;margin-bottom:2px;}
+.we-es{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:6px;}
+
+.cultura-col{background:white;border-radius:14px;padding:20px;box-shadow:0 2px 14px var(--sombra);margin-bottom:14px;}
+.cc-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gris);margin-bottom:12px;border-bottom:2px solid var(--suave);padding-bottom:8px;}
+.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cc-item{padding:10px 12px;background:var(--suave);border-radius:8px;}
+.ci-col{font-size:0.82rem;font-weight:700;color:var(--dorado);margin-bottom:4px;}
+.ci-eng{font-size:0.76rem;color:var(--gris);margin-bottom:3px;line-height:1.4;}
+.ci-pron{font-size:0.64rem;color:#92400E;font-weight:600;}
+
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--dorado),#92400E);}
+.av.s{background:linear-gradient(135deg,var(--rosa),#BE185D);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--gris);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--gris);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--dorado);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--gris);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:#FDE68A;}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.85rem;font-weight:700;color:var(--gris);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--gris);transform:rotateY(180deg);}
+.fb-es{color:#FDE68A;font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:var(--rosa);font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--dorado);color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--dorado),var(--rosa));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'Lato',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(5,150,105,0.2);border-color:var(--verde);color:#6EE7B7;}
+.q-btn.mal{background:rgba(219,39,119,0.2);border-color:var(--rosa);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:#FDE68A;min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--dorado);color:white;border:none;padding:11px 28px;border-radius:8px;font-family:'Lato',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gris);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--dorado);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:700;color:var(--gris);}
+.rep-pron{font-size:0.6rem;color:var(--dorado);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--dorado);text-align:center;}
+.tip h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--gris);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:#FDE68A;}
+@media(max-width:520px){.would-ej{grid-template-columns:1fr;}.cc-grid{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 18 de 19 · Would you like to…? + Invitaciones</div>
+  <h1>Cultura<br><em>&</em> Ocio</h1>
+  <p class="hero-sub">Cartilla 18 · Nivel B1 · Arte · Música · Invitar · Would you like to…? · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🎭 Arte y entretenimiento</span><span class="hp">🎵 Música colombiana</span>
+    <span class="hp">🤝 Would you like to…?</span><span class="hp">🇨🇴 Cultura colombiana en inglés</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Sarah llega a Colombia. Carlos la invita a un concierto de música vallenata y le explica la cultura colombiana. <strong>Hoy aprendes a hacer invitaciones educadas y hablar de cultura en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Arte y entretenimiento — Arts & Entertainment</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Cultura como puente:</strong> Hablar de arte, música y cultura es la forma más natural de conectar con personas de otros países. Cada colombiano es un embajador cultural.</div>
+  <div class="ocio-grid">
+    <div class="ocio-card"><div class="oc-emoji">🎭</div><div class="oc-en">Theater / Play</div><div class="oc-pron">Zíeter / Pléi</div><div class="oc-es">Teatro / Obra</div><div class="oc-ej">Let's go to the theater!</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎵</div><div class="oc-en">Concert</div><div class="oc-pron">Kónsert</div><div class="oc-es">Concierto</div><div class="oc-ej">Live music concert.</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎨</div><div class="oc-en">Art gallery</div><div class="oc-pron">Art gáeleri</div><div class="oc-es">Galería de arte</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎬</div><div class="oc-en">Documentary</div><div class="oc-pron">Dókiuméntri</div><div class="oc-es">Documental</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎪</div><div class="oc-en">Festival / Fair</div><div class="oc-pron">Féstival / Fer</div><div class="oc-es">Festival / Feria</div><div class="oc-ej">Barranquilla Carnival!</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🏟️</div><div class="oc-en">Stadium</div><div class="oc-pron">Stéidium</div><div class="oc-es">Estadio</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎸</div><div class="oc-en">Jazz / Rock / Salsa</div><div class="oc-pron">Yaes / Rok / Sálsa</div><div class="oc-es">Géneros musicales</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🌺</div><div class="oc-en">Folklore</div><div class="oc-pron">Fóuklor</div><div class="oc-es">Folclor</div><div class="oc-ej">Colombian folklore.</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🌿</div><div class="oc-en">Ecotourism</div><div class="oc-pron">Íikotúrizm</div><div class="oc-es">Ecoturismo</div></div>
+    <div class="ocio-card"><div class="oc-emoji">📚</div><div class="oc-en">Book fair</div><div class="oc-pron">Buk fer</div><div class="oc-es">Feria del libro</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🍷</div><div class="oc-en">Food tour</div><div class="oc-pron">Fuud túer</div><div class="oc-es">Tour gastronómico</div></div>
+    <div class="ocio-card"><div class="oc-emoji">🎮</div><div class="oc-en">Esports</div><div class="oc-pron">Íisports</div><div class="oc-es">Deportes electrónicos</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Would you like to…? — Invitaciones formales</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> "Would you like to…?" es más educado que "Do you want to…?". Se usa para invitar cortésmente. Es perfecto para contextos con socios internacionales y cooperantes.</div>
+  <div class="would-box">
+    <div class="wb-title">🤝 Would you like to…? — Estructura</div>
+    <div class="wb-sub">Más formal y educado — perfecto para contextos internacionales y cooperación</div>
+    <table class="would-tabla">
+      <thead><tr><th>Tipo</th><th>Estructura</th><th>Ejemplo cultural</th></tr></thead>
+      <tbody>
+        <tr><td>Invitar</td><td><em>Would you like to</em> + verbo?</td><td><em>Would you like to</em> go to the concert?</td></tr>
+        <tr><td>Aceptar</td><td>Yes, I'd love to! / That sounds great!</td><td><em>Yes, I'd love to!</em> What time?</td></tr>
+        <tr><td>Declinar</td><td>I'd love to, but… / Maybe another time.</td><td><em>I'd love to, but</em> I have other plans.</td></tr>
+        <tr><td>Ofrecer algo</td><td><em>Would you like</em> some…?</td><td><em>Would you like</em> some Colombian coffee?</td></tr>
+        <tr><td>Deseo propio</td><td>I<em>'d like to</em> + verbo</td><td>I<em>'d like to</em> visit the Gold Museum.</td></tr>
+      </tbody>
+    </table>
+    <div class="would-ej">
+      <div class="we-card">
+        <div class="we-title">✅ Aceptar</div>
+        <div class="we-frase">Yes, I'd love to!</div><div class="we-es">¡Sí, me encantaría!</div>
+        <div class="we-frase">That sounds amazing!</div><div class="we-es">¡Suena increíble!</div>
+        <div class="we-frase">Count me in!</div><div class="we-es">¡Cuenta conmigo!</div>
+      </div>
+      <div class="we-card">
+        <div class="we-title">❌ Declinar educadamente</div>
+        <div class="we-frase">I'd love to, but I can't.</div><div class="we-es">Me encantaría, pero no puedo.</div>
+        <div class="we-frase">Maybe next time!</div><div class="we-es">¡Quizás la próxima!</div>
+        <div class="we-frase">I have other plans, sorry.</div><div class="we-es">Tengo otros planes, disculpa.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Cultura colombiana en inglés — Colombian culture</div><div class="sec-badge bu">Orgullo 🇨🇴</div></div>
+  <div class="hint">🇨🇴 <strong>Sé embajador cultural:</strong> Cuando viajas o recibes extranjeros, eres el representante de Colombia. Aprende a describir tu cultura con orgullo en inglés.</div>
+  <div class="cultura-col">
+    <div class="cc-title">🇨🇴 How to describe Colombian culture in English</div>
+    <div class="cc-grid">
+      <div class="cc-item"><div class="ci-col">Vallenato 🎵</div><div class="ci-eng">"It's a traditional Colombian music from the Caribbean coast. It uses the accordion, drums, and a scraper. It's a UNESCO Intangible Heritage!"</div><div class="ci-pron">Vallenato: "Váyenato"</div></div>
+      <div class="cc-item"><div class="ci-col">Carnaval de Barranquilla 🎪</div><div class="ci-eng">"It's the world's second largest carnival after Rio. It's a UNESCO cultural heritage. There's music, dance, and parades for 4 days!"</div><div class="ci-pron">Carnival: "Kárnivoal"</div></div>
+      <div class="cc-item"><div class="ci-col">Café colombiano ☕</div><div class="ci-eng">"Colombian coffee is world-famous for its quality. We grow it in the Coffee Region — mountains between 1200 and 2000 meters altitude."</div><div class="ci-pron">Coffee Region: "Kófi Ríiyon"</div></div>
+      <div class="cc-item"><div class="ci-col">Club de la Gente 🤝</div><div class="ci-eng">"We are a social organization in Fusagasugá, Colombia. We offer English, French, and digital skills training to empower our community."</div><div class="ci-pron">Tu organización en inglés</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Carlos invita a Sarah — Diálogo completo</div><div class="sec-badge bn">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">🎵 Fusagasugá · Sarah ha llegado a Colombia · Primer día</div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Sarah! Welcome to Fusagasugá! Would you like to join us for a vallenato concert tonight?</div><span class="b-pron">Sarah! Uélkom tu Fusagasugá! Uud iú láik tu yóin as for a váyenato kónsert tunáit?</span><div class="b-es">¡Sarah! ¡Bienvenida a Fusagasugá! ¿Te gustaría acompañarnos a un concierto de vallenato esta noche?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Yes, I'd love to! What is vallenato exactly?</div><span class="b-pron">Ies, áid lav tu! Uot is váyenato igzáektli?</span><div class="b-es">¡Sí, me encantaría! ¿Qué es exactamente el vallenato?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">It's a traditional music from Colombia's Caribbean coast. It uses an accordion, drums, and a scraper. It's UNESCO Intangible Heritage — absolutely unique in the world!</div><span class="b-pron">Its a tradíshonal miúsik from Colombias káeribian kóust. It iúses an ákordion, drems, end a skréiper. Its UNESCO — absólutli iuníik in de uorld!</span><div class="b-es">Es una música tradicional de la costa caribe de Colombia. Usa acordeón, tambores y guacharaca. Es Patrimonio Inmaterial UNESCO — ¡absolutamente único en el mundo!</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">That sounds amazing! Would you like to show me around the city before the concert?</div><span class="b-pron">Daet sáunds amézin! Uud iú láik tu shóu mii aráund de síti bifór de kónsert?</span><div class="b-es">¡Suena increíble! ¿Te gustaría mostrarme la ciudad antes del concierto?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">I'd love to! Would you like to start with the market? You can try Colombian food and see the local crafts.</div><span class="b-pron">Áid lav tu! Uud iú láik tu start uid de márket? Iú kaen trái Colombian fuud end síi de lóukal kraefts.</span><div class="b-es">¡Me encantaría! ¿Te gustaría empezar por el mercado? Puedes probar comida colombiana y ver las artesanías locales.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Count me in! And would you like some Colombian coffee first? I brought a portable coffee maker!</div><span class="b-pron">Káunt mii in! End uud iú láik sam Colombian kófi ferst? Ái brot a pórtabol kófi méiker!</span><div class="b-es">¡Cuenta conmigo! ¿Y te gustaría un café colombiano primero? ¡Traje una cafetera portátil!</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Ha! Yes, please — but I'll be honest: nothing beats coffee made right here in Colombia. Welcome home, Sarah!</div><span class="b-pron">Ja! Ies, pliis — bot áil bii ónest: názing biits kófi méid ráit jiir in Colombia. Uélkom jóum, Sarah!</span><div class="b-es">¡Ja! Sí, por favor — pero seré honesto: nada supera el café hecho aquí en Colombia. ¡Bienvenida a casa, Sarah!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">🎭 Mira el emoji → di la palabra en inglés → toca para confirmar.</div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — Cultura y Ocio</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · Would you like to? · Cultura colombiana</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">🎭</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🎭 Cultura y entretenimiento</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">🎭</div><div class="rep-en">Theater</div><div class="rep-pron">Zíeter</div><div class="rep-es">Teatro</div></div>
+      <div class="rep-c"><div class="rep-e">🎵</div><div class="rep-en">Concert</div><div class="rep-pron">Kónsert</div><div class="rep-es">Concierto</div></div>
+      <div class="rep-c"><div class="rep-e">🎨</div><div class="rep-en">Art gallery</div><div class="rep-pron">Art gáeleri</div><div class="rep-es">Galería arte</div></div>
+      <div class="rep-c"><div class="rep-e">🎪</div><div class="rep-en">Festival</div><div class="rep-pron">Féstival</div><div class="rep-es">Festival</div></div>
+      <div class="rep-c"><div class="rep-e">🌺</div><div class="rep-en">Folklore</div><div class="rep-pron">Fóuklor</div><div class="rep-es">Folclor</div></div>
+      <div class="rep-c"><div class="rep-e">🌿</div><div class="rep-en">Ecotourism</div><div class="rep-pron">Íikotúrizm</div><div class="rep-es">Ecoturismo</div></div>
+      <div class="rep-c"><div class="rep-e">🤝</div><div class="rep-en">Would you like?</div><div class="rep-pron">Uud iú láik?</div><div class="rep-es">¿Te gustaría?</div></div>
+      <div class="rep-c"><div class="rep-e">✅</div><div class="rep-en">I'd love to!</div><div class="rep-pron">Áid lav tu!</div><div class="rep-es">¡Me encantaría!</div></div>
+      <div class="rep-c"><div class="rep-e">❌</div><div class="rep-en">Maybe next time</div><div class="rep-pron">Méibi nekst táim</div><div class="rep-es">Quizás la próxima</div></div>
+      <div class="rep-c"><div class="rep-e">🎵</div><div class="rep-en">Vallenato</div><div class="rep-pron">Váyenato</div><div class="rep-es">Vallenato</div></div>
+      <div class="rep-c"><div class="rep-e">🎊</div><div class="rep-en">Carnival</div><div class="rep-pron">Kárnivoal</div><div class="rep-es">Carnaval</div></div>
+      <div class="rep-c"><div class="rep-e">☕</div><div class="rep-en">Coffee Region</div><div class="rep-pron">Kófi Ríiyon</div><div class="rep-es">Eje Cafetero</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🎭</div>
+    <h3>Reto del maestro — El último antes del repaso</h3>
+    <p>Invita a un compañero/a a una actividad cultural usando "Would you like to…?" Practica aceptar y declinar cortésmente. Luego descríbele tu cultura colombiana en inglés.</p>
+    <div class="tip-pasos"><div class="tip-paso">🤝 Would you like to…?</div><div class="tip-paso">✅ I'd love to!</div><div class="tip-paso">❌ Maybe next time.</div><div class="tip-paso">🇨🇴 Colombia is…</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 18 de 19 · Cultura y Ocio · B1 · ¡Casi terminamos!</div>
+<script>
+const fd=[
+  {e:'🎭',en:'Theater / Play',es:'Teatro / Obra',pron:'Zíeter / Pléi',ctx:"Would you like to go to the theater?"},
+  {e:'🎵',en:'Concert',es:'Concierto',pron:'Kónsert',ctx:'Live music concert tonight.'},
+  {e:'🎪',en:'Festival',es:'Festival / Feria',pron:'Féstival',ctx:'Barranquilla Carnival!'},
+  {e:'🌺',en:'Folklore',es:'Folclor tradicional',pron:'Fóuklor',ctx:'Colombian folklore is rich.'},
+  {e:'🌿',en:'Ecotourism',es:'Ecoturismo',pron:'Íikotúrizm',ctx:'Colombia has great ecotourism.'},
+  {e:'🤝',en:'Would you like to…?',es:'¿Te gustaría…?',pron:'Uud iú láik tu?',ctx:'Formal invitation'},
+  {e:'✅',en:"I'd love to!",es:'¡Me encantaría!',pron:'Áid lav tu!',ctx:'Accepting an invitation'},
+  {e:'❌',en:'Maybe next time!',es:'¡Quizás la próxima!',pron:'Méibi nekst táim!',ctx:'Polite decline'},
+  {e:'🎵',en:'Vallenato',es:'Vallenato (UNESCO)',pron:'Váyenato',ctx:'Colombian music heritage'},
+  {e:'🎊',en:'Carnival',es:'Carnaval',pron:'Kárnivoal',ctx:'Barranquilla Carnival = UNESCO'},
+  {e:'☕',en:'Coffee Region',es:'Eje Cafetero',pron:'Kófi Ríiyon',ctx:'World-famous coffee'},
+  {e:'🏅',en:'UNESCO Heritage',es:'Patrimonio UNESCO',pron:'UNESCO Júeritage',ctx:'Colombia has 9 UNESCO sites'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'WOULD ★',i:'🤝',q:'"Would you like to go to the concert?" — ¿Qué significa?',ctx:'Carlos invita a Sarah',ops:['¿Fuiste al concierto?','¿Te gustaría ir al concierto?','¿Puedes ir al concierto?','¿Cuándo es el concierto?'],r:1,ex:"✅ Would you like to…? = ¿Te gustaría…? Es más formal que 'Do you want to?' Perfecto para invitar con cortesía a socios, cooperantes o amigos."},
+  {t:'VOCABULARIO',i:'🌺',q:'"Folklore" en el contexto colombiano se refiere a:',ctx:'La riqueza cultural de Colombia',ops:['Música electrónica moderna','Tradiciones culturales y música típica regional','Deportes electrónicos','Comida rápida colombiana'],r:1,ex:'✅ Folklore = Folclor. Tradiciones culturales, música típica, danzas regionales. Colombian folklore includes vallenato, cumbia, bambuco, and many regional traditions.'},
+  {t:'WOULD ★',i:'✅',q:'Carlos invita a Sarah y ella acepta con entusiasmo. ¿Qué dice?',ctx:'Respuesta positiva a una invitación',ops:["Yes, I do!","Yes, I'd love to!","Yes, I would like!","Yes, I will!"],r:1,ex:"✅ Yes, I'd love to! Es la respuesta más natural y entusiasta. I'd = I would. I'd love to = Me encantaría. That sounds great! y Count me in! también son correctas."},
+  {t:'VOCABULARIO',i:'🎵',q:'El vallenato es:',ctx:'Patrimonio cultural de Colombia',ops:['Un baile moderno de Medellín','Música tradicional de la costa caribe, Patrimonio UNESCO','Un festival de cine en Bogotá','Un plato típico de Cundinamarca'],r:1,ex:'✅ Vallenato = Música tradicional de la costa caribe colombiana. Usa acordeón, caja (drum), y guacharaca (scraper). Declarado Patrimonio Inmaterial UNESCO en 2015.'},
+  {t:'WOULD ★',i:'❌',q:'Carlos declina educadamente una invitación. ¿Cuál es la más apropiada?',ctx:'Declinar con educación y cortesía',ops:["No! I don't want to go.","I'd love to, but I have other plans. Maybe next time!","I can't. I'm busy.","Not interested, sorry."],r:1,ex:"✅ I'd love to, but I have other plans. Maybe next time! Es la forma más cortés y natural de declinar. Siempre empieza con algo positivo (I'd love to) antes de dar la razón."},
+  {t:'VOCABULARIO',i:'🎪',q:'El Carnaval de Barranquilla es:',ctx:'Uno de los eventos más importantes de Colombia',ops:['El carnaval más grande del mundo','El segundo carnaval más grande del mundo, después de Río','Un festival de música en Medellín','Una feria de artesanías en Bogotá'],r:1,ex:'✅ El Carnaval de Barranquilla es el segundo más grande del mundo después de Río de Janeiro. Es Patrimonio Oral e Inmaterial de la UNESCO. Se celebra en febrero.'},
+  {t:'WOULD ★',i:'☕',q:'"Would you like some Colombian coffee?" — ¿Cómo se acepta?',ctx:'Carlos ofrece café a los cooperantes internacionales',ops:["Yes, I would like!","Yes, please! I'd love some.","Yes, I want!","Yes, I can!"],r:1,ex:"✅ Yes, please! I'd love some. Para ofertas con Would you like some…? (sustantivo): Yes, please o I'd love some. No se dice 'Yes, I would like' sin 'to' o complemento."},
+  {t:'VOCABULARIO',i:'🌿',q:'"Ecotourism" en Colombia se refiere a:',ctx:'Una de las grandes fortalezas turísticas de Colombia',ops:['Turismo en centros comerciales','Turismo en naturaleza de manera sostenible','Turismo de aventura extrema','Turismo urbano en Bogotá'],r:1,ex:'✅ Ecotourism = Ecoturismo. Turismo en la naturaleza de forma sostenible y responsable. Colombia es megabiodiverso — tiene el 10% de las especies del planeta. Perfect for ecotourism!'},
+  {t:'WOULD ★',i:'🗣️',q:'Carlos quiere decir: "Me gustaría visitar el Museo del Oro." ¿Cómo lo dice?',ctx:'Expresar deseo propio con Would',ops:["I would like visit the Gold Museum.","I'd like to visit the Gold Museum.","I would to like visit the Gold Museum.","I'd like visiting the Gold Museum."],r:1,ex:"✅ I'd like to visit the Gold Museum. I'd like TO + infinitivo. I'd = I would. Like to = gustaría hacer. El Gold Museum (Museo del Oro) en Bogotá tiene la mayor colección de oro precolombino del mundo."},
+  {t:'PRODUCCIÓN ★',i:'🇨🇴',q:'Un cooperante te pregunta sobre el Club de la Gente. ¿Cómo lo describes en inglés?',ctx:'Presentar tu organización al mundo',ops:["Club de la Gente is a group for people.","We are a social organization in Fusagasugá offering English, French, and digital skills training.","Club de la Gente is from Colombia and makes classes.","We are an organization that teaches."],r:1,ex:"✅ We are a social organization in Fusagasugá offering English, French, and digital skills training. Claro, completo y profesional. Incluye: qué somos + dónde + qué ofrecemos."},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Brillante! Ya estás listo para el Gran Repaso Final — Cartilla 19 🚀🎓':'Repasa Would you like to, las respuestas y el vocabulario cultural.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 18 completada ✓ — ¡Una más!';}
+}
+qLoad();
+</script>
+</body>
+</html>

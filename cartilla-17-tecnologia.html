@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 17 — Tecnología</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--morado:#7C3AED;--cyan:#06B6D4;--verde:#10B981;--rojo:#EF4444;--gris:#0F172A;--crema:#F8F7FF;--borde:#DDD6FE;--suave:#EDE9FE;--sombra:rgba(124,58,237,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--crema);color:var(--gris);}
+.hero{background:linear-gradient(135deg,#1E1B4B,#312E81);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'💻📱🤖🌐⚡🔋📡';position:absolute;bottom:-10px;font-size:3.5rem;opacity:0.07;white-space:nowrap;left:0;right:0;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--cyan);color:var(--gris);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:700;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--cyan);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--morado),#6D28D9);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--cyan);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--gris);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:700;color:var(--borde);}
+.sec-title{font-size:1.15rem;font-weight:700;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--morado);color:white;}.bg{background:var(--gris);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--cyan);color:var(--gris);}
+.hint{background:var(--suave);border-left:4px solid var(--morado);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#1E1B4B;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.tech-card{background:white;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--morado);transition:transform 0.2s;}
+.tech-card:hover{transform:translateY(-3px);}
+.tc-emoji{font-size:2rem;margin-bottom:5px;}
+.tc-en{font-size:0.9rem;font-weight:700;color:var(--gris);}
+.tc-pron{font-size:0.64rem;font-weight:700;color:var(--morado);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.tc-es{font-size:0.7rem;color:#6B7280;}
+.tc-ej{font-size:0.66rem;color:#9CA3AF;font-style:italic;margin-top:2px;}
+
+.can-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.cb-title{font-size:1rem;font-weight:700;color:var(--cyan);margin-bottom:4px;}
+.cb-sub{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:14px;}
+.can-tabla{width:100%;border-collapse:collapse;}
+.can-tabla th{background:rgba(255,255,255,0.08);padding:7px 10px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);text-align:left;}
+.can-tabla td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:white;}
+.can-tabla td em{color:var(--cyan);font-style:normal;}
+.can-tabla tr:last-child td{border-bottom:none;}
+.can-usos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.cu-card{background:rgba(255,255,255,0.06);border-radius:10px;padding:12px 14px;}
+.cu-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+.cu-item{font-size:0.8rem;color:white;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.cu-item:last-child{border-bottom:none;}
+.cu-item em{color:rgba(255,255,255,0.4);font-style:normal;font-size:0.72rem;}
+
+.frases-tech{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.ft-card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--morado);}
+.ft-card:nth-child(even){border-color:var(--cyan);}
+.ftc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:5px;}
+.ftc-en{font-size:0.88rem;font-weight:700;color:var(--gris);margin-bottom:3px;}
+.ftc-pron{font-size:0.66rem;color:var(--morado);font-weight:700;display:block;margin-bottom:2px;}
+.ftc-es{font-size:0.74rem;color:#6B7280;}
+
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--morado),#6D28D9);}
+.av.s{background:linear-gradient(135deg,var(--cyan),#0891B2);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--gris);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--gris);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--morado);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--gris);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--cyan);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.85rem;font-weight:700;color:var(--gris);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--gris);transform:rotateY(180deg);}
+.fb-es{color:var(--cyan);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#C4B5FD;font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--morado);color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:700;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--morado),var(--cyan));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'IBM Plex Sans',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(16,185,129,0.2);border-color:var(--verde);color:#6EE7B7;}
+.q-btn.mal{background:rgba(239,68,68,0.2);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--cyan);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--morado);color:white;border:none;padding:11px 28px;border-radius:8px;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:700;color:var(--gris);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--morado);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:700;color:var(--gris);}
+.rep-pron{font-size:0.6rem;color:var(--morado);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--morado);text-align:center;}
+.tip h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--gris);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--cyan);}
+@media(max-width:520px){.can-usos{grid-template-columns:1fr;}.frases-tech{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 17 de 19 · Tecnología + CAN / CAN'T</div>
+  <h1>Tecnología<br><em>Technology</em></h1>
+  <p class="hero-sub">Cartilla 17 · Nivel A2→B1 · Vocabulario tech · Can/Can't · Habilidades digitales · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">💻 Vocabulario tecnológico</span><span class="hp">✅ Can / Can't</span>
+    <span class="hp">🤖 IA y mundo digital</span><span class="hp">📱 Frases digitales</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Club de la Gente quiere implementar herramientas digitales. Carlos necesita explicarle a los socios internacionales qué puede hacer con tecnología. <strong>Hoy aprendes CAN y vocabulario digital.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Vocabulario tecnológico — Tech vocabulary</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>El inglés es el idioma de la tecnología:</strong> El 90% de los términos tecnológicos vienen del inglés. Muchos ya los usas en español — solo aprende a pronunciarlos bien.</div>
+  <div class="tech-grid">
+    <div class="tech-card"><div class="tc-emoji">💻</div><div class="tc-en">Laptop</div><div class="tc-pron">Láeptop</div><div class="tc-es">Computador portátil</div><div class="tc-ej">My laptop is new.</div></div>
+    <div class="tech-card"><div class="tc-emoji">📱</div><div class="tc-en">Smartphone</div><div class="tc-pron">Smártfoun</div><div class="tc-es">Celular inteligente</div><div class="tc-ej">I use my smartphone daily.</div></div>
+    <div class="tech-card"><div class="tc-emoji">🌐</div><div class="tc-en">Internet / WiFi</div><div class="tc-pron">Ínternet / Uáifái</div><div class="tc-es">Internet / WiFi</div><div class="tc-ej">Is there WiFi here?</div></div>
+    <div class="tech-card"><div class="tc-emoji">☁️</div><div class="tc-en">Cloud storage</div><div class="tc-pron">Kláud stórich</div><div class="tc-es">Almacenamiento en nube</div></div>
+    <div class="tech-card"><div class="tc-emoji">🤖</div><div class="tc-en">Artificial Intelligence</div><div class="tc-pron">Artifisal Intelyens</div><div class="tc-es">Inteligencia Artificial</div></div>
+    <div class="tech-card"><div class="tc-emoji">📧</div><div class="tc-en">Email</div><div class="tc-pron">Íimeil</div><div class="tc-es">Correo electrónico</div><div class="tc-ej">Send me an email.</div></div>
+    <div class="tech-card"><div class="tc-emoji">🔐</div><div class="tc-en">Password</div><div class="tc-pron">Páesuord</div><div class="tc-es">Contraseña</div><div class="tc-ej">Use a strong password.</div></div>
+    <div class="tech-card"><div class="tc-emoji">📲</div><div class="tc-en">App / Application</div><div class="tc-pron">Aep / Apliképshon</div><div class="tc-es">Aplicación</div><div class="tc-ej">Download the app.</div></div>
+    <div class="tech-card"><div class="tc-emoji">🖥️</div><div class="tc-en">Screen / Monitor</div><div class="tc-pron">Skriin / Mónitor</div><div class="tc-es">Pantalla / Monitor</div></div>
+    <div class="tech-card"><div class="tc-emoji">🔋</div><div class="tc-en">Battery / Charger</div><div class="tc-pron">Báeteri / Cháryer</div><div class="tc-es">Batería / Cargador</div></div>
+    <div class="tech-card"><div class="tc-emoji">📡</div><div class="tc-en">Signal / Connection</div><div class="tc-pron">Sígnol / Konékshon</div><div class="tc-es">Señal / Conexión</div></div>
+    <div class="tech-card"><div class="tc-emoji">🖨️</div><div class="tc-en">Printer</div><div class="tc-pron">Prínter</div><div class="tc-es">Impresora</div><div class="tc-ej">The printer is broken.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">CAN / CAN'T — Habilidades y posibilidades</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> CAN expresa habilidad (puedo/sé hacer algo) o posibilidad (es posible). CAN es igual para todos los pronombres — no cambia. CAN'T = cannot = no puedo/no sé.</div>
+  <div class="can-box">
+    <div class="cb-title">⚡ CAN / CAN'T — La fórmula</div>
+    <div class="cb-sub">CAN + verbo infinitivo (sin TO). No cambia con He/She/It — siempre CAN.</div>
+    <table class="can-tabla">
+      <thead><tr><th>Tipo</th><th>Estructura</th><th>Ejemplo digital</th></tr></thead>
+      <tbody>
+        <tr><td>Habilidad (+)</td><td>I/She/He <em>can</em> + verbo</td><td>I <em>can</em> code in Python.</td></tr>
+        <tr><td>Negativo</td><td>I/She/He <em>can't</em> + verbo</td><td>She <em>can't</em> access the WiFi.</td></tr>
+        <tr><td>Pregunta</td><td><em>Can</em> + sujeto + verbo?</td><td><em>Can</em> you fix this error?</td></tr>
+        <tr><td>Permiso</td><td><em>Can I</em> + verbo? (pedir permiso)</td><td><em>Can I</em> use your laptop?</td></tr>
+        <tr><td>Ofrecimiento</td><td><em>Can I</em> help you with…?</td><td><em>Can I</em> help you install the app?</td></tr>
+      </tbody>
+    </table>
+    <div class="can-usos">
+      <div class="cu-card">
+        <div class="cu-title">✅ Habilidades digitales — CAN</div>
+        <div class="cu-item">I <em>can</em> use Excel and Word.</div>
+        <div class="cu-item">She <em>can</em> design websites.</div>
+        <div class="cu-item">He <em>can</em> edit videos.</div>
+        <div class="cu-item">They <em>can</em> manage social media.</div>
+      </div>
+      <div class="cu-card">
+        <div class="cu-title">❌ Problemas técnicos — CAN'T</div>
+        <div class="cu-item">I <em>can't</em> connect to the WiFi.</div>
+        <div class="cu-item">She <em>can't</em> open the file.</div>
+        <div class="cu-item">He <em>can't</em> join the video call.</div>
+        <div class="cu-item">The app <em>can't</em> be downloaded.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Frases tecnológicas esenciales</div><div class="sec-badge bn">Frases clave</div></div>
+  <div class="frases-tech">
+    <div class="ft-card"><div class="ftc-ctx">🌐 WiFi</div><div class="ftc-en">What's the WiFi password?</div><span class="ftc-pron">Uots de uáifái páesuord?</span><div class="ftc-es">¿Cuál es la contraseña del WiFi?</div></div>
+    <div class="ft-card"><div class="ftc-ctx">🔋 Batería</div><div class="ftc-en">My phone is dead. Can I charge it?</div><span class="ftc-pron">Mái foun is ded. Kaen ái charsh it?</span><div class="ftc-es">Mi celular está muerto. ¿Lo puedo cargar?</div></div>
+    <div class="ft-card"><div class="ftc-ctx">📞 Videollamada</div><div class="ftc-en">Can you hear me? The connection is bad.</div><span class="ftc-pron">Kaen iú jiir mii? De konékshon is baed.</span><div class="ftc-es">¿Me escuchas? La conexión está mala.</div></div>
+    <div class="ft-card"><div class="ftc-ctx">💻 Problema</div><div class="ftc-en">My computer crashed. I lost everything.</div><span class="ftc-pron">Mái kompíuder kraesht. Ái lost évrizhing.</span><div class="ftc-es">Mi computador se dañó. Perdí todo.</div></div>
+    <div class="ft-card"><div class="ftc-ctx">📲 App</div><div class="ftc-en">Can you download this app and test it?</div><span class="ftc-pron">Kaen iú dáunloud dis aep end test it?</span><div class="ftc-es">¿Puedes descargar esta app y probarla?</div></div>
+    <div class="ft-card"><div class="ftc-ctx">📧 Email</div><div class="ftc-en">I'll send you the document by email.</div><span class="ftc-pron">Áil send iú de dókiument bái íimeil.</span><div class="ftc-es">Te enviaré el documento por correo.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Carlos en reunión virtual — Diálogo</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">💻 Videollamada · Club de la Gente · GIZ Partnership Meeting</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">GIZ Partner 🇩🇪</div><div class="burbuja"><div class="b-en">Carlos, can you hear me? Your connection seems unstable.</div><span class="b-pron">Carlos, kaen iú jiir mii? Ior konékshon siims anstéibol.</span><div class="b-es">Carlos, ¿me escuchas? Tu conexión parece inestable.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes, I can hear you now! Sorry — the WiFi was down. Can I share my screen?</div><span class="b-pron">Ies, ái kaen jiir iú náu! Sórri — de uáifái uos dáun. Kaen ái shéir mái skriin?</span><div class="b-es">¡Sí, ahora te escucho! Disculpa — el WiFi se cayó. ¿Puedo compartir mi pantalla?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">GIZ Partner 🇩🇪</div><div class="burbuja"><div class="b-en">Of course! Can you also send us the presentation by email after the call?</div><span class="b-pron">Of kors! Kaen iú ólso send as de presentéishon bái íimeil áfter de kol?</span><div class="b-es">¡Por supuesto! ¿También nos puedes enviar la presentación por correo después de la llamada?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Absolutely! I can send the PDF and the Excel report. Can I ask — can you access our Google Drive folder?</div><span class="b-pron">Absolutli! Ái kaen send de PDF end de Excel ripórt. Kaen ái áesk — kaen iú áekses áuer Guugol Dráiv fóulder?</span><div class="b-es">¡Por supuesto! Puedo enviar el PDF y el informe de Excel. ¿Puedo preguntar — pueden acceder a nuestra carpeta de Google Drive?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">GIZ Partner 🇩🇪</div><div class="burbuja"><div class="b-en">Yes, we can! Your team can also use our project management platform — I'll send you the link.</div><span class="b-pron">Ies, uii kaen! Ior tiim kaen ólso iuus áuer próyekt maéniiment plátform — áil send iú de link.</span><div class="b-es">¡Sí, podemos! Su equipo también puede usar nuestra plataforma de gestión de proyectos — le envío el enlace.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">💻 Mira el emoji → di el término en inglés → toca para confirmar.</div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — Tecnología</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario tech · CAN/CAN'T · Situaciones digitales</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">💻</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">💻 Vocabulario tecnológico</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">💻</div><div class="rep-en">Laptop</div><div class="rep-pron">Láeptop</div><div class="rep-es">Computador</div></div>
+      <div class="rep-c"><div class="rep-e">📱</div><div class="rep-en">Smartphone</div><div class="rep-pron">Smártfoun</div><div class="rep-es">Celular</div></div>
+      <div class="rep-c"><div class="rep-e">🌐</div><div class="rep-en">WiFi</div><div class="rep-pron">Uáifái</div><div class="rep-es">WiFi</div></div>
+      <div class="rep-c"><div class="rep-e">📧</div><div class="rep-en">Email</div><div class="rep-pron">Íimeil</div><div class="rep-es">Correo electrónico</div></div>
+      <div class="rep-c"><div class="rep-e">🔐</div><div class="rep-en">Password</div><div class="rep-pron">Páesuord</div><div class="rep-es">Contraseña</div></div>
+      <div class="rep-c"><div class="rep-e">📲</div><div class="rep-en">App</div><div class="rep-pron">Aep</div><div class="rep-es">Aplicación</div></div>
+      <div class="rep-c"><div class="rep-e">🤖</div><div class="rep-en">AI</div><div class="rep-pron">Ei-Ái</div><div class="rep-es">Inteligencia Artificial</div></div>
+      <div class="rep-c"><div class="rep-e">☁️</div><div class="rep-en">Cloud</div><div class="rep-pron">Kláud</div><div class="rep-es">Nube digital</div></div>
+      <div class="rep-c"><div class="rep-e">✅</div><div class="rep-en">Can</div><div class="rep-pron">Kaen</div><div class="rep-es">Puedo / sé</div></div>
+      <div class="rep-c"><div class="rep-e">❌</div><div class="rep-en">Can't</div><div class="rep-pron">Kaent</div><div class="rep-es">No puedo / no sé</div></div>
+      <div class="rep-c"><div class="rep-e">🔋</div><div class="rep-en">Battery</div><div class="rep-pron">Báeteri</div><div class="rep-es">Batería</div></div>
+      <div class="rep-c"><div class="rep-e">📡</div><div class="rep-en">Signal</div><div class="rep-pron">Sígnol</div><div class="rep-es">Señal</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">💻</div>
+    <h3>Reto del maestro</h3>
+    <p>Escribe 5 habilidades digitales que tienes usando CAN, y 3 cosas que no sabes hacer usando CAN'T. Usa vocabulario de esta cartilla.</p>
+    <div class="tip-pasos"><div class="tip-paso">✅ I can use…</div><div class="tip-paso">✅ I can design…</div><div class="tip-paso">❌ I can't code…</div><div class="tip-paso">❓ Can you help me?</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 17 de 19 · Tecnología · A2→B1</div>
+<script>
+const fd=[
+  {e:'💻',en:'Laptop',es:'Computador portátil',pron:'Láeptop',ctx:'My laptop is new.'},
+  {e:'🌐',en:'WiFi / Internet',es:'WiFi / Internet',pron:'Uáifái / Ínternet',ctx:"What's the WiFi password?"},
+  {e:'🔐',en:'Password',es:'Contraseña',pron:'Páesuord',ctx:'Use a strong password.'},
+  {e:'📲',en:'App',es:'Aplicación',pron:'Aep',ctx:'Download the app.'},
+  {e:'🤖',en:'AI (Artificial Intelligence)',es:'Inteligencia Artificial',pron:'Ei-Ái',ctx:'AI is changing the world.'},
+  {e:'☁️',en:'Cloud storage',es:'Almacenamiento en nube',pron:'Kláud stórich',ctx:'Save it to the cloud.'},
+  {e:'✅',en:'I can…',es:'Puedo / Sé hacer…',pron:'Ái kaen',ctx:'I can edit videos.'},
+  {e:'❌',en:"I can't…",es:'No puedo / No sé…',pron:'Ái kaent',ctx:"I can't fix the error."},
+  {e:'🔋',en:'Battery / Charger',es:'Batería / Cargador',pron:'Báeteri / Cháryer',ctx:'My phone is dead!'},
+  {e:'📧',en:'Email',es:'Correo electrónico',pron:'Íimeil',ctx:"I'll send you an email."},
+  {e:'📡',en:'Signal / Connection',es:'Señal / Conexión',pron:'Sígnol / Konékshon',ctx:'Bad connection today.'},
+  {e:'🖥️',en:'Screen / Monitor',es:'Pantalla / Monitor',pron:'Skriin / Mónitor',ctx:'Share your screen.'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'CAN ★',i:'✅',q:'"She ___ use Excel very well." ¿Qué va?',ctx:'Describir habilidad digital de una compañera',ops:['cans','is can','can','could'],r:2,ex:'✅ She CAN use Excel. CAN es igual para todos: I can, you can, he can, she can, we can, they can. NUNCA "she cans" — CAN no toma S.'},
+  {t:'VOCABULARIO',i:'🔐',q:'"Password" en español es:',ctx:'La primera barrera de seguridad digital',ops:['Número de teléfono','Contraseña','Nombre de usuario','Código QR'],r:1,ex:'✅ Password = Contraseña. Use a strong password = Usa una contraseña fuerte. Passphrase = frase de contraseña. PIN = PIN/código.'},
+  {t:'CAN ★',i:'❓',q:'"___ you hear me?" — Carlos en la videollamada',ctx:'Verificar la conexión al inicio de una llamada',ops:['Do','Are','Can','Have'],r:2,ex:'✅ CAN you hear me? Para preguntas con CAN: CAN + sujeto + verbo. Can you hear me? = ¿Me escuchas? Can you see my screen? = ¿Ves mi pantalla?'},
+  {t:'VOCABULARIO',i:'☁️',q:'"Cloud storage" en tecnología significa:',ctx:'Carlos guarda documentos de Club de la Gente',ops:['Un servidor físico','Almacenamiento en la nube (internet)','Una memoria USB','Un disco duro externo'],r:1,ex:'✅ Cloud storage = Almacenamiento en la nube. Cloud = nube (en internet). Google Drive, Dropbox, OneDrive son servicios de cloud storage.'},
+  {t:'CAN ★',i:'❌',q:'"No puedo abrir el archivo." ¿Cómo lo dices?',ctx:'Problema técnico durante la reunión',ops:["I not can open the file.","I can't open the file.","I cannot to open the file.","Can't I open the file."],r:1,ex:"✅ I can't open the file. CAN'T + verbo infinitivo. Cannot = can not (formal). Can't = contracción informal. I can't connect, I can't download, I can't access."},
+  {t:'VOCABULARIO',i:'🤖',q:'"AI" significa:',ctx:'La tecnología más importante del siglo XXI',ops:['Advanced Internet','Artificial Intelligence (Inteligencia Artificial)','Automatic Installation','App Interface'],r:1,ex:'✅ AI = Artificial Intelligence = Inteligencia Artificial. Machine Learning (ML), Natural Language Processing (NLP) son subáreas de AI. ChatGPT es un ejemplo de AI.'},
+  {t:'CAN ★',i:'💻',q:'Carlos ofrece ayuda: "¿Puedo ayudarte a instalar la app?"',ctx:'Ofrecimiento con CAN',ops:["Can I help you install the app?","I can help you to install the app?","Can I to help you install the app?","Do I can help you install?"],r:0,ex:'✅ Can I help you install the app? CAN I + verbo = ofrecimiento de ayuda. Install = instalar. Sin TO después de CAN: can help (no "can to help").'},
+  {t:'VOCABULARIO',i:'🔋',q:'"My phone is dead" significa:',ctx:'Carlos necesita cargar su celular urgente',ops:['Mi celular está roto.','Mi celular no tiene batería.','Mi celular es muy viejo.','Mi celular perdió la señal.'],r:1,ex:"✅ My phone is dead = Mi celular no tiene batería (está muerto). Dead = sin batería. Low battery = batería baja. Charging = cargando. It's at 5% = Está al 5%."},
+  {t:'CAN ★',i:'🌐',q:'¿Cuál oración con CAN es INCORRECTA?',ctx:'Identificar el error gramatical',ops:['I can design websites.','She can use Photoshop.','He cans code in Python.','They can manage social media.'],r:2,ex:'✅ "He cans code" es INCORRECTO. CAN nunca lleva S. ✗ He cans → ✓ He can. CAN = modal verb — es igual para todos los pronombres, sin excepción.'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'Carlos dice al socio de GIZ: "Puedo enviar el informe en PDF por correo hoy." ¿Cómo lo dice?',ctx:'Reunión virtual con cooperante internacional',ops:["I can send the report PDF by email today.","I can to send the PDF report by email today.","I cans send the PDF report by email today.","Today I sending the PDF report by email."],r:0,ex:"✅ I can send the report PDF by email today. CAN + infinitivo sin TO. By email = por correo. Today = hoy. Perfect professional sentence!"},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 18 🚀':'Repasa CAN/CAN\'T y el vocabulario tecnológico.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 17 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

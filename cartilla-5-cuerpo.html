@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 5 — El Cuerpo Humano en Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rojo:     #E63946;
+  --azul:     #1D3557;
+  --celeste:  #457B9D;
+  --crema:    #F8F4EF;
+  --carta:    #FFFFFF;
+  --suave:    #EFF6F8;
+  --borde:    #D6E4EA;
+  --texto:    #1A1A2E;
+  --gris:     #8A9BAD;
+  --verde:    #2D9E6B;
+  --amarillo: #F4A261;
+  --sombra:   rgba(29,53,87,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--crema);color:var(--texto);overflow-x:hidden;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--azul);
+  padding:46px 20px 52px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(69,123,157,0.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(69,123,157,0.12) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.hero-cross{
+  position:absolute;top:20px;right:24px;
+  font-size:3rem;color:rgba(230,57,70,0.25);line-height:1;
+  font-family:'Libre Baskerville',serif;font-weight:700;
+}
+.hero-tag{display:inline-block;border:1.5px solid rgba(230,57,70,0.6);
+  color:rgba(230,57,70,0.9);font-size:10px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,8vw,4.5rem);
+  font-weight:700;color:white;line-height:1.05;position:relative;z-index:1;}
+.hero h1 em{color:var(--rojo);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.65);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.hero-aviso{
+  margin:16px auto 0;max-width:500px;
+  background:rgba(230,57,70,0.12);border:1px solid rgba(230,57,70,0.35);
+  border-radius:6px;padding:10px 16px;color:rgba(255,255,255,0.75);
+  font-size:0.82rem;font-weight:500;position:relative;z-index:1;line-height:1.5;
+}
+.hero-aviso strong{color:#FF8A8A;}
+
+/* ── STORY ── */
+.story{background:linear-gradient(90deg,var(--rojo),#C62A35);padding:15px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:#FFD6A5;}
+
+/* ── WRAP ── */
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+
+/* ── SECCIÓN ── */
+.sec{padding:32px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;
+  border-bottom:2px solid var(--azul);padding-bottom:8px;}
+.sec-n{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--borde);}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--azul);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--celeste);color:white;}.bg{background:var(--azul);color:white;}
+.bp{background:var(--rojo);color:white;}.bu{background:var(--verde);color:white;}
+.hint{background:var(--suave);border-left:3px solid var(--celeste);
+  border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#445;
+  font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--azul);}
+.hint .warn{color:var(--rojo);font-weight:700;}
+.hint .good{color:var(--verde);font-weight:700;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+/* ── FIGURA INTERACTIVA ── */
+.figura-wrap{
+  background:var(--carta);border-radius:16px;
+  box-shadow:0 4px 24px var(--sombra);border:1.5px solid var(--borde);
+  padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.figura-instruccion{
+  background:var(--azul);color:white;border-radius:8px;
+  padding:8px 18px;font-size:0.8rem;font-weight:600;text-align:center;
+}
+.figura-instruccion span{color:var(--amarillo);}
+.figura-container{position:relative;width:220px;height:440px;margin:0 auto;}
+/* SVG body silueta */
+.body-svg{width:220px;height:440px;}
+/* Puntos clicables */
+.punto{
+  position:absolute;width:22px;height:22px;border-radius:50%;
+  background:var(--rojo);border:2.5px solid white;
+  box-shadow:0 2px 8px rgba(230,57,70,0.5);
+  cursor:pointer;transform:translate(-50%,-50%);
+  transition:transform 0.2s,box-shadow 0.2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.punto:hover,.punto.activo{transform:translate(-50%,-50%) scale(1.35);box-shadow:0 4px 14px rgba(230,57,70,0.7);}
+.punto.activo{background:var(--azul);}
+.punto-label{
+  position:absolute;font-size:0.6rem;font-weight:700;
+  color:var(--azul);white-space:nowrap;pointer-events:none;
+}
+/* Panel info */
+.figura-info{
+  width:100%;background:var(--suave);border-radius:12px;
+  padding:16px 18px;border:1.5px solid var(--borde);
+  min-height:90px;text-align:center;
+}
+.fi-placeholder{color:var(--gris);font-size:0.85rem;font-weight:500;padding-top:10px;}
+.fi-en{font-family:'Libre Baskerville',serif;font-size:1.6rem;font-weight:700;color:var(--azul);}
+.fi-pron{display:inline-block;font-size:0.78rem;font-weight:700;color:var(--rojo);
+  background:white;border:1.5px solid var(--borde);border-radius:6px;
+  padding:3px 10px;margin:6px 0;}
+.fi-es{font-size:0.85rem;color:var(--gris);font-weight:500;}
+.fi-frase{font-size:0.8rem;color:var(--verde);font-weight:600;margin-top:6px;
+  background:rgba(45,158,107,0.08);border-radius:6px;padding:4px 10px;}
+
+/* ── CHUNKS ANATÓMICOS ── */
+.chunks-anat{display:flex;flex-direction:column;gap:12px;}
+.chunk-anat{background:var(--carta);border-radius:14px;overflow:hidden;
+  box-shadow:0 2px 12px var(--sombra);}
+.ca-head{padding:11px 16px;display:flex;align-items:center;gap:10px;}
+.ca-head .ca-icon{font-size:1.3rem;}
+.ca-head .ca-title{font-family:'Libre Baskerville',serif;font-size:0.95rem;font-weight:700;color:white;flex:1;}
+.ca-head .ca-badge{font-size:0.62rem;font-weight:700;background:rgba(255,255,255,0.2);
+  color:white;padding:2px 8px;border-radius:10px;}
+.ca-cabeza{background:linear-gradient(90deg,#E63946,#C62A35);}
+.ca-torso{background:linear-gradient(90deg,#1D3557,#2E5080);}
+.ca-brazos{background:linear-gradient(90deg,#457B9D,#2E6280);}
+.ca-piernas{background:linear-gradient(90deg,#2D9E6B,#1E7050);}
+.ca-body{padding:12px 16px;}
+.parte-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--suave);}
+.parte-row:last-child{border-bottom:none;}
+.pr-e{font-size:1.3rem;width:26px;text-align:center;flex-shrink:0;}
+.pr-en{font-family:'Libre Baskerville',serif;font-size:0.95rem;font-weight:700;color:var(--texto);min-width:100px;}
+.pr-pron{font-size:0.68rem;font-weight:700;color:var(--rojo);background:#FEF2F3;
+  border-radius:4px;padding:2px 6px;display:inline-block;white-space:nowrap;}
+.pr-es{font-size:0.76rem;color:var(--gris);flex:1;}
+.pr-truco{font-size:0.68rem;color:#bbb;font-style:italic;line-height:1.3;text-align:right;max-width:150px;}
+
+/* ── PRONUNCIACIÓN CRÍTICA ── */
+.pron-critica{width:100%;border-collapse:collapse;background:var(--carta);
+  border-radius:12px;overflow:hidden;box-shadow:0 2px 12px var(--sombra);}
+.pron-critica th{background:var(--azul);color:white;padding:10px 12px;
+  font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:left;}
+.pron-critica td{padding:10px 12px;border-bottom:1px solid var(--suave);font-size:0.86rem;vertical-align:middle;}
+.pron-critica tr:last-child td{border-bottom:none;}
+.pron-critica tr:hover td{background:var(--suave);}
+.pc-part{font-family:'Libre Baskerville',serif;font-size:0.95rem;font-weight:700;color:var(--azul);}
+.pc-wrong{color:var(--rojo);font-weight:700;text-decoration:line-through;text-decoration-color:rgba(230,57,70,0.4);}
+.pc-right{color:var(--verde);font-weight:700;}
+.pc-why{font-size:0.76rem;color:var(--gris);line-height:1.4;}
+
+/* ── FRASES DE EMERGENCIA ── */
+.emergencia-intro{
+  background:linear-gradient(135deg,#E63946,#C62A35);
+  border-radius:14px;padding:18px 18px;color:white;margin-bottom:16px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.em-icon{font-size:2.5rem;flex-shrink:0;}
+.em-title{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;margin-bottom:4px;}
+.em-desc{font-size:0.82rem;opacity:0.85;line-height:1.5;}
+.em-desc strong{color:#FFD6A5;}
+.frases-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.frase-card{background:var(--carta);border-radius:12px;padding:14px 14px;
+  box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--celeste);}
+.frase-card:nth-child(2){border-color:var(--rojo);}
+.frase-card:nth-child(3){border-color:var(--verde);}
+.frase-card:nth-child(4){border-color:var(--amarillo);}
+.frase-card:nth-child(5){border-color:var(--azul);}
+.frase-card:nth-child(6){border-color:#9B5DE5;}
+.fc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gris);margin-bottom:6px;}
+.fc-en{font-family:'Libre Baskerville',serif;font-size:0.98rem;font-weight:700;
+  color:var(--texto);line-height:1.35;margin-bottom:4px;}
+.fc-en .blank{color:var(--rojo);border-bottom:1.5px solid var(--rojo);}
+.fc-pron{font-size:0.68rem;color:var(--celeste);font-weight:700;display:block;margin-bottom:3px;}
+.fc-es{font-size:0.76rem;color:var(--gris);}
+
+/* ── DIÁLOGO MÉDICO ── */
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;
+  border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gris);margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;
+  border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--celeste),var(--azul));}
+.av.d{background:linear-gradient(135deg,var(--verde),#1E7050);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;
+  padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--azul);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--texto);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--rojo);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* ── FLIP CARDS ── */
+.flip-hint{background:var(--azul);border-radius:10px;padding:12px 16px;
+  color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--amarillo);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+  transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-family:'Libre Baskerville',serif;font-size:0.9rem;font-weight:700;color:var(--azul);margin-top:4px;}
+.ff-h{font-size:0.58rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--azul);transform:rotateY(180deg);box-shadow:0 2px 12px var(--sombra);}
+.fb-es{color:var(--amarillo);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#FF8A8A;font-weight:700;margin-top:4px;
+  background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.6rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* ── QUIZ ── */
+.quiz-wrap{background:var(--azul);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--rojo);color:white;
+  font-family:'Libre Baskerville',serif;font-size:0.9rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--rojo),var(--amarillo));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;font-size:0.62rem;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-family:'Libre Baskerville',serif;font-size:1.15rem;font-weight:700;
+  color:white;text-align:center;line-height:1.3;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);
+  color:white;padding:12px 10px;border-radius:9px;font-family:'IBM Plex Sans',sans-serif;
+  font-size:0.88rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(45,158,107,0.25);border-color:var(--verde);color:#5DEAAB;}
+.q-btn.mal{background:rgba(230,57,70,0.25);border-color:var(--rojo);color:#FF8A8A;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--amarillo);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:white;color:var(--azul);border:none;
+  padding:11px 28px;border-radius:8px;font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* ── REPASO ── */
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));
+  gap:8px;max-width:800px;margin:14px auto 0;}
+.rep-c{background:white;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px var(--sombra);}
+.rep-top{height:6px;}
+.rep-info{padding:8px 8px 10px;text-align:center;}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-family:'Libre Baskerville',serif;font-size:0.82rem;font-weight:700;color:var(--azul);}
+.rep-pron{font-size:0.6rem;color:var(--rojo);font-weight:700;}
+.rep-es{font-size:0.66rem;color:var(--gris);margin-top:1px;}
+
+/* ── TIP ── */
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;
+  padding:22px 20px;box-shadow:0 2px 14px var(--sombra);
+  border-top:4px solid var(--rojo);text-align:center;}
+.tip h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--azul);}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;
+  padding:8px 14px;font-size:0.72rem;font-weight:700;color:var(--azul);}
+
+.footer{background:var(--azul);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:rgba(255,255,255,0.6);}
+
+@media(max-width:520px){
+  .frases-grid{grid-template-columns:1fr;}
+  .q-ops{grid-template-columns:1fr;}
+  .figura-container{width:180px;height:360px;}
+  .body-svg{width:180px;height:360px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-cross">✚</div>
+  <div class="hero-tag">Cartilla 5 de 19 · Vocabulario + Pronunciación + Emergencias</div>
+  <h1>El Cuerpo<br><em>The Body</em></h1>
+  <p class="hero-sub">Cartilla 5 · Nivel A1 · 25 partes del cuerpo · Frases médicas · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🫀 Figura interactiva</span>
+    <span class="hp">📦 Chunks anatómicos</span>
+    <span class="hp">🚑 Frases de emergencia</span>
+    <span class="hp">🔇 K muda en knee</span>
+    <span class="hp">🏥 Diálogo médico real</span>
+  </div>
+  <div class="hero-aviso">
+    ⚠️ <strong>Nota del maestro:</strong> "Knee", "know", "knife" — la <strong>K es completamente muda</strong> cuando va antes de N. Esta es la trampa número 1 de este tema. La dominamos hoy.
+  </div>
+</div>
+
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos viaja a Miami y se enferma. Va al médico y tiene que describir en inglés dónde le duele. <strong>Hoy aprendes a sobrevivir en un consultorio médico en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- 1. FIGURA INTERACTIVA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">01</div>
+    <div class="sec-title">Figura del cuerpo — Toca cada punto</div>
+    <div class="sec-badge bv">Visual interactivo</div>
+  </div>
+  <div class="hint">🧠 <strong>Aprendizaje kinestésico:</strong> Tocar activa la memoria motriz. Cuando tocas un punto en el cuerpo y ves el nombre en inglés, tu cerebro crea una conexión física + visual que dura más.</div>
+  <div class="figura-wrap">
+    <div class="figura-instruccion">👆 Toca cualquier punto rojo en el cuerpo para ver el nombre en inglés <span>con pronunciación y frase real</span></div>
+    <div class="figura-container" id="figuraContainer">
+      <!-- SVG Silueta humana simple y limpia -->
+      <svg class="body-svg" viewBox="0 0 220 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cabeza -->
+        <ellipse cx="110" cy="42" rx="32" ry="36" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Cuello -->
+        <rect x="100" y="76" width="20" height="18" rx="6" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Torso -->
+        <rect x="72" y="94" width="76" height="100" rx="14" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Brazo izquierdo -->
+        <rect x="44" y="96" width="24" height="80" rx="12" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Mano izquierda -->
+        <ellipse cx="56" cy="190" rx="13" ry="16" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Brazo derecho -->
+        <rect x="152" y="96" width="24" height="80" rx="12" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Mano derecha -->
+        <ellipse cx="164" cy="190" rx="13" ry="16" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Pelvis/Cadera -->
+        <rect x="72" y="194" width="76" height="46" rx="10" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Muslo izquierdo -->
+        <rect x="76" y="238" width="30" height="80" rx="12" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Muslo derecho -->
+        <rect x="114" y="238" width="30" height="80" rx="12" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Rodilla izq -->
+        <ellipse cx="91" cy="322" rx="16" ry="10" fill="#DFC5A8" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Rodilla der -->
+        <ellipse cx="129" cy="322" rx="16" ry="10" fill="#DFC5A8" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Pierna izquierda -->
+        <rect x="76" y="330" width="30" height="72" rx="10" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Pierna derecha -->
+        <rect x="114" y="330" width="30" height="72" rx="10" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Pie izquierdo -->
+        <ellipse cx="88" cy="406" rx="20" ry="10" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Pie derecho -->
+        <ellipse cx="132" cy="406" rx="20" ry="10" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Ojos -->
+        <ellipse cx="100" cy="38" rx="5" ry="4" fill="#5A3E28"/>
+        <ellipse cx="120" cy="38" rx="5" ry="4" fill="#5A3E28"/>
+        <!-- Nariz -->
+        <ellipse cx="110" cy="50" rx="3" ry="2.5" fill="#C4A882"/>
+        <!-- Boca -->
+        <path d="M101 60 Q110 66 119 60" stroke="#8B6240" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Orejas -->
+        <ellipse cx="78" cy="44" rx="8" ry="11" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <ellipse cx="142" cy="44" rx="8" ry="11" fill="#E8D5C0" stroke="#C4A882" stroke-width="1.5"/>
+        <!-- Cabello -->
+        <path d="M80 26 Q110 4 140 26 Q138 12 130 8 Q110 0 90 8 Q82 12 80 26Z" fill="#5A3E28"/>
+        <!-- Línea del torso (pecho) -->
+        <line x1="110" y1="96" x2="110" y2="178" stroke="#C4A882" stroke-width="0.8" stroke-dasharray="4,4"/>
+        <!-- Clavícula hint -->
+        <path d="M96 96 Q86 100 72 100" stroke="#C4A882" stroke-width="0.8"/>
+        <path d="M124 96 Q134 100 148 100" stroke="#C4A882" stroke-width="0.8"/>
+        <!-- Navel -->
+        <circle cx="110" cy="168" r="3" fill="#C4A882"/>
+      </svg>
+
+      <!-- PUNTOS CLICABLES -->
+      <!-- Cabeza -->
+      <div class="punto" style="left:50%;top:9%" onclick="activarPunto(this,'head')" title="Head"></div>
+      <!-- Ojo -->
+      <div class="punto" style="left:38%;top:8%;width:16px;height:16px;" onclick="activarPunto(this,'eye')" title="Eye"></div>
+      <!-- Oreja -->
+      <div class="punto" style="left:22%;top:9%;width:16px;height:16px;" onclick="activarPunto(this,'ear')" title="Ear"></div>
+      <!-- Nariz -->
+      <div class="punto" style="left:50%;top:12%;width:16px;height:16px;" onclick="activarPunto(this,'nose')" title="Nose"></div>
+      <!-- Boca -->
+      <div class="punto" style="left:50%;top:14.5%;width:16px;height:16px;" onclick="activarPunto(this,'mouth')" title="Mouth"></div>
+      <!-- Cuello -->
+      <div class="punto" style="left:50%;top:19%" onclick="activarPunto(this,'neck')" title="Neck"></div>
+      <!-- Hombro izq -->
+      <div class="punto" style="left:24%;top:23%" onclick="activarPunto(this,'shoulder')" title="Shoulder"></div>
+      <!-- Pecho -->
+      <div class="punto" style="left:50%;top:30%" onclick="activarPunto(this,'chest')" title="Chest"></div>
+      <!-- Estómago -->
+      <div class="punto" style="left:50%;top:38%" onclick="activarPunto(this,'stomach')" title="Stomach"></div>
+      <!-- Codo -->
+      <div class="punto" style="left:22%;top:38%;width:16px;height:16px;" onclick="activarPunto(this,'elbow')" title="Elbow"></div>
+      <!-- Mano -->
+      <div class="punto" style="left:24%;top:44%" onclick="activarPunto(this,'hand')" title="Hand"></div>
+      <!-- Pulgar (thumb) -->
+      <div class="punto" style="left:16%;top:46%;width:16px;height:16px;" onclick="activarPunto(this,'thumb')" title="Thumb"></div>
+      <!-- Cadera -->
+      <div class="punto" style="left:33%;top:48%" onclick="activarPunto(this,'hip')" title="Hip"></div>
+      <!-- Rodilla -->
+      <div class="punto" style="left:40%;top:73%" onclick="activarPunto(this,'knee')" title="Knee"></div>
+      <!-- Tobillo -->
+      <div class="punto" style="left:40%;top:86%;width:16px;height:16px;" onclick="activarPunto(this,'ankle')" title="Ankle"></div>
+      <!-- Pie -->
+      <div class="punto" style="left:38%;top:93%" onclick="activarPunto(this,'foot')" title="Foot"></div>
+      <!-- Espalda (text only) -->
+      <div class="punto" style="left:76%;top:30%;background:var(--celeste);" onclick="activarPunto(this,'back')" title="Back"></div>
+      <!-- Brazo -->
+      <div class="punto" style="left:76%;top:38%;background:var(--celeste);" onclick="activarPunto(this,'arm')" title="Arm"></div>
+      <!-- Muslo -->
+      <div class="punto" style="left:62%;top:62%;background:var(--celeste);" onclick="activarPunto(this,'thigh')" title="Thigh"></div>
+    </div>
+
+    <!-- PANEL DE INFO -->
+    <div class="figura-info" id="figuraInfo">
+      <div class="fi-placeholder">👆 Toca un punto rojo para ver el nombre en inglés</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 2. CHUNKS ANATÓMICOS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">02</div>
+    <div class="sec-title">Partes del cuerpo — Chunks anatómicos</div>
+    <div class="sec-badge bv">Vocabulario</div>
+  </div>
+  <div class="hint">🧠 <strong>Chunks por zona:</strong> El cerebro aprende mejor cuando agrupa por categoría espacial. De arriba hacia abajo — como un médico que examina al paciente.</div>
+  <div class="chunks-anat">
+
+    <!-- CABEZA -->
+    <div class="chunk-anat">
+      <div class="ca-head ca-cabeza"><div class="ca-icon">🗣️</div><div class="ca-title">Head & Face — Cabeza y cara</div><div class="ca-badge">Chunk 1</div></div>
+      <div class="ca-body">
+        <div class="parte-row"><div class="pr-e">🧠</div><div class="pr-en">Head</div><div class="pr-pron">Jed</div><div class="pr-es">Cabeza</div><div class="pr-truco">My head hurts = Me duele la cabeza</div></div>
+        <div class="parte-row"><div class="pr-e">💇</div><div class="pr-en">Hair</div><div class="pr-pron">Jer</div><div class="pr-es">Cabello / Pelo</div><div class="pr-truco">⚠️ Hair no es "air". Empieza con H aspirada.</div></div>
+        <div class="parte-row"><div class="pr-e">👁️</div><div class="pr-en">Eye</div><div class="pr-pron">Ái</div><div class="pr-es">Ojo</div><div class="pr-truco">Eyes (pl) = Áis. My eyes are brown.</div></div>
+        <div class="parte-row"><div class="pr-e">👂</div><div class="pr-en">Ear</div><div class="pr-pron">Íer</div><div class="pr-es">Oreja / Oído</div><div class="pr-truco">⚠️ "Íer" — no "ir". Vocal larga + R suave.</div></div>
+        <div class="parte-row"><div class="pr-e">👃</div><div class="pr-en">Nose</div><div class="pr-pron">Nóus</div><div class="pr-es">Nariz</div><div class="pr-truco">Nóus. La e final es muda.</div></div>
+        <div class="parte-row"><div class="pr-e">👄</div><div class="pr-en">Mouth</div><div class="pr-pron">Máuz</div><div class="pr-es">Boca</div><div class="pr-truco">TH al final = "z" suave. "Máuz".</div></div>
+        <div class="parte-row"><div class="pr-e">🦷</div><div class="pr-en">Teeth / Tooth</div><div class="pr-pron">Tiiz / Tuz</div><div class="pr-es">Dientes / Diente</div><div class="pr-truco">Tooth (1) → Teeth (varios). Irregular.</div></div>
+        <div class="parte-row"><div class="pr-e">🗣️</div><div class="pr-en">Tongue</div><div class="pr-pron">Tang</div><div class="pr-es">Lengua</div><div class="pr-truco">⚠️ "Tang" — la ue es muda. No "ton-gue".</div></div>
+        <div class="parte-row"><div class="pr-e">🎤</div><div class="pr-en">Neck</div><div class="pr-pron">Nek</div><div class="pr-es">Cuello</div><div class="pr-truco">Neck pain = dolor de cuello. Fácil.</div></div>
+      </div>
+    </div>
+
+    <!-- TORSO -->
+    <div class="chunk-anat">
+      <div class="ca-head ca-torso"><div class="ca-icon">🫀</div><div class="ca-title">Trunk — Torso</div><div class="ca-badge">Chunk 2</div></div>
+      <div class="ca-body">
+        <div class="parte-row"><div class="pr-e">💪</div><div class="pr-en">Shoulder</div><div class="pr-pron">Shóulder</div><div class="pr-es">Hombro</div><div class="pr-truco">⚠️ "Shóulder" — la L no suena fuerte. "Shóu-der".</div></div>
+        <div class="parte-row"><div class="pr-e">❤️</div><div class="pr-en">Chest</div><div class="pr-pron">Chest</div><div class="pr-es">Pecho</div><div class="pr-truco">Chest pain = dolor en el pecho. Urgente.</div></div>
+        <div class="parte-row"><div class="pr-e">🫁</div><div class="pr-en">Back</div><div class="pr-pron">Baek</div><div class="pr-es">Espalda</div><div class="pr-truco">Back pain = dolor de espalda. Muy común.</div></div>
+        <div class="parte-row"><div class="pr-e">🍽️</div><div class="pr-en">Stomach</div><div class="pr-pron">Stámak</div><div class="pr-es">Estómago / Abdomen</div><div class="pr-truco">⚠️ "Stámak" — la CH final suena K. No "stómach".</div></div>
+        <div class="parte-row"><div class="pr-e">🔘</div><div class="pr-en">Hip</div><div class="pr-pron">Jip</div><div class="pr-es">Cadera</div><div class="pr-truco">Hip fracture = fractura de cadera.</div></div>
+      </div>
+    </div>
+
+    <!-- BRAZOS -->
+    <div class="chunk-anat">
+      <div class="ca-head ca-brazos"><div class="ca-icon">💪</div><div class="ca-title">Arms & Hands — Brazos y manos</div><div class="ca-badge">Chunk 3</div></div>
+      <div class="ca-body">
+        <div class="parte-row"><div class="pr-e">💪</div><div class="pr-en">Arm</div><div class="pr-pron">Arm</div><div class="pr-es">Brazo</div><div class="pr-truco">I broke my arm = Me rompí el brazo.</div></div>
+        <div class="parte-row"><div class="pr-e">🦵</div><div class="pr-en">Elbow</div><div class="pr-pron">Élbou</div><div class="pr-es">Codo</div><div class="pr-truco">"Él-bou". Vocal corta + bou.</div></div>
+        <div class="parte-row"><div class="pr-e">✋</div><div class="pr-en">Hand</div><div class="pr-pron">Jaend</div><div class="pr-es">Mano</div><div class="pr-truco">Left hand / Right hand = mano izq / der.</div></div>
+        <div class="parte-row"><div class="pr-e">👍</div><div class="pr-en">Thumb</div><div class="pr-pron">Zam</div><div class="pr-es">Pulgar</div><div class="pr-truco">⚠️ La B es completamente muda: "Zam" no "zumb".</div></div>
+        <div class="parte-row"><div class="pr-e">☝️</div><div class="pr-en">Finger</div><div class="pr-pron">Fínger</div><div class="pr-es">Dedo (de la mano)</div><div class="pr-truco">Finger = dedo mano. Toe = dedo del pie.</div></div>
+      </div>
+    </div>
+
+    <!-- PIERNAS -->
+    <div class="chunk-anat">
+      <div class="ca-head ca-piernas"><div class="ca-icon">🦵</div><div class="ca-title">Legs & Feet — Piernas y pies</div><div class="ca-badge">Chunk 4</div></div>
+      <div class="ca-body">
+        <div class="parte-row"><div class="pr-e">🦵</div><div class="pr-en">Leg</div><div class="pr-pron">Leg</div><div class="pr-es">Pierna</div><div class="pr-truco">My leg hurts = Me duele la pierna.</div></div>
+        <div class="parte-row"><div class="pr-e">🍗</div><div class="pr-en">Thigh</div><div class="pr-pron">Zái</div><div class="pr-es">Muslo</div><div class="pr-truco">⚠️ "Zái" — gh es muda. Suena como "Thai" (tailandés).</div></div>
+        <div class="parte-row"><div class="pr-e">🦿</div><div class="pr-en">Knee</div><div class="pr-pron">Nii</div><div class="pr-es">Rodilla</div><div class="pr-truco">⚠️ K completamente muda: "NII". No "knii".</div></div>
+        <div class="parte-row"><div class="pr-e">🦶</div><div class="pr-en">Foot / Feet</div><div class="pr-pron">Fut / Fiit</div><div class="pr-es">Pie / Pies</div><div class="pr-truco">Foot → Feet (irregular, como tooth/teeth).</div></div>
+        <div class="parte-row"><div class="pr-e">🔗</div><div class="pr-en">Ankle</div><div class="pr-pron">Ánkol</div><div class="pr-es">Tobillo</div><div class="pr-truco">Suena igual que "Uncle" (tío)! Mismo sonido.</div></div>
+        <div class="parte-row"><div class="pr-e">🦴</div><div class="pr-en">Toe</div><div class="pr-pron">Tóu</div><div class="pr-es">Dedo del pie</div><div class="pr-truco">⚠️ Toe = solo dedo del pie. Finger = dedo de la mano.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3. PRONUNCIACIÓN CRÍTICA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">03</div>
+    <div class="sec-title">Las 7 trampas de pronunciación del cuerpo</div>
+    <div class="sec-badge bp">Pronunciación</div>
+  </div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> El cuerpo humano en inglés tiene varias letras <span class="warn">completamente mudas</span>. Si no las conoces, nadie te entiende. Estas son las más importantes.</div>
+  <table class="pron-critica">
+    <thead><tr><th>Parte</th><th>❌ Error frecuente</th><th>✅ Correcto</th><th>La regla</th></tr></thead>
+    <tbody>
+      <tr><td class="pc-part">Knee</td><td><span class="pc-wrong">"Knii" / "Kni"</span></td><td><span class="pc-right">Nii</span></td><td class="pc-why">KN inicial → la K es siempre muda. Know, kneel, knight = igual.</td></tr>
+      <tr><td class="pc-part">Thumb</td><td><span class="pc-wrong">"Zum-b"</span></td><td><span class="pc-right">Zam</span></td><td class="pc-why">MB final → la B es muda. Bomb, lamb, comb = igual.</td></tr>
+      <tr><td class="pc-part">Shoulder</td><td><span class="pc-wrong">"Shoul-der" (l fuerte)</span></td><td><span class="pc-right">Shóuder</span></td><td class="pc-why">La L en "ould" es casi muda: could, would, should.</td></tr>
+      <tr><td class="pc-part">Stomach</td><td><span class="pc-wrong">"Stó-mach"</span></td><td><span class="pc-right">Stámak</span></td><td class="pc-why">CH al final de palabras griegas suena K: stomach, monarch.</td></tr>
+      <tr><td class="pc-part">Thigh</td><td><span class="pc-wrong">"Tai-gh" / "Taig"</span></td><td><span class="pc-right">Zái</span></td><td class="pc-why">GH en medio/final es casi siempre mudo: thigh, light, night.</td></tr>
+      <tr><td class="pc-part">Tongue</td><td><span class="pc-wrong">"Ton-gue"</span></td><td><span class="pc-right">Tang</span></td><td class="pc-why">UE al final de ciertas palabras es muda: tongue, league, plague.</td></tr>
+      <tr><td class="pc-part">Wrist</td><td><span class="pc-wrong">"Gürist"</span></td><td><span class="pc-right">Rist</span></td><td class="pc-why">WR inicial → la W es muda. Write, wrong, wrap = igual.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- 4. FRASES DE EMERGENCIA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">04</div>
+    <div class="sec-title">Frases de emergencia — Alta utilidad real</div>
+    <div class="sec-badge bp">Emergencias</div>
+  </div>
+  <div class="emergencia-intro">
+    <div class="em-icon">🚑</div>
+    <div>
+      <div class="em-title">¿Por qué estas frases son críticas?</div>
+      <div class="em-desc">Si vas al médico en EE.UU., Canadá o UK y no puedes decir dónde te duele, la atención se complica. <strong>Estas 6 estructuras te salvan la vida.</strong> Apréndelas antes de viajar.</div>
+    </div>
+  </div>
+  <div class="frases-grid">
+    <div class="frase-card">
+      <div class="fc-ctx">🔑 Frase más importante</div>
+      <div class="fc-en">My <span class="blank">___</span> hurts.</div>
+      <div class="fc-pron">Mái ___ jerts.</div>
+      <div class="fc-es">Me duele el/la ___.</div>
+    </div>
+    <div class="frase-card">
+      <div class="fc-ctx">🤕 Dolor fuerte</div>
+      <div class="fc-en">I have a terrible headache.</div>
+      <div class="fc-pron">Ái jav a térible jédeik.</div>
+      <div class="fc-es">Tengo un dolor de cabeza terrible.</div>
+    </div>
+    <div class="frase-card">
+      <div class="fc-ctx">🦴 Accidente</div>
+      <div class="fc-en">I think I broke my <span class="blank">arm / leg</span>.</div>
+      <div class="fc-pron">Ái zink ái brók mái arm / leg.</div>
+      <div class="fc-es">Creo que me rompí el brazo / la pierna.</div>
+    </div>
+    <div class="frase-card">
+      <div class="fc-ctx">❓ Al médico</div>
+      <div class="fc-en">Where does it hurt?</div>
+      <div class="fc-pron">Uér das it jert?</div>
+      <div class="fc-es">¿Dónde le duele? (médico pregunta)</div>
+    </div>
+    <div class="frase-card">
+      <div class="fc-ctx">🩺 Señalando</div>
+      <div class="fc-en">It hurts <span class="blank">here</span>.</div>
+      <div class="fc-pron">It jerts jiir.</div>
+      <div class="fc-es">Me duele aquí. (señalando)</div>
+    </div>
+    <div class="frase-card">
+      <div class="fc-ctx">📍 Describir zona</div>
+      <div class="fc-en">I have pain in my <span class="blank">chest / back</span>.</div>
+      <div class="fc-pron">Ái jav péin in mái chest / baek.</div>
+      <div class="fc-es">Tengo dolor en el pecho / la espalda.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 5. DIÁLOGO MÉDICO -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">05</div>
+    <div class="sec-title">Carlos en el médico — Diálogo real</div>
+    <div class="sec-badge bu">Uso real</div>
+  </div>
+  <div class="hint">🧠 <strong>Repetición espaciada:</strong> Todo el vocabulario de hoy aparece en este diálogo en contexto médico real. Léelo hoy, mañana y en 3 días.</div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">🏥 Clínica en Miami · Carlos de viaje</div>
+    <div class="brow"><div class="av d">👨‍⚕️</div><div><div class="b-name">Doctor Smith 🇺🇸</div><div class="burbuja"><div class="b-en">Good morning. What's the problem today?</div><span class="b-pron">Gud mórning. Uóts de próblem tudéi?</span><div class="b-es">Buenos días. ¿Cuál es el problema hoy?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Hello doctor. My head hurts a lot, and I have pain in my neck.</div><span class="b-pron">Jelóu dóktor. Mái jed jerts a lot, end ái jav péin in mái nek.</span><div class="b-es">Hola doctor. Me duele mucho la cabeza y tengo dolor en el cuello.</div></div></div></div>
+    <div class="brow"><div class="av d">👨‍⚕️</div><div><div class="b-name">Doctor Smith 🇺🇸</div><div class="burbuja"><div class="b-en">Since when? And do you have a fever?</div><span class="b-pron">Sins uén? End du iú jav a fíiver?</span><div class="b-es">¿Desde cuándo? ¿Y tiene fiebre?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Since yesterday. My back also hurts and I have pain in my stomach.</div><span class="b-pron">Sins iésterdei. Mái baek ólso jerts end ái jav péin in mái stámak.</span><div class="b-es">Desde ayer. También me duele la espalda y tengo dolor de estómago.</div></div></div></div>
+    <div class="brow"><div class="av d">👨‍⚕️</div><div><div class="b-name">Doctor Smith 🇺🇸</div><div class="burbuja"><div class="b-en">Let me check. Open your mouth and show me your tongue, please.</div><span class="b-pron">Let mii chek. Óupen ior máuz end shóu mii ior tang, pliis.</span><div class="b-es">Déjeme revisar. Abra la boca y muéstreme la lengua, por favor.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes doctor. My throat also hurts. And my right knee has been hurting for two days.</div><span class="b-pron">Ies dóktor. Mái zróut ólso jerts. End mái ráit nii jas bin jérting for túu déis.</span><div class="b-es">Sí doctor. También me duele la garganta. Y la rodilla derecha me ha dolido por dos días.</div></div></div></div>
+    <div class="brow"><div class="av d">👨‍⚕️</div><div><div class="b-name">Doctor Smith 🇺🇸</div><div class="burbuja"><div class="b-en">You have the flu. Rest, drink water, and take these pills. See me in three days.</div><span class="b-pron">Iú jav de flu. Rest, drink uóter, end téik diis pils. Sii mii in zríi déis.</span><div class="b-es">Tiene gripa. Descanse, tome agua y tome estas pastillas. Véame en tres días.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 6. FLIP CARDS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">06</div>
+    <div class="sec-title">Memorización — Toca las tarjetas</div>
+    <div class="sec-badge bv">Práctica</div>
+  </div>
+  <div class="flip-hint">👆 Mira el emoji → recuerda la parte del cuerpo en inglés → toca para confirmar. <strong>3 veces para fijar.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- QUIZ -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">Quiz — El Cuerpo Humano</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · Pronunciación · Frases médicas · Plurales irregulares</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div>
+      <div class="q-icon" id="qicon">🏥</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- REPASO -->
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="sec-head" style="border-color:var(--borde);">
+      <div class="sec-n" style="color:var(--borde);">★</div>
+      <div class="sec-title">Las 25 partes del cuerpo de esta cartilla</div>
+    </div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">🧠</div><div class="rep-en">Head</div><div class="rep-pron">Jed</div><div class="rep-es">Cabeza</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">💇</div><div class="rep-en">Hair</div><div class="rep-pron">Jer</div><div class="rep-es">Cabello</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">👁️</div><div class="rep-en">Eye</div><div class="rep-pron">Ái</div><div class="rep-es">Ojo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">👂</div><div class="rep-en">Ear</div><div class="rep-pron">Íer</div><div class="rep-es">Oreja</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">👃</div><div class="rep-en">Nose</div><div class="rep-pron">Nóus</div><div class="rep-es">Nariz</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">👄</div><div class="rep-en">Mouth</div><div class="rep-pron">Máuz</div><div class="rep-es">Boca</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">🦷</div><div class="rep-en">Tooth/Teeth</div><div class="rep-pron">Tuz/Tiiz</div><div class="rep-es">Diente/s</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">🗣️</div><div class="rep-en">Tongue</div><div class="rep-pron">Tang</div><div class="rep-es">Lengua</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-info"><div class="rep-e">🎤</div><div class="rep-en">Neck</div><div class="rep-pron">Nek</div><div class="rep-es">Cuello</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-info"><div class="rep-e">💪</div><div class="rep-en">Shoulder</div><div class="rep-pron">Shóuder</div><div class="rep-es">Hombro</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-info"><div class="rep-e">❤️</div><div class="rep-en">Chest</div><div class="rep-pron">Chest</div><div class="rep-es">Pecho</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-info"><div class="rep-e">🫁</div><div class="rep-en">Back</div><div class="rep-pron">Baek</div><div class="rep-es">Espalda</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-info"><div class="rep-e">🍽️</div><div class="rep-en">Stomach</div><div class="rep-pron">Stámak</div><div class="rep-es">Estómago</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-info"><div class="rep-e">🔘</div><div class="rep-en">Hip</div><div class="rep-pron">Jip</div><div class="rep-es">Cadera</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--celeste);"></div><div class="rep-info"><div class="rep-e">💪</div><div class="rep-en">Arm</div><div class="rep-pron">Arm</div><div class="rep-es">Brazo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--celeste);"></div><div class="rep-info"><div class="rep-e">🦵</div><div class="rep-en">Elbow</div><div class="rep-pron">Élbou</div><div class="rep-es">Codo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--celeste);"></div><div class="rep-info"><div class="rep-e">✋</div><div class="rep-en">Hand</div><div class="rep-pron">Jaend</div><div class="rep-es">Mano</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--celeste);"></div><div class="rep-info"><div class="rep-e">👍</div><div class="rep-en">Thumb</div><div class="rep-pron">Zam</div><div class="rep-es">Pulgar</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--celeste);"></div><div class="rep-info"><div class="rep-e">☝️</div><div class="rep-en">Finger</div><div class="rep-pron">Fínger</div><div class="rep-es">Dedo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🦵</div><div class="rep-en">Leg</div><div class="rep-pron">Leg</div><div class="rep-es">Pierna</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🍗</div><div class="rep-en">Thigh</div><div class="rep-pron">Zái</div><div class="rep-es">Muslo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🦿</div><div class="rep-en">Knee</div><div class="rep-pron">Nii ⚠️K muda</div><div class="rep-es">Rodilla</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🦶</div><div class="rep-en">Foot/Feet</div><div class="rep-pron">Fut/Fiit</div><div class="rep-es">Pie/Pies</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🔗</div><div class="rep-en">Ankle</div><div class="rep-pron">Ánkol</div><div class="rep-es">Tobillo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-info"><div class="rep-e">🦴</div><div class="rep-en">Toe</div><div class="rep-pron">Tóu</div><div class="rep-es">Dedo pie</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIP -->
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🪞</div>
+    <h3>Reto del maestro — Esta semana</h3>
+    <p>El cuerpo siempre está contigo — úsalo para practicar. Haz esto cada mañana frente al espejo:</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">🪞 Frente al espejo</div>
+      <div class="tip-paso">👆 Señala cada parte</div>
+      <div class="tip-paso">🗣️ Di el nombre en inglés</div>
+      <div class="tip-paso">💬 "My ___ hurts"</div>
+      <div class="tip-paso">🔄 Repite 5 días</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer"><strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 5 de 19 · El Cuerpo Humano · Nivel A1</div>
+
+<script>
+// ── DATOS FIGURA INTERACTIVA ──
+const partes = {
+  head:     {en:'Head',     pron:'Jed',        es:'Cabeza',           frase:'My head hurts. = Me duele la cabeza.'},
+  hair:     {en:'Hair',     pron:'Jer',        es:'Cabello / Pelo',    frase:'She has black hair. = Ella tiene cabello negro.'},
+  eye:      {en:'Eye',      pron:'Ái',         es:'Ojo',              frase:'My eyes are brown. = Mis ojos son cafés.'},
+  ear:      {en:'Ear',      pron:'Íer',        es:'Oreja / Oído',     frase:'My ear hurts. = Me duele el oído.'},
+  nose:     {en:'Nose',     pron:'Nóus',       es:'Nariz',            frase:'I have a runny nose. = Tengo la nariz moquiando.'},
+  mouth:    {en:'Mouth',    pron:'Máuz',       es:'Boca',             frase:'Open your mouth. = Abra la boca.'},
+  neck:     {en:'Neck',     pron:'Nek',        es:'Cuello',           frase:'I have neck pain. = Tengo dolor de cuello.'},
+  shoulder: {en:'Shoulder', pron:'Shóuder',    es:'Hombro',           frase:'My left shoulder hurts. = Me duele el hombro izquierdo.'},
+  chest:    {en:'Chest',    pron:'Chest',      es:'Pecho',            frase:'I have chest pain. = Tengo dolor en el pecho.'},
+  back:     {en:'Back',     pron:'Baek',       es:'Espalda',          frase:'My back is killing me. = Me está matando la espalda.'},
+  stomach:  {en:'Stomach',  pron:'Stámak ⚠️',  es:'Estómago/Abdomen', frase:'My stomach hurts. = Me duele el estómago.'},
+  hip:      {en:'Hip',      pron:'Jip',        es:'Cadera',           frase:'Hip fracture is common in elderly. = Fractura de cadera.'},
+  arm:      {en:'Arm',      pron:'Arm',        es:'Brazo',            frase:'I broke my arm. = Me rompí el brazo.'},
+  elbow:    {en:'Elbow',    pron:'Élbou',      es:'Codo',             frase:'Tennis elbow = codo de tenista.'},
+  hand:     {en:'Hand',     pron:'Jaend',      es:'Mano',             frase:'Wash your hands. = Lávese las manos.'},
+  thumb:    {en:'Thumb',    pron:'Zam ⚠️B muda',es:'Pulgar',          frase:'Thumbs up! = ¡Muy bien! (pulgares arriba)'},
+  thigh:    {en:'Thigh',    pron:'Zái ⚠️GH muda',es:'Muslo',          frase:'I pulled my thigh muscle. = Me jalé el músculo del muslo.'},
+  knee:     {en:'Knee',     pron:'Nii ⚠️K muda', es:'Rodilla',        frase:'My knee is swollen. = Mi rodilla está hinchada.'},
+  ankle:    {en:'Ankle',    pron:'Ánkol',      es:'Tobillo',          frase:'I twisted my ankle. = Me torcí el tobillo.'},
+  foot:     {en:'Foot',     pron:'Fut (pl: Feet=Fiit)',es:'Pie',     frase:'My foot hurts. = Me duele el pie.'},
+};
+
+let puntoActivo = null;
+function activarPunto(el, key){
+  if(puntoActivo) puntoActivo.classList.remove('activo');
+  el.classList.add('activo');
+  puntoActivo = el;
+  const d = partes[key];
+  const panel = document.getElementById('figuraInfo');
+  panel.innerHTML = `
+    <div class="fi-en">${d.en}</div>
+    <div><span class="fi-pron">🔊 ${d.pron}</span></div>
+    <div class="fi-es">${d.es}</div>
+    <div class="fi-frase">💬 ${d.frase}</div>
+  `;
+}
+
+// ── FLIP CARDS ──
+const fd=[
+  {e:'🧠',en:'Head',es:'Cabeza',pron:'Jed',ctx:'My head hurts'},
+  {e:'👁️',en:'Eye',es:'Ojo',pron:'Ái',ctx:'My eyes are brown'},
+  {e:'👂',en:'Ear',es:'Oreja/Oído',pron:'Íer',ctx:'My ear hurts'},
+  {e:'👃',en:'Nose',es:'Nariz',pron:'Nóus',ctx:'Runny nose'},
+  {e:'👄',en:'Mouth',es:'Boca',pron:'Máuz',ctx:'Open your mouth'},
+  {e:'🎤',en:'Neck',es:'Cuello',pron:'Nek',ctx:'Neck pain'},
+  {e:'💪',en:'Shoulder',es:'Hombro',pron:'Shóuder',ctx:'L casi muda'},
+  {e:'❤️',en:'Chest',es:'Pecho',pron:'Chest',ctx:'Chest pain = urgente'},
+  {e:'🫁',en:'Back',es:'Espalda',pron:'Baek',ctx:'Back pain'},
+  {e:'🍽️',en:'Stomach',es:'Estómago',pron:'Stámak',ctx:'CH→K al final'},
+  {e:'🦿',en:'Knee',es:'Rodilla',pron:'Nii',ctx:'⚠️ K completamente muda'},
+  {e:'👍',en:'Thumb',es:'Pulgar',pron:'Zam',ctx:'⚠️ B muda al final'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{
+  const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');
+  fg.appendChild(c);
+});
+
+// ── QUIZ ──
+const Qs=[
+  {t:'VOCABULARIO',i:'👄',q:'¿Cómo se dice "Estómago" en inglés?',ctx:'Carlos le dice al médico dónde le duele',ops:['Chest','Stomach','Back','Hip'],r:1,ex:'✅ Stomach = Estómago. Pronunciación: "Stámak". La CH final suena K (regla griega).'},
+  {t:'PRONUNCIACIÓN ★',i:'🔊',q:'¿Cómo se pronuncia correctamente "Knee"?',ctx:'La rodilla — ¡trampa clásica de inglés!',ops:['"Knii" (k+n)','Kni (corta)','Nii (K muda)','Kné'],r:2,ex:'✅ Nii. La K en KN siempre es muda en inglés. Know, kneel, knock = igual. Solo "Nii".'},
+  {t:'FRASE MÉDICA ★',i:'🚑',q:'Carlos quiere decir "Me duele la espalda." ¿Cómo lo dice?',ctx:'En el consultorio del médico en Miami',ops:['My back is hurt me.','My back hurts.','I have a back.','The back is hurt.'],r:1,ex:'✅ My back hurts. La fórmula es: My + parte del cuerpo + hurts. Funciona para cualquier parte.'},
+  {t:'VOCABULARIO',i:'👍',q:'"Thumb" en español es:',ctx:'La parte de la mano que usas para dar "like"',ops:['Dedo','Mano','Pulgar','Muñeca'],r:2,ex:'✅ Thumb = Pulgar. Pronunciación: "Zam". La B final es completamente muda (como en bomb, lamb).'},
+  {t:'PLURAL IRREGULAR',i:'🦷',q:'¿Cuál es el plural de "Tooth"?',ctx:'Como foot → feet, hay varios plurales irregulares',ops:['Tooths','Teeths','Teeth','Tooths'],r:2,ex:'✅ Teeth = dientes (plural). Tooth → Teeth. Igual que Foot → Feet. Son plurales irregulares — memoriza el par.'},
+  {t:'PRONUNCIACIÓN ★',i:'🔊',q:'¿Cómo se pronuncia "Thumb"?',ctx:'El dedo gordo de la mano — ¡la B es una trampa!',ops:['"Tumb"','"Zum-b"','"Zam"','"Tum"'],r:2,ex:'✅ Zam. MB al final = la B es muda. Bomb = "bom", lamb = "laem", thumb = "zam". Regla de MB final.'},
+  {t:'VOCABULARIO',i:'🦵',q:'¿Qué es el "Thigh" en español?',ctx:'La parte entre la cadera y la rodilla',ops:['Rodilla','Tobillo','Muslo','Pantorrilla'],r:2,ex:'✅ Thigh = Muslo. Pronunciación: "Zái". La GH es muda (como en night, light, right).'},
+  {t:'FRASE MÉDICA ★',i:'🏥',q:'El médico pregunta "Where does it hurt?" Significa:',ctx:'Primera pregunta del médico al paciente',ops:['¿Cuándo le duele?','¿Dónde le duele?','¿Cómo se llama?','¿Qué tomó?'],r:1,ex:'✅ "¿Dónde le duele?" Where = dónde. Does it hurt = duele. Respuesta: "It hurts here." (señalando)'},
+  {t:'VOCABULARIO',i:'🔗',q:'¿Cómo se dice "Tobillo" en inglés?',ctx:'La articulación entre el pie y la pierna',ops:['Elbow','Ankle','Knuckle','Wrist'],r:1,ex:'✅ Ankle = Tobillo. Pronunciación: "Ánkol". Dato curioso: suena igual que "uncle" (tío).'},
+  {t:'PRODUCCIÓN ★',i:'💬',q:'Carlos tiene dolor de cabeza y quiere decirlo al médico en inglés. ¿Qué dice?',ctx:'La frase de emergencia más útil de toda la cartilla',ops:['I have headache very bad.','My head is hurting me a lot.','I have a terrible headache.','The head of me hurts.'],r:2,ex:'✅ I have a terrible headache. Headache = dolor de cabeza (una sola palabra). "A + adjective + headache" es la estructura natural en inglés.'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){
+  const q=Qs[qi];
+  document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;
+  document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;
+  document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;
+  qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});
+}
+function qResp(i,btn){
+  if(qr)return;qr=true;
+  const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';
+  if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';
+}
+function qNext(){
+  qi++;
+  if(qi<Qs.length){qLoad();}
+  else{
+    const pct=Math.round(qs/Qs.length*100);
+    document.getElementById('qpf').style.width='100%';
+    document.getElementById('qtipo').textContent='RESULTADO';
+    document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+    document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+    document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Dominas el cuerpo humano. Listo para Cartilla 6 🚀':pct>=60?'Bien. Repasa la sección de pronunciación crítica.':'Revisa los chunks anatómicos y la sección de pronunciación.';
+    document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent='Cartilla 5 completada ✓';
+  }
+}
+qLoad();
+</script>
+</body>
+</html>

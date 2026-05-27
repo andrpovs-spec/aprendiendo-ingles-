@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 19 — Gran Repaso Final</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--oro:#F59E0B;--rojo:#DC2626;--azul:#2563EB;--verde:#16A34A;--morado:#7C3AED;--rosa:#DB2777;--gris:#111827;--crema:#FFFBEB;--sombra:rgba(17,24,39,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:var(--crema);color:var(--gris);}
+
+/* HERO ESPECIAL */
+.hero{background:linear-gradient(135deg,#111827 0%,#1F2937 50%,#111827 100%);padding:50px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+.hero-estrellas{position:absolute;inset:0;overflow:hidden;}
+.hero-estrellas::before{content:'⭐🏆🎓✨🌟💫⭐🏆🎓✨🌟💫';position:absolute;top:10px;left:0;right:0;font-size:1.5rem;letter-spacing:12px;opacity:0.15;white-space:nowrap;overflow:hidden;}
+.hero-estrellas::after{content:'🇨🇴🌍🎯📚💪🚀🇨🇴🌍🎯📚💪🚀';position:absolute;bottom:10px;left:0;right:0;font-size:1.5rem;letter-spacing:12px;opacity:0.10;white-space:nowrap;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--oro);color:var(--gris);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 .sub{display:block;font-size:clamp(1rem,4vw,2rem);color:var(--oro);font-weight:700;margin-top:8px;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1;}
+.hs{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 16px;text-align:center;}
+.hs-n{font-size:1.4rem;font-weight:900;color:var(--oro);}
+.hs-l{font-size:0.62rem;color:rgba(255,255,255,0.45);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+
+.story{background:linear-gradient(90deg,#374151,#1F2937);padding:14px 20px;text-align:center;}
+.story p{color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.6;max-width:640px;margin:0 auto;}
+.story strong{color:var(--oro);}
+
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:28px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:3px solid var(--gris);}
+.sec-n{font-size:1.8rem;font-weight:900;color:#E5E7EB;}
+.sec-title{font-size:1.1rem;font-weight:900;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.b1{background:var(--oro);color:var(--gris);}
+.b2{background:var(--azul);color:white;}
+.b3{background:var(--verde);color:white;}
+.b4{background:var(--morado);color:white;}
+.b5{background:var(--rojo);color:white;}
+.b6{background:var(--rosa);color:white;}
+.hint{background:#FEF3C7;border-left:4px solid var(--oro);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#78350F;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:2px dashed #D1D5DB;margin:28px 0 0;}
+
+/* RESUMEN GRAMMAR */
+.gram-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.gram-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px var(--sombra);}
+.gc-head{padding:12px 14px;color:white;}
+.gc-head.c1{background:linear-gradient(135deg,#2563EB,#1D4ED8);}
+.gc-head.c2{background:linear-gradient(135deg,#DC2626,#B91C1C);}
+.gc-head.c3{background:linear-gradient(135deg,#16A34A,#15803D);}
+.gc-head.c4{background:linear-gradient(135deg,#7C3AED,#6D28D9);}
+.gc-head.c5{background:linear-gradient(135deg,#F59E0B,#D97706);}
+.gc-head.c6{background:linear-gradient(135deg,#DB2777,#BE185D);}
+.gc-head.c7{background:linear-gradient(135deg,#0284C7,#0369A1);}
+.gc-head.c8{background:linear-gradient(135deg,#374151,#1F2937);}
+.gc-num{font-size:0.62rem;font-weight:700;opacity:0.7;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.gc-tema{font-size:0.95rem;font-weight:800;}
+.gc-body{padding:12px 14px;}
+.gc-regla{font-size:0.8rem;font-weight:700;color:var(--gris);margin-bottom:4px;}
+.gc-ej{font-size:0.74rem;color:#6B7280;font-style:italic;margin-bottom:2px;}
+.gc-ej em{color:var(--azul);font-style:normal;font-weight:700;}
+
+/* VOCABULARIO RESUMEN */
+.voc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.voc-tab{padding:6px 14px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all 0.2s;}
+.voc-tab.activo{color:white;}
+.voc-tab[data-cat="0"]{border-color:var(--rojo);color:var(--rojo);}
+.voc-tab[data-cat="0"].activo{background:var(--rojo);}
+.voc-tab[data-cat="1"]{border-color:var(--azul);color:var(--azul);}
+.voc-tab[data-cat="1"].activo{background:var(--azul);}
+.voc-tab[data-cat="2"]{border-color:var(--verde);color:var(--verde);}
+.voc-tab[data-cat="2"].activo{background:var(--verde);}
+.voc-tab[data-cat="3"]{border-color:var(--morado);color:var(--morado);}
+.voc-tab[data-cat="3"].activo{background:var(--morado);}
+.voc-tab[data-cat="4"]{border-color:var(--rosa);color:var(--rosa);}
+.voc-tab[data-cat="4"].activo{background:var(--rosa);}
+.voc-mini{display:none;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;}
+.voc-mini.visible{display:grid;}
+.vm-card{background:white;border-radius:8px;padding:8px 6px;text-align:center;box-shadow:0 1px 6px var(--sombra);}
+.vm-e{font-size:1.2rem;margin-bottom:2px;}
+.vm-en{font-size:0.72rem;font-weight:700;color:var(--gris);}
+.vm-pron{font-size:0.55rem;color:var(--azul);font-weight:700;}
+.vm-es{font-size:0.58rem;color:#9CA3AF;margin-top:1px;}
+
+/* FRASES FINALES */
+.frases-master{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.fm-card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--azul);}
+.fm-card:nth-child(3n+2){border-color:var(--verde);}
+.fm-card:nth-child(3n+3){border-color:var(--morado);}
+.fmc-nivel{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;margin-bottom:4px;}
+.fmc-en{font-size:0.88rem;font-weight:700;color:var(--gris);margin-bottom:3px;}
+.fmc-pron{font-size:0.64rem;color:var(--azul);font-weight:700;display:block;margin-bottom:2px;}
+.fmc-es{font-size:0.72rem;color:#6B7280;}
+
+/* QUIZ FINAL ESPECIAL */
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.quiz-header{text-align:center;margin-bottom:20px;}
+.qh-icon{font-size:3rem;margin-bottom:8px;}
+.qh-title{font-size:1.6rem;font-weight:900;color:white;margin-bottom:4px;}
+.qh-sub{font-size:0.84rem;color:rgba(255,255,255,0.45);}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:600px;margin:0 auto;}
+.q-prog{height:4px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--rojo),var(--oro),var(--verde));border-radius:4px;transition:width 0.4s;}
+.q-num{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:6px;}
+.q-tema{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);margin-bottom:10px;}
+.q-icon{font-size:2.2rem;text-align:center;margin-bottom:8px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.4;margin-bottom:6px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:13px 10px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:0.84rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.14);}
+.q-btn.ok{background:rgba(22,163,74,0.25);border-color:var(--verde);color:#86EFAC;}
+.q-btn.mal{background:rgba(220,38,38,0.25);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--oro);min-height:24px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:14px auto 0;background:linear-gradient(90deg,var(--azul),var(--morado));color:white;border:none;padding:12px 32px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* DIPLOMA */
+.diploma{background:white;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 6px 40px var(--sombra);border:3px solid var(--oro);margin:30px 0;display:none;}
+.diploma.visible{display:block;}
+.dip-corona{font-size:4rem;margin-bottom:12px;}
+.dip-titulo{font-size:1.6rem;font-weight:900;color:var(--gris);margin-bottom:4px;}
+.dip-sub{font-size:0.84rem;color:#6B7280;margin-bottom:18px;}
+.dip-nombre{font-size:1.8rem;font-weight:900;color:var(--azul);margin-bottom:8px;}
+.dip-org{font-size:0.9rem;color:var(--gris);font-weight:700;margin-bottom:4px;}
+.dip-fecha{font-size:0.78rem;color:#9CA3AF;margin-bottom:20px;}
+.dip-logros{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;}
+.dip-logro{background:#F3F4F6;border-radius:8px;padding:8px 14px;font-size:0.72rem;font-weight:700;color:var(--gris);}
+.dip-frase{font-size:1rem;font-style:italic;color:var(--gris);border-top:1px solid #E5E7EB;padding-top:16px;margin-top:4px;}
+.dip-frase strong{color:var(--azul);}
+
+.footer-final{background:linear-gradient(135deg,var(--gris),#374151);padding:30px 20px;text-align:center;}
+.ff-logo{font-size:2rem;margin-bottom:8px;}
+.ff-titulo{font-size:1.1rem;font-weight:900;color:white;margin-bottom:4px;}
+.ff-sub{font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:16px;line-height:1.6;}
+.ff-cartillas{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;}
+.ffc{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.5);}
+.ffc.done{background:rgba(245,158,11,0.15);border-color:var(--oro);color:var(--oro);}
+.ff-copy{font-size:0.72rem;color:rgba(255,255,255,0.2);margin-top:12px;}
+
+@media(max-width:520px){.gram-cards{grid-template-columns:1fr;}.frases-master{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}.hero-stats{gap:8px;}}
+</style>
+</head>
+<body>
+
+<!-- HERO ESPECIAL -->
+<div class="hero">
+  <div class="hero-estrellas"></div>
+  <div class="hero-tag">🏆 Cartilla 19 de 19 — FINAL</div>
+  <h1>Gran Repaso<br><span class="sub">Final Review</span></h1>
+  <p class="hero-sub">Has completado el curso completo de inglés — Club de la Gente · Fusagasugá, Colombia</p>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">19</div><div class="hs-l">Cartillas</div></div>
+    <div class="hs"><div class="hs-n">300+</div><div class="hs-l">Palabras</div></div>
+    <div class="hs"><div class="hs-n">A0→B1</div><div class="hs-l">Nivel</div></div>
+    <div class="hs"><div class="hs-n">20</div><div class="hs-l">Temas</div></div>
+    <div class="hs"><div class="hs-n">180+</div><div class="hs-l">Quizzes</div></div>
+  </div>
+</div>
+
+<div class="story">
+  <p>📖 <strong>Hoy Carlos y Sarah terminan su historia.</strong> En esta cartilla repasas TODO lo aprendido en el curso — gramática, vocabulario, pronunciación y frases de la vida real. Cuando termines el quiz final, recibirás tu diploma. <strong>¡Tú puedes, Fusa!</strong> 🇨🇴</p>
+</div>
+
+<div class="wrap">
+
+<!-- RESUMEN GRAMATICAL -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Resumen gramatical — Todo el curso</div><div class="sec-badge b1">Gramática</div></div>
+  <div class="hint">🎓 <strong>El mapa completo:</strong> Aquí tienes un resumen visual de cada estructura gramatical del curso. Léelo como repaso antes del quiz final.</div>
+  <div class="gram-cards">
+    <div class="gram-card">
+      <div class="gc-head c1"><div class="gc-num">Cartillas 1-2</div><div class="gc-tema">Verbo TO BE</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">I am / You are / He-She is</div>
+        <div class="gc-ej">I <em>am</em> from Colombia. She <em>is</em> a teacher.</div>
+        <div class="gc-regla">Preguntas: Am I? / Is she?</div>
+        <div class="gc-ej">Are you Colombian? Yes, <em>I am</em>.</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c2"><div class="gc-num">Cartillas 4-5</div><div class="gc-tema">Posesivos + Plurales</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">my / your / his / her / our / their</div>
+        <div class="gc-ej"><em>My</em> family. <em>Her</em> name is Sarah.</div>
+        <div class="gc-regla">Plural: +S / +ES / irregulares</div>
+        <div class="gc-ej">children / men / women / feet</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c3"><div class="gc-num">Cartillas 7-9</div><div class="gc-tema">Presente Simple</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">I eat / She eat<em>S</em> (regla de la S)</div>
+        <div class="gc-ej">She <em>eats</em> rice. He <em>works</em> in Bogotá.</div>
+        <div class="gc-regla">Preguntas: DO / DOES</div>
+        <div class="gc-ej"><em>Does</em> she work? No, she <em>doesn't</em>.</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c4"><div class="gc-num">Cartilla 12</div><div class="gc-tema">Like + Gerundio -ING</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">Love / Like / Enjoy / Hate + ING</div>
+        <div class="gc-ej">I <em>love swimming</em>. She <em>hates waiting</em>.</div>
+        <div class="gc-regla">Gerundio: swim→swimming, dance→dancing</div>
+        <div class="gc-ej">run→runn<em>ing</em> / write→writ<em>ing</em></div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c5"><div class="gc-num">Cartilla 14</div><div class="gc-tema">Pasado Simple</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">Regular: verb + ED | Irregular: forma propia</div>
+        <div class="gc-ej">I visit<em>ed</em>. She <em>went</em>. He <em>felt</em> sick.</div>
+        <div class="gc-regla">Negativo: DIDN'T + infinitivo</div>
+        <div class="gc-ej">I <em>didn't sleep</em>. She <em>didn't go</em>.</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c6"><div class="gc-num">Cartilla 15</div><div class="gc-tema">Futuro con WILL</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">WILL + infinitivo (igual para todos)</div>
+        <div class="gc-ej">It <em>will</em> rain. I <em>will</em> help you.</div>
+        <div class="gc-regla">WON'T = will not (negativo)</div>
+        <div class="gc-ej">She <em>won't</em> come. It <em>won't</em> snow.</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c7"><div class="gc-num">Cartilla 16</div><div class="gc-tema">Have you ever? (Perfecto)</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">HAVE/HAS + ever + participio</div>
+        <div class="gc-ej"><em>Have</em> you <em>ever been</em> to Colombia?</div>
+        <div class="gc-regla">Participios: been / seen / eaten / flown</div>
+        <div class="gc-ej">I <em>have never</em> traveled abroad.</div>
+      </div>
+    </div>
+    <div class="gram-card">
+      <div class="gc-head c8"><div class="gc-num">Cartillas 17-18</div><div class="gc-tema">CAN + WOULD LIKE</div></div>
+      <div class="gc-body">
+        <div class="gc-regla">CAN + infinitivo (habilidad)</div>
+        <div class="gc-ej">I <em>can</em> speak English. She <em>can't</em> code.</div>
+        <div class="gc-regla">WOULD YOU LIKE TO + infinitivo</div>
+        <div class="gc-ej"><em>Would</em> you <em>like to</em> join us tonight?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- VOCABULARIO RESUMEN -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Vocabulario esencial — Repaso por tema</div><div class="sec-badge b2">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Repetición espaciada final:</strong> Toca cada categoría y repasa las palabras clave. La repetición hoy, después de todo el curso, fija el vocabulario a largo plazo.</div>
+  <div class="voc-tabs">
+    <div class="voc-tab activo" data-cat="0" onclick="cambiarCat(0,this)">🏠 Cotidiano</div>
+    <div class="voc-tab" data-cat="1" onclick="cambiarCat(1,this)">💼 Profesional</div>
+    <div class="voc-tab" data-cat="2" onclick="cambiarCat(2,this)">🌍 Viajes</div>
+    <div class="voc-tab" data-cat="3" onclick="cambiarCat(3,this)">🏥 Salud</div>
+    <div class="voc-tab" data-cat="4" onclick="cambiarCat(4,this)">💻 Digital</div>
+  </div>
+  <div id="voc0" class="voc-mini visible">
+    <div class="vm-card"><div class="vm-e">⏰</div><div class="vm-en">Wake up</div><div class="vm-pron">Uéik ap</div><div class="vm-es">Despertarse</div></div>
+    <div class="vm-card"><div class="vm-e">🍳</div><div class="vm-en">Breakfast</div><div class="vm-pron">Brékfast</div><div class="vm-es">Desayuno</div></div>
+    <div class="vm-card"><div class="vm-e">🏠</div><div class="vm-en">Come home</div><div class="vm-pron">Kam jóum</div><div class="vm-es">Llegar a casa</div></div>
+    <div class="vm-card"><div class="vm-e">🛒</div><div class="vm-en">Supermarket</div><div class="vm-pron">Súpermarket</div><div class="vm-es">Supermercado</div></div>
+    <div class="vm-card"><div class="vm-e">🍎</div><div class="vm-en">Apple</div><div class="vm-pron">Áepol</div><div class="vm-es">Manzana</div></div>
+    <div class="vm-card"><div class="vm-e">🌽</div><div class="vm-en">Corn</div><div class="vm-pron">Korn</div><div class="vm-es">Maíz (≠cuerno)</div></div>
+    <div class="vm-card"><div class="vm-e">🚌</div><div class="vm-en">By bus</div><div class="vm-pron">Bai bas</div><div class="vm-es">En bus</div></div>
+    <div class="vm-card"><div class="vm-e">🚶</div><div class="vm-en">On foot</div><div class="vm-pron">On fut</div><div class="vm-es">A pie</div></div>
+    <div class="vm-card"><div class="vm-e">☀️</div><div class="vm-en">Sunny</div><div class="vm-pron">Sáni</div><div class="vm-es">Soleado</div></div>
+    <div class="vm-card"><div class="vm-e">🌧️</div><div class="vm-en">Rainy</div><div class="vm-pron">Réini</div><div class="vm-es">Lluvioso</div></div>
+    <div class="vm-card"><div class="vm-e">🔴</div><div class="vm-en">Always</div><div class="vm-pron">Ólueis</div><div class="vm-es">Siempre</div></div>
+    <div class="vm-card"><div class="vm-e">🟡</div><div class="vm-en">Sometimes</div><div class="vm-pron">Sámtaims</div><div class="vm-es">A veces</div></div>
+  </div>
+  <div id="voc1" class="voc-mini">
+    <div class="vm-card"><div class="vm-e">👩‍💻</div><div class="vm-en">Engineer</div><div class="vm-pron">Enyaníer</div><div class="vm-es">Ingeniero/a</div></div>
+    <div class="vm-card"><div class="vm-e">⚖️</div><div class="vm-en">Lawyer</div><div class="vm-pron">Lóier</div><div class="vm-es">Abogado/a</div></div>
+    <div class="vm-card"><div class="vm-e">🏥</div><div class="vm-en">Hospital</div><div class="vm-pron">Jóspital</div><div class="vm-es">Hospital</div></div>
+    <div class="vm-card"><div class="vm-e">🏢</div><div class="vm-en">Office</div><div class="vm-pron">Ófis</div><div class="vm-es">Oficina</div></div>
+    <div class="vm-card"><div class="vm-e">❓</div><div class="vm-en">What do you do?</div><div class="vm-pron">Uot du iú dúu?</div><div class="vm-es">¿A qué te dedicas?</div></div>
+    <div class="vm-card"><div class="vm-e">📊</div><div class="vm-en">Cheaper</div><div class="vm-pron">Chíiper</div><div class="vm-es">Más barato</div></div>
+    <div class="vm-card"><div class="vm-e">✅</div><div class="vm-en">Better</div><div class="vm-pron">Béter</div><div class="vm-es">Mejor (irr.)</div></div>
+    <div class="vm-card"><div class="vm-e">🤝</div><div class="vm-en">Social worker</div><div class="vm-pron">Sóushal uórker</div><div class="vm-es">Trabajador social</div></div>
+    <div class="vm-card"><div class="vm-e">💰</div><div class="vm-en">How much is it?</div><div class="vm-pron">Jáu mach is it?</div><div class="vm-es">¿Cuánto cuesta?</div></div>
+    <div class="vm-card"><div class="vm-e">🎓</div><div class="vm-en">Student</div><div class="vm-pron">Stiúdent</div><div class="vm-es">Estudiante</div></div>
+    <div class="vm-card"><div class="vm-e">🚀</div><div class="vm-en">Entrepreneur</div><div class="vm-pron">Entroproníor</div><div class="vm-es">Emprendedor/a</div></div>
+    <div class="vm-card"><div class="vm-e">🌱</div><div class="vm-en">Farmer</div><div class="vm-pron">Fármer</div><div class="vm-es">Agricultor/a</div></div>
+  </div>
+  <div id="voc2" class="voc-mini">
+    <div class="vm-card"><div class="vm-e">🛂</div><div class="vm-en">Passport</div><div class="vm-pron">Páesport</div><div class="vm-es">Pasaporte</div></div>
+    <div class="vm-card"><div class="vm-e">✈️</div><div class="vm-en">Airplane</div><div class="vm-pron">Érplein</div><div class="vm-es">Avión</div></div>
+    <div class="vm-card"><div class="vm-e">🎒</div><div class="vm-en">Backpacker</div><div class="vm-pron">Baékpaeker</div><div class="vm-es">Mochilero/a</div></div>
+    <div class="vm-card"><div class="vm-e">🏨</div><div class="vm-en">Hotel</div><div class="vm-pron">Joutél</div><div class="vm-es">Hotel</div></div>
+    <div class="vm-card"><div class="vm-e">🗺️</div><div class="vm-en">Itinerary</div><div class="vm-pron">Aitínereri</div><div class="vm-es">Itinerario</div></div>
+    <div class="vm-card"><div class="vm-e">↩️</div><div class="vm-en">Turn left</div><div class="vm-pron">Tern left</div><div class="vm-es">Dobla izquierda</div></div>
+    <div class="vm-card"><div class="vm-e">⬆️</div><div class="vm-en">Go straight</div><div class="vm-pron">Góu stréit</div><div class="vm-es">Sigue recto</div></div>
+    <div class="vm-card"><div class="vm-e">📸</div><div class="vm-en">Sightseeing</div><div class="vm-pron">Sáitsiing</div><div class="vm-es">Turismo</div></div>
+    <div class="vm-card"><div class="vm-e">📚</div><div class="vm-en">been</div><div class="vm-pron">biin</div><div class="vm-es">sido/estado</div></div>
+    <div class="vm-card"><div class="vm-e">🎫</div><div class="vm-en">Round-trip</div><div class="vm-pron">Ráund trip</div><div class="vm-es">Ida y vuelta</div></div>
+    <div class="vm-card"><div class="vm-e">🏖️</div><div class="vm-en">Resort</div><div class="vm-pron">Risórt</div><div class="vm-es">Resort</div></div>
+    <div class="vm-card"><div class="vm-e">🌴</div><div class="vm-en">Tropical</div><div class="vm-pron">Trópikal</div><div class="vm-es">Tropical</div></div>
+  </div>
+  <div id="voc3" class="voc-mini">
+    <div class="vm-card"><div class="vm-e">🤒</div><div class="vm-en">Fever</div><div class="vm-pron">Fíiver</div><div class="vm-es">Fiebre</div></div>
+    <div class="vm-card"><div class="vm-e">🤕</div><div class="vm-en">Headache</div><div class="vm-pron">Jédeik</div><div class="vm-es">Dolor cabeza</div></div>
+    <div class="vm-card"><div class="vm-e">😮‍💨</div><div class="vm-en">Cough</div><div class="vm-pron">Kof</div><div class="vm-es">Tos</div></div>
+    <div class="vm-card"><div class="vm-e">💊</div><div class="vm-en">Pill</div><div class="vm-pron">Pil</div><div class="vm-es">Pastilla</div></div>
+    <div class="vm-card"><div class="vm-e">🩺</div><div class="vm-en">Doctor</div><div class="vm-pron">Dóktor</div><div class="vm-es">Médico</div></div>
+    <div class="vm-card"><div class="vm-e">⏪</div><div class="vm-en">felt</div><div class="vm-pron">felt</div><div class="vm-es">sentí (feel)</div></div>
+    <div class="vm-card"><div class="vm-e">⏪</div><div class="vm-en">went</div><div class="vm-pron">uent</div><div class="vm-es">fui (go)</div></div>
+    <div class="vm-card"><div class="vm-e">⏪</div><div class="vm-en">took</div><div class="vm-pron">tuk</div><div class="vm-es">tomé (take)</div></div>
+    <div class="vm-card"><div class="vm-e">⏪</div><div class="vm-en">slept</div><div class="vm-pron">slept</div><div class="vm-es">dormí (sleep)</div></div>
+    <div class="vm-card"><div class="vm-e">💊</div><div class="vm-en">Allergy</div><div class="vm-pron">Áleryi</div><div class="vm-es">Alergia</div></div>
+    <div class="vm-card"><div class="vm-e">🩹</div><div class="vm-en">Wound</div><div class="vm-pron">Wuund</div><div class="vm-es">Herida</div></div>
+    <div class="vm-card"><div class="vm-e">😫</div><div class="vm-en">Tired</div><div class="vm-pron">Táierd</div><div class="vm-es">Cansado/a</div></div>
+  </div>
+  <div id="voc4" class="voc-mini">
+    <div class="vm-card"><div class="vm-e">💻</div><div class="vm-en">Laptop</div><div class="vm-pron">Láeptop</div><div class="vm-es">Computador</div></div>
+    <div class="vm-card"><div class="vm-e">🌐</div><div class="vm-en">WiFi</div><div class="vm-pron">Uáifái</div><div class="vm-es">WiFi</div></div>
+    <div class="vm-card"><div class="vm-e">🔐</div><div class="vm-en">Password</div><div class="vm-pron">Páesuord</div><div class="vm-es">Contraseña</div></div>
+    <div class="vm-card"><div class="vm-e">📲</div><div class="vm-en">App</div><div class="vm-pron">Aep</div><div class="vm-es">Aplicación</div></div>
+    <div class="vm-card"><div class="vm-e">🤖</div><div class="vm-en">AI</div><div class="vm-pron">Ei-Ái</div><div class="vm-es">IA</div></div>
+    <div class="vm-card"><div class="vm-e">☁️</div><div class="vm-en">Cloud</div><div class="vm-pron">Kláud</div><div class="vm-es">Nube digital</div></div>
+    <div class="vm-card"><div class="vm-e">📧</div><div class="vm-en">Email</div><div class="vm-pron">Íimeil</div><div class="vm-es">Correo electrónico</div></div>
+    <div class="vm-card"><div class="vm-e">🔋</div><div class="vm-en">Battery</div><div class="vm-pron">Báeteri</div><div class="vm-es">Batería</div></div>
+    <div class="vm-card"><div class="vm-e">✅</div><div class="vm-en">I can</div><div class="vm-pron">Ái kaen</div><div class="vm-es">Puedo / sé</div></div>
+    <div class="vm-card"><div class="vm-e">❌</div><div class="vm-en">I can't</div><div class="vm-pron">Ái kaent</div><div class="vm-es">No puedo</div></div>
+    <div class="vm-card"><div class="vm-e">📡</div><div class="vm-en">Signal</div><div class="vm-pron">Sígnol</div><div class="vm-es">Señal</div></div>
+    <div class="vm-card"><div class="vm-e">🖥️</div><div class="vm-en">Screen</div><div class="vm-pron">Skriin</div><div class="vm-es">Pantalla</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FRASES MASTER -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Las 24 frases maestras del curso</div><div class="sec-badge b3">Frases clave</div></div>
+  <div class="hint">🗣️ <strong>El conjunto de supervivencia:</strong> Con estas 24 frases puedes comunicarte en cualquier situación en inglés. Memorízalas — son tu kit de supervivencia lingüística.</div>
+  <div class="frases-master">
+    <div class="fm-card"><div class="fmc-nivel">Saludo</div><div class="fmc-en">Nice to meet you!</div><span class="fmc-pron">Náis tu miit iú!</span><div class="fmc-es">¡Mucho gusto conocerte!</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Trabajo</div><div class="fmc-en">What do you do?</div><span class="fmc-pron">Uot du iú dúu?</span><div class="fmc-es">¿A qué te dedicas?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Restaurante</div><div class="fmc-en">I'd like the chicken, please.</div><span class="fmc-pron">Áid láik de chíken, pliis.</span><div class="fmc-es">Quisiera el pollo, por favor.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Ciudad</div><div class="fmc-en">Excuse me, where is…?</div><span class="fmc-pron">Ekskiúus mii, uér is?</span><div class="fmc-es">Disculpe, ¿dónde está…?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Rutina</div><div class="fmc-en">I always wake up at six.</div><span class="fmc-pron">Ái ólueis uéik ap at siks.</span><div class="fmc-es">Siempre me despierto a las seis.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Hobby</div><div class="fmc-en">I love swimming on weekends.</div><span class="fmc-pron">Ái lav suíming on uíkends.</span><div class="fmc-es">Me encanta nadar los fines de semana.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Compras</div><div class="fmc-en">How much is it?</div><span class="fmc-pron">Jáu mach is it?</span><div class="fmc-es">¿Cuánto cuesta?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Salud</div><div class="fmc-en">I have a fever since yesterday.</div><span class="fmc-pron">Ái jav a fíiver sins yésterdei.</span><div class="fmc-es">Tengo fiebre desde ayer.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Clima</div><div class="fmc-en">What's the weather like?</div><span class="fmc-pron">Uots de uéder láik?</span><div class="fmc-es">¿Cómo está el tiempo?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Transporte</div><div class="fmc-en">I go to work by bus every day.</div><span class="fmc-pron">Ái góu tu uork bai bas évri déi.</span><div class="fmc-es">Voy al trabajo en bus todos los días.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Pasado</div><div class="fmc-en">I felt sick and went to the doctor.</div><span class="fmc-pron">Ái felt sik end uent tu de dóktor.</span><div class="fmc-es">Me sentí mal y fui al médico.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Viajes</div><div class="fmc-en">Have you ever been to Colombia?</div><span class="fmc-pron">Jav iú éver been tu Colombia?</span><div class="fmc-es">¿Alguna vez has estado en Colombia?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Tecnología</div><div class="fmc-en">Can you hear me? The connection is bad.</div><span class="fmc-pron">Kaen iú jiir mii?</span><div class="fmc-es">¿Me escuchas? La conexión está mala.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Invitación</div><div class="fmc-en">Would you like to join us tonight?</div><span class="fmc-pron">Uud iú láik tu yóin as tunáit?</span><div class="fmc-es">¿Te gustaría acompañarnos esta noche?</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Futuro</div><div class="fmc-en">It will rain tomorrow morning.</div><span class="fmc-pron">It uil réin tumórou mórning.</span><div class="fmc-es">Mañana en la mañana lloverá.</div></div>
+    <div class="fm-card"><div class="fmc-nivel">Cultura 🇨🇴</div><div class="fmc-en">We are a social organization from Fusagasugá.</div><span class="fmc-pron">Uii ar a sóushal oryenizéishon.</span><div class="fmc-es">Somos una organización social de Fusa.</div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- QUIZ FINAL ESPECIAL -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="quiz-header">
+      <div class="qh-icon">🏆</div>
+      <div class="qh-title">EVALUACIÓN FINAL DEL CURSO</div>
+      <div class="qh-sub">20 preguntas · Cubre todas las cartillas del 0 al 18 · ¡Demuestra lo aprendido!</div>
+    </div>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-num" id="qnum">Pregunta 1 de 20</div>
+      <div class="q-tema" id="qtema">—</div>
+      <div class="q-icon" id="qicon">🎓</div>
+      <div class="q-pregunta" id="qpregunta">Cargando evaluación final…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 20 · Score: 0</div>
+    </div>
+
+    <!-- DIPLOMA -->
+    <div class="diploma" id="diploma">
+      <div class="dip-corona">🏆</div>
+      <div class="dip-titulo">CERTIFICADO DE COMPLETACIÓN</div>
+      <div class="dip-sub">Club de la Gente · Programa de Inglés A0→B1 · Fusagasugá, Colombia</div>
+      <div class="dip-nombre">¡Has completado el curso!</div>
+      <div class="dip-org">Corporación Club de la Gente · Fusagasugá, Cundinamarca</div>
+      <div class="dip-fecha" id="dip-fecha">2025</div>
+      <div class="dip-logros">
+        <div class="dip-logro">📚 19 Cartillas completadas</div>
+        <div class="dip-logro">🗣️ 300+ palabras aprendidas</div>
+        <div class="dip-logro">🌍 Nivel A0 → B1</div>
+        <div class="dip-logro">🇨🇴 Embajador cultural</div>
+        <div class="dip-logro">💼 Inglés para cooperación</div>
+        <div class="dip-logro">🤝 Listo para el mundo</div>
+      </div>
+      <div class="dip-frase">"The limits of my language are the limits of my world."<br><strong>— Ludwig Wittgenstein</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- PIE DE PÁGINA FINAL -->
+<div class="footer-final">
+  <div class="ff-logo">🇨🇴</div>
+  <div class="ff-titulo">Club de la Gente · Fusagasugá, Colombia</div>
+  <div class="ff-sub">Corporación de impacto social · Inglés · Francés · Habilidades digitales<br>Capacitando a nuestra comunidad para el mundo</div>
+  <div class="ff-cartillas">
+    <div class="ffc done">C0 · Alfabeto</div><div class="ffc done">C1 · Saludos</div>
+    <div class="ffc done">C2 · Números</div><div class="ffc done">C3 · Colores</div>
+    <div class="ffc done">C4 · Familia</div><div class="ffc done">C5 · Cuerpo</div>
+    <div class="ffc done">C6 · Casa</div><div class="ffc done">C7 · Comida</div>
+    <div class="ffc done">C8 · Rutina</div><div class="ffc done">C9 · Trabajo</div>
+    <div class="ffc done">C10 · Ciudad</div><div class="ffc done">C11 · Transporte</div>
+    <div class="ffc done">C12 · Tiempo libre</div><div class="ffc done">C13 · Compras</div>
+    <div class="ffc done">C14 · Salud</div><div class="ffc done">C15 · Clima</div>
+    <div class="ffc done">C16 · Viajes</div><div class="ffc done">C17 · Tecnología</div>
+    <div class="ffc done">C18 · Cultura</div><div class="ffc done">C19 · ¡Final! 🏆</div>
+  </div>
+  <div class="ff-copy">© 2025 Corporación Club de la Gente · Todos los derechos reservados · Fusagasugá, Cundinamarca, Colombia</div>
+</div>
+
+<script>
+// Vocabulario tabs
+function cambiarCat(n, btn){
+  document.querySelectorAll('.voc-mini').forEach(v=>v.classList.remove('visible'));
+  document.querySelectorAll('.voc-tab').forEach(t=>t.classList.remove('activo'));
+  document.getElementById('voc'+n).classList.add('visible');
+  btn.classList.add('activo');
+}
+
+// QUIZ FINAL — 20 preguntas que cubren todo el curso
+const Qs=[
+  {t:'C0 · Alfabeto',i:'🔤',q:'¿Cuántas letras tiene el alfabeto inglés?',ctx:'Cartilla 0 — Lo primero que aprendiste',ops:['24','25','26','27'],r:2,ex:'✅ 26 letras. El alfabeto inglés tiene 26 letras: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z. 5 vocales: A E I O U.'},
+  {t:'C1 · Saludos',i:'👋',q:'"Nice to meet you!" se dice cuando:',ctx:'Cartilla 1 — Saludos y presentaciones',ops:['Te despides de alguien','Conoces a alguien por primera vez','Le preguntas cómo está a alguien','Agrecias algo'],r:1,ex:'✅ Nice to meet you = Mucho gusto / Encantado de conocerte. Se usa al conocer a alguien por primera vez. Respuesta: Nice to meet you too!'},
+  {t:'C2 · Números',i:'🔢',q:'¿Cómo se dice "25" en inglés?',ctx:'Cartilla 2 — Números del 1 al 100',ops:['Two-five','Twenty five','Two five','Twency five'],r:1,ex:'✅ Twenty-five. Decenas: twenty, thirty, forty, fifty... Unidades: one, two, three... La fórmula: decena + unidad. Twenty + five = twenty-five.'},
+  {t:'C3 · Colores',i:'🎨',q:'En inglés, el orden correcto es:',ctx:'Cartilla 3 — El adjetivo VA ANTES del sustantivo',ops:['The bag red','The red bag','Red the bag','Bag the red'],r:1,ex:'✅ The RED bag. En inglés el adjetivo SIEMPRE va ANTES del sustantivo. A blue car. A beautiful house. A big problem. Opuesto al español.'},
+  {t:'C5 · Cuerpo',i:'🤕',q:'"My head hurts." significa:',ctx:'Cartilla 5 — Cuerpo humano y dolores',ops:['Mi cabeza es grande.','Me duele la cabeza.','Tengo fiebre.','Me golpeé la cabeza.'],r:1,ex:'✅ My head hurts = Me duele la cabeza. My + parte del cuerpo + hurts = me duele. My leg hurts. My stomach hurts. It hurts here = Duele aquí.'},
+  {t:'C6 · Casa',i:'🏠',q:'"There are three bedrooms in my house." ¿Qué significa?',ctx:'Cartilla 6 — There is / There are',ops:['Hay tres casas en mi vecindario.','Hay tres habitaciones en mi casa.','Mis tres hermanos están en casa.','La casa tiene tres pisos.'],r:1,ex:'✅ There are three bedrooms in my house = Hay tres habitaciones en mi casa. There is = hay (singular). There are = hay (plural). Bedroom = habitación.'},
+  {t:'C7 · Comida',i:'👩',q:'"She ___ coffee every morning." — La S de He/She',ctx:'Cartilla 7 — Presente simple + regla de la S',ops:['drink','drinks','drinking','is drink'],r:1,ex:'✅ She DRINKS coffee. La S es obligatoria con She/He/It en presente simple. She drinks, he eats, it works. Sin S con I/you/we/they.'},
+  {t:'C8 · Rutina',i:'📊',q:'"I ___ wake up late on weekdays." (Nunca)',ctx:'Cartilla 8 — Adverbios de frecuencia',ops:['always','sometimes','never','usually'],r:2,ex:'✅ I NEVER wake up late. Never = 0%. Always = 100%. Usually = 80%. Sometimes = 50%. Posición: ANTES del verbo principal. I never/always/sometimes eat...'},
+  {t:'C9 · Trabajo',i:'📝',q:'"I am ___ engineer." — Artículo correcto',ctx:'Cartilla 9 — A vs AN',ops:['a engineer','an engineer','the engineer','— engineer'],r:1,ex:'✅ AN engineer. AN se usa antes de sonido vocal (a, e, i, o, u). Engineer empieza con E → AN engineer. AN artist. AN umbrella. A doctor. A teacher.'},
+  {t:'C10 · Ciudad',i:'📚',q:'"Library" en español es:',ctx:'Cartilla 10 — Falso amigo clásico',ops:['Librería (tienda de libros)','Biblioteca','Papelería','Archivo histórico'],r:1,ex:'✅ Library = BIBLIOTECA. ¡Cuidado! Librería en español = BOOKSTORE en inglés. Library es donde vas a leer o pedir libros prestados, no a comprar.'},
+  {t:'C11 · Transporte',i:'🚶',q:'"I walk to the park ___." — ¿A pie cómo se dice?',ctx:'Cartilla 11 — La excepción de BY',ops:['by foot','with foot','on foot','in foot'],r:2,ex:'✅ ON foot. Es la única excepción a la regla BY + transporte. Todos los demás: by car, by bus, by plane. Pero a pie: ON foot. Siempre.'},
+  {t:'C12 · Tiempo libre',i:'🏊',q:'"I love swim in the pool." — ¿Cuál es el error?',ctx:'Cartilla 12 — Love/Like + Gerundio',ops:['Love debe ser Loves','Swim debe ser Swimming','Pool debe ser Pools','In debe ser at'],r:1,ex:'✅ Swimming. Después de LOVE/LIKE/HATE siempre va el gerundio (-ING). I love swimming. She likes reading. He hates waiting. Nunca infinitivo.'},
+  {t:'C13 · Compras',i:'✅',q:'¿Cuál es el comparativo de "good"?',ctx:'Cartilla 13 — Comparativos irregulares',ops:['gooder','more good','better','goodest'],r:2,ex:'✅ BETTER. Irregular: good → better → best. Bad → worse → worst. Estos son los dos comparativos irregulares más importantes del inglés.'},
+  {t:'C14 · Salud',i:'⏪',q:'"I go to the doctor" → Pasado simple:',ctx:'Cartilla 14 — Verbos irregulares en pasado',ops:['I goed','I gone','I went','I did go'],r:2,ex:'✅ I WENT. GO es irregular: go → went → gone. I went to the doctor yesterday. She went to school. They went home. Went es uno de los más usados.'},
+  {t:'C15 · Clima',i:'🔮',q:'"Mañana no lloverá." ¿Cómo se dice?',ctx:'Cartilla 15 — Futuro con WILL negativo',ops:["It will not to rain tomorrow.","It won't rain tomorrow.","It not will rain tomorrow.","Tomorrow it will not raining."],r:1,ex:"✅ It won't rain tomorrow. WON'T = will not (negativo del futuro). Won't + infinitivo. She won't come. They won't be there. It won't snow in Cartagena."},
+  {t:'C16 · Viajes',i:'❓',q:'"Have you ever ___ to Colombia?" — Participio de BE',ctx:'Cartilla 16 — Presente perfecto',ops:['go','went','been','gone'],r:2,ex:'✅ BEEN. Have you ever BEEN to…? BE es irregular: be → was/were → been. Have you ever been to Colombia? Yes, I have! No, I haven\'t.'},
+  {t:'C17 · Tecnología',i:'✅',q:'"She ___ code in Python." — Habilidad',ctx:'Cartilla 17 — CAN para habilidades',ops:['cans code','is can code','can code','can to code'],r:2,ex:'✅ She CAN code. CAN nunca lleva S con She/He/It. CAN + infinitivo sin TO. She can code. He can design. They can manage. I can speak English.'},
+  {t:'C18 · Cultura',i:'🤝',q:'"Would you like to join us?" — Sarah acepta. ¿Qué dice?',ctx:'Cartilla 18 — Would you like to + respuestas',ops:["Yes, I would like!","Yes, I'd love to!","Yes, I want!","Yes, I will!"],r:1,ex:"✅ Yes, I'd love to! Es la respuesta más natural. I'd = I would. I'd love to = Me encantaría. También: That sounds great! / Count me in!"},
+  {t:'C19 · Final',i:'🇨🇴',q:'¿Cómo describes a Club de la Gente en inglés?',ctx:'Tu organización al mundo',ops:["Club de la Gente is a people club.","We are a social organization in Fusagasugá offering language and digital skills training.","We make classes in Colombia for people.","Club de la Gente from Colombia."],r:1,ex:'✅ We are a social organization in Fusagasugá offering language and digital skills training. Claro, completo, profesional. ¡Esta frase representa tu organización al mundo!'},
+  {t:'PRODUCCIÓN ★',i:'🌍',q:'Carlos habla con un cooperante de GIZ. "Soy trabajador social, trabajo desde hace 4 años y me encanta ayudar a mi comunidad." ¿Cómo lo dice?',ctx:'La frase que resume todo el curso',ops:["I'm a social worker for 4 years and I love help my community.","I'm a social worker. I've worked for 4 years and I love helping my community.","I am social worker, 4 years working, love help community.","I work like social worker for 4 years, love to helping community."],r:1,ex:"✅ I'm a social worker. I've worked for 4 years and I love helping my community. Combina: presente simple, presente perfecto, y love + ING. ¡Esa es la frase perfecta — y eso es lo que aprendiste en este curso!"},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){
+  if(qi>=Qs.length)return;
+  const q=Qs[qi];
+  const pct=(qi/Qs.length*100);
+  document.getElementById('qpf').style.width=pct+'%';
+  document.getElementById('qnum').textContent=`Pregunta ${qi+1} de ${Qs.length}`;
+  document.getElementById('qtema').textContent=q.t;
+  document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;
+  document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;
+  qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{
+    const b=document.createElement('button');b.className='q-btn';b.textContent=op;
+    b.onclick=()=>qResp(i,b);ops.appendChild(b);
+  });
+}
+function qResp(i,btn){
+  if(qr)return;qr=true;
+  const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';
+  if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 VER MI RESULTADO FINAL';
+}
+function qNext(){
+  qi++;
+  if(qi<Qs.length){qLoad();}
+  else{
+    const pct=Math.round(qs/Qs.length*100);
+    document.getElementById('qpf').style.width='100%';
+    document.getElementById('qnum').textContent='RESULTADO FINAL DEL CURSO';
+    document.getElementById('qtema').textContent=pct>=80?'🏆 APROBADO':'💪 SIGUE ADELANTE';
+    document.getElementById('qicon').textContent=pct>=90?'🥇':pct>=80?'🏆':pct>=60?'👍':'💪';
+    document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+    let msg='';
+    if(pct>=90)msg='¡EXCELENTE! Dominas el inglés A0→B1. Estás listo para el mundo. 🚀 Club de la Gente está orgulloso de ti.';
+    else if(pct>=80)msg='¡MUY BIEN! Has aprobado el curso. Continúa practicando y en poco tiempo alcanzarás el nivel B2.';
+    else if(pct>=60)msg='¡BIEN! Tienes una buena base. Repasa las cartillas donde tuviste dificultades y vuélvelo a intentar.';
+    else msg='¡ÁNIMO! El aprendizaje es un proceso. Repasa el curso con calma y verás los resultados. ¡Tú puedes!';
+    document.getElementById('qctx').textContent=msg;
+    document.getElementById('qops').innerHTML='';
+    document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent=`Score final: ${qs}/${Qs.length} (${pct}%)`;
+    // Mostrar diploma
+    const d=document.getElementById('diploma');
+    d.classList.add('visible');
+    document.getElementById('dip-fecha').textContent=new Date().toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'});
+    d.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+qLoad();
+</script>
+</body>
+</html>

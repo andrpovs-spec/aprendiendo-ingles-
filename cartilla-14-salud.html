@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 14 — La Salud</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rojo:#DC2626;--azul:#2563EB;--verde:#16A34A;--gris:#111827;--crema:#FFF5F5;--borde:#FECACA;--suave:#FEF2F2;--sombra:rgba(220,38,38,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--gris);}
+.hero{background:linear-gradient(135deg,#7F1D1D,#991B1B);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero-tag{display:inline-block;background:#FCA5A5;color:#7F1D1D;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:800;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:#FCA5A5;font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--rojo),#B91C1C);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:#FCA5A5;}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--gris);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:800;color:var(--borde);}
+.sec-title{font-size:1.15rem;font-weight:800;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--rojo);color:white;}.bg{background:var(--gris);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--azul);color:white;}
+.hint{background:var(--suave);border-left:4px solid var(--rojo);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#7F1D1D;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+.sintomas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.sint-card{background:white;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--rojo);transition:transform 0.2s;}
+.sint-card:hover{transform:translateY(-3px);}
+.sc-emoji{font-size:2rem;margin-bottom:5px;}
+.sc-en{font-size:0.9rem;font-weight:700;color:var(--gris);}
+.sc-pron{font-size:0.64rem;font-weight:700;color:var(--rojo);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.sc-es{font-size:0.7rem;color:#6B7280;}
+.sc-frase{font-size:0.66rem;color:#9CA3AF;margin-top:3px;font-style:italic;}
+
+.feel-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.fb-title{font-size:1rem;font-weight:800;color:#FCA5A5;margin-bottom:12px;}
+.feel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.feel-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;}
+.fc-en{font-size:0.9rem;font-weight:700;color:white;margin-bottom:4px;}
+.fc-pron{font-size:0.66rem;color:#FCA5A5;font-weight:600;display:block;margin-bottom:3px;}
+.fc-es{font-size:0.76rem;color:rgba(255,255,255,0.4);}
+.fc-ej{font-size:0.7rem;color:rgba(255,255,255,0.25);font-style:italic;margin-top:3px;}
+
+.pasado-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.pb-title{font-size:1rem;font-weight:800;color:#FCA5A5;margin-bottom:4px;}
+.pb-sub{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.pas-tabla{width:100%;border-collapse:collapse;}
+.pas-tabla th{background:rgba(255,255,255,0.08);padding:7px 10px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FCA5A5;text-align:left;}
+.pas-tabla td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:white;}
+.pas-tabla td em{color:#FCA5A5;font-style:normal;}
+.pas-tabla tr:last-child td{border-bottom:none;}
+.pas-irr{margin-top:12px;background:rgba(252,165,165,0.1);border:1px solid rgba(252,165,165,0.2);border-radius:10px;padding:14px;}
+.pi-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FCA5A5;margin-bottom:8px;}
+.pi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pi-item{text-align:center;}
+.pi-base{font-size:0.7rem;color:rgba(255,255,255,0.4);}
+.pi-past{font-size:0.88rem;font-weight:700;color:white;}
+
+.medico-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.med-card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--rojo);}
+.med-card:nth-child(even){border-color:var(--azul);}
+.mc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:6px;}
+.mc-en{font-size:0.88rem;font-weight:700;color:var(--gris);margin-bottom:3px;}
+.mc-pron{font-size:0.66rem;color:var(--rojo);font-weight:700;display:block;margin-bottom:2px;}
+.mc-es{font-size:0.74rem;color:#6B7280;}
+
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--rojo),#B91C1C);}
+.av.d{background:linear-gradient(135deg,var(--azul),#1D4ED8);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--gris);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--gris);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--rojo);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--gris);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:#FCA5A5;}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.85rem;font-weight:700;color:var(--gris);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--gris);transform:rotateY(180deg);}
+.fb-es{color:#FCA5A5;font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#93C5FD;font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--rojo);color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:800;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--rojo),#FCA5A5);border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(22,163,74,0.2);border-color:var(--verde);color:#86EFAC;}
+.q-btn.mal{background:rgba(220,38,38,0.2);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:#FCA5A5;min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--rojo);color:white;border:none;padding:11px 28px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:800;color:var(--gris);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--rojo);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:700;color:var(--gris);}
+.rep-pron{font-size:0.6rem;color:var(--rojo);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--rojo);text-align:center;}
+.tip h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--gris);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:#FCA5A5;}
+@media(max-width:520px){.feel-grid{grid-template-columns:1fr;}.medico-grid{grid-template-columns:1fr;}.pi-grid{grid-template-columns:1fr 1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 14 de 19 · Síntomas + Pasado Simple</div>
+  <h1>La Salud<br><em>Health</em></h1>
+  <p class="hero-sub">Cartilla 14 · Nivel A2 · Síntomas · En el médico · Pasado simple · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🤒 Síntomas y enfermedades</span><span class="hp">🏥 En el médico</span>
+    <span class="hp">⏪ Pasado simple (regular)</span><span class="hp">⚡ Irregulares clave</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos se enfermó ayer y fue al médico. Hoy le cuenta a Sarah lo que le pasó. <strong>Aprendes síntomas, frases médicas y el pasado simple.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Síntomas y enfermedades — Symptoms</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Vocabulario de emergencia:</strong> En una situación médica en el exterior, estas palabras pueden ser críticas. Apréndalas bien — pueden ser muy necesarias.</div>
+  <div class="sintomas-grid">
+    <div class="sint-card"><div class="sc-emoji">🤒</div><div class="sc-en">Fever</div><div class="sc-pron">Fíiver</div><div class="sc-es">Fiebre</div><div class="sc-frase">I have a fever.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🤧</div><div class="sc-en">Cold / Flu</div><div class="sc-pron">Kóuld / Flúu</div><div class="sc-es">Gripa / Gripe</div><div class="sc-frase">I have a cold.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🤕</div><div class="sc-en">Headache</div><div class="sc-pron">Jédeik</div><div class="sc-es">Dolor de cabeza</div><div class="sc-frase">I have a headache.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🦷</div><div class="sc-en">Toothache</div><div class="sc-pron">Tuúzeik</div><div class="sc-es">Dolor de muela</div><div class="sc-frase">My tooth hurts.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🤢</div><div class="sc-en">Nausea</div><div class="sc-pron">Nósha</div><div class="sc-es">Náuseas</div><div class="sc-frase">I feel nauseous.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🤮</div><div class="sc-en">Vomiting</div><div class="sc-pron">Vómiting</div><div class="sc-es">Vómito</div><div class="sc-frase">I've been vomiting.</div></div>
+    <div class="sint-card"><div class="sc-emoji">😫</div><div class="sc-en">Tired / Fatigue</div><div class="sc-pron">Táierd / Fatíig</div><div class="sc-es">Cansado / Fatiga</div><div class="sc-frase">I feel very tired.</div></div>
+    <div class="sint-card"><div class="sc-emoji">💊</div><div class="sc-en">Allergy</div><div class="sc-pron">Áleryi</div><div class="sc-es">Alergia</div><div class="sc-frase">I have an allergy.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🩹</div><div class="sc-en">Wound / Cut</div><div class="sc-pron">Wuund / Kat</div><div class="sc-es">Herida / Cortada</div><div class="sc-frase">I have a cut.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🦴</div><div class="sc-en">Broken bone</div><div class="sc-pron">Bróuken bóun</div><div class="sc-es">Hueso roto</div><div class="sc-frase">I think it's broken.</div></div>
+    <div class="sint-card"><div class="sc-emoji">😮‍💨</div><div class="sc-en">Cough</div><div class="sc-pron">Kof</div><div class="sc-es">Tos</div><div class="sc-frase">I have a bad cough.</div></div>
+    <div class="sint-card"><div class="sc-emoji">🫁</div><div class="sc-en">Shortness of breath</div><div class="sc-pron">Shórtnes of brez</div><div class="sc-es">Falta de aire</div><div class="sc-frase">I can't breathe well.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Cómo describir cómo te sientes — I feel…</div><div class="sec-badge bg">Frases clave</div></div>
+  <div class="feel-box">
+    <div class="fb-title">🗣️ Expresar síntomas al médico</div>
+    <div class="feel-grid">
+      <div class="feel-card"><div class="fc-en">I feel sick.</div><span class="fc-pron">Ái fiil sik.</span><div class="fc-es">Me siento enfermo/a.</div><div class="fc-ej">I felt sick all night.</div></div>
+      <div class="feel-card"><div class="fc-en">I have a pain in my chest.</div><span class="fc-pron">Ái jav a péin in mái chest.</span><div class="fc-es">Tengo un dolor en el pecho.</div></div>
+      <div class="feel-card"><div class="fc-en">It hurts here.</div><span class="fc-pron">It jerts jiir.</span><div class="fc-es">Me duele aquí. (señalando)</div><div class="fc-ej">My leg hurts.</div></div>
+      <div class="feel-card"><div class="fc-en">I've had this for 3 days.</div><span class="fc-pron">Áiv jaed dis for zríi déis.</span><div class="fc-es">Llevo 3 días con esto.</div></div>
+      <div class="feel-card"><div class="fc-en">I'm allergic to penicillin.</div><span class="fc-pron">Áim aléryik tu penisílin.</span><div class="fc-es">Soy alérgico/a a la penicilina.</div></div>
+      <div class="feel-card"><div class="fc-en">I need to see a doctor.</div><span class="fc-pron">Ái niid tu síi a dóktor.</span><div class="fc-es">Necesito ver a un médico.</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Pasado Simple — Contar qué pasó</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> El pasado simple describe acciones terminadas. Verbos regulares: +<strong>ED</strong>. Verbos irregulares: forma propia. Para negaciones y preguntas: <strong>DID / DIDN'T</strong>.</div>
+  <div class="pasado-box">
+    <div class="pb-title">⏪ Pasado simple — Estructura</div>
+    <div class="pb-sub">Carlos describe lo que le pasó ayer cuando se enfermó</div>
+    <table class="pas-tabla">
+      <thead><tr><th>Tipo</th><th>Forma</th><th>Ejemplo médico</th></tr></thead>
+      <tbody>
+        <tr><td>Regular (+ED)</td><td>verb + <em>ed</em></td><td>I visit<em>ed</em> the doctor yesterday.</td></tr>
+        <tr><td>Negativo</td><td><em>didn't</em> + verbo</td><td>I <em>didn't</em> sleep last night.</td></tr>
+        <tr><td>Pregunta</td><td><em>Did</em> + sujeto + verbo</td><td><em>Did</em> you take the medicine?</td></tr>
+        <tr><td>Respuesta</td><td>Yes, I did. / No, I didn't.</td><td><em>Yes, I did.</em> — Sí, la tomé.</td></tr>
+      </tbody>
+    </table>
+    <div class="pas-irr">
+      <div class="pi-title">⚡ Irregulares de salud — ¡Memoriza estos!</div>
+      <div class="pi-grid">
+        <div class="pi-item"><div class="pi-base">feel →</div><div class="pi-past">felt</div></div>
+        <div class="pi-item"><div class="pi-base">go →</div><div class="pi-past">went</div></div>
+        <div class="pi-item"><div class="pi-base">take →</div><div class="pi-past">took</div></div>
+        <div class="pi-item"><div class="pi-base">sleep →</div><div class="pi-past">slept</div></div>
+        <div class="pi-item"><div class="pi-base">have →</div><div class="pi-past">had</div></div>
+        <div class="pi-item"><div class="pi-base">wake →</div><div class="pi-past">woke</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">En el consultorio — Frases médicas</div><div class="sec-badge bn">En el médico</div></div>
+  <div class="medico-grid">
+    <div class="med-card"><div class="mc-ctx">👨‍⚕️ Médico pregunta</div><div class="mc-en">What seems to be the problem?</div><span class="mc-pron">Uot siims tu bii de próblem?</span><div class="mc-es">¿Cuál es el problema?</div></div>
+    <div class="med-card"><div class="mc-ctx">🤒 Paciente responde</div><div class="mc-en">I've had a fever since yesterday.</div><span class="mc-pron">Áiv jaed a fíiver sins yésterdei.</span><div class="mc-es">He tenido fiebre desde ayer.</div></div>
+    <div class="med-card"><div class="mc-ctx">👨‍⚕️ Examinando</div><div class="mc-en">Does it hurt when I press here?</div><span class="mc-pron">Das it jert uen ái pres jiir?</span><div class="mc-es">¿Le duele cuando presiono aquí?</div></div>
+    <div class="med-card"><div class="mc-ctx">💊 Receta</div><div class="mc-en">I'll prescribe some antibiotics.</div><span class="mc-pron">Áil priskráib sam aentibáiotiks.</span><div class="mc-es">Le voy a recetar unos antibióticos.</div></div>
+    <div class="med-card"><div class="mc-ctx">📋 Instrucciones</div><div class="mc-en">Take one pill every 8 hours.</div><span class="mc-pron">Téik uán pil évri éit áuers.</span><div class="mc-es">Tome una pastilla cada 8 horas.</div></div>
+    <div class="med-card"><div class="mc-ctx">🏠 Alta médica</div><div class="mc-en">Rest at home for two days.</div><span class="mc-pron">Rest at jóum for túu déis.</span><div class="mc-es">Descanse en casa por dos días.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Carlos le cuenta a Sarah — Diálogo</div><div class="sec-badge bu">Pasado real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📱 Carlos le cuenta sobre su visita al médico — pasado simple</div>
+    <div class="brow"><div class="av d">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos, are you okay? You didn't answer yesterday.</div><span class="b-pron">Carlos, ar iú okéi? Iú didnt áenser yésterdei.</span><div class="b-es">Carlos, ¿estás bien? Ayer no contestaste.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Sorry! I felt very sick. I woke up with a terrible headache and a high fever.</div><span class="b-pron">Sórri! Ái felt véri sik. Ái wóuk ap uid a térribol jédeik end a jái fíiver.</span><div class="b-es">¡Disculpa! Me sentí muy mal. Me desperté con un terrible dolor de cabeza y fiebre alta.</div></div></div></div>
+    <div class="brow"><div class="av d">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Oh no! Did you go to the doctor?</div><span class="b-pron">Ou nóu! Did iú góu tu de dóktor?</span><div class="b-es">¡Oh no! ¿Fuiste al médico?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! My mom took me to the clinic. The doctor examined me and prescribed antibiotics. I took the first pill last night.</div><span class="b-pron">Ies! Mái mom tuk mii tu de klínik. De dóktor igzáemind mii end priskráibd aentibáiotiks. Ái tuk de ferst pil laest náit.</span><div class="b-es">¡Sí! Mi mamá me llevó a la clínica. El médico me examinó y me recetó antibióticos. Tomé la primera pastilla anoche.</div></div></div></div>
+    <div class="brow"><div class="av d">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Did you sleep well last night?</div><span class="b-pron">Did iú sliip uel laest náit?</span><div class="b-es">¿Dormiste bien anoche?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Not really. I didn't sleep much — only about 4 hours. But I feel better today. The fever went down!</div><span class="b-pron">Not ríiali. Ái didnt sliip mach — ónli abáut fór áuers. Bot Ái fiil béter tudéi. De fíiver uent dáun!</span><div class="b-es">La verdad no. No dormí mucho — solo unas 4 horas. ¡Pero hoy me siento mejor. La fiebre bajó!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">06</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">🤒 Mira el emoji → di el síntoma en inglés → toca para confirmar.</div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — La Salud</div></div>
+    <p class="qw-sub">10 preguntas · Síntomas · Pasado simple · En el médico</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">🏥</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🏥 Vocabulario de salud</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">🤒</div><div class="rep-en">Fever</div><div class="rep-pron">Fíiver</div><div class="rep-es">Fiebre</div></div>
+      <div class="rep-c"><div class="rep-e">🤕</div><div class="rep-en">Headache</div><div class="rep-pron">Jédeik</div><div class="rep-es">Dolor cabeza</div></div>
+      <div class="rep-c"><div class="rep-e">🤧</div><div class="rep-en">Cold / Flu</div><div class="rep-pron">Kóuld / Flúu</div><div class="rep-es">Gripa / Gripe</div></div>
+      <div class="rep-c"><div class="rep-e">😮‍💨</div><div class="rep-en">Cough</div><div class="rep-pron">Kof</div><div class="rep-es">Tos</div></div>
+      <div class="rep-c"><div class="rep-e">💊</div><div class="rep-en">Pill / Medicine</div><div class="rep-pron">Pil / Médisin</div><div class="rep-es">Pastilla / Medicina</div></div>
+      <div class="rep-c"><div class="rep-e">🩺</div><div class="rep-en">Doctor / Clinic</div><div class="rep-pron">Dóktor / Klínik</div><div class="rep-es">Médico / Clínica</div></div>
+      <div class="rep-c"><div class="rep-e">⏪</div><div class="rep-en">felt</div><div class="rep-pron">felt</div><div class="rep-es">sentí (feel→felt)</div></div>
+      <div class="rep-c"><div class="rep-e">⏪</div><div class="rep-en">went</div><div class="rep-pron">uent</div><div class="rep-es">fui (go→went)</div></div>
+      <div class="rep-c"><div class="rep-e">⏪</div><div class="rep-en">took</div><div class="rep-pron">tuk</div><div class="rep-es">tomé (take→took)</div></div>
+      <div class="rep-c"><div class="rep-e">⏪</div><div class="rep-en">slept</div><div class="rep-pron">slept</div><div class="rep-es">dormí (sleep→slept)</div></div>
+      <div class="rep-c"><div class="rep-e">❌</div><div class="rep-en">didn't</div><div class="rep-pron">didnt</div><div class="rep-es">no hice (pasado)</div></div>
+      <div class="rep-c"><div class="rep-e">❓</div><div class="rep-en">Did you…?</div><div class="rep-pron">Did iú?</div><div class="rep-es">¿Hiciste…? (pasado)</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🏥</div>
+    <h3>Reto del maestro</h3>
+    <p>Describe la última vez que te enfermaste usando el pasado simple: ¿Qué síntomas tuviste? ¿Fuiste al médico? ¿Qué tomaste? Usa felt, went, took, had.</p>
+    <div class="tip-pasos"><div class="tip-paso">🤒 I felt…</div><div class="tip-paso">🏥 I went to…</div><div class="tip-paso">💊 I took…</div><div class="tip-paso">😴 I slept…</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 14 de 19 · La Salud · A2</div>
+<script>
+const fd=[
+  {e:'🤒',en:'Fever',es:'Fiebre',pron:'Fíiver',ctx:'I have a fever.'},
+  {e:'🤕',en:'Headache',es:'Dolor de cabeza',pron:'Jédeik',ctx:'I have a headache.'},
+  {e:'🤧',en:'Cold',es:'Gripa',pron:'Kóuld',ctx:'I have a cold.'},
+  {e:'😮‍💨',en:'Cough',es:'Tos',pron:'Kof',ctx:'I have a bad cough.'},
+  {e:'🤢',en:'Nausea',es:'Náuseas',pron:'Nósha',ctx:'I feel nauseous.'},
+  {e:'💊',en:'Pill / Medicine',es:'Pastilla / Medicina',pron:'Pil / Médisin',ctx:'Take one pill every 8h.'},
+  {e:'⏪',en:'felt',es:'sentí (feel)',pron:'felt',ctx:'I felt sick yesterday.'},
+  {e:'⏪',en:'went',es:'fui (go)',pron:'uent',ctx:'I went to the doctor.'},
+  {e:'⏪',en:'took',es:'tomé (take)',pron:'tuk',ctx:'I took the medicine.'},
+  {e:'⏪',en:'slept',es:'dormí (sleep)',pron:'slept',ctx:"I didn't sleep well."},
+  {e:'❌',en:"didn't",es:'no hice (negación pasado)',pron:'didnt',ctx:"I didn't go to work."},
+  {e:'🩹',en:'Wound / Cut',es:'Herida / Cortada',pron:'Wuund / Kat',ctx:'I have a cut on my hand.'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'VOCABULARIO',i:'🤕',q:'"Headache" en español es:',ctx:'El síntoma más común cuando Carlos se estresó',ops:['Dolor de estómago','Dolor de cabeza','Fiebre','Mareo'],r:1,ex:'✅ Headache = Dolor de cabeza. Head = cabeza. Ache = dolor. Toothache = dolor de muela. Stomachache = dolor de estómago. Backache = dolor de espalda.'},
+  {t:'PASADO ★',i:'⏪',q:'"I go to the doctor" → Pasado simple:',ctx:'Carlos describe lo que hizo ayer',ops:['I goed to the doctor.','I gone to the doctor.','I went to the doctor.','I did go to the doctor.'],r:2,ex:'✅ I went to the doctor. GO es irregular: go → went. Went es uno de los más usados. I went home. She went to work. They went to the hospital.'},
+  {t:'PASADO ★',i:'❌',q:'"Carlos no durmió bien." ¿Cómo se dice en pasado?',ctx:'Negación en pasado simple',ops:["Carlos not slept well.","Carlos didn't sleep well.","Carlos didn't slept well.","Carlos not sleep well."],r:1,ex:"✅ Carlos didn't sleep well. DIDN'T + verbo en infinitivo (sin -ED ni irregular). Didn't sleep (no slept). Didn't go (no went). La irregularidad va en DIDN'T, no en el verbo."},
+  {t:'VOCABULARIO',i:'💊',q:'El médico dice: "Take one pill every 8 hours." ¿Qué significa?',ctx:'Instrucciones de la receta médica',ops:['Tome 8 pastillas una vez.','Tome una pastilla cada 8 horas.','Tome las pastillas 8 veces.','Tome una pastilla con 8 vasos de agua.'],r:1,ex:'✅ Take one pill every 8 hours = Tome una pastilla cada 8 horas. Pill = pastilla. Every = cada. This is the most common doctor instruction.'},
+  {t:'PASADO ★',i:'❓',q:'Sarah pregunta: "___ you go to the doctor?" (pasado)',ctx:'Pregunta en pasado simple',ops:['Were','Have','Did','Do'],r:2,ex:'✅ Did you go to the doctor? DID se usa para preguntas en pasado simple con todos los pronombres. Respuestas: Yes, I did. / No, I didn\'t.'},
+  {t:'VOCABULARIO',i:'🤒',q:'"I have a fever" significa:',ctx:'Carlos describe su síntoma principal',ops:['Tengo frío.','Tengo calor.','Tengo fiebre.','Tengo gripa.'],r:2,ex:'✅ I have a fever = Tengo fiebre. Fever = temperatura alta. My temperature is high. How high is your fever? = ¿Cuánta fiebre tienes?'},
+  {t:'PASADO ★',i:'⏪',q:'"I feel sick" → Pasado simple:',ctx:'Carlos describe cómo se sintió ayer',ops:['I feeled sick.','I felled sick.','I felt sick.','I have felt sick.'],r:2,ex:'✅ I felt sick. FEEL es irregular: feel → felt. Felt es el pasado simple. I felt terrible. She felt better. They felt tired.'},
+  {t:'VOCABULARIO',i:'🩺',q:'El médico dice: "I\'ll prescribe antibiotics." ¿Qué significa?',ctx:'Al final de la consulta médica',ops:['Le voy a cobrar antibióticos.','Le voy a recetar antibióticos.','Le voy a comprar antibióticos.','Le voy a recomendar descanso.'],r:1,ex:'✅ Prescribe = Recetar. I\'ll prescribe = Le voy a recetar. Prescription = Receta médica. Antibiotic = Antibiótico.'},
+  {t:'PASADO ★',i:'📋',q:'"She take the medicine last night." — ¿Cuál es el error?',ctx:'Identificar el error en pasado simple',ops:['She debe ser Her','Take debe ser took','Last debe ser past','Medicine debe ser pill'],r:1,ex:'✅ Took. TAKE es irregular: take → took. She took the medicine. I took the pill. He took the antibiotics. Last night = anoche. ✓'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'Carlos dice al médico: "Llevo dos días con fiebre y no dormí bien." ¿Cómo lo dice?',ctx:'Describir síntomas al médico en inglés',ops:["I have fever two days and not sleep.","I've had a fever for two days and I didn't sleep well.","I had fever since two days and didn't slept well.","Fever two days and no good sleep."],r:1,ex:"✅ I've had a fever for two days and I didn't sleep well. For two days = por dos días. I've had = he tenido (presente perfecto para duración). Didn't sleep = no dormí."},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 15 🚀':'Repasa los irregulares felt/went/took/slept y el uso de DIDN\'T.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 14 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

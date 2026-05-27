@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 11 — El Transporte</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--naranja:#EA580C;--negro:#0A0A0A;--gris:#1C1C1E;--amarillo:#FBBF24;--verde:#16A34A;--azul:#2563EB;--crema:#FFFBF5;--borde:#FED7AA;--suave:#FFF7ED;--sombra:rgba(10,10,10,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Exo 2',sans-serif;background:var(--crema);color:var(--negro);}
+.hero{background:var(--negro);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'🚌🚗✈️🚢🚂';position:absolute;bottom:-10px;font-size:4rem;opacity:0.07;white-space:nowrap;left:0;right:0;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--naranja);color:white;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--amarillo);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--naranja),#C2410C);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--amarillo);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--negro);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:900;color:var(--borde);}
+.sec-title{font-size:1.2rem;font-weight:800;color:var(--negro);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--naranja);color:white;}.bg{background:var(--negro);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--amarillo);color:var(--negro);}
+.hint{background:var(--suave);border-left:4px solid var(--naranja);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#7C2D12;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--negro);}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+.transport-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;}
+.tc{background:white;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--naranja);transition:transform 0.2s;}
+.tc:nth-child(3n+2){border-color:var(--azul);}
+.tc:nth-child(3n+3){border-color:var(--verde);}
+.tc:hover{transform:translateY(-3px);}
+.tc-emoji{font-size:2.2rem;margin-bottom:5px;}
+.tc-en{font-size:0.92rem;font-weight:800;color:var(--negro);}
+.tc-pron{font-size:0.64rem;font-weight:700;color:var(--naranja);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.tc-es{font-size:0.7rem;color:#6B7280;}
+.tc-frase{font-size:0.66rem;color:#9CA3AF;margin-top:3px;font-style:italic;}
+
+.by-box{background:var(--negro);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.by-title{font-size:1rem;font-weight:800;color:var(--amarillo);margin-bottom:12px;}
+.by-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.by-card{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px;text-align:center;}
+.by-prep{font-size:1.2rem;font-weight:900;color:var(--amarillo);}
+.by-label{font-size:0.7rem;color:rgba(255,255,255,0.5);margin:3px 0;}
+.by-ej{font-size:0.75rem;color:white;font-weight:600;}
+.by-pron{font-size:0.62rem;color:rgba(255,255,255,0.4);font-style:italic;}
+
+.frases-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.frase-card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--naranja);}
+.frase-card:nth-child(even){border-color:var(--azul);}
+.fc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:6px;}
+.fc-en{font-size:0.9rem;font-weight:700;color:var(--negro);margin-bottom:3px;}
+.fc-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin-bottom:2px;}
+.fc-es{font-size:0.74rem;color:#6B7280;}
+
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--naranja),#C2410C);}
+.av.s{background:linear-gradient(135deg,var(--azul),#1D4ED8);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--negro);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--negro);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--negro);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--amarillo);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.88rem;font-weight:800;color:var(--negro);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--negro);transform:rotateY(180deg);}
+.fb-es{color:var(--amarillo);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#FCA5A5;font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--negro);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--naranja);color:white;font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:800;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--naranja),var(--amarillo));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'Exo 2',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(22,163,74,0.2);border-color:var(--verde);color:#86EFAC;}
+.q-btn.mal{background:rgba(234,88,12,0.2);border-color:var(--naranja);color:#FDBA74;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--amarillo);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--naranja);color:white;border:none;padding:11px 28px;border-radius:8px;font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:800;color:var(--negro);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--naranja);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:800;color:var(--negro);}
+.rep-pron{font-size:0.6rem;color:var(--naranja);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--naranja);text-align:center;}
+.tip h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--negro);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--amarillo);}
+@media(max-width:520px){.by-grid{grid-template-columns:1fr;}.frases-grid{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 11 de 19 · Medios de Transporte + How do I get to…?</div>
+  <h1>El Transporte<br><em>Transport</em></h1>
+  <p class="hero-sub">Cartilla 11 · Nivel A2 · 15 medios de transporte · By car/bus/plane · ≈ 20 min</p>
+  <div class="hero-pills">
+    <span class="hp">🚌 15 medios transporte</span><span class="hp">🚗 BY car/bus/plane</span>
+    <span class="hp">🎫 Comprar tiquetes</span><span class="hp">✈️ En el aeropuerto</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos viaja de Fusagasugá a Bogotá y luego vuela a Miami. Necesita hablar de transporte en inglés en el aeropuerto. <strong>Tú lo ayudas.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Medios de transporte — Means of transport</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Chunks por velocidad:</strong> Del más lento al más rápido — así los recuerda tu cerebro naturalmente.</div>
+  <div class="transport-grid">
+    <div class="tc"><div class="tc-emoji">🚶</div><div class="tc-en">On foot / Walking</div><div class="tc-pron">On fut / Uóking</div><div class="tc-es">A pie / Caminando</div><div class="tc-frase">I go on foot.</div></div>
+    <div class="tc"><div class="tc-emoji">🚲</div><div class="tc-en">Bicycle / Bike</div><div class="tc-pron">Báisikel / Báik</div><div class="tc-es">Bicicleta</div><div class="tc-frase">I ride a bike.</div></div>
+    <div class="tc"><div class="tc-emoji">🛵</div><div class="tc-en">Motorcycle</div><div class="tc-pron">Mótorsáikol</div><div class="tc-es">Moto</div><div class="tc-frase">He rides a motorcycle.</div></div>
+    <div class="tc"><div class="tc-emoji">🚗</div><div class="tc-en">Car</div><div class="tc-pron">Kar</div><div class="tc-es">Carro / Auto</div><div class="tc-frase">I go by car.</div></div>
+    <div class="tc"><div class="tc-emoji">🚕</div><div class="tc-en">Taxi</div><div class="tc-pron">Táeksi</div><div class="tc-es">Taxi</div><div class="tc-frase">I'll take a taxi.</div></div>
+    <div class="tc"><div class="tc-emoji">🚌</div><div class="tc-en">Bus</div><div class="tc-pron">Bas</div><div class="tc-es">Bus</div><div class="tc-frase">I take the bus.</div></div>
+    <div class="tc"><div class="tc-emoji">🚇</div><div class="tc-en">Subway / Metro</div><div class="tc-pron">Sábwei / Métro</div><div class="tc-es">Metro / TransMilenio</div><div class="tc-frase">I take the subway.</div></div>
+    <div class="tc"><div class="tc-emoji">🚂</div><div class="tc-en">Train</div><div class="tc-pron">Tréin</div><div class="tc-es">Tren</div><div class="tc-frase">We go by train.</div></div>
+    <div class="tc"><div class="tc-emoji">⛵</div><div class="tc-en">Boat / Ship</div><div class="tc-pron">Bóut / Ship</div><div class="tc-es">Barco / Lancha</div><div class="tc-frase">We travel by ship.</div></div>
+    <div class="tc"><div class="tc-emoji">✈️</div><div class="tc-en">Airplane / Plane</div><div class="tc-pron">Érplein / Pléin</div><div class="tc-es">Avión</div><div class="tc-frase">I fly by plane.</div></div>
+    <div class="tc"><div class="tc-emoji">🚁</div><div class="tc-en">Helicopter</div><div class="tc-pron">Jélikoter</div><div class="tc-es">Helicóptero</div><div class="tc-frase">By helicopter.</div></div>
+    <div class="tc"><div class="tc-emoji">🚐</div><div class="tc-en">Van / Minibus</div><div class="tc-pron">Vaen / Mínibas</div><div class="tc-es">Van / Colectivo</div><div class="tc-frase">We go by van.</div></div>
+    <div class="tc"><div class="tc-emoji">🚛</div><div class="tc-en">Truck</div><div class="tc-pron">Trak</div><div class="tc-es">Camión</div><div class="tc-frase">The goods go by truck.</div></div>
+    <div class="tc"><div class="tc-emoji">📱</div><div class="tc-en">Ride-sharing</div><div class="tc-pron">Ráid-shéring</div><div class="tc-es">Uber / InDriver</div><div class="tc-frase">I'll get a ride-share.</div></div>
+    <div class="tc"><div class="tc-emoji">🛺</div><div class="tc-en">Rickshaw / Tuk-tuk</div><div class="tc-pron">Rík-sho</div><div class="tc-es">Mototaxi</div><div class="tc-frase">Common in small towns.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">BY — La preposición del transporte</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> En inglés para decir el medio de transporte se usa <strong>BY + transporte</strong> (sin artículo). Excepto cuando vas a pie: <strong>ON foot</strong>. Esta distinción confunde a muchos.</div>
+  <div class="by-box">
+    <div class="by-title">🔑 Fórmula: I go BY + transporte (sin "the")</div>
+    <div class="by-grid">
+      <div class="by-card"><div class="by-prep">BY car</div><div class="by-label">En carro</div><div class="by-ej">I go to work by car.</div><div class="by-pron">Ái góu tu uork bai kar.</div></div>
+      <div class="by-card"><div class="by-prep">BY bus</div><div class="by-label">En bus</div><div class="by-ej">She goes by bus every day.</div><div class="by-pron">Shi góus bai bas évri déi.</div></div>
+      <div class="by-card"><div class="by-prep">BY plane</div><div class="by-label">En avión</div><div class="by-ej">We travel by plane.</div><div class="by-pron">Uii tráevel bai pléin.</div></div>
+      <div class="by-card"><div class="by-prep">BY train</div><div class="by-label">En tren</div><div class="by-ej">They commute by train.</div><div class="by-pron">Dei komíut bai tréin.</div></div>
+      <div class="by-card" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);"><div class="by-prep" style="color:#FBBF24;">ON foot ⚠️</div><div class="by-label">A pie</div><div class="by-ej">I walk to school on foot.</div><div class="by-pron">Ái uok tu skuul on fut.</div></div>
+      <div class="by-card"><div class="by-prep">BY taxi</div><div class="by-label">En taxi</div><div class="by-ej">Let's go by taxi!</div><div class="by-pron">Lets góu bai táeksi!</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">En el aeropuerto — At the airport</div><div class="sec-badge bv">Frases clave</div></div>
+  <div class="frases-grid">
+    <div class="frase-card"><div class="fc-ctx">🎫 Check-in</div><div class="fc-en">I'd like to check in, please.</div><span class="fc-pron">Áid láik tu chek in, pliis.</span><div class="fc-es">Quisiera hacer el check-in, por favor.</div></div>
+    <div class="frase-card"><div class="fc-ctx">🧳 Equipaje</div><div class="fc-en">I have one carry-on bag.</div><span class="fc-pron">Ái jav uán káeri-on baeg.</span><div class="fc-es">Tengo un equipaje de mano.</div></div>
+    <div class="frase-card"><div class="fc-ctx">💺 Asiento</div><div class="fc-en">Can I have a window seat?</div><span class="fc-pron">Kaen ái jav a wíndou siit?</span><div class="fc-es">¿Me puede dar un asiento de ventana?</div></div>
+    <div class="frase-card"><div class="fc-ctx">⏰ Vuelo</div><div class="fc-en">What time does the flight depart?</div><span class="fc-pron">Uot táim das de fláit dipárt?</span><div class="fc-es">¿A qué hora sale el vuelo?</div></div>
+    <div class="frase-card"><div class="fc-ctx">🛂 Migración</div><div class="fc-en">What is the purpose of your visit?</div><span class="fc-pron">Uot is de párpos of ior vísit?</span><div class="fc-es">¿Cuál es el propósito de su visita?</div></div>
+    <div class="frase-card"><div class="fc-ctx">🛂 Respuesta</div><div class="fc-en">I'm here for tourism / business.</div><span class="fc-pron">Áim jiir for túrizm / bísnes.</span><div class="fc-es">Estoy aquí por turismo / negocios.</div></div>
+    <div class="frase-card"><div class="fc-ctx">🚌 Bus</div><div class="fc-en">Which bus goes to downtown?</div><span class="fc-pron">Uich bas góus tu dáuntáun?</span><div class="fc-es">¿Qué bus va al centro?</div></div>
+    <div class="frase-card"><div class="fc-ctx">🎫 Tiquete</div><div class="fc-en">A round-trip ticket to New York, please.</div><span class="fc-pron">A ráund-trip tiket tu Niu Iork, pliis.</span><div class="fc-es">Un tiquete de ida y vuelta a Nueva York.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Carlos en el aeropuerto — Diálogo</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">✈️ Aeropuerto El Dorado · Bogotá · Carlos viaja a Miami</div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Hello! I'd like to check in for flight AV203 to Miami, please.</div><span class="b-pron">Jelóu! Áid láik tu chek in for fláit ei-vii-túu-ou-zríi tu Maiámi, pliis.</span><div class="b-es">¡Hola! Quisiera hacer el check-in para el vuelo AV203 a Miami, por favor.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Agent 🇺🇸</div><div class="burbuja"><div class="b-en">Of course! Your passport, please. Do you have any checked luggage?</div><span class="b-pron">Of kors! Ior páesport, pliis. Du iú jav éni chekt lágiy?</span><div class="b-es">¡Claro! Su pasaporte, por favor. ¿Tiene equipaje para facturar?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes, one suitcase. And I have a carry-on bag. Can I have a window seat?</div><span class="b-pron">Ies, uán súitkeis. End ái jav a káeri-on baeg. Kaen ái jav a wíndou siit?</span><div class="b-es">Sí, una maleta. Y tengo un equipaje de mano. ¿Me puede dar asiento de ventana?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Agent 🇺🇸</div><div class="burbuja"><div class="b-en">Certainly! Your flight departs at 2:30pm. Gate 14B. Boarding starts at 2:00pm.</div><span class="b-pron">Sértenli! Ior fláit dipárts at túu zérti pii-em. Géit fórtiin-bi. Bórding starts at túu pii-em.</span><div class="b-es">¡Por supuesto! Su vuelo sale a las 2:30pm. Puerta 14B. El abordaje empieza a las 2:00pm.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Thank you! How do I get to Gate 14B? Is it far?</div><span class="b-pron">Zaenk iú! Jáu du ái get tu géit fórtiin-bi? Is it far?</span><div class="b-es">¡Gracias! ¿Cómo llego a la puerta 14B? ¿Está lejos?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Agent 🇺🇸</div><div class="burbuja"><div class="b-en">Take the escalator to level 3, then turn right. It's about a 5-minute walk. Have a great flight!</div><span class="b-pron">Téik de eskaleitor tu level zríi, den tern ráit. Its abáut a fáiv-mínit uok. Jav a gréit fláit!</span><div class="b-es">Tome la escalera eléctrica hasta el nivel 3, luego dobla a la derecha. Son unos 5 minutos a pie. ¡Buen vuelo!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">🚌 Mira el emoji → di el transporte en inglés → toca para confirmar. <strong>3 veces.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — Transporte</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · BY + transporte · Aeropuerto</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">✈️</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🚌 Medios de transporte</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">🚗</div><div class="rep-en">Car</div><div class="rep-pron">Kar</div><div class="rep-es">Carro</div></div>
+      <div class="rep-c"><div class="rep-e">🚌</div><div class="rep-en">Bus</div><div class="rep-pron">Bas</div><div class="rep-es">Bus</div></div>
+      <div class="rep-c"><div class="rep-e">✈️</div><div class="rep-en">Airplane</div><div class="rep-pron">Érplein</div><div class="rep-es">Avión</div></div>
+      <div class="rep-c"><div class="rep-e">🚂</div><div class="rep-en">Train</div><div class="rep-pron">Tréin</div><div class="rep-es">Tren</div></div>
+      <div class="rep-c"><div class="rep-e">🚕</div><div class="rep-en">Taxi</div><div class="rep-pron">Táeksi</div><div class="rep-es">Taxi</div></div>
+      <div class="rep-c"><div class="rep-e">🚇</div><div class="rep-en">Subway</div><div class="rep-pron">Sábwei</div><div class="rep-es">Metro</div></div>
+      <div class="rep-c"><div class="rep-e">⛵</div><div class="rep-en">Boat</div><div class="rep-pron">Bóut</div><div class="rep-es">Barco</div></div>
+      <div class="rep-c"><div class="rep-e">🚲</div><div class="rep-en">Bicycle</div><div class="rep-pron">Báisikel</div><div class="rep-es">Bicicleta</div></div>
+      <div class="rep-c"><div class="rep-e">🚶</div><div class="rep-en">On foot</div><div class="rep-pron">On fut</div><div class="rep-es">A pie</div></div>
+      <div class="rep-c"><div class="rep-e">🎫</div><div class="rep-en">Ticket</div><div class="rep-pron">Tíket</div><div class="rep-es">Tiquete</div></div>
+      <div class="rep-c"><div class="rep-e">🧳</div><div class="rep-en">Luggage</div><div class="rep-pron">Lágiy</div><div class="rep-es">Equipaje</div></div>
+      <div class="rep-c"><div class="rep-e">🚪</div><div class="rep-en">Gate</div><div class="rep-pron">Géit</div><div class="rep-es">Puerta (vuelo)</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">✈️</div>
+    <h3>Reto del maestro</h3>
+    <p>Describe cómo llegas normalmente a tu trabajo o estudio. Usa: I go by ___. It takes ___ minutes. I usually take the ___.</p>
+    <div class="tip-pasos"><div class="tip-paso">🏠 Desde dónde</div><div class="tip-paso">🚌 Qué transporte</div><div class="tip-paso">⏱️ Cuánto tarda</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 11 de 19 · Transporte · A2</div>
+<script>
+const fd=[
+  {e:'🚗',en:'Car',es:'Carro',pron:'Kar',ctx:'I go by car.'},
+  {e:'🚌',en:'Bus',es:'Bus',pron:'Bas',ctx:'I take the bus.'},
+  {e:'✈️',en:'Airplane',es:'Avión',pron:'Érplein',ctx:'I travel by plane.'},
+  {e:'🚂',en:'Train',es:'Tren',pron:'Tréin',ctx:'We go by train.'},
+  {e:'🚕',en:'Taxi',es:'Taxi',pron:'Táeksi',ctx:"I'll take a taxi."},
+  {e:'🚇',en:'Subway',es:'Metro/TransMilenio',pron:'Sábwei',ctx:'Take the subway.'},
+  {e:'⛵',en:'Boat',es:'Barco',pron:'Bóut',ctx:'Travel by boat.'},
+  {e:'🚶',en:'On foot',es:'A pie',pron:'On fut',ctx:'⚠️ ON foot (no BY foot)'},
+  {e:'🧳',en:'Luggage',es:'Equipaje',pron:'Lágiy',ctx:'Checked luggage'},
+  {e:'🎫',en:'Ticket',es:'Tiquete/Boleta',pron:'Tíket',ctx:'Round-trip ticket'},
+  {e:'🛵',en:'Motorcycle',es:'Moto',pron:'Mótorsáikol',ctx:'By motorcycle'},
+  {e:'🚁',en:'Helicopter',es:'Helicóptero',pron:'Jélikoter',ctx:'By helicopter'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'GRAMÁTICA BY ★',i:'🚗',q:'"Voy al trabajo en carro." ¿Cómo lo dices?',ctx:'Preposición correcta para el transporte',ops:['I go to work with car.','I go to work in car.','I go to work by car.','I go to work on car.'],r:2,ex:'✅ I go to work BY car. BY + transporte (sin artículo). Excepto: ON foot. Regla simple: BY siempre, excepto a pie.'},
+  {t:'VOCABULARIO',i:'🚇',q:'"Subway" en Colombia es equivalente a:',ctx:'El sistema de transporte masivo urbano',ops:['Bus intermunicipal','TransMilenio / Metro','Taxi colectivo','Cable aéreo'],r:1,ex:'✅ Subway = Metro. En Bogotá sería el TransMilenio o el nuevo Metro. Subway = americano. Underground = británico. Tube = Londres.'},
+  {t:'AEROPUERTO ★',i:'🎫',q:'"A round-trip ticket" significa:',ctx:'Carlos compra tiquetes para Miami',ops:['Un tiquete de ida','Un tiquete de vuelta','Un tiquete de ida y vuelta','Un tiquete primera clase'],r:2,ex:'✅ Round-trip = Ida y vuelta. One-way ticket = Solo ida. Return ticket = Mismo en inglés británico. Round = redondo/ciclo completo.'},
+  {t:'GRAMÁTICA BY ★',i:'🚶',q:'"Ella va al colegio a pie." ¿Cómo lo dices?',ctx:'Excepción importante de la regla BY',ops:['She goes to school by foot.','She goes to school on foot.','She goes to school with foot.','She goes to school foot.'],r:1,ex:'✅ ON foot — no BY foot. A pie siempre es ON foot. Es la única excepción. Todas las demás: by car, by bus, by plane.'},
+  {t:'VOCABULARIO',i:'🧳',q:'"Carry-on bag" es:',ctx:'En el aeropuerto — equipaje permitido',ops:['La maleta grande facturada','El equipaje de mano','La bolsa de compras','El maletín de trabajo'],r:1,ex:'✅ Carry-on bag = Equipaje de mano (el que entra en el avión). Checked luggage = Maleta facturada (va en la bodega).'},
+  {t:'AEROPUERTO ★',i:'🛂',q:'El agente de migración pregunta "Purpose of your visit?" Carlos responde:',ctx:'Migración en el aeropuerto de Miami',ops:["I'm here for tourism.","I visit here.","My visit is tourist.","I am tourist visit."],r:0,ex:"✅ I'm here for tourism. / I'm here for business. Purpose = propósito. For tourism = por turismo. For business = por negocios."},
+  {t:'VOCABULARIO',i:'✈️',q:'"Depart" en el contexto de vuelos significa:',ctx:"The flight departs at 2:30pm",ops:['Llegar','Salir / Partir','Aterrizar','Cancelar'],r:1,ex:'✅ Depart = Salir / Partir. The flight departs at 2pm = El vuelo sale a las 2pm. Arrive = llegar. Land = aterrizar.'},
+  {t:'GRAMÁTICA BY ★',i:'🚌',q:'¿Cuál oración es INCORRECTA?',ctx:'Identifica el error en el uso de BY',ops:['I go to school by bus.','She travels by plane.','They walk on foot.','He goes by the car.'],r:3,ex:'✅ "He goes by THE car" es incorrecto. La regla: BY + transporte SIN artículo. ✗ by the car → ✓ by car. ✗ by a bus → ✓ by bus.'},
+  {t:'VOCABULARIO',i:'🚁',q:'¿Cómo se dice "Tiquete de ida" en inglés?',ctx:'Solo viaje de ida, sin regreso',ops:['Round-trip ticket','One-way ticket','Single flight ticket','Direct ticket'],r:1,ex:'✅ One-way ticket = Tiquete solo de ida. Round-trip ticket = Ida y vuelta. Return ticket = Mismo en inglés británico.'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'Carlos viaja en avión y quiere asiento de ventana. ¿Qué le dice al agente?',ctx:'En el aeropuerto durante el check-in',ops:["I want window.","Can I have a window seat, please?","Give me window seat.","Window seat for me, thank you."],r:1,ex:"✅ Can I have a window seat, please? Forma educada y natural. Window seat = asiento de ventana. Aisle seat = asiento del pasillo."},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 12 🚀':'Repasa BY + transporte y el vocabulario del aeropuerto.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 11 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

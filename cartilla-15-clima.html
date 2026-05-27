@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 15 — El Clima</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#0284C7;--celeste:#38BDF8;--gris:#0F172A;--amarillo:#F59E0B;--verde:#10B981;--rojo:#EF4444;--crema:#F0F9FF;--borde:#BAE6FD;--suave:#E0F2FE;--sombra:rgba(2,132,199,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Raleway',sans-serif;background:var(--crema);color:var(--gris);}
+.hero{background:linear-gradient(135deg,#0C4A6E,#075985);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'⛅🌧️🌤️🌩️❄️☀️🌈';position:absolute;bottom:-10px;font-size:3.5rem;opacity:0.08;white-space:nowrap;left:0;right:0;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--celeste);color:var(--gris);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--celeste);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--azul),#0369A1);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--celeste);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--gris);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:900;color:var(--borde);}
+.sec-title{font-size:1.15rem;font-weight:800;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--azul);color:white;}.bg{background:var(--gris);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--amarillo);color:var(--gris);}
+.hint{background:var(--suave);border-left:4px solid var(--azul);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#0C4A6E;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+/* CLIMA GRID */
+.clima-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.clima-card{background:white;border-radius:14px;padding:16px 10px;text-align:center;box-shadow:0 2px 12px var(--sombra);border-top:3px solid var(--azul);transition:transform 0.2s;}
+.clima-card:hover{transform:translateY(-3px);}
+.cc-emoji{font-size:2.4rem;margin-bottom:6px;}
+.cc-en{font-size:0.92rem;font-weight:800;color:var(--gris);}
+.cc-pron{font-size:0.64rem;font-weight:700;color:var(--azul);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.cc-es{font-size:0.7rem;color:#6B7280;}
+.cc-frase{font-size:0.66rem;color:#9CA3AF;margin-top:3px;font-style:italic;}
+
+/* PREGUNTAS CLIMA */
+.preg-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.pb-title{font-size:1rem;font-weight:800;color:var(--celeste);margin-bottom:12px;}
+.preg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.preg-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;}
+.pc-q{font-size:0.88rem;font-weight:700;color:white;margin-bottom:5px;}
+.pc-a{font-size:0.8rem;color:var(--celeste);font-weight:600;margin-bottom:3px;}
+.pc-pron{font-size:0.65rem;color:rgba(255,255,255,0.35);font-style:italic;}
+.pc-es{font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:3px;}
+
+/* WILL */
+.will-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.wb-title{font-size:1rem;font-weight:800;color:var(--amarillo);margin-bottom:4px;}
+.wb-sub{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.will-tabla{width:100%;border-collapse:collapse;}
+.will-tabla th{background:rgba(255,255,255,0.08);padding:7px 10px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amarillo);text-align:left;}
+.will-tabla td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:white;}
+.will-tabla td em{color:var(--celeste);font-style:normal;}
+.will-tabla tr:last-child td{border-bottom:none;}
+
+/* TEMPERATURAS */
+.temp-box{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:14px;}
+.temp-card{border-radius:12px;padding:14px 10px;text-align:center;color:white;}
+.tc-celsius{font-size:1.5rem;font-weight:900;}
+.tc-far{font-size:0.8rem;opacity:0.7;margin-bottom:4px;}
+.tc-desc{font-size:0.72rem;font-weight:600;}
+.tc-emoji{font-size:1.4rem;margin-bottom:4px;}
+.t1{background:linear-gradient(135deg,#1E40AF,#1D4ED8);}
+.t2{background:linear-gradient(135deg,#0284C7,#0369A1);}
+.t3{background:linear-gradient(135deg,#059669,#047857);}
+.t4{background:linear-gradient(135deg,#D97706,#B45309);}
+.t5{background:linear-gradient(135deg,#DC2626,#B91C1C);}
+
+/* DIÁLOGO */
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--azul),#0369A1);}
+.av.s{background:linear-gradient(135deg,var(--amarillo),#D97706);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--gris);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--gris);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--azul);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--gris);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--celeste);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.85rem;font-weight:700;color:var(--gris);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--gris);transform:rotateY(180deg);}
+.fb-es{color:var(--celeste);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:var(--amarillo);font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--azul);color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:800;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--azul),var(--celeste));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'Raleway',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(16,185,129,0.2);border-color:var(--verde);color:#6EE7B7;}
+.q-btn.mal{background:rgba(239,68,68,0.2);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--celeste);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--azul);color:white;border:none;padding:11px 28px;border-radius:8px;font-family:'Raleway',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:800;color:var(--gris);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--azul);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:700;color:var(--gris);}
+.rep-pron{font-size:0.6rem;color:var(--azul);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--azul);text-align:center;}
+.tip h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--gris);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--celeste);}
+@media(max-width:520px){.preg-grid{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 15 de 19 · El Tiempo + Futuro con WILL</div>
+  <h1>El Clima<br><em>The Weather</em></h1>
+  <p class="hero-sub">Cartilla 15 · Nivel A2 · Vocabulario del clima · What's the weather like? · Will · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">☁️ Vocabulario del tiempo</span><span class="hp">❓ What's the weather like?</span>
+    <span class="hp">🔮 Futuro con WILL</span><span class="hp">🌡️ Celsius vs Fahrenheit</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Sarah planea visitar Fusagasugá el próximo mes. Carlos le explica cómo es el clima en Cundinamarca y qué traer. <strong>Hoy aprendes el clima y el futuro con WILL.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">El tiempo atmosférico — Weather vocabulary</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>El clima de Colombia:</strong> Colombia tiene todos los climas del mundo en un solo país. Desde el frío de Bogotá y Fusagasugá hasta el calor de la costa. En inglés describirás cada uno.</div>
+  <div class="clima-grid">
+    <div class="clima-card"><div class="cc-emoji">☀️</div><div class="cc-en">Sunny</div><div class="cc-pron">Sáni</div><div class="cc-es">Soleado</div><div class="cc-frase">It's sunny today.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌧️</div><div class="cc-en">Rainy</div><div class="cc-pron">Réini</div><div class="cc-es">Lluvioso</div><div class="cc-frase">It's raining.</div></div>
+    <div class="clima-card"><div class="cc-emoji">⛅</div><div class="cc-en">Cloudy</div><div class="cc-pron">Kláudi</div><div class="cc-es">Nublado</div><div class="cc-frase">It's cloudy.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌩️</div><div class="cc-en">Stormy</div><div class="cc-pron">Stórmi</div><div class="cc-es">Tormentoso</div><div class="cc-frase">There's a storm.</div></div>
+    <div class="clima-card"><div class="cc-emoji">💨</div><div class="cc-en">Windy</div><div class="cc-pron">Uíndi</div><div class="cc-es">Ventoso</div><div class="cc-frase">It's very windy!</div></div>
+    <div class="clima-card"><div class="cc-emoji">❄️</div><div class="cc-en">Snowy</div><div class="cc-pron">Snóui</div><div class="cc-es">Con nieve</div><div class="cc-frase">It's snowing.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌤️</div><div class="cc-en">Partly cloudy</div><div class="cc-pron">Pártli kláudi</div><div class="cc-es">Parcialmente nublado</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌫️</div><div class="cc-en">Foggy</div><div class="cc-pron">Fógi</div><div class="cc-es">Neblina/Brumoso</div><div class="cc-frase">It's foggy in the mountains.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌈</div><div class="cc-en">Rainbow</div><div class="cc-pron">Réinbou</div><div class="cc-es">Arcoíris</div><div class="cc-frase">There's a rainbow!</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌡️</div><div class="cc-en">Hot / Cold</div><div class="cc-pron">Jot / Kóuld</div><div class="cc-es">Caliente / Frío</div><div class="cc-frase">It's hot today.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌊</div><div class="cc-en">Humid</div><div class="cc-pron">Jiúmid</div><div class="cc-es">Húmedo</div><div class="cc-frase">Very humid in Cartagena.</div></div>
+    <div class="clima-card"><div class="cc-emoji">🌦️</div><div class="cc-en">Drizzle</div><div class="cc-pron">Drísel</div><div class="cc-es">Llovizna</div><div class="cc-frase">It's drizzling a bit.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">¿Cómo está el tiempo? — Preguntas clave</div><div class="sec-badge bg">Frases clave</div></div>
+  <div class="preg-box">
+    <div class="pb-title">☁️ Preguntar y responder sobre el clima</div>
+    <div class="preg-grid">
+      <div class="preg-card"><div class="pc-q">What's the weather like?</div><div class="pc-a">It's sunny and warm!</div><div class="pc-pron">Uots de uéder láik? / Its sáni end uorm!</div><div class="pc-es">¿Cómo está el tiempo? / ¡Está soleado y cálido!</div></div>
+      <div class="preg-card"><div class="pc-q">What's the temperature?</div><div class="pc-a">It's about 18 degrees Celsius.</div><div class="pc-pron">Uots de témperacher? / Its abáut éiteen digríis Sélsius.</div><div class="pc-es">¿Cuántos grados hace? / Hace unos 18 grados Celsius.</div></div>
+      <div class="preg-card"><div class="pc-q">Is it going to rain?</div><div class="pc-a">Yes, it will rain this afternoon.</div><div class="pc-pron">Is it góing tu réin? / Ies, it uil réin dis áfternun.</div><div class="pc-es">¿Va a llover? / Sí, lloverá esta tarde.</div></div>
+      <div class="preg-card"><div class="pc-q">How's the weather in Fusagasugá?</div><div class="pc-a">Cool in the morning, warm at noon.</div><div class="pc-pron">Jáus de uéder in Fusagasugá?</div><div class="pc-es">¿Cómo está el tiempo en Fusa? / Fresco en la mañana, cálido al mediodía.</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Futuro con WILL — Predicciones del tiempo</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> WILL se usa para hablar del futuro — predicciones, decisiones espontáneas y promesas. En el clima es perfecto: "It will rain tomorrow." No hay conjugación: WILL es igual para todos los pronombres.</div>
+  <div class="will-box">
+    <div class="wb-title">🔮 WILL — El futuro en inglés</div>
+    <div class="wb-sub">Un solo WILL para todos — I will, You will, He will, We will, They will</div>
+    <table class="will-tabla">
+      <thead><tr><th>Tipo</th><th>Estructura</th><th>Ejemplo del clima</th></tr></thead>
+      <tbody>
+        <tr><td>Afirmativo</td><td>Sujeto + <em>will</em> + verbo</td><td>It <em>will</em> rain tomorrow.</td></tr>
+        <tr><td>Negativo</td><td>Sujeto + <em>won't</em> + verbo</td><td>It <em>won't</em> snow in Cartagena.</td></tr>
+        <tr><td>Pregunta</td><td><em>Will</em> + sujeto + verbo?</td><td><em>Will</em> it be sunny this weekend?</td></tr>
+        <tr><td>Respuesta</td><td>Yes, it will. / No, it won't.</td><td><em>Yes, it will.</em> / <em>No, it won't.</em></td></tr>
+        <tr><td>Contracción</td><td>I'll / You'll / It'll / We'll</td><td>I<em>'ll</em> bring a jacket just in case.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Celsius vs Fahrenheit — Para viajeros</div><div class="sec-badge bn">Cultura</div></div>
+  <div class="hint">🌎 <strong>Dato cultural:</strong> EE.UU. usa Fahrenheit. Colombia usa Celsius. Cuando viajes, debes entender ambas escalas. Fórmula: °F = (°C × 9/5) + 32. ¡Pero con estos ejemplos lo entenderás sin calcular!</div>
+  <div class="temp-box">
+    <div class="temp-card t1"><div class="tc-emoji">❄️</div><div class="tc-celsius">0°C</div><div class="tc-far">32°F</div><div class="tc-desc">Freezing / Congelando</div></div>
+    <div class="temp-card t2"><div class="tc-emoji">🧥</div><div class="tc-celsius">10°C</div><div class="tc-far">50°F</div><div class="tc-desc">Cold / Frío</div></div>
+    <div class="temp-card t3"><div class="tc-emoji">😊</div><div class="tc-celsius">20°C</div><div class="tc-far">68°F</div><div class="tc-desc">Pleasant / Agradable</div></div>
+    <div class="temp-card t4"><div class="tc-emoji">☀️</div><div class="tc-celsius">30°C</div><div class="tc-far">86°F</div><div class="tc-desc">Hot / Caliente</div></div>
+    <div class="temp-card t5"><div class="tc-emoji">🥵</div><div class="tc-celsius">40°C</div><div class="tc-far">104°F</div><div class="tc-desc">Very hot / Muy caliente</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Carlos le explica el clima a Sarah — Diálogo</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📱 Video chat · Carlos planea la visita de Sarah a Fusagasugá</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos! I'm planning to visit Fusagasugá next month. What's the weather like there?</div><span class="b-pron">Carlos! Áim pláening tu vísit Fusagasugá nekst mánz. Uots de uéder láik der?</span><div class="b-es">¡Carlos! Estoy planeando visitar Fusagasugá el próximo mes. ¿Cómo está el tiempo allá?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">It's usually cool in the morning and warm in the afternoon. But it will probably rain in the evenings — we're in rainy season!</div><span class="b-pron">Its iúshuali kuul in de mórning end uorm in de áfternun. Bot it uil próbabli réin in de íivenings — uíir in réini síison!</span><div class="b-es">Generalmente está fresco en la mañana y cálido en la tarde. ¡Pero probablemente lloverá en las noches — estamos en temporada de lluvias!</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">What temperature will it be? In Celsius, please — I'm learning!</div><span class="b-pron">Uot témperacher uil it bii? In Sélsius, pliis — áim lérning!</span><div class="b-es">¿Qué temperatura hará? En Celsius, por favor — ¡estoy aprendiendo!</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Around 15 to 22 degrees Celsius. It won't be cold like Bogotá — we're lower altitude. Bring a light jacket for the evenings though!</div><span class="b-pron">Aráund fíftin tu tuénti-túu dígriis Sélsius. It uónt bii kóuld láik Bogotá — uíir lóuer áltitud. Bring a láit yáeket for de íivenings dóu!</span><div class="b-es">Unos 15 a 22 grados Celsius. No hará frío como Bogotá — estamos a menor altitud. ¡Pero trae una chaqueta ligera para las noches!</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Will it be foggy? I love foggy mornings!</div><span class="b-pron">Uil it bii fógi? Ái lav fógi mórnins!</span><div class="b-es">¿Habrá neblina? ¡Me encantan las mañanas con neblina!</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! The mountains will be foggy every morning. You'll love it — it looks magical! And if we're lucky, there will be a rainbow after the rain.</div><span class="b-pron">Ies! De máuntins uil bii fógi évri mórning. Iúl lav it — it luuks máyikal! End if uíir láki, der uil bii a réinbou áfter de réin.</span><div class="b-es">¡Sí! Las montañas tendrán neblina cada mañana. Te va a encantar — se ve mágico. Y si tenemos suerte, habrá un arcoíris después de la lluvia.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">06</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">☁️ Mira el emoji → di el clima en inglés → toca para confirmar.</div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — El Clima</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · WILL · What's the weather like?</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">⛅</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">⛅ El tiempo en inglés</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">☀️</div><div class="rep-en">Sunny</div><div class="rep-pron">Sáni</div><div class="rep-es">Soleado</div></div>
+      <div class="rep-c"><div class="rep-e">🌧️</div><div class="rep-en">Rainy</div><div class="rep-pron">Réini</div><div class="rep-es">Lluvioso</div></div>
+      <div class="rep-c"><div class="rep-e">⛅</div><div class="rep-en">Cloudy</div><div class="rep-pron">Kláudi</div><div class="rep-es">Nublado</div></div>
+      <div class="rep-c"><div class="rep-e">💨</div><div class="rep-en">Windy</div><div class="rep-pron">Uíndi</div><div class="rep-es">Ventoso</div></div>
+      <div class="rep-c"><div class="rep-e">🌫️</div><div class="rep-en">Foggy</div><div class="rep-pron">Fógi</div><div class="rep-es">Neblina</div></div>
+      <div class="rep-c"><div class="rep-e">❄️</div><div class="rep-en">Snowy</div><div class="rep-pron">Snóui</div><div class="rep-es">Nevado</div></div>
+      <div class="rep-c"><div class="rep-e">🌈</div><div class="rep-en">Rainbow</div><div class="rep-pron">Réinbou</div><div class="rep-es">Arcoíris</div></div>
+      <div class="rep-c"><div class="rep-e">🌊</div><div class="rep-en">Humid</div><div class="rep-pron">Jiúmid</div><div class="rep-es">Húmedo</div></div>
+      <div class="rep-c"><div class="rep-e">🔮</div><div class="rep-en">will</div><div class="rep-pron">uil</div><div class="rep-es">futuro (will)</div></div>
+      <div class="rep-c"><div class="rep-e">❌</div><div class="rep-en">won't</div><div class="rep-pron">uónt</div><div class="rep-es">no (futuro)</div></div>
+      <div class="rep-c"><div class="rep-e">🌡️</div><div class="rep-en">degrees</div><div class="rep-pron">digríis</div><div class="rep-es">grados</div></div>
+      <div class="rep-c"><div class="rep-e">❓</div><div class="rep-en">weather like?</div><div class="rep-pron">uéder láik?</div><div class="rep-es">¿Cómo el tiempo?</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">⛅</div>
+    <h3>Reto del maestro</h3>
+    <p>Mira el pronóstico del tiempo para mañana en tu ciudad y descríbelo en inglés usando WILL. ¿Será soleado? ¿Lloverá? ¿Qué temperatura habrá?</p>
+    <div class="tip-pasos"><div class="tip-paso">☀️ It will be…</div><div class="tip-paso">🌧️ It will rain…</div><div class="tip-paso">🌡️ The temp will be…</div><div class="tip-paso">🧥 I'll bring…</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 15 de 19 · El Clima · A2</div>
+<script>
+const fd=[
+  {e:'☀️',en:'Sunny',es:'Soleado',pron:'Sáni',ctx:"It's sunny and warm."},
+  {e:'🌧️',en:'Rainy',es:'Lluvioso',pron:'Réini',ctx:"It's raining."},
+  {e:'⛅',en:'Cloudy',es:'Nublado',pron:'Kláudi',ctx:"It's cloudy today."},
+  {e:'💨',en:'Windy',es:'Ventoso',pron:'Uíndi',ctx:"It's very windy!"},
+  {e:'🌫️',en:'Foggy',es:'Con neblina',pron:'Fógi',ctx:'Foggy in the mountains.'},
+  {e:'❄️',en:'Snowy',es:'Nevado/con nieve',pron:'Snóui',ctx:"It's snowing!"},
+  {e:'🌩️',en:'Stormy',es:'Tormentoso',pron:'Stórmi',ctx:"There's a storm."},
+  {e:'🌈',en:'Rainbow',es:'Arcoíris',pron:'Réinbou',ctx:"There's a rainbow!"},
+  {e:'🔮',en:'It will rain',es:'Lloverá',pron:'It uil réin',ctx:'WILL = futuro'},
+  {e:'❌',en:"It won't snow",es:'No nevará',pron:"It uónt snóu",ctx:"WON'T = futuro negativo"},
+  {e:'🌡️',en:'18 degrees C',es:'18 grados Celsius',pron:'éiteen dígriis Sélsius',ctx:'Fusagasugá average'},
+  {e:'🌊',en:'Humid',es:'Húmedo',pron:'Jiúmid',ctx:'Cartagena is very humid.'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'VOCABULARIO',i:'🌫️',q:'"Foggy" en español describe:',ctx:'Las mañanas en las montañas de Cundinamarca',ops:['Lluvioso','Con neblina/bruma','Tormentoso','Ventoso'],r:1,ex:"✅ Foggy = Con neblina. Fog = neblina. It's foggy in the mountains = Hay neblina en las montañas. Muy común en Bogotá y Fusagasugá en las mañanas."},
+  {t:'WILL ★',i:'🔮',q:'"Mañana lloverá." ¿Cómo lo dices con WILL?',ctx:'Predicción del tiempo para mañana',ops:['Tomorrow rains.','Tomorrow is raining.','It will rain tomorrow.','It will raining tomorrow.'],r:2,ex:'✅ It will rain tomorrow. WILL + infinitivo (sin TO). It will rain, not "it will raining". Tomorrow = mañana. Tonight = esta noche.'},
+  {t:'VOCABULARIO',i:'❓',q:'"What\'s the weather like?" significa:',ctx:'La pregunta más importante sobre el tiempo',ops:['¿Qué clima te gusta?','¿Cómo está el tiempo?','¿Cuánto tiempo hace?','¿Hay buen tiempo?'],r:1,ex:"✅ What's the weather like? = ¿Cómo está el tiempo? Like aquí no significa 'gustar' — significa 'cómo es'. What's it like? = ¿Cómo es?"},
+  {t:'WILL ★',i:'❌',q:'"No nevará en Cartagena." ¿Cómo lo dices?',ctx:'Futuro negativo con WILL',ops:["It will not to snow in Cartagena.","It won't snow in Cartagena.","It will not snowing in Cartagena.","It not will snow in Cartagena."],r:1,ex:"✅ It won't snow. WON'T = will not (contracción). Won't + infinitivo. It won't rain. She won't be there. They won't like it."},
+  {t:'VOCABULARIO',i:'🌊',q:'"Humid" describe el clima de:',ctx:'Una ciudad costera de Colombia',ops:['Bogotá (2600m altitud)','Fusagasugá','Cartagena / Barranquilla','El Cocuy (glaciar)'],r:2,ex:'✅ Humid = Húmedo. Cartagena y Barranquilla tienen un clima muy húmedo y caliente. Humid = mucha humedad en el aire. Bogotá es fría y seca. Fusa es fresca y templada.'},
+  {t:'WILL ★',i:'❓',q:'"___ it be sunny this weekend?" (Pregunta con WILL)',ctx:'Sarah pregunta sobre el fin de semana',ops:['Does','Is','Will','Do'],r:2,ex:'✅ Will it be sunny? WILL va primero en las preguntas. Will + sujeto + verbo? Respuesta: Yes, it will. / No, it won\'t. Simple y directo.'},
+  {t:'TEMPERATURA',i:'🌡️',q:'20°C es equivalente aproximadamente a:',ctx:'Sarah necesita entender Fahrenheit (EE.UU.)',ops:['32°F (congelando)','50°F (frío)','68°F (agradable)','86°F (caliente)'],r:2,ex:'✅ 20°C ≈ 68°F. Agradable y templado. Fórmula: °F = (°C × 9/5) + 32. Pero mejor recuerda: 0°C = 32°F (frío), 20°C = 68°F (agradable), 30°C = 86°F (caliente).'},
+  {t:'VOCABULARIO',i:'🌩️',q:'"There\'s a storm." ¿Qué significa?',ctx:'Carlos avisa a Sarah sobre el tiempo',ops:['Hay sol.','Hay mucho viento.','Hay una tormenta.','Hay neblina.'],r:2,ex:"✅ There's a storm = Hay una tormenta. Storm = tormenta. Stormy = tormentoso. Thunder = truenos. Lightning = relámpagos. It's stormy outside = Está tormentoso afuera."},
+  {t:'WILL ★',i:'🧥',q:'Carlos dice: "___ bring a jacket just in case." (Decisión espontánea)',ctx:'Contracción de WILL con primera persona',ops:["I will'll","I'll","Will I","I willing"],r:1,ex:"✅ I'll bring a jacket. I'll = I will (contracción). Just in case = por si acaso. Contracciones: I'll, You'll, He'll, She'll, It'll, We'll, They'll."},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'¿Cómo describes el tiempo en Fusagasugá? "Fresco en la mañana, cálido en la tarde, lloverá en las noches."',ctx:'Describir el clima completo de una ciudad',ops:["Morning is fresh, noon warm, night it will rains.","It's cool in the morning, warm at noon, and it will rain in the evenings.","Is cool morning, is warm noon, will raining evenings.","Cool morning, warm noon, rain will in evening."],r:1,ex:"✅ It's cool in the morning, warm at noon, and it will rain in the evenings. Cool = fresco. Warm = cálido. At noon = al mediodía. In the evenings = en las tardes/noches."},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 16 🚀':'Repasa WILL/WON\'T y el vocabulario del clima.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 15 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

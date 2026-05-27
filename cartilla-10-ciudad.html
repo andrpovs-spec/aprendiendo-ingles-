@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 10 — La Ciudad</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#0EA5E9;--oscuro:#0C1A2E;--gris1:#1E3A5F;--amarillo:#F59E0B;--verde:#10B981;--rojo:#EF4444;--crema:#F0F9FF;--borde:#BAE6FD;--suave:#E0F2FE;--sombra:rgba(12,26,46,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Urbanist',sans-serif;background:var(--crema);color:var(--oscuro);}
+.hero{background:linear-gradient(135deg,var(--oscuro),var(--gris1));padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'🏙️';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:8rem;opacity:0.06;}
+.hero-tag{display:inline-block;background:var(--azul);color:white;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--azul);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--azul),#0284C7);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--amarillo);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--oscuro);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:900;color:var(--borde);}
+.sec-title{font-size:1.2rem;font-weight:800;color:var(--oscuro);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--azul);color:white;}.bg{background:var(--oscuro);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--amarillo);color:var(--oscuro);}
+.hint{background:var(--suave);border-left:4px solid var(--azul);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#0C4A6E;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--oscuro);}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+/* LUGARES */
+.lugares-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.lugar-card{background:white;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--azul);transition:transform 0.2s;}
+.lugar-card:nth-child(3n+2){border-color:var(--verde);}
+.lugar-card:nth-child(3n+3){border-color:var(--amarillo);}
+.lugar-card:hover{transform:translateY(-3px);}
+.lc-emoji{font-size:2rem;margin-bottom:5px;}
+.lc-en{font-size:0.92rem;font-weight:800;color:var(--oscuro);}
+.lc-pron{font-size:0.64rem;font-weight:700;color:var(--azul);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.lc-es{font-size:0.7rem;color:#64748B;}
+
+/* DIRECCIONES */
+.dir-box{background:var(--oscuro);border-radius:16px;padding:22px 20px;color:white;margin-bottom:14px;}
+.dir-title{font-size:1rem;font-weight:800;color:var(--amarillo);margin-bottom:4px;}
+.dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.dir-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;}
+.dc-phrase{font-size:0.92rem;font-weight:700;color:white;margin-bottom:4px;}
+.dc-pron{font-size:0.68rem;color:var(--azul);font-weight:600;}
+.dc-es{font-size:0.74rem;color:rgba(255,255,255,0.45);margin-top:3px;}
+.dc-icon{font-size:1.5rem;margin-bottom:6px;}
+
+/* MAPA TEXTO */
+.mapa-instruccion{background:white;border-radius:14px;padding:20px;box-shadow:0 2px 14px var(--sombra);border:1.5px solid var(--borde);}
+.mi-title{font-size:0.9rem;font-weight:800;color:var(--oscuro);margin-bottom:12px;text-align:center;}
+.mi-ruta{display:flex;flex-direction:column;gap:8px;}
+.mi-paso{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--borde);}
+.mi-paso:last-child{border-bottom:none;}
+.mi-num{width:28px;height:28px;border-radius:50%;background:var(--azul);color:white;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;flex-shrink:0;}
+.mi-en{font-size:0.88rem;font-weight:700;color:var(--oscuro);}
+.mi-pron{font-size:0.66rem;color:var(--azul);font-weight:600;}
+.mi-es{font-size:0.74rem;color:#64748B;margin-top:1px;}
+
+/* DIÁLOGO */
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#64748B;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--azul),#0284C7);}
+.av.s{background:linear-gradient(135deg,var(--amarillo),#D97706);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--oscuro);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--oscuro);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--azul);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* FLIP */
+.flip-hint{background:var(--oscuro);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--amarillo);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.88rem;font-weight:800;color:var(--oscuro);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--oscuro);transform:rotateY(180deg);}
+.fb-es{color:var(--amarillo);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:var(--azul);font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* QUIZ */
+.quiz-wrap{background:var(--oscuro);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--azul);color:white;font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:800;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--azul),var(--amarillo));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'Urbanist',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(16,185,129,0.2);border-color:var(--verde);color:#6EE7B7;}
+.q-btn.mal{background:rgba(239,68,68,0.2);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--amarillo);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--azul);color:white;border:none;padding:11px 28px;border-radius:8px;font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:800;color:var(--oscuro);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--azul);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:800;color:var(--oscuro);}
+.rep-pron{font-size:0.6rem;color:var(--azul);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#64748B;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--azul);text-align:center;}
+.tip h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--oscuro);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--azul);}
+@media(max-width:520px){.dir-grid{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 10 de 19 · Lugares + Pedir Direcciones</div>
+  <h1>La Ciudad<br><em>The City</em></h1>
+  <p class="hero-sub">Cartilla 10 · Nivel A2 · 20 lugares · Direcciones · Turn left/right · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🏙️ 20 lugares urbanos</span><span class="hp">🗺️ Pedir direcciones</span>
+    <span class="hp">↩️ Turn left/right</span><span class="hp">📍 Excuse me, where is…?</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos llega a Bogotá y se pierde. Un policía lo ayuda a encontrar el banco. <strong>Hoy aprendes a pedir y dar direcciones en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Lugares de la ciudad — City Places</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Chunks urbanos:</strong> Aprende los 20 lugares más comunes de cualquier ciudad. Con estos puedes orientarte en cualquier ciudad del mundo angloparlante.</div>
+  <div class="lugares-grid">
+    <div class="lugar-card"><div class="lc-emoji">🏦</div><div class="lc-en">Bank</div><div class="lc-pron">Baenk</div><div class="lc-es">Banco</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏥</div><div class="lc-en">Hospital</div><div class="lc-pron">Jóspital</div><div class="lc-es">Hospital</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏫</div><div class="lc-en">School</div><div class="lc-pron">Skuul</div><div class="lc-es">Escuela/Colegio</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🛒</div><div class="lc-en">Supermarket</div><div class="lc-pron">Súpermarket</div><div class="lc-es">Supermercado</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🍽️</div><div class="lc-en">Restaurant</div><div class="lc-pron">Réstaurant</div><div class="lc-es">Restaurante</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏨</div><div class="lc-en">Hotel</div><div class="lc-pron">Joutél</div><div class="lc-es">Hotel</div></div>
+    <div class="lugar-card"><div class="lc-emoji">✈️</div><div class="lc-en">Airport</div><div class="lc-pron">Érport</div><div class="lc-es">Aeropuerto</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🚉</div><div class="lc-en">Bus station</div><div class="lc-pron">Bas stéishon</div><div class="lc-es">Terminal de buses</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏛️</div><div class="lc-en">Museum</div><div class="lc-pron">Miusíom</div><div class="lc-es">Museo</div></div>
+    <div class="lugar-card"><div class="lc-emoji">⛪</div><div class="lc-en">Church</div><div class="lc-pron">Cherch</div><div class="lc-es">Iglesia</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🌳</div><div class="lc-en">Park</div><div class="lc-pron">Park</div><div class="lc-es">Parque</div></div>
+    <div class="lugar-card"><div class="lc-emoji">💊</div><div class="lc-en">Pharmacy</div><div class="lc-pron">Fármasi</div><div class="lc-es">Farmacia/Droguería</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🚓</div><div class="lc-en">Police station</div><div class="lc-pron">Políis stéishon</div><div class="lc-es">Estación de policía</div></div>
+    <div class="lugar-card"><div class="lc-emoji">📮</div><div class="lc-en">Post office</div><div class="lc-pron">Póust ófis</div><div class="lc-es">Oficina de correos</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏪</div><div class="lc-en">Shopping mall</div><div class="lc-pron">Shóping mol</div><div class="lc-es">Centro comercial</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🎬</div><div class="lc-en">Movie theater</div><div class="lc-pron">Múuvi zíeter</div><div class="lc-es">Cine</div></div>
+    <div class="lugar-card"><div class="lc-emoji">📚</div><div class="lc-en">Library</div><div class="lc-pron">Láibreri</div><div class="lc-es">Biblioteca</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🏋️</div><div class="lc-en">Gym</div><div class="lc-pron">Yim</div><div class="lc-es">Gimnasio</div></div>
+    <div class="lugar-card"><div class="lc-emoji">⛽</div><div class="lc-en">Gas station</div><div class="lc-pron">Gaes stéishon</div><div class="lc-es">Bomba de gasolina</div></div>
+    <div class="lugar-card"><div class="lc-emoji">🍕</div><div class="lc-en">Café / Coffee shop</div><div class="lc-pron">Kafée / Kófi shop</div><div class="lc-es">Cafetería</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Pedir y dar direcciones — Asking directions</div><div class="sec-badge bg">Frases esenciales</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> "Excuse me" es la palabra mágica para pedir ayuda a un desconocido. Siempre empieza con esto — es educado y natural en inglés.</div>
+  <div class="dir-box">
+    <div class="dir-title">🗺️ Frases para pedir direcciones</div>
+    <div class="dir-grid">
+      <div class="dir-card"><div class="dc-icon">🙋</div><div class="dc-phrase">Excuse me, where is the bank?</div><div class="dc-pron">Ekskiúus mii, uér is de baenk?</div><div class="dc-es">Disculpe, ¿dónde está el banco?</div></div>
+      <div class="dir-card"><div class="dc-icon">🗺️</div><div class="dc-phrase">How do I get to the hospital?</div><div class="dc-pron">Jáu du ái get tu de jóspital?</div><div class="dc-es">¿Cómo llego al hospital?</div></div>
+      <div class="dir-card"><div class="dc-icon">📍</div><div class="dc-phrase">Is there a pharmacy near here?</div><div class="dc-pron">Is der a fármasi níer jiir?</div><div class="dc-es">¿Hay una farmacia cerca de aquí?</div></div>
+      <div class="dir-card"><div class="dc-icon">🚶</div><div class="dc-phrase">How far is the mall?</div><div class="dc-pron">Jáu far is de mol?</div><div class="dc-es">¿Qué tan lejos está el centro comercial?</div></div>
+      <div class="dir-card"><div class="dc-icon">🔄</div><div class="dc-phrase">Can you repeat that, please?</div><div class="dc-pron">Kaen iú ripíit daet, pliis?</div><div class="dc-es">¿Puede repetir eso, por favor?</div></div>
+      <div class="dir-card"><div class="dc-icon">✅</div><div class="dc-phrase">Thank you so much! You're welcome.</div><div class="dc-pron">Zaenk iú sóu mach! Ior uélkom.</div><div class="dc-es">¡Muchas gracias! De nada.</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Dar direcciones — Turn left, go straight</div><div class="sec-badge bn">Instrucciones</div></div>
+  <div class="hint">🧠 <strong>Verbos de movimiento:</strong> Estas son las instrucciones que te dan cuando preguntas cómo llegar. Apréndalas bien — son literalmente las que te salvan cuando estás perdido.</div>
+  <div class="mapa-instruccion">
+    <div class="mi-title">🚶 Ruta: Del parque al banco — Ejemplo paso a paso</div>
+    <div class="mi-ruta">
+      <div class="mi-paso"><div class="mi-num">1</div><div><div class="mi-en">Go straight for two blocks.</div><div class="mi-pron">Góu stréit for túu bloks.</div><div class="mi-es">Sigue derecho dos cuadras.</div></div></div>
+      <div class="mi-paso"><div class="mi-num">2</div><div><div class="mi-en">Turn left at the traffic light.</div><div class="mi-pron">Tern left at de tráefik láit.</div><div class="mi-es">Dobla a la izquierda en el semáforo.</div></div></div>
+      <div class="mi-paso"><div class="mi-num">3</div><div><div class="mi-en">Turn right at the corner.</div><div class="mi-pron">Tern ráit at de kórner.</div><div class="mi-es">Dobla a la derecha en la esquina.</div></div></div>
+      <div class="mi-paso"><div class="mi-num">4</div><div><div class="mi-en">The bank is on the left, next to the pharmacy.</div><div class="mi-pron">De baenk is on de left, nekst tu de fármasi.</div><div class="mi-es">El banco está a la izquierda, al lado de la farmacia.</div></div></div>
+      <div class="mi-paso"><div class="mi-num">5</div><div><div class="mi-en">You can't miss it! It takes about 5 minutes on foot.</div><div class="mi-pron">Iú kaent mis it! It téiks abáut fáiv mínuts on fut.</div><div class="mi-es">¡No se puede perder! Tarda unos 5 minutos a pie.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Carlos se pierde en Bogotá — Diálogo</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">🏙️ Bogotá · Carrera 7 · Carlos perdido</div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Excuse me! How do I get to the nearest bank?</div><span class="b-pron">Ekskiúus mii! Jáu du ái get tu de níerest baenk?</span><div class="b-es">¡Disculpe! ¿Cómo llego al banco más cercano?</div></div></div></div>
+    <div class="brow"><div class="av s">👮</div><div><div class="b-name">Police officer 🇨🇴</div><div class="burbuja"><div class="b-en">Sure! Go straight for three blocks, then turn right at the traffic light.</div><span class="b-pron">Shúer! Góu stréit for zríi bloks, den tern ráit at de tráefik láit.</span><div class="b-es">¡Claro! Sigue derecho tres cuadras, luego dobla a la derecha en el semáforo.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Sorry, can you repeat that more slowly, please?</div><span class="b-pron">Sórri, kaen iú ripíit daet mor slóuli, pliis?</span><div class="b-es">Disculpe, ¿puede repetir eso más despacio, por favor?</div></div></div></div>
+    <div class="brow"><div class="av s">👮</div><div><div class="b-name">Police officer 🇨🇴</div><div class="burbuja"><div class="b-en">Of course. Three blocks straight. Then turn right. The bank is on the left. You can't miss it!</div><span class="b-pron">Of kors. Zríi bloks stréit. Den tern ráit. De baenk is on de left. Iú kaent mis it!</span><div class="b-es">Claro. Tres cuadras recto. Luego dobla a la derecha. El banco está a la izquierda. ¡No lo puede perder!</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Is it far from here? Can I walk?</div><span class="b-pron">Is it far from jiir? Kaen ái uok?</span><div class="b-es">¿Está lejos de aquí? ¿Puedo ir a pie?</div></div></div></div>
+    <div class="brow"><div class="av s">👮</div><div><div class="b-name">Police officer 🇨🇴</div><div class="burbuja"><div class="b-en">Not at all! It's only five minutes on foot. The bank is next to the pharmacy and in front of the park.</div><span class="b-pron">Not at ol! Its ónli fáiv mínuts on fut. De baenk is nekst tu de fármasi end in front of de park.</span><div class="b-es">¡Para nada! Son solo cinco minutos a pie. El banco está al lado de la farmacia y enfrente del parque.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Perfect! Thank you so much! You're very kind.</div><span class="b-pron">Pérfekt! Zaenk iú sóu mach! Ior véri káind.</span><div class="b-es">¡Perfecto! ¡Muchas gracias! Es usted muy amable.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">👆 Mira el emoji → di el lugar en inglés → toca para confirmar. <strong>3 veces para fijar.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — La Ciudad</div></div>
+    <p class="qw-sub">10 preguntas · Lugares · Direcciones · Turn left/right · Preposiciones</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">🏙️</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🏙️ Lugares de la ciudad</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">🏦</div><div class="rep-en">Bank</div><div class="rep-pron">Baenk</div><div class="rep-es">Banco</div></div>
+      <div class="rep-c"><div class="rep-e">🏥</div><div class="rep-en">Hospital</div><div class="rep-pron">Jóspital</div><div class="rep-es">Hospital</div></div>
+      <div class="rep-c"><div class="rep-e">🛒</div><div class="rep-en">Supermarket</div><div class="rep-pron">Súpermarket</div><div class="rep-es">Supermercado</div></div>
+      <div class="rep-c"><div class="rep-e">💊</div><div class="rep-en">Pharmacy</div><div class="rep-pron">Fármasi</div><div class="rep-es">Farmacia</div></div>
+      <div class="rep-c"><div class="rep-e">✈️</div><div class="rep-en">Airport</div><div class="rep-pron">Érport</div><div class="rep-es">Aeropuerto</div></div>
+      <div class="rep-c"><div class="rep-e">🌳</div><div class="rep-en">Park</div><div class="rep-pron">Park</div><div class="rep-es">Parque</div></div>
+      <div class="rep-c"><div class="rep-e">🏪</div><div class="rep-en">Shopping mall</div><div class="rep-pron">Shóping mol</div><div class="rep-es">C. Comercial</div></div>
+      <div class="rep-c"><div class="rep-e">📚</div><div class="rep-en">Library</div><div class="rep-pron">Láibreri</div><div class="rep-es">Biblioteca</div></div>
+      <div class="rep-c"><div class="rep-e">⛽</div><div class="rep-en">Gas station</div><div class="rep-pron">Gaes stéishon</div><div class="rep-es">Bomba gasolina</div></div>
+      <div class="rep-c"><div class="rep-e">↩️</div><div class="rep-en">Turn left</div><div class="rep-pron">Tern left</div><div class="rep-es">Dobla izquierda</div></div>
+      <div class="rep-c"><div class="rep-e">↪️</div><div class="rep-en">Turn right</div><div class="rep-pron">Tern ráit</div><div class="rep-es">Dobla derecha</div></div>
+      <div class="rep-c"><div class="rep-e">⬆️</div><div class="rep-en">Go straight</div><div class="rep-pron">Góu stréit</div><div class="rep-es">Sigue recto</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🗺️</div>
+    <h3>Reto del maestro</h3>
+    <p>Explica en inglés cómo llegar desde tu casa al supermercado más cercano. Usa: go straight, turn left/right, it's next to, it takes X minutes.</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">🏠 Desde tu casa</div>
+      <div class="tip-paso">⬆️ Go straight</div>
+      <div class="tip-paso">↩️ Turn left/right</div>
+      <div class="tip-paso">📍 It's next to…</div>
+    </div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 10 de 19 · La Ciudad · A2</div>
+
+<script>
+const fd=[
+  {e:'🏦',en:'Bank',es:'Banco',pron:'Baenk',ctx:'Where is the bank?'},
+  {e:'💊',en:'Pharmacy',es:'Farmacia/Droguería',pron:'Fármasi',ctx:'Is there a pharmacy?'},
+  {e:'✈️',en:'Airport',es:'Aeropuerto',pron:'Érport',ctx:'How far is the airport?'},
+  {e:'🏛️',en:'Museum',es:'Museo',pron:'Miusíom',ctx:'The museum is near the park.'},
+  {e:'🎬',en:'Movie theater',es:'Cine',pron:'Múuvi zíeter',ctx:'Movie = película'},
+  {e:'📚',en:'Library',es:'Biblioteca',pron:'Láibreri',ctx:'Books = libros'},
+  {e:'⛽',en:'Gas station',es:'Bomba de gasolina',pron:'Gaes stéishon',ctx:'Fill up the tank'},
+  {e:'↩️',en:'Turn left',es:'Dobla izquierda',pron:'Tern left',ctx:'At the traffic light'},
+  {e:'↪️',en:'Turn right',es:'Dobla derecha',pron:'Tern ráit',ctx:'At the corner'},
+  {e:'⬆️',en:'Go straight',es:'Sigue recto',pron:'Góu stréit',ctx:'Three blocks straight'},
+  {e:'🚦',en:'Traffic light',es:'Semáforo',pron:'Tráefik láit',ctx:'Turn left at the light'},
+  {e:'🏗️',en:'Block',es:'Cuadra',pron:'Blok',ctx:'Two blocks from here'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+
+const Qs=[
+  {t:'VOCABULARIO',i:'📚',q:'"Library" en español es:',ctx:'No confundir con "Librería"',ops:['Librería (tienda libros)','Biblioteca','Papelería','Archivo'],r:1,ex:'✅ Library = Biblioteca. ¡CUIDADO! Librería en español = Bookstore en inglés. Library solo son libros para consultar, no para comprar.'},
+  {t:'DIRECCIONES ★',i:'↩️',q:'"Turn left at the corner." ¿Qué significa?',ctx:'Instrucción de un policía a Carlos',ops:['Sigue recto en la esquina','Dobla a la derecha en la esquina','Dobla a la izquierda en la esquina','Para en la esquina'],r:2,ex:'✅ Turn left = Dobla a la izquierda. Turn right = Dobla a la derecha. At the corner = en la esquina. At the traffic light = en el semáforo.'},
+  {t:'VOCABULARIO',i:'⛽',q:'¿Cómo se dice "Bomba de gasolina" en inglés?',ctx:'Carlos necesita gasolina en la vía',ops:['Petrol house','Gas station','Fuel store','Gasoline center'],r:1,ex:'✅ Gas station = Bomba de gasolina. Gas = gasolina en americano. Petrol = gasolina en inglés británico. Station = estación.'},
+  {t:'FRASE CLAVE ★',i:'🙋',q:'Carlos quiere preguntar dónde está el hospital. ¿Qué dice?',ctx:'Siempre empieza siendo educado',ops:['Hospital? Where?','Give me the hospital direction.','Excuse me, where is the hospital?','How the hospital?'],r:2,ex:"✅ Excuse me, where is the hospital? Excuse me = Disculpe (la palabra mágica). Where is = dónde está. Always start with 'Excuse me'!"},
+  {t:'VOCABULARIO',i:'🏛️',q:'"Museum" en español es:',ctx:'Bogotá tiene muchos museos famosos',ops:['Monumento','Museo','Galería','Teatro'],r:1,ex:'✅ Museum = Museo. Pronunciación: "Miusíom". El Museo del Oro en Bogotá: "The Gold Museum in Bogotá."'},
+  {t:'DIRECCIONES ★',i:'⬆️',q:'"Go straight for two blocks" significa:',ctx:'Segunda instrucción que da el policía',ops:['Dobla dos veces','Sigue recto dos cuadras','Camina dos cuadras y para','Vuelve dos cuadras'],r:1,ex:'✅ Go straight = seguir recto / derecho. For two blocks = por dos cuadras. Block = cuadra. For three blocks = por tres cuadras.'},
+  {t:'VOCABULARIO',i:'🎬',q:'¿Cómo se dice "Cine" en inglés?',ctx:'Carlos quiere invitar a Sarah al cine',ops:['Film house','Cinema center','Movie theater','Vision hall'],r:2,ex:'✅ Movie theater (americano) o Cinema (británico). Movie = película. Theater = teatro/sala. I want to go to the movies = Quiero ir al cine.'},
+  {t:'PREPOSICIÓN ★',i:'📍',q:'"The bank is ___ the pharmacy." (al lado de)',ctx:'Describe la ubicación del banco',ops:['in front of','behind','next to','under'],r:2,ex:'✅ Next to = al lado de. In front of = enfrente de. Behind = detrás de. Between = entre. The bank is next to the pharmacy.'},
+  {t:'FRASE CLAVE ★',i:'❓',q:'¿Cómo preguntas si hay una farmacia cerca?',ctx:'Carlos necesita medicamentos urgente',ops:['Is pharmacy here?','Is there a pharmacy near here?','Where pharmacy?','Have you pharmacy close?'],r:1,ex:'✅ Is there a pharmacy near here? Is there a = ¿Hay un/una? Near here = cerca de aquí. Perfect and natural question!'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'El policía dice: "El hospital está a 3 cuadras recto, luego dobla a la izquierda." ¿Cómo lo dice en inglés?',ctx:'Instrucciones completas de dirección',ops:['Hospital is 3 blocks, then left turn.','Go straight three blocks, then turn left.','Three blocks and left you go.','Go left three blocks then straight.'],r:1,ex:'✅ Go straight three blocks, then turn left. Orden correcto: dirección → distancia → instrucción de giro. Then = luego/después.'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 11 🚀':'Repasa las direcciones y los lugares de la ciudad.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 10 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

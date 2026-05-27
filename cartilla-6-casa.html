@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 6 — La Casa en Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terracota: #C1440E;
+  --miel:      #E8A838;
+  --oliva:     #5C7A3E;
+  --arcilla:   #A0522D;
+  --crema:     #FDF6EC;
+  --carta:     #FFFFFF;
+  --suave:     #F5EDE0;
+  --borde:     #E0CDB8;
+  --texto:     #1C1208;
+  --gris:      #8A7A6A;
+  --azul:      #2A6496;
+  --sombra:    rgba(28,18,8,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--crema);color:var(--texto);overflow-x:hidden;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--texto);
+  padding:46px 20px 52px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 18px,rgba(193,68,14,0.07) 18px,rgba(193,68,14,0.07) 19px),
+    repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(232,168,56,0.05) 18px,rgba(232,168,56,0.05) 19px);
+}
+.hero-window{
+  position:absolute;top:16px;right:20px;
+  width:60px;height:70px;
+  border:3px solid rgba(232,168,56,0.3);border-radius:4px 4px 0 0;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+}
+.hero-tag{display:inline-block;background:var(--terracota);color:white;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.4rem,8.5vw,4.8rem);
+  font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--miel);font-style:italic;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;
+  font-weight:500;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.65);font-size:0.68rem;font-weight:600;
+  padding:4px 12px;border-radius:20px;}
+.hero-nota{margin:14px auto 0;max-width:500px;background:rgba(193,68,14,0.15);
+  border:1px solid rgba(193,68,14,0.4);border-radius:6px;padding:10px 16px;
+  color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:500;
+  position:relative;z-index:1;line-height:1.5;}
+.hero-nota strong{color:#FFBA7B;}
+
+/* ── STORY ── */
+.story{background:linear-gradient(90deg,var(--terracota),#9E3410);
+  padding:15px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;
+  max-width:600px;margin:0 auto;}
+.story strong{color:var(--miel);}
+
+/* ── WRAP ── */
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+
+/* ── SECCIÓN ── */
+.sec{padding:32px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;
+  border-bottom:2px solid var(--borde);padding-bottom:8px;}
+.sec-n{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:var(--borde);}
+.sec-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:var(--texto);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--azul);color:white;}
+.bg{background:var(--texto);color:white;}
+.bp{background:var(--terracota);color:white;}
+.bu{background:var(--oliva);color:white;}
+.bm{background:var(--miel);color:var(--texto);}
+.hint{background:var(--suave);border-left:4px solid var(--miel);
+  border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;
+  color:#5A4A35;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--texto);}
+.hint .warn{color:var(--terracota);font-weight:700;}
+.hint .good{color:var(--oliva);font-weight:700;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+/* ── PLANO INTERACTIVO ── */
+.plano-wrap{background:var(--carta);border-radius:18px;
+  box-shadow:0 4px 28px var(--sombra);border:2px solid var(--borde);
+  padding:20px 16px;overflow:hidden;}
+.plano-instruccion{background:var(--texto);color:white;border-radius:8px;
+  padding:9px 18px;font-size:0.8rem;font-weight:600;text-align:center;
+  margin-bottom:16px;}
+.plano-instruccion span{color:var(--miel);}
+.plano-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto auto auto;
+  gap:4px;
+  max-width:600px;margin:0 auto;
+}
+.habitacion{
+  border:2px solid var(--borde);border-radius:8px;padding:14px 10px;
+  text-align:center;cursor:pointer;transition:all 0.2s;
+  position:relative;overflow:hidden;min-height:80px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.habitacion::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.2s;}
+.habitacion:hover::before,.habitacion.activa::before{opacity:1;}
+.h-sala{background:#FEF9F0;border-color:#E8CFA0;}
+.h-sala::before{background:linear-gradient(135deg,rgba(232,168,56,0.15),rgba(193,68,14,0.08));}
+.h-cocina{background:#F0FDF4;border-color:#A8D5B0;}
+.h-cocina::before{background:linear-gradient(135deg,rgba(92,122,62,0.15),rgba(92,122,62,0.05));}
+.h-cuarto{background:#F0F4FF;border-color:#A8BBE8;}
+.h-cuarto::before{background:linear-gradient(135deg,rgba(42,100,150,0.15),rgba(42,100,150,0.05));}
+.h-bano{background:#F8F0FF;border-color:#D0A8E8;}
+.h-bano::before{background:linear-gradient(135deg,rgba(138,82,188,0.15),rgba(138,82,188,0.05));}
+.h-garage{background:#FFF0F0;border-color:#E8A8A8;}
+.h-garage::before{background:linear-gradient(135deg,rgba(193,68,14,0.15),rgba(193,68,14,0.05));}
+.h-jardin{background:#F4FFF0;border-color:#A8E8B0;}
+.h-jardin::before{background:linear-gradient(135deg,rgba(45,180,80,0.15),rgba(45,180,80,0.05));}
+.h-span2{grid-column:span 2;}
+.h-span3{grid-column:span 3;}
+.hab-icon{font-size:1.8rem;margin-bottom:4px;position:relative;z-index:1;}
+.hab-en{font-family:'Fraunces',serif;font-size:0.88rem;font-weight:700;
+  color:var(--texto);position:relative;z-index:1;}
+.hab-pron{font-size:0.62rem;font-weight:700;color:var(--terracota);
+  background:rgba(193,68,14,0.08);border-radius:4px;padding:1px 5px;
+  display:inline-block;margin:2px 0;position:relative;z-index:1;}
+.hab-es{font-size:0.62rem;color:var(--gris);position:relative;z-index:1;}
+.habitacion.activa{border-color:var(--terracota);transform:scale(1.02);}
+.plano-info{
+  background:var(--suave);border-radius:12px;padding:16px 18px;
+  border:1.5px solid var(--borde);margin-top:14px;min-height:80px;
+}
+.pi-placeholder{color:var(--gris);font-size:0.85rem;font-weight:500;text-align:center;padding-top:8px;}
+.pi-room{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--texto);margin-bottom:6px;}
+.pi-items{display:flex;flex-wrap:wrap;gap:6px;}
+.pi-item{background:white;border:1.5px solid var(--borde);border-radius:8px;
+  padding:5px 10px;font-size:0.78rem;font-weight:600;color:var(--texto);}
+.pi-item span{color:var(--terracota);font-size:0.68rem;display:block;font-weight:700;}
+
+/* ── CHUNKS POR HABITACIÓN ── */
+.chunks-hab{display:flex;flex-direction:column;gap:12px;}
+.chunk-hab{background:var(--carta);border-radius:14px;overflow:hidden;
+  box-shadow:0 2px 14px var(--sombra);}
+.ch-head{padding:11px 16px;display:flex;align-items:center;gap:10px;}
+.ch-icon{font-size:1.3rem;}.ch-title{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;color:white;flex:1;}
+.ch-badge{font-size:0.62rem;font-weight:700;background:rgba(255,255,255,0.2);color:white;padding:2px 8px;border-radius:10px;}
+.ch-sala{background:linear-gradient(90deg,#C1440E,#9E3410);}
+.ch-cocina{background:linear-gradient(90deg,#5C7A3E,#3D5228);}
+.ch-cuarto{background:linear-gradient(90deg,#2A6496,#1A4570);}
+.ch-bano{background:linear-gradient(90deg,#7A3E7A,#5A2A5A);}
+.ch-exterior{background:linear-gradient(90deg,#8B6914,#6B4E0A);}
+.ch-body{padding:12px 16px;}
+.obj-row{display:flex;align-items:center;gap:10px;padding:7px 0;
+  border-bottom:1px solid var(--suave);}
+.obj-row:last-child{border-bottom:none;}
+.or-e{font-size:1.3rem;width:26px;text-align:center;flex-shrink:0;}
+.or-en{font-family:'Fraunces',serif;font-size:0.93rem;font-weight:700;color:var(--texto);min-width:110px;}
+.or-pron{font-size:0.67rem;font-weight:700;color:var(--terracota);
+  background:#FEF0E8;border-radius:4px;padding:2px 5px;
+  display:inline-block;white-space:nowrap;}
+.or-es{font-size:0.75rem;color:var(--gris);flex:1;}
+.or-truco{font-size:0.66rem;color:#bbb;font-style:italic;line-height:1.3;text-align:right;max-width:160px;}
+
+/* ── GRAMÁTICA: THERE IS / THERE ARE ── */
+.gram-box{background:var(--texto);border-radius:16px;padding:24px 20px;color:white;}
+.gb-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;
+  color:var(--miel);margin-bottom:4px;}
+.gb-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:18px;}
+.gram-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+.gram-col{border-radius:12px;padding:16px;}
+.gram-col.singular{background:rgba(232,168,56,0.12);border:1.5px solid rgba(232,168,56,0.3);}
+.gram-col.plural{background:rgba(92,122,62,0.12);border:1.5px solid rgba(92,122,62,0.3);}
+.gc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.singular .gc-label{color:var(--miel);}
+.plural .gc-label{color:#8ECC60;}
+.gc-formula{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;
+  color:white;margin-bottom:10px;}
+.singular .gc-formula em{color:var(--miel);font-style:normal;}
+.plural .gc-formula em{color:#8ECC60;font-style:normal;}
+.gc-ejemplos{display:flex;flex-direction:column;gap:6px;}
+.gc-ej{font-size:0.8rem;line-height:1.4;}
+.gc-ej .en{font-weight:700;color:white;}
+.gc-ej .es{color:rgba(255,255,255,0.45);font-size:0.72rem;}
+.gc-ej .pron{color:var(--miel);font-size:0.68rem;display:block;}
+.gram-regla{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;
+  font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.6;}
+.gram-regla strong{color:var(--miel);}
+.gram-negativa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.gn-card{background:rgba(193,68,14,0.12);border:1.5px solid rgba(193,68,14,0.25);
+  border-radius:10px;padding:12px;}
+.gn-title{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,140,80,0.8);margin-bottom:6px;}
+.gn-en{font-size:0.88rem;font-weight:700;color:white;}
+.gn-pron{font-size:0.68rem;color:rgba(255,200,140,0.7);}
+.gn-es{font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:2px;}
+
+/* ── PREPOSICIONES DE LUGAR ── */
+.prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.prep-card{background:var(--carta);border-radius:12px;padding:16px 14px;
+  box-shadow:0 2px 10px var(--sombra);text-align:center;
+  border-top:3px solid var(--miel);transition:transform 0.2s;}
+.prep-card:hover{transform:translateY(-2px);}
+.prep-card:nth-child(2){border-color:var(--terracota);}
+.prep-card:nth-child(3){border-color:var(--oliva);}
+.prep-card:nth-child(4){border-color:var(--azul);}
+.prep-card:nth-child(5){border-color:#8A3E8A;}
+.prep-card:nth-child(6){border-color:#2A8A6A;}
+.prep-dibujo{font-size:2.2rem;margin-bottom:8px;}
+.prep-en{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--texto);}
+.prep-pron{font-size:0.68rem;font-weight:700;color:var(--terracota);
+  background:#FEF0E8;border-radius:4px;padding:2px 6px;
+  display:inline-block;margin:3px 0;}
+.prep-es{font-size:0.78rem;color:var(--gris);margin-bottom:4px;}
+.prep-ej{font-size:0.72rem;color:var(--azul);font-weight:600;
+  background:var(--suave);border-radius:6px;padding:4px 8px;line-height:1.4;}
+
+/* ── DIÁLOGO ── */
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;
+  border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gris);margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;
+  border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,#C1440E,#9E3410);}
+.av.s{background:linear-gradient(135deg,#2A6496,#1A4570);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;
+  padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--texto);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--texto);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--terracota);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* ── FLIP ── */
+.flip-hint{background:var(--texto);border-radius:10px;padding:12px 16px;
+  color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--miel);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:112px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+  transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-family:'Fraunces',serif;font-size:0.88rem;font-weight:700;color:var(--texto);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--texto);transform:rotateY(180deg);
+  box-shadow:0 2px 12px var(--sombra);}
+.fb-es{color:var(--miel);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#FFBA7B;font-weight:700;margin-top:4px;
+  background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* ── QUIZ ── */
+.quiz-wrap{background:var(--texto);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--terracota);color:white;
+  font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--terracota),var(--miel));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;
+  color:white;text-align:center;line-height:1.3;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);
+  color:white;padding:12px 10px;border-radius:9px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(92,122,62,0.25);border-color:var(--oliva);color:#A0D870;}
+.q-btn.mal{background:rgba(193,68,14,0.25);border-color:var(--terracota);color:#FFBA7B;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--miel);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--miel);color:var(--texto);border:none;
+  padding:11px 28px;border-radius:8px;font-family:'Fraunces',serif;
+  font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* ── REPASO ── */
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;
+  color:var(--texto);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));
+  gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px var(--sombra);}
+.rep-top{height:5px;}
+.rep-body{padding:8px 8px 10px;text-align:center;}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:var(--texto);}
+.rep-pron{font-size:0.6rem;color:var(--terracota);font-weight:700;}
+.rep-es{font-size:0.64rem;color:var(--gris);margin-top:1px;}
+
+/* ── TIP ── */
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;
+  padding:22px 20px;box-shadow:0 2px 14px var(--sombra);
+  border-top:4px solid var(--miel);text-align:center;}
+.tip h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--texto);}
+.tip p{font-size:0.84rem;color:#666;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);
+  border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;color:var(--texto);}
+
+.footer{background:var(--texto);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--miel);}
+
+@media(max-width:520px){
+  .gram-split{grid-template-columns:1fr;}
+  .gram-negativa{grid-template-columns:1fr;}
+  .q-ops{grid-template-columns:1fr;}
+  .prep-grid{grid-template-columns:1fr 1fr;}
+  .plano-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-window">🏠</div>
+  <div class="hero-tag">Cartilla 6 de 19 · Vocabulario + There is/are + Preposiciones</div>
+  <h1>La Casa<br><em>The House</em></h1>
+  <p class="hero-sub">Cartilla 6 · Nivel A1 · 30 objetos · There is/are · Preposiciones de lugar · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🏠 Plano interactivo</span>
+    <span class="hp">📦 Chunks por habitación</span>
+    <span class="hp">🔵 There is / There are</span>
+    <span class="hp">📍 In/On/Under/Next to</span>
+    <span class="hp">📞 Diálogo videollamada</span>
+  </div>
+  <div class="hero-nota">
+    ⚠️ <strong>Nota del maestro:</strong> "Living room" NO es "el cuarto de vivir" — es la sala. <strong>Nunca traduzcas palabra por palabra.</strong> Hoy aprendes los nombres reales de cada espacio.
+  </div>
+</div>
+
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Sarah visita a Carlos virtualmente por videollamada. Carlos le muestra su apartamento en Fusagasugá. <strong>Tú eres Carlos — describes tu casa en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- 1. PLANO INTERACTIVO -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">01</div>
+    <div class="sec-title">Plano de la casa — Toca cada habitación</div>
+    <div class="sec-badge bv">Visual interactivo</div>
+  </div>
+  <div class="hint">🧠 <strong>Memoria espacial:</strong> Aprender vocabulario en su contexto espacial real es 4x más efectivo que una lista. Toca cada habitación para ver los objetos en inglés.</div>
+  <div class="plano-wrap">
+    <div class="plano-instruccion">🏠 Toca una habitación para ver los objetos en inglés — <span>cada cuarto tiene su vocabulario</span></div>
+    <div class="plano-grid">
+      <!-- Fila 1 -->
+      <div class="habitacion h-cuarto" onclick="activarHab(this,'bedroom')">
+        <div class="hab-icon">🛏️</div>
+        <div class="hab-en">Bedroom</div>
+        <div class="hab-pron">Béd-rum</div>
+        <div class="hab-es">Cuarto / Dormitorio</div>
+      </div>
+      <div class="habitacion h-sala h-span2" onclick="activarHab(this,'living')">
+        <div class="hab-icon">🛋️</div>
+        <div class="hab-en">Living Room</div>
+        <div class="hab-pron">Líving rum</div>
+        <div class="hab-es">Sala / Sala de estar</div>
+      </div>
+      <!-- Fila 2 -->
+      <div class="habitacion h-bano" onclick="activarHab(this,'bathroom')">
+        <div class="hab-icon">🚿</div>
+        <div class="hab-en">Bathroom</div>
+        <div class="hab-pron">Báz-rum</div>
+        <div class="hab-es">Baño</div>
+      </div>
+      <div class="habitacion h-cocina h-span2" onclick="activarHab(this,'kitchen')">
+        <div class="hab-icon">🍳</div>
+        <div class="hab-en">Kitchen</div>
+        <div class="hab-pron">Kíchen</div>
+        <div class="hab-es">Cocina</div>
+      </div>
+      <!-- Fila 3 -->
+      <div class="habitacion h-garage" onclick="activarHab(this,'garage')">
+        <div class="hab-icon">🚗</div>
+        <div class="hab-en">Garage</div>
+        <div class="hab-pron">Garázh</div>
+        <div class="hab-es">Garaje</div>
+      </div>
+      <div class="habitacion h-jardin h-span2" onclick="activarHab(this,'garden')">
+        <div class="hab-icon">🌿</div>
+        <div class="hab-en">Garden / Yard</div>
+        <div class="hab-pron">Gárden / Iard</div>
+        <div class="hab-es">Jardín / Patio</div>
+      </div>
+    </div>
+    <div class="plano-info" id="planoInfo">
+      <div class="pi-placeholder">👆 Toca una habitación para ver su vocabulario</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 2. CHUNKS POR HABITACIÓN -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">02</div>
+    <div class="sec-title">Objetos por habitación — Chunks</div>
+    <div class="sec-badge bv">Vocabulario</div>
+  </div>
+  <div class="hint">🧠 <strong>Chunking por espacio:</strong> Cada habitación es un "chunk" natural. Cuando piensas en la cocina, el cerebro activa automáticamente ese grupo. Apréndelos juntos.</div>
+  <div class="chunks-hab">
+
+    <!-- SALA -->
+    <div class="chunk-hab">
+      <div class="ch-head ch-sala"><div class="ch-icon">🛋️</div><div class="ch-title">Living Room — Sala</div><div class="ch-badge">Chunk 1</div></div>
+      <div class="ch-body">
+        <div class="obj-row"><div class="or-e">🛋️</div><div class="or-en">Sofa / Couch</div><div class="or-pron">Sóufa / Káuch</div><div class="or-es">Sofá / Sillón</div><div class="or-truco">Couch = más informal/americano</div></div>
+        <div class="obj-row"><div class="or-e">📺</div><div class="or-en">Television / TV</div><div class="or-pron">Televízhon / Ti-Vii</div><div class="or-es">Televisión / Tele</div><div class="or-truco">TV se pronuncia "Ti-Vii"</div></div>
+        <div class="obj-row"><div class="or-e">🪑</div><div class="or-en">Chair</div><div class="or-pron">Cher</div><div class="or-es">Silla</div><div class="or-truco">⚠️ Cher — no "chair" como se lee</div></div>
+        <div class="obj-row"><div class="or-e">🪟</div><div class="or-en">Window</div><div class="or-pron">Wíndou</div><div class="or-es">Ventana</div><div class="or-truco">W = U semivocal: "Uíndou"</div></div>
+        <div class="obj-row"><div class="or-e">🚪</div><div class="or-en">Door</div><div class="or-pron">Dor</div><div class="or-es">Puerta</div><div class="or-truco">Front door = puerta principal</div></div>
+        <div class="obj-row"><div class="or-e">💡</div><div class="or-en">Lamp / Light</div><div class="or-pron">Laemp / Láit</div><div class="or-es">Lámpara / Luz</div><div class="or-truco">Turn on the light = prende la luz</div></div>
+        <div class="obj-row"><div class="or-e">📚</div><div class="or-en">Bookshelf</div><div class="or-pron">Búk-shelf</div><div class="or-es">Biblioteca / Estante</div><div class="or-truco">Book + shelf = repisa de libros</div></div>
+      </div>
+    </div>
+
+    <!-- COCINA -->
+    <div class="chunk-hab">
+      <div class="ch-head ch-cocina"><div class="ch-icon">🍳</div><div class="ch-title">Kitchen — Cocina</div><div class="ch-badge">Chunk 2</div></div>
+      <div class="ch-body">
+        <div class="obj-row"><div class="or-e">🍳</div><div class="or-en">Stove / Oven</div><div class="or-pron">Stóuv / Áven</div><div class="or-es">Estufa / Horno</div><div class="or-truco">Stove = tapa. Oven = la parte de abajo.</div></div>
+        <div class="obj-row"><div class="or-e">❄️</div><div class="or-en">Refrigerator / Fridge</div><div class="or-pron">Refrigeréitor / Frij</div><div class="or-es">Nevera</div><div class="or-truco">Fridge = informal. Más corto y fácil.</div></div>
+        <div class="obj-row"><div class="or-e">🚰</div><div class="or-en">Sink</div><div class="or-pron">Sink</div><div class="or-es">Lavaplatos / Pila</div><div class="or-truco">Kitchen sink = pila de la cocina</div></div>
+        <div class="obj-row"><div class="or-e">☕</div><div class="or-en">Microwave</div><div class="or-pron">Máikrouweiv</div><div class="or-es">Microondas</div><div class="or-truco">Put it in the microwave = métalo al micro</div></div>
+        <div class="obj-row"><div class="or-e">🍽️</div><div class="or-en">Table</div><div class="or-pron">Téibol</div><div class="or-es">Mesa</div><div class="or-truco">Dining table = mesa del comedor</div></div>
+        <div class="obj-row"><div class="or-e">🥄</div><div class="or-en">Spoon / Fork / Knife</div><div class="or-pron">Spun / Fork / Náif</div><div class="or-es">Cuchara / Tenedor / Cuchillo</div><div class="or-truco">⚠️ Knife: K muda. "Náif".</div></div>
+      </div>
+    </div>
+
+    <!-- CUARTO -->
+    <div class="chunk-hab">
+      <div class="ch-head ch-cuarto"><div class="ch-icon">🛏️</div><div class="ch-title">Bedroom — Cuarto / Dormitorio</div><div class="ch-badge">Chunk 3</div></div>
+      <div class="ch-body">
+        <div class="obj-row"><div class="or-e">🛏️</div><div class="or-en">Bed</div><div class="or-pron">Bed</div><div class="or-es">Cama</div><div class="or-truco">Make the bed = tender la cama</div></div>
+        <div class="obj-row"><div class="or-e">🪞</div><div class="or-en">Mirror</div><div class="or-pron">Míror</div><div class="or-es">Espejo</div><div class="or-truco">Mirror, mirror on the wall…</div></div>
+        <div class="obj-row"><div class="or-e">👚</div><div class="or-en">Closet / Wardrobe</div><div class="or-pron">Klózet / Uórdrob</div><div class="or-es">Closet / Armario</div><div class="or-truco">Closet = americano. Wardrobe = británico.</div></div>
+        <div class="obj-row"><div class="or-e">🖼️</div><div class="or-en">Pillow</div><div class="or-pron">Pílou</div><div class="or-es">Almohada</div><div class="or-truco">Pillow fight = pelea de almohadas</div></div>
+        <div class="obj-row"><div class="or-e">🛡️</div><div class="or-en">Blanket</div><div class="or-pron">Bláenket</div><div class="or-es">Cobija / Manta</div><div class="or-truco">Blanket = cobija general. Duvet = edredón.</div></div>
+      </div>
+    </div>
+
+    <!-- BAÑO -->
+    <div class="chunk-hab">
+      <div class="ch-head ch-bano"><div class="ch-icon">🚿</div><div class="ch-title">Bathroom — Baño</div><div class="ch-badge">Chunk 4</div></div>
+      <div class="ch-body">
+        <div class="obj-row"><div class="or-e">🚿</div><div class="or-en">Shower</div><div class="or-pron">Sháuer</div><div class="or-es">Ducha</div><div class="or-truco">Take a shower = ducharse</div></div>
+        <div class="obj-row"><div class="or-e">🛁</div><div class="or-en">Bathtub</div><div class="or-pron">Báz-tab</div><div class="or-es">Bañera / Tina</div><div class="or-truco">Bath + tub. Bañarse en tina.</div></div>
+        <div class="obj-row"><div class="or-e">🚽</div><div class="or-en">Toilet</div><div class="or-pron">Tóilet</div><div class="or-es">Inodoro / Sanitario</div><div class="or-truco">Where is the bathroom? = ¿Dónde está el baño?</div></div>
+        <div class="obj-row"><div class="or-e">🚰</div><div class="or-en">Sink / Basin</div><div class="or-pron">Sink / Béisin</div><div class="or-es">Lavamanos</div><div class="or-truco">Wash your hands in the sink.</div></div>
+        <div class="obj-row"><div class="or-e">🪥</div><div class="or-en">Toothbrush</div><div class="or-pron">Túz-brash</div><div class="or-es">Cepillo de dientes</div><div class="or-truco">Tooth + brush = cepillo de diente</div></div>
+      </div>
+    </div>
+
+    <!-- EXTERIOR -->
+    <div class="chunk-hab">
+      <div class="ch-head ch-exterior"><div class="ch-icon">🏡</div><div class="ch-title">Outside — Exterior de la casa</div><div class="ch-badge">Chunk 5</div></div>
+      <div class="ch-body">
+        <div class="obj-row"><div class="or-e">🏠</div><div class="or-en">Roof</div><div class="or-pron">Ruuf</div><div class="or-es">Techo / Tejado</div><div class="or-truco">On the roof = en el techo</div></div>
+        <div class="obj-row"><div class="or-e">🧱</div><div class="or-en">Wall</div><div class="or-pron">Uol</div><div class="or-es">Pared / Muro</div><div class="or-truco">W = U. "Uol". Paint the walls = pintar las paredes</div></div>
+        <div class="obj-row"><div class="or-e">🌿</div><div class="or-en">Garden</div><div class="or-pron">Gárden</div><div class="or-es">Jardín</div><div class="or-truco">Garden = jardín cultivado. Yard = patio abierto.</div></div>
+        <div class="obj-row"><div class="or-e">🏊</div><div class="or-en">Pool</div><div class="or-pron">Puul</div><div class="or-es">Piscina</div><div class="or-truco">Swimming pool = piscina completa</div></div>
+        <div class="obj-row"><div class="or-e">🔔</div><div class="or-en">Doorbell</div><div class="or-pron">Dórbel</div><div class="or-es">Timbre</div><div class="or-truco">Ring the doorbell = tocar el timbre</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3. THERE IS / THERE ARE -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">03</div>
+    <div class="sec-title">There is / There are — Describir la casa</div>
+    <div class="sec-badge bg">Gramática ★</div>
+  </div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> Para describir lo que hay en una casa, en inglés se usa <strong style="color:var(--terracota)">"There is"</strong> (hay uno) o <strong style="color:var(--oliva)">"There are"</strong> (hay varios). Es la estructura gramatical más natural para hablar de lugares.</div>
+  <div class="gram-box">
+    <div class="gb-title">📐 La fórmula: There is / There are</div>
+    <div class="gb-sub">Equivale al "hay" del español — pero en inglés hay que elegir singular o plural</div>
+    <div class="gram-split">
+      <div class="gram-col singular">
+        <div class="gc-label">☝️ 1 objeto — Singular</div>
+        <div class="gc-formula"><em>There is</em> + objeto</div>
+        <div class="gc-ejemplos">
+          <div class="gc-ej">
+            <div class="en">There is a sofa in the living room.</div>
+            <span class="pron">Der is a sóufa in de líving rum.</span>
+            <div class="es">Hay un sofá en la sala.</div>
+          </div>
+          <div class="gc-ej">
+            <div class="en">There is a bed in the bedroom.</div>
+            <span class="pron">Der is a bed in de béd-rum.</span>
+            <div class="es">Hay una cama en el cuarto.</div>
+          </div>
+          <div class="gc-ej">
+            <div class="en">There's a window. <em style="opacity:0.5;font-size:0.7rem">(contracción)</em></div>
+            <span class="pron">Ders a wíndou.</span>
+            <div class="es">Hay una ventana. (forma informal)</div>
+          </div>
+        </div>
+      </div>
+      <div class="gram-col plural">
+        <div class="gc-label">👥 2+ objetos — Plural</div>
+        <div class="gc-formula"><em>There are</em> + objetos</div>
+        <div class="gc-ejemplos">
+          <div class="gc-ej">
+            <div class="en">There are two chairs.</div>
+            <span class="pron">Der ar túu chers.</span>
+            <div class="es">Hay dos sillas.</div>
+          </div>
+          <div class="gc-ej">
+            <div class="en">There are three bedrooms.</div>
+            <span class="pron">Der ar zríi béd-rums.</span>
+            <div class="es">Hay tres cuartos.</div>
+          </div>
+          <div class="gc-ej">
+            <div class="en">There are many windows.</div>
+            <span class="pron">Der ar méni wíndous.</span>
+            <div class="es">Hay muchas ventanas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gram-regla">
+      <strong>Regla simple:</strong> ¿Hay <strong>1</strong> cosa? → <strong>There IS</strong> &nbsp;|&nbsp; ¿Hay <strong>2 o más</strong>? → <strong>There ARE</strong><br>
+      Forma negativa: There is <strong>not</strong> → <strong>There isn't</strong> &nbsp;|&nbsp; There are <strong>not</strong> → <strong>There aren't</strong>
+    </div>
+    <div class="gram-negativa">
+      <div class="gn-card">
+        <div class="gn-title">❌ Negativo singular</div>
+        <div class="gn-en">There isn't a pool.</div>
+        <div class="gn-pron">Der ísnt a puul.</div>
+        <div class="gn-es">No hay una piscina.</div>
+      </div>
+      <div class="gn-card">
+        <div class="gn-title">❌ Negativo plural</div>
+        <div class="gn-en">There aren't any chairs.</div>
+        <div class="gn-pron">Der árent éni chers.</div>
+        <div class="gn-es">No hay sillas.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 4. PREPOSICIONES DE LUGAR -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">04</div>
+    <div class="sec-title">Preposiciones de lugar — Dónde están las cosas</div>
+    <div class="sec-badge bm">Gramática</div>
+  </div>
+  <div class="hint">🧠 <strong>Anclaje visual:</strong> Las preposiciones se aprenden con imagen, no con traducción. Cada tarjeta tiene un dibujo + ejemplo en tu casa real.</div>
+  <div class="prep-grid">
+    <div class="prep-card">
+      <div class="prep-dibujo">📦➡️🏠</div>
+      <div class="prep-en">In</div>
+      <div class="prep-pron">In</div>
+      <div class="prep-es">Dentro de</div>
+      <div class="prep-ej">The cat is <strong>in</strong> the bedroom.<br>El gato está <strong>dentro del</strong> cuarto.</div>
+    </div>
+    <div class="prep-card">
+      <div class="prep-dibujo">📱🔛🪑</div>
+      <div class="prep-en">On</div>
+      <div class="prep-pron">On</div>
+      <div class="prep-es">Sobre / Encima de</div>
+      <div class="prep-ej">The phone is <strong>on</strong> the table.<br>El teléfono está <strong>sobre</strong> la mesa.</div>
+    </div>
+    <div class="prep-card">
+      <div class="prep-dibujo">👟⬇️🪑</div>
+      <div class="prep-en">Under</div>
+      <div class="prep-pron">Ánder</div>
+      <div class="prep-es">Debajo de</div>
+      <div class="prep-ej">The shoes are <strong>under</strong> the bed.<br>Los zapatos están <strong>debajo</strong> de la cama.</div>
+    </div>
+    <div class="prep-card">
+      <div class="prep-dibujo">🪑↔️🛋️</div>
+      <div class="prep-en">Next to</div>
+      <div class="prep-pron">Nekst tu</div>
+      <div class="prep-es">Al lado de</div>
+      <div class="prep-ej">The lamp is <strong>next to</strong> the sofa.<br>La lámpara está <strong>al lado del</strong> sofá.</div>
+    </div>
+    <div class="prep-card">
+      <div class="prep-dibujo">🏠↩️🏢</div>
+      <div class="prep-en">Behind</div>
+      <div class="prep-pron">Bijáind</div>
+      <div class="prep-es">Detrás de</div>
+      <div class="prep-ej">The garden is <strong>behind</strong> the house.<br>El jardín está <strong>detrás de</strong> la casa.</div>
+    </div>
+    <div class="prep-card">
+      <div class="prep-dibujo">🏢↪️🏠</div>
+      <div class="prep-en">In front of</div>
+      <div class="prep-pron">In front of</div>
+      <div class="prep-es">Enfrente de</div>
+      <div class="prep-ej">The car is <strong>in front of</strong> the house.<br>El carro está <strong>enfrente de</strong> la casa.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 5. DIÁLOGO VIDEOLLAMADA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">05</div>
+    <div class="sec-title">Carlos muestra su apartamento — Videollamada</div>
+    <div class="sec-badge bu">Uso real</div>
+  </div>
+  <div class="hint">🧠 <strong>Repetición espaciada:</strong> Todo lo aprendido hoy aparece aquí. Léelo 3 veces — hoy, mañana y en 3 días. La tercera vez no necesitarás la traducción.</div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📱 Videollamada · Carlos en Fusagasugá · Sarah en New York</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos! Can you show me your apartment?</div><span class="b-pron">Carlos! Kaen iú shóu mii ior ápartment?</span><div class="b-es">Carlos, ¿me puedes mostrar tu apartamento?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Of course! This is the living room. There is a big sofa and a TV on the wall.</div><span class="b-pron">Of kors! Dis is de líving rum. Der is a big sóufa end a Ti-Vii on de uol.</span><div class="b-es">¡Claro! Esta es la sala. Hay un sofá grande y una tele en la pared.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">It's cozy! How many bedrooms are there?</div><span class="b-pron">Its kóuzi! Jáu méni béd-rums ar der?</span><div class="b-es">¡Qué acogedor! ¿Cuántos cuartos hay?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">There are two bedrooms. My bedroom is next to the bathroom. There isn't a garage, but there is a small garden behind the house.</div><span class="b-pron">Der ar túu béd-rums. Mái béd-rum is nekst tu de báz-rum. Der ísnt a garázh, bat der is a smol gárden bijáind de jáus.</span><div class="b-es">Hay dos cuartos. Mi cuarto está al lado del baño. No hay garaje, pero hay un jardín pequeño detrás de la casa.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">And the kitchen? Is it big?</div><span class="b-pron">End de kíchen? Is it big?</span><div class="b-es">¿Y la cocina? ¿Es grande?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Not very big, but there is a new fridge and a great stove. My mom cooks amazing food in there.</div><span class="b-pron">Not véri big, bat der is a niú frij end a gréit stóuv. Mái mom kuks amézin fud in der.</span><div class="b-es">No muy grande, pero hay una nevera nueva y una estufa genial. Mi mamá cocina comida increíble ahí.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Where is your room? I can see a mirror and some pillows on the bed!</div><span class="b-pron">Uér is ior rum? Ái kaen sii a míror end sam pílous on de bed!</span><div class="b-es">¿Dónde está tu cuarto? ¡Veo un espejo y unas almohadas en la cama!</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Ha! Yes, my bedroom is behind me. There is a big closet next to the window. I love my room!</div><span class="b-pron">Ja! Ies, mái béd-rum is bijáind mii. Der is a big klózet nekst tu de wíndou. Ái lav mái rum!</span><div class="b-es">¡Ja! Sí, mi cuarto está detrás de mí. Hay un closet grande al lado de la ventana. ¡Me encanta mi cuarto!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 6. FLIP CARDS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">06</div>
+    <div class="sec-title">Memorización — Toca las tarjetas</div>
+    <div class="sec-badge bv">Práctica</div>
+  </div>
+  <div class="flip-hint">👆 Mira el emoji → recuerda el nombre en inglés → toca para confirmar. <strong>3 veces para fijar.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- QUIZ -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">Quiz — La Casa</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · There is/are · Preposiciones · Producción</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div>
+      <div class="q-icon" id="qicon">🏠</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- REPASO -->
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🏠 Los 30 objetos y habitaciones de esta cartilla</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-top" style="background:var(--terracota);"></div><div class="rep-body"><div class="rep-e">🛋️</div><div class="rep-en">Living Room</div><div class="rep-pron">Líving rum</div><div class="rep-es">Sala</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--terracota);"></div><div class="rep-body"><div class="rep-e">🍳</div><div class="rep-en">Kitchen</div><div class="rep-pron">Kíchen</div><div class="rep-es">Cocina</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--terracota);"></div><div class="rep-body"><div class="rep-e">🛏️</div><div class="rep-en">Bedroom</div><div class="rep-pron">Béd-rum</div><div class="rep-es">Cuarto</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--terracota);"></div><div class="rep-body"><div class="rep-e">🚿</div><div class="rep-en">Bathroom</div><div class="rep-pron">Báz-rum</div><div class="rep-es">Baño</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">🛋️</div><div class="rep-en">Sofa</div><div class="rep-pron">Sóufa</div><div class="rep-es">Sofá</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">📺</div><div class="rep-en">TV</div><div class="rep-pron">Ti-Vii</div><div class="rep-es">Televisión</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">🪑</div><div class="rep-en">Chair</div><div class="rep-pron">Cher</div><div class="rep-es">Silla</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">🪟</div><div class="rep-en">Window</div><div class="rep-pron">Wíndou</div><div class="rep-es">Ventana</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">🚪</div><div class="rep-en">Door</div><div class="rep-pron">Dor</div><div class="rep-es">Puerta</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--miel);"></div><div class="rep-body"><div class="rep-e">💡</div><div class="rep-en">Lamp</div><div class="rep-pron">Laemp</div><div class="rep-es">Lámpara</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--oliva);"></div><div class="rep-body"><div class="rep-e">🍳</div><div class="rep-en">Stove</div><div class="rep-pron">Stóuv</div><div class="rep-es">Estufa</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--oliva);"></div><div class="rep-body"><div class="rep-e">❄️</div><div class="rep-en">Fridge</div><div class="rep-pron">Frij</div><div class="rep-es">Nevera</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--oliva);"></div><div class="rep-body"><div class="rep-e">🚰</div><div class="rep-en">Sink</div><div class="rep-pron">Sink</div><div class="rep-es">Pila/Lavamanos</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--oliva);"></div><div class="rep-body"><div class="rep-e">🍽️</div><div class="rep-en">Table</div><div class="rep-pron">Téibol</div><div class="rep-es">Mesa</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--oliva);"></div><div class="rep-body"><div class="rep-e">🥄</div><div class="rep-en">Spoon</div><div class="rep-pron">Spun</div><div class="rep-es">Cuchara</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-body"><div class="rep-e">🛏️</div><div class="rep-en">Bed</div><div class="rep-pron">Bed</div><div class="rep-es">Cama</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-body"><div class="rep-e">🪞</div><div class="rep-en">Mirror</div><div class="rep-pron">Míror</div><div class="rep-es">Espejo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-body"><div class="rep-e">👚</div><div class="rep-en">Closet</div><div class="rep-pron">Klózet</div><div class="rep-es">Closet</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-body"><div class="rep-e">🖼️</div><div class="rep-en">Pillow</div><div class="rep-pron">Pílou</div><div class="rep-es">Almohada</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--azul);"></div><div class="rep-body"><div class="rep-e">🛡️</div><div class="rep-en">Blanket</div><div class="rep-pron">Bláenket</div><div class="rep-es">Cobija</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#7A3E7A;"></div><div class="rep-body"><div class="rep-e">🚿</div><div class="rep-en">Shower</div><div class="rep-pron">Sháuer</div><div class="rep-es">Ducha</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#7A3E7A;"></div><div class="rep-body"><div class="rep-e">🛁</div><div class="rep-en">Bathtub</div><div class="rep-pron">Báz-tab</div><div class="rep-es">Bañera</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#7A3E7A;"></div><div class="rep-body"><div class="rep-e">🚽</div><div class="rep-en">Toilet</div><div class="rep-pron">Tóilet</div><div class="rep-es">Inodoro</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#7A3E7A;"></div><div class="rep-body"><div class="rep-e">🪥</div><div class="rep-en">Toothbrush</div><div class="rep-pron">Túz-brash</div><div class="rep-es">Cepillo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🏠</div><div class="rep-en">Roof</div><div class="rep-pron">Ruuf</div><div class="rep-es">Techo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🧱</div><div class="rep-en">Wall</div><div class="rep-pron">Uol</div><div class="rep-es">Pared</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🌿</div><div class="rep-en">Garden</div><div class="rep-pron">Gárden</div><div class="rep-es">Jardín</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🏊</div><div class="rep-en">Pool</div><div class="rep-pron">Puul</div><div class="rep-es">Piscina</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🔔</div><div class="rep-en">Doorbell</div><div class="rep-pron">Dórbel</div><div class="rep-es">Timbre</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--arcilla);"></div><div class="rep-body"><div class="rep-e">🚗</div><div class="rep-en">Garage</div><div class="rep-pron">Garázh</div><div class="rep-es">Garaje</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIP -->
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🏠</div>
+    <h3>Reto del maestro — Esta semana</h3>
+    <p>Tu casa es tu aula de inglés. Haz esto hoy mismo — son 10 minutos que valen más que una hora de estudio:</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">🏷️ Pon stickers en cada objeto</div>
+      <div class="tip-paso">🗣️ Di el nombre al entrar a cada cuarto</div>
+      <div class="tip-paso">✍️ Escribe 5 frases "There is/are"</div>
+      <div class="tip-paso">📍 Practica preposiciones señalando</div>
+      <div class="tip-paso">📞 Describe tu casa a alguien</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer"><strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 6 de 19 · La Casa · Nivel A1</div>
+
+<script>
+// ── DATOS PLANO ──
+const habData = {
+  living:{
+    room:'Living Room — Sala',
+    items:[
+      {e:'🛋️',en:'Sofa',pron:'Sóufa'},
+      {e:'📺',en:'TV',pron:'Ti-Vii'},
+      {e:'🪑',en:'Chair',pron:'Cher'},
+      {e:'🪟',en:'Window',pron:'Wíndou'},
+      {e:'🚪',en:'Door',pron:'Dor'},
+      {e:'💡',en:'Lamp',pron:'Laemp'},
+      {e:'📚',en:'Bookshelf',pron:'Búk-shelf'},
+    ]
+  },
+  kitchen:{
+    room:'Kitchen — Cocina',
+    items:[
+      {e:'🍳',en:'Stove',pron:'Stóuv'},
+      {e:'❄️',en:'Fridge',pron:'Frij'},
+      {e:'🚰',en:'Sink',pron:'Sink'},
+      {e:'☕',en:'Microwave',pron:'Máikrouweiv'},
+      {e:'🍽️',en:'Table',pron:'Téibol'},
+      {e:'🥄',en:'Spoon',pron:'Spun'},
+    ]
+  },
+  bedroom:{
+    room:'Bedroom — Cuarto',
+    items:[
+      {e:'🛏️',en:'Bed',pron:'Bed'},
+      {e:'🪞',en:'Mirror',pron:'Míror'},
+      {e:'👚',en:'Closet',pron:'Klózet'},
+      {e:'🖼️',en:'Pillow',pron:'Pílou'},
+      {e:'🛡️',en:'Blanket',pron:'Bláenket'},
+    ]
+  },
+  bathroom:{
+    room:'Bathroom — Baño',
+    items:[
+      {e:'🚿',en:'Shower',pron:'Sháuer'},
+      {e:'🛁',en:'Bathtub',pron:'Báz-tab'},
+      {e:'🚽',en:'Toilet',pron:'Tóilet'},
+      {e:'🚰',en:'Sink',pron:'Sink'},
+      {e:'🪥',en:'Toothbrush',pron:'Túz-brash'},
+    ]
+  },
+  garage:{
+    room:'Garage — Garaje',
+    items:[
+      {e:'🚗',en:'Car',pron:'Kar'},
+      {e:'🧰',en:'Tools',pron:'Tuuls'},
+      {e:'🚲',en:'Bicycle',pron:'Báisikel'},
+    ]
+  },
+  garden:{
+    room:'Garden / Yard — Jardín / Patio',
+    items:[
+      {e:'🌿',en:'Garden',pron:'Gárden'},
+      {e:'🌳',en:'Tree',pron:'Trii'},
+      {e:'🌺',en:'Flowers',pron:'Fláuers'},
+      {e:'🏊',en:'Pool',pron:'Puul'},
+      {e:'🪑',en:'Garden chair',pron:'Gárden cher'},
+    ]
+  },
+};
+
+let habActiva = null;
+function activarHab(el, key){
+  if(habActiva) habActiva.classList.remove('activa');
+  el.classList.add('activa');
+  habActiva = el;
+  const d = habData[key];
+  const panel = document.getElementById('planoInfo');
+  let html = `<div class="pi-room">🏠 ${d.room}</div><div class="pi-items">`;
+  d.items.forEach(item=>{
+    html+=`<div class="pi-item">${item.e} ${item.en}<span>${item.pron}</span></div>`;
+  });
+  html+='</div>';
+  panel.innerHTML = html;
+}
+
+// ── FLIP CARDS ──
+const fd=[
+  {e:'🛋️',en:'Sofa / Couch',es:'Sofá',pron:'Sóufa / Káuch',ctx:'In the living room'},
+  {e:'📺',en:'Television',es:'Televisión',pron:'Ti-Vii',ctx:'TV on the wall'},
+  {e:'🪑',en:'Chair',es:'Silla',pron:'Cher',ctx:'Sit on the chair'},
+  {e:'❄️',en:'Fridge',es:'Nevera',pron:'Frij',ctx:'Open the fridge'},
+  {e:'🛏️',en:'Bed',es:'Cama',pron:'Bed',ctx:'Make the bed'},
+  {e:'🪞',en:'Mirror',es:'Espejo',pron:'Míror',ctx:'Look in the mirror'},
+  {e:'🚿',en:'Shower',es:'Ducha',pron:'Sháuer',ctx:'Take a shower'},
+  {e:'🚽',en:'Toilet',es:'Inodoro',pron:'Tóilet',ctx:'Bathroom essential'},
+  {e:'🪟',en:'Window',es:'Ventana',pron:'Wíndou',ctx:'Open the window'},
+  {e:'🚪',en:'Door',es:'Puerta',pron:'Dor',ctx:'Open/Close the door'},
+  {e:'💡',en:'Lamp',es:'Lámpara',pron:'Laemp',ctx:'Turn on the lamp'},
+  {e:'🛁',en:'Bathtub',es:'Bañera',pron:'Báz-tab',ctx:'In the bathroom'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{
+  const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');
+  fg.appendChild(c);
+});
+
+// ── QUIZ ──
+const Qs=[
+  {t:'VOCABULARIO',i:'🍳',q:'¿Cómo se dice "Cocina" (el cuarto) en inglés?',ctx:'Carlos muestra la cocina a Sarah por videollamada',ops:['Cook room','Cooking room','Kitchen','Food room'],r:2,ex:'✅ Kitchen = Cocina. No se traduce literal. Pronunciación: "Kíchen". Cook = cocinar, Kitchen = el espacio.'},
+  {t:'THERE IS/ARE ★',i:'🛋️',q:'¿Cómo se dice "Hay un sofá en la sala"?',ctx:'Describe lo que hay en tu living room',ops:['There are a sofa in the living room.','There is a sofa in the living room.','There has a sofa in the living room.','Is there a sofa in the living room?'],r:1,ex:'✅ There IS a sofa — singular (1 sofá). There is + artículo "a" + objeto singular. Siempre así.'},
+  {t:'VOCABULARIO',i:'❄️',q:'"Fridge" en español es:',ctx:'El aparato más importante de la cocina colombiana',ops:['Congelador','Microondas','Nevera','Estufa'],r:2,ex:'✅ Fridge = Nevera. Es la forma corta de "Refrigerator" (refrigeréitor). Fridge se usa mucho más en el habla cotidiana.'},
+  {t:'PREPOSICIÓN ★',i:'📱',q:'El teléfono está sobre la mesa. ¿Cómo lo dices en inglés?',ctx:'Describe la ubicación de objetos en tu casa',ops:['The phone is in the table.','The phone is under the table.','The phone is on the table.','The phone is next table.'],r:2,ex:'✅ ON the table = sobre/encima de la mesa. IN = dentro de. UNDER = debajo de. ON = superficie de contacto.'},
+  {t:'THERE IS/ARE ★',i:'🛏️',q:'¿Cómo dices "Hay tres cuartos" en inglés?',ctx:'Carlos le dice a Sarah cuántos cuartos tiene su apartamento',ops:['There is three bedrooms.','There are three bedrooms.','There have three bedrooms.','They are three bedrooms.'],r:1,ex:'✅ There ARE three bedrooms — plural (3 cuartos). Regla: 2 o más objetos = There ARE. No "There is" para plural.'},
+  {t:'VOCABULARIO',i:'🪞',q:'¿Cómo se dice "Cobija / Manta" en inglés?',ctx:'Lo que usas para abrigarte en la cama',ops:['Pillow','Blanket','Mattress','Sheet'],r:1,ex:'✅ Blanket = Cobija / Manta. Pillow = almohada. No confundirlos — pillow va debajo de la cabeza, blanket te cubre.'},
+  {t:'PREPOSICIÓN ★',i:'🏡',q:'"El jardín está detrás de la casa." ¿Cómo lo dices?',ctx:'Describir la ubicación del jardín de Carlos',ops:['The garden is in front of the house.','The garden is next to the house.','The garden is behind the house.','The garden is under the house.'],r:2,ex:'✅ Behind = detrás de. In front of = enfrente de. Next to = al lado de. Behind the house = detrás de la casa.'},
+  {t:'VOCABULARIO',i:'🚽',q:'¿Cómo se dice "Inodoro / Sanitario" en inglés?',ctx:'En el baño — esencial para viajar',ops:['Sink','Shower','Toilet','Bathtub'],r:2,ex:'✅ Toilet = Inodoro / Sanitario. Importante saberlo para viajar. Sink = lavamanos. Shower = ducha. Bathtub = tina.'},
+  {t:'THERE IS/ARE ★',i:'❌',q:'¿Cómo dices "No hay garaje" en inglés?',ctx:'Carlos le explica a Sarah que su edificio no tiene garaje',ops:["There isn't a garage.","There aren't a garage.","There is not have garage.","There no garage."],r:0,ex:"✅ There isn't a garage. Para negativo singular: There ISN'T (there is not). Para plural: There AREN'T. No hay = there isn't/aren't."},
+  {t:'PRODUCCIÓN ★',i:'🏠',q:'Carlos quiere decir: "Hay dos ventanas al lado de la cama." ¿Cómo lo dice?',ctx:'Usa there are + preposición + objeto',ops:['There is two windows next to the bed.','There are two windows next to the bed.','Two windows are next the bed.','There are two windows in the bed.'],r:1,ex:'✅ There are two windows next to the bed. Dos ventanas = plural → There ARE. Al lado de = next to. ¡Dos reglas en una frase!'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){
+  const q=Qs[qi];
+  document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;
+  document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;
+  document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;
+  qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});
+}
+function qResp(i,btn){
+  if(qr)return;qr=true;
+  const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';
+  if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';
+}
+function qNext(){
+  qi++;
+  if(qi<Qs.length){qLoad();}
+  else{
+    const pct=Math.round(qs/Qs.length*100);
+    document.getElementById('qpf').style.width='100%';
+    document.getElementById('qtipo').textContent='RESULTADO';
+    document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+    document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+    document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Dominas la casa en inglés. Listo para Cartilla 7 🚀':pct>=60?'Bien hecho. Repasa las secciones There is/are y preposiciones.':'Revisa las secciones 3 (There is/are) y 4 (preposiciones) antes de continuar.';
+    document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent='Cartilla 6 completada ✓';
+  }
+}
+qLoad();
+</script>
+</body>
+</html>

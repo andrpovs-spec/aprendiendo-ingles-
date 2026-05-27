@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 8 — Rutina Diaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#1A56DB;--celeste:#60A5FA;--amanecer:#F59E0B;
+  --noche:#0F172A;--gris1:#1E293B;--gris2:#334155;
+  --crema:#F8FAFC;--blanco:#FFFFFF;--borde:#E2E8F0;
+  --verde:#10B981;--rojo:#EF4444;--morado:#8B5CF6;
+  --sombra:rgba(15,23,42,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--crema);color:var(--noche);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--noche) 0%,var(--gris1) 100%);
+  padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero-clock{position:absolute;top:16px;right:20px;font-size:3rem;opacity:0.15;}
+.hero-tag{display:inline-block;background:var(--amanecer);color:var(--noche);
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Space Mono',monospace;font-size:clamp(2rem,8vw,4rem);
+  color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--amanecer);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.65);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--azul),#1244B0);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--amanecer);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--noche);padding-bottom:8px;}
+.sec-n{font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--borde);}
+.sec-title{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--noche);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--azul);color:white;}.bg{background:var(--noche);color:white;}
+.bn{background:var(--amanecer);color:var(--noche);}.bu{background:var(--verde);color:white;}
+.hint{background:#EFF6FF;border-left:4px solid var(--azul);border-radius:0 8px 8px 0;
+  padding:10px 14px;font-size:0.82rem;color:#1E3A8A;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--noche);}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+/* LÍNEA DE TIEMPO */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;}
+.timeline::before{content:'';position:absolute;left:50px;top:0;bottom:0;width:2px;background:var(--borde);}
+.tl-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;position:relative;}
+.tl-time{width:50px;flex-shrink:0;text-align:right;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--azul);
+  border:2px solid white;box-shadow:0 0 0 2px var(--azul);
+  flex-shrink:0;margin-top:4px;position:relative;z-index:1;}
+.tl-dot.am{background:var(--amanecer);box-shadow:0 0 0 2px var(--amanecer);}
+.tl-dot.pm{background:var(--morado);box-shadow:0 0 0 2px var(--morado);}
+.tl-dot.night{background:var(--noche);box-shadow:0 0 0 2px var(--noche);}
+.tl-time .th{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--azul);font-weight:700;}
+.tl-time .th.am{color:var(--amanecer);}
+.tl-time .th.pm{color:var(--morado);}
+.tl-time .th.night{color:var(--gris2);}
+.tl-content{flex:1;background:white;border-radius:10px;padding:12px 14px;
+  box-shadow:0 2px 8px var(--sombra);border-left:3px solid var(--azul);}
+.tl-content.am{border-color:var(--amanecer);}
+.tl-content.pm{border-color:var(--morado);}
+.tl-content.night{border-color:var(--gris2);}
+.tl-en{font-weight:700;font-size:0.95rem;color:var(--noche);}
+.tl-pron{font-size:0.68rem;font-weight:700;color:var(--azul);
+  background:#EFF6FF;border-radius:4px;padding:1px 6px;display:inline-block;margin:2px 0;}
+.tl-es{font-size:0.76rem;color:#64748B;}
+.tl-emoji{font-size:1.2rem;}
+
+/* ADVERBIOS */
+.adv-scale{background:var(--noche);border-radius:16px;padding:22px 20px;margin-bottom:14px;}
+.adv-title{font-family:'Space Mono',monospace;font-size:1rem;color:var(--amanecer);margin-bottom:6px;}
+.adv-sub{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:16px;}
+.adv-bar{display:flex;border-radius:10px;overflow:hidden;height:48px;margin-bottom:12px;}
+.adv-seg{flex:1;display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;font-weight:700;color:white;text-align:center;padding:4px 2px;
+  flex-direction:column;gap:1px;}
+.adv-seg .pct{font-family:'Space Mono',monospace;font-size:0.65rem;opacity:0.75;}
+.s1{background:#1E293B;}.s2{background:#1E40AF;}.s3{background:#1D4ED8;}
+.s4{background:#2563EB;}.s5{background:#3B82F6;}.s6{background:#60A5FA;}.s7{background:#93C5FD;}
+.adv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;}
+.adv-card{background:rgba(255,255,255,0.06);border-radius:8px;padding:10px 12px;
+  display:flex;gap:10px;align-items:center;}
+.ac-word{font-family:'Space Mono',monospace;font-size:0.88rem;font-weight:700;
+  color:var(--celeste);min-width:90px;}
+.ac-pct{font-size:0.7rem;color:rgba(255,255,255,0.5);}
+.ac-ej{font-size:0.72rem;color:rgba(255,255,255,0.35);font-style:italic;}
+
+/* VERBOS RUTINA */
+.verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;}
+.verb-card{background:white;border-radius:12px;padding:14px 12px;
+  box-shadow:0 2px 10px var(--sombra);border-top:3px solid var(--azul);text-align:center;}
+.verb-card:nth-child(3n+2){border-color:var(--amanecer);}
+.verb-card:nth-child(3n+3){border-color:var(--verde);}
+.vc-emoji{font-size:2rem;margin-bottom:6px;}
+.vc-en{font-family:'Space Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--noche);}
+.vc-pron{font-size:0.66rem;font-weight:700;color:var(--azul);
+  background:#EFF6FF;border-radius:4px;padding:2px 6px;display:inline-block;margin:3px 0;}
+.vc-es{font-size:0.74rem;color:#64748B;}
+.vc-ej{font-size:0.7rem;color:#94A3B8;margin-top:4px;font-style:italic;}
+
+/* GRAM */
+.gram-box{background:var(--noche);border-radius:14px;padding:22px 20px;color:white;}
+.gb-title{font-family:'Space Mono',monospace;font-size:1rem;color:var(--amanecer);margin-bottom:4px;}
+.gb-sub{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:16px;}
+.gram-table{width:100%;border-collapse:collapse;}
+.gram-table th{background:rgba(255,255,255,0.08);padding:8px 12px;font-size:0.7rem;
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amanecer);text-align:left;}
+.gram-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.84rem;}
+.gram-table tr:last-child td{border-bottom:none;}
+.gt-pron{color:var(--celeste);font-weight:700;width:80px;}
+.gt-verb{font-family:'Space Mono',monospace;font-weight:700;color:white;}
+.gt-verb em{color:var(--amanecer);font-style:normal;}
+.gt-ej{font-size:0.76rem;color:rgba(255,255,255,0.45);font-style:italic;}
+.gram-neg{margin-top:12px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);
+  border-radius:10px;padding:14px;}
+.gn-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:#FCA5A5;margin-bottom:8px;}
+.gn-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.gn-item{font-size:0.8rem;color:white;font-weight:600;}
+.gn-pron{font-size:0.66rem;color:rgba(255,200,200,0.6);}
+
+/* DIÁLOGO */
+.dialogo-scene{background:#F1F5F9;border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:#94A3B8;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--azul),#1244B0);}
+.av.s{background:linear-gradient(135deg,var(--amanecer),#D97706);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--noche);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--noche);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--azul);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* FLIP */
+.flip-hint{background:var(--noche);border-radius:10px;padding:12px 16px;
+  color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--amanecer);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-family:'Space Mono',monospace;font-size:0.8rem;font-weight:700;color:var(--noche);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--noche);transform:rotateY(180deg);}
+.fb-es{color:var(--amanecer);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:var(--celeste);font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* QUIZ */
+.quiz-wrap{background:var(--noche);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--amanecer);color:var(--noche);
+  font-family:'Space Mono',monospace;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Space Mono',monospace;font-size:1.2rem;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--azul),var(--amanecer));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);
+  color:white;padding:12px 10px;border-radius:9px;font-family:'Space Grotesk',sans-serif;
+  font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(16,185,129,0.2);border-color:var(--verde);color:#6EE7B7;}
+.q-btn.mal{background:rgba(239,68,68,0.2);border-color:var(--rojo);color:#FCA5A5;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--amanecer);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--amanecer);color:var(--noche);border:none;
+  padding:11px 28px;border-radius:8px;font-family:'Space Mono',monospace;font-size:0.88rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* REPASO */
+.repaso-bg{background:#F1F5F9;padding:28px 16px;}
+.rep-title{font-family:'Space Mono',monospace;font-size:1rem;color:var(--noche);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--azul);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-family:'Space Mono',monospace;font-size:0.78rem;font-weight:700;color:var(--noche);}
+.rep-pron{font-size:0.6rem;color:var(--azul);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#64748B;margin-top:1px;}
+
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;
+  padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--amanecer);text-align:center;}
+.tip h3{font-family:'Space Mono',monospace;font-size:0.95rem;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:#F1F5F9;border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--noche);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--amanecer);}
+@media(max-width:520px){.gn-grid{grid-template-columns:1fr;}.q-ops{grid-template-columns:1fr;}.verb-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-clock">⏰</div>
+  <div class="hero-tag">Cartilla 8 de 19 · Presente Simple + Adverbios de Frecuencia</div>
+  <h1>Rutina<br>Diaria<br><em>Daily Routine</em></h1>
+  <p class="hero-sub">Cartilla 8 · Nivel A1→A2 · Verbos de rutina · Always/Never · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">⏰ Línea de tiempo</span><span class="hp">📊 Escala de frecuencia</span>
+    <span class="hp">🔵 Presente simple</span><span class="hp">❓ Preguntas Do/Does</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Sarah quiere saber cómo es un día típico de Carlos en Fusagasugá. <strong>Carlos describe su rutina completa en inglés.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Un día de Carlos — La línea de tiempo</div><div class="sec-badge bv">Visual</div></div>
+  <div class="hint">🧠 <strong>Narrativa temporal:</strong> Aprender la rutina como una historia del día activa la memoria episódica — la más duradera del cerebro.</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-time"><span class="th am">6:00</span></div><div class="tl-dot am"></div><div class="tl-content am"><div class="tl-emoji">⏰</div><div class="tl-en">I wake up at six o'clock.</div><div class="tl-pron">Ái uéik ap at siks o-klok.</div><div class="tl-es">Me despierto a las seis.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th am">6:15</span></div><div class="tl-dot am"></div><div class="tl-content am"><div class="tl-emoji">🚿</div><div class="tl-en">I take a shower and get dressed.</div><div class="tl-pron">Ái téik a sháuer end get drest.</div><div class="tl-es">Me ducho y me visto.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th am">7:00</span></div><div class="tl-dot am"></div><div class="tl-content am"><div class="tl-emoji">🍳</div><div class="tl-en">I have breakfast with my family.</div><div class="tl-pron">Ái jav brékfast uid mái fámili.</div><div class="tl-es">Desayuno con mi familia.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th am">8:00</span></div><div class="tl-dot am"></div><div class="tl-content am"><div class="tl-emoji">🚌</div><div class="tl-en">I go to work / school by bus.</div><div class="tl-pron">Ái góu tu uork / skuul bai bas.</div><div class="tl-es">Voy al trabajo / escuela en bus.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th">12:30</span></div><div class="tl-dot"></div><div class="tl-content"><div class="tl-emoji">🍽️</div><div class="tl-en">I have lunch at noon.</div><div class="tl-pron">Ái jav lanch at nuun.</div><div class="tl-es">Almuerzo al mediodía.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th pm">3:00</span></div><div class="tl-dot pm"></div><div class="tl-content pm"><div class="tl-emoji">☕</div><div class="tl-en">I drink coffee and take a break.</div><div class="tl-pron">Ái drink kófi end téik a bréik.</div><div class="tl-es">Tomo café y hago una pausa.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th pm">6:00</span></div><div class="tl-dot pm"></div><div class="tl-content pm"><div class="tl-emoji">🏠</div><div class="tl-en">I come home and rest.</div><div class="tl-pron">Ái kam jóum end rest.</div><div class="tl-es">Llego a casa y descanso.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th pm">8:00</span></div><div class="tl-dot pm"></div><div class="tl-content pm"><div class="tl-emoji">🍽️</div><div class="tl-en">I have dinner with my family.</div><div class="tl-pron">Ái jav díner uid mái fámili.</div><div class="tl-es">Ceno con mi familia.</div></div></div>
+    <div class="tl-item"><div class="tl-time"><span class="th night">10:30</span></div><div class="tl-dot night"></div><div class="tl-content night"><div class="tl-emoji">😴</div><div class="tl-en">I go to bed and sleep.</div><div class="tl-pron">Ái góu tu bed end sliip.</div><div class="tl-es">Me voy a la cama y duermo.</div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Verbos de rutina — Daily Verbs</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>Verbos en contexto:</strong> Cada verbo viene con un ejemplo de la vida de Carlos. Aprende el verbo dentro de la frase, no solo la palabra sola.</div>
+  <div class="verb-grid">
+    <div class="verb-card"><div class="vc-emoji">⏰</div><div class="vc-en">Wake up</div><div class="vc-pron">Uéik ap</div><div class="vc-es">Despertarse</div><div class="vc-ej">I wake up at 6am.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🛏️</div><div class="vc-en">Get up</div><div class="vc-pron">Get ap</div><div class="vc-es">Levantarse</div><div class="vc-ej">I get up early.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🚿</div><div class="vc-en">Take a shower</div><div class="vc-pron">Téik a sháuer</div><div class="vc-es">Ducharse</div><div class="vc-ej">She takes a shower.</div></div>
+    <div class="verb-card"><div class="vc-emoji">👕</div><div class="vc-en">Get dressed</div><div class="vc-pron">Get drest</div><div class="vc-es">Vestirse</div><div class="vc-ej">He gets dressed fast.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🍳</div><div class="vc-en">Have breakfast</div><div class="vc-pron">Jav brékfast</div><div class="vc-es">Desayunar</div><div class="vc-ej">We have breakfast together.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🚶</div><div class="vc-en">Go to work</div><div class="vc-pron">Góu tu uork</div><div class="vc-es">Ir al trabajo</div><div class="vc-ej">I go to work at 8.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🍽️</div><div class="vc-en">Have lunch</div><div class="vc-pron">Jav lanch</div><div class="vc-es">Almorzar</div><div class="vc-ej">I have lunch at noon.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🏠</div><div class="vc-en">Come home</div><div class="vc-pron">Kam jóum</div><div class="vc-es">Llegar a casa</div><div class="vc-ej">She comes home at 6.</div></div>
+    <div class="verb-card"><div class="vc-emoji">🍽️</div><div class="vc-en">Have dinner</div><div class="vc-pron">Jav díner</div><div class="vc-es">Cenar</div><div class="vc-ej">They have dinner at 8.</div></div>
+    <div class="verb-card"><div class="vc-emoji">📺</div><div class="vc-en">Watch TV</div><div class="vc-pron">Uóch Ti-Vii</div><div class="vc-es">Ver televisión</div><div class="vc-ej">He watches TV at night.</div></div>
+    <div class="verb-card"><div class="vc-emoji">😴</div><div class="vc-en">Go to bed</div><div class="vc-pron">Góu tu bed</div><div class="vc-es">Acostarse</div><div class="vc-ej">I go to bed at 10.</div></div>
+    <div class="verb-card"><div class="vc-emoji">😴</div><div class="vc-en">Sleep</div><div class="vc-pron">Sliip</div><div class="vc-es">Dormir</div><div class="vc-ej">I sleep 8 hours.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Adverbios de frecuencia — How often?</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> Para decir con qué frecuencia haces algo, usas adverbios de frecuencia. Van <strong>ANTES del verbo principal</strong> pero <strong>DESPUÉS del verbo to be</strong>. Esta posición es clave.</div>
+  <div class="adv-scale">
+    <div class="adv-title">📊 Escala de frecuencia — Frequency Scale</div>
+    <div class="adv-sub">De 0% (nunca) a 100% (siempre)</div>
+    <div class="adv-bar">
+      <div class="adv-seg s1"><span>Never</span><span class="pct">0%</span></div>
+      <div class="adv-seg s2"><span>Rarely</span><span class="pct">10%</span></div>
+      <div class="adv-seg s3"><span>Sometimes</span><span class="pct">50%</span></div>
+      <div class="adv-seg s4"><span>Often</span><span class="pct">70%</span></div>
+      <div class="adv-seg s5"><span>Usually</span><span class="pct">80%</span></div>
+      <div class="adv-seg s6"><span>Almost always</span><span class="pct">90%</span></div>
+      <div class="adv-seg s7"><span>Always</span><span class="pct">100%</span></div>
+    </div>
+    <div class="adv-list">
+      <div class="adv-card"><span class="ac-word">Always</span><div><div class="ac-pct">Siempre · Ólueis</div><div class="ac-ej">I always wake up at 6.</div></div></div>
+      <div class="adv-card"><span class="ac-word">Usually</span><div><div class="ac-pct">Generalmente · Iúshuali</div><div class="ac-ej">She usually drinks coffee.</div></div></div>
+      <div class="adv-card"><span class="ac-word">Often</span><div><div class="ac-pct">A menudo · Óften</div><div class="ac-ej">He often goes to the gym.</div></div></div>
+      <div class="adv-card"><span class="ac-word">Sometimes</span><div><div class="ac-pct">A veces · Sámtaims</div><div class="ac-ej">I sometimes cook at home.</div></div></div>
+      <div class="adv-card"><span class="ac-word">Rarely</span><div><div class="ac-pct">Raramente · Rérli</div><div class="ac-ej">She rarely watches TV.</div></div></div>
+      <div class="adv-card"><span class="ac-word">Never</span><div><div class="ac-pct">Nunca · Néver</div><div class="ac-ej">I never skip breakfast.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Presente simple — Do / Does</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> Para hacer preguntas y negaciones en presente simple usamos <strong>DO</strong> (yo/tú/ellos) y <strong>DOES</strong> (él/ella). Es la estructura gramatical más usada en inglés cotidiano.</div>
+  <div class="gram-box">
+    <div class="gb-title">📐 Presente Simple — Afirmativo / Negativo / Interrogativo</div>
+    <div class="gb-sub">La S de He/She salta al auxiliar en preguntas y negaciones</div>
+    <table class="gram-table">
+      <thead><tr><th>Pronombre</th><th>Afirmativo</th><th>Negativo</th><th>Pregunta</th></tr></thead>
+      <tbody>
+        <tr><td class="gt-pron">I / You</td><td class="gt-verb">I <em>wake up</em> early.</td><td class="gt-verb">I <em>don't</em> wake up late.</td><td class="gt-verb"><em>Do</em> you wake up early?</td></tr>
+        <tr><td class="gt-pron">He / She</td><td class="gt-verb">She <em>wake<strong>s</strong> up</em> early.</td><td class="gt-verb">She <em>doesn't</em> wake up late.</td><td class="gt-verb"><em>Does</em> she wake up early?</td></tr>
+        <tr><td class="gt-pron">We / They</td><td class="gt-verb">They <em>go</em> to work.</td><td class="gt-verb">They <em>don't</em> go to work.</td><td class="gt-verb"><em>Do</em> they go to work?</td></tr>
+      </tbody>
+    </table>
+    <div class="gram-neg">
+      <div class="gn-title">⚠️ Negaciones — Contracciones</div>
+      <div class="gn-grid">
+        <div class="gn-item">do not → <strong>don't</strong><span class="gn-pron">Dóunt — I don't sleep late.</span></div>
+        <div class="gn-item">does not → <strong>doesn't</strong><span class="gn-pron">Dásnt — She doesn't eat meat.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Carlos habla de su rutina — Diálogo</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">📱 Videollamada · Domingo · 9am</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos, what time do you usually wake up?</div><span class="b-pron">Carlos, uot táim du iú iúshuali uéik ap?</span><div class="b-es">Carlos, ¿a qué hora te despiertas generalmente?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">I always wake up at six. I never sleep late on weekdays!</div><span class="b-pron">Ái ólueis uéik ap at siks. Ái néver sliip léit on uíkdeis!</span><div class="b-es">Siempre me despierto a las seis. ¡Nunca duermo tarde entre semana!</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Does your mom cook breakfast every day?</div><span class="b-pron">Das ior mom kuk brékfast évri déi?</span><div class="b-es">¿Tu mamá cocina desayuno todos los días?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! She always makes arepas and hot chocolate. I sometimes help her.</div><span class="b-pron">Ies! Shi ólueis méiks arepas end jot chókoleit. Ái sámtaims jelp jer.</span><div class="b-es">¡Sí! Ella siempre hace arepas y chocolate caliente. Yo a veces la ayudo.</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">What do you do after work?</div><span class="b-pron">Uot du iú dúu áfter uork?</span><div class="b-es">¿Qué haces después del trabajo?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">I usually come home at six, have dinner with my family, and sometimes watch TV. I rarely go out on weeknights.</div><span class="b-pron">Ái iúshuali kam jóum at siks, jav díner uid mái fámili, end sámtaims uóch Ti-Vii. Ái rérli góu áut on uíknáits.</span><div class="b-es">Generalmente llego a casa a las seis, ceno con mi familia y a veces veo TV. Raramente salgo entre semana.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">06</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">👆 Mira el emoji → recuerda el verbo en inglés → toca para confirmar. <strong>3 veces para fijar.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — Rutina Diaria</div></div>
+    <p class="qw-sub">10 preguntas · Verbos · Adverbios · Do/Does · Producción</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">⏰</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">⏰ Verbos y expresiones de rutina</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">⏰</div><div class="rep-en">Wake up</div><div class="rep-pron">Uéik ap</div><div class="rep-es">Despertarse</div></div>
+      <div class="rep-c"><div class="rep-e">🛏️</div><div class="rep-en">Get up</div><div class="rep-pron">Get ap</div><div class="rep-es">Levantarse</div></div>
+      <div class="rep-c"><div class="rep-e">🚿</div><div class="rep-en">Take a shower</div><div class="rep-pron">Téik a sháuer</div><div class="rep-es">Ducharse</div></div>
+      <div class="rep-c"><div class="rep-e">👕</div><div class="rep-en">Get dressed</div><div class="rep-pron">Get drest</div><div class="rep-es">Vestirse</div></div>
+      <div class="rep-c"><div class="rep-e">🍳</div><div class="rep-en">Have breakfast</div><div class="rep-pron">Jav brékfast</div><div class="rep-es">Desayunar</div></div>
+      <div class="rep-c"><div class="rep-e">🚶</div><div class="rep-en">Go to work</div><div class="rep-pron">Góu tu uork</div><div class="rep-es">Ir al trabajo</div></div>
+      <div class="rep-c"><div class="rep-e">🍽️</div><div class="rep-en">Have lunch</div><div class="rep-pron">Jav lanch</div><div class="rep-es">Almorzar</div></div>
+      <div class="rep-c"><div class="rep-e">🏠</div><div class="rep-en">Come home</div><div class="rep-pron">Kam jóum</div><div class="rep-es">Llegar a casa</div></div>
+      <div class="rep-c"><div class="rep-e">🍽️</div><div class="rep-en">Have dinner</div><div class="rep-pron">Jav díner</div><div class="rep-es">Cenar</div></div>
+      <div class="rep-c"><div class="rep-e">😴</div><div class="rep-en">Go to bed</div><div class="rep-pron">Góu tu bed</div><div class="rep-es">Acostarse</div></div>
+      <div class="rep-c"><div class="rep-e">🔵</div><div class="rep-en">Always</div><div class="rep-pron">Ólueis</div><div class="rep-es">Siempre</div></div>
+      <div class="rep-c"><div class="rep-e">🟢</div><div class="rep-en">Usually</div><div class="rep-pron">Iúshuali</div><div class="rep-es">Generalmente</div></div>
+      <div class="rep-c"><div class="rep-e">🟡</div><div class="rep-en">Sometimes</div><div class="rep-pron">Sámtaims</div><div class="rep-es">A veces</div></div>
+      <div class="rep-c"><div class="rep-e">🔴</div><div class="rep-en">Never</div><div class="rep-pron">Néver</div><div class="rep-es">Nunca</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">⏰</div>
+    <h3>Reto del maestro</h3>
+    <p>Describe tu rutina de hoy en inglés — en voz alta o por escrito. Usa al menos 3 adverbios de frecuencia.</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">🌅 Describe tu mañana</div>
+      <div class="tip-paso">☀️ Tu tarde</div>
+      <div class="tip-paso">🌙 Tu noche</div>
+      <div class="tip-paso">📊 Usa always/sometimes/never</div>
+    </div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 8 de 19 · Rutina Diaria · A1→A2</div>
+
+<script>
+const fd=[
+  {e:'⏰',en:'Wake up',es:'Despertarse',pron:'Uéik ap',ctx:'I wake up at 6'},
+  {e:'🚿',en:'Take a shower',es:'Ducharse',pron:'Téik a sháuer',ctx:'She takes a shower'},
+  {e:'🍳',en:'Have breakfast',es:'Desayunar',pron:'Jav brékfast',ctx:'We have breakfast'},
+  {e:'🚶',en:'Go to work',es:'Ir al trabajo',pron:'Góu tu uork',ctx:'I go to work at 8'},
+  {e:'🍽️',en:'Have lunch',es:'Almorzar',pron:'Jav lanch',ctx:'Noon = mediodía'},
+  {e:'🏠',en:'Come home',es:'Llegar a casa',pron:'Kam jóum',ctx:'She comes home late'},
+  {e:'📺',en:'Watch TV',es:'Ver televisión',pron:'Uóch Ti-Vii',ctx:'He watches TV'},
+  {e:'😴',en:'Go to bed',es:'Acostarse',pron:'Góu tu bed',ctx:'I go to bed at 10'},
+  {e:'🔵',en:'Always',es:'Siempre',pron:'Ólueis',ctx:'100% frecuencia'},
+  {e:'🟡',en:'Sometimes',es:'A veces',pron:'Sámtaims',ctx:'50% frecuencia'},
+  {e:'🔴',en:'Never',es:'Nunca',pron:'Néver',ctx:'0% frecuencia'},
+  {e:'🟢',en:'Usually',es:'Generalmente',pron:'Iúshuali',ctx:'80% frecuencia'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+
+const Qs=[
+  {t:'VOCABULARIO',i:'🍳',q:'"Have breakfast" significa:',ctx:'Primera actividad importante de la mañana',ops:['Cocinar el desayuno','Desayunar','Tener hambre','Preparar comida'],r:1,ex:'✅ Have breakfast = Desayunar. Have lunch = almorzar. Have dinner = cenar.'},
+  {t:'ADVERBIOS ★',i:'📊',q:'¿Cuál adverbio indica que algo pasa el 100% del tiempo?',ctx:'Adverbios de frecuencia — escala completa',ops:['Usually','Sometimes','Often','Always'],r:3,ex:'✅ Always = Siempre (100%). Never = Nunca (0%). Usually = Generalmente (80%). Sometimes = A veces (50%).'},
+  {t:'DO/DOES ★',i:'❓',q:'"___ she wake up early?" — Pregunta sobre ella',ctx:'Forma interrogativa del presente simple',ops:['Do','Is','Does','Has'],r:2,ex:'✅ Does she wake up early? DOES se usa con He/She/It en preguntas. DO se usa con I/You/We/They.'},
+  {t:'GRAMÁTICA ★',i:'👩',q:'¿Cuál oración es correcta?',ctx:'Negación en presente simple con He/She',ops:['She don\'t go to work.','She doesn\'t go to work.','She not go to work.','She doesn\'t goes to work.'],r:1,ex:"✅ She doesn't go to work. DOESN'T = does not (para He/She/It). DON'T = do not (para I/You/We/They)."},
+  {t:'VOCABULARIO',i:'🕙',q:'"I go to bed at ten." ¿Qué significa?',ctx:'Rutina nocturna de Carlos',ops:['Me levanto a las diez.','Trabajo hasta las diez.','Me voy a acostar a las diez.','Duermo diez horas.'],r:2,ex:'✅ Go to bed = Acostarse / Irse a la cama. Go to sleep = quedarse dormido. Son diferentes.'},
+  {t:'ADVERBIOS ★',i:'🔴',q:'Carlos dice: "I ___ eat junk food." (Nunca)',ctx:'Hábito alimenticio de Carlos',ops:['Sometimes','Always','Never','Usually'],r:2,ex:'✅ Never = Nunca. I never eat junk food = Nunca como comida chatarra. Recuerda: Never + verbo afirmativo (sin doble negación).'},
+  {t:'DO/DOES ★',i:'❓',q:'"What time ___ you wake up?" — Preguntando a Carlos',ctx:'Sarah le pregunta a Carlos sobre su rutina',ops:['does','is','are','do'],r:3,ex:'✅ What time do you wake up? DO se usa con YOU. Respuesta: I wake up at six. (Sin DO en la respuesta.)'},
+  {t:'POSICIÓN ★',i:'📍',q:'"I ___ have breakfast with my family." (Siempre)',ctx:'¿Dónde va el adverbio de frecuencia?',ops:['I have always breakfast','I have breakfast always','I always have breakfast','Always I have breakfast'],r:2,ex:'✅ I always have breakfast. El adverbio de frecuencia va ANTES del verbo principal. I always + verb. Nunca al final ni al inicio.'},
+  {t:'VOCABULARIO',i:'🚶',q:'"Come home" significa:',ctx:'Carlos termina su jornada laboral',ops:['Salir de casa','Llegar a casa','Limpiar la casa','Construir casa'],r:1,ex:'✅ Come home = Llegar a casa / Volver a casa. Come = venir. Home = hogar. I come home at 6 = Llego a casa a las 6.'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'Carlos quiere decir: "Generalmente me ducho antes del desayuno." ¿Cómo lo dice?',ctx:'Combina adverbio + verbo de rutina',ops:['I shower usually before breakfast.','I usually take a shower before breakfast.','Usually I take shower before breakfast.','I take a usually shower before breakfast.'],r:1,ex:'✅ I usually take a shower before breakfast. Adverbio (usually) + verbo principal (take). Before = antes de. Perfect!'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 9 🚀':'Repasa Do/Does y los adverbios de frecuencia.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 8 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>

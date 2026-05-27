@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 7 — La Comida en Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rojo:    #E8272A;
+  --naranja: #F07B28;
+  --amarillo:#F5C518;
+  --verde:   #3A9E4A;
+  --cafe:    #7B4A1E;
+  --crema:   #FFF9F0;
+  --carta:   #FFFFFF;
+  --suave:   #FFF3E0;
+  --borde:   #F0DCBC;
+  --texto:   #1A0E00;
+  --gris:    #8A7060;
+  --morado:  #6B3FA0;
+  --sombra:  rgba(26,14,0,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Manrope',sans-serif;background:var(--crema);color:var(--texto);overflow-x:hidden;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--rojo);
+  padding:44px 20px 52px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.08) 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.hero-emojis-bg{
+  position:absolute;bottom:-10px;left:0;right:0;
+  font-size:3rem;letter-spacing:8px;opacity:0.12;line-height:1;
+  white-space:nowrap;overflow:hidden;
+}
+.hero-tag{display:inline-block;background:var(--amarillo);color:var(--texto);
+  font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-family:'Bebas Neue',cursive;font-size:clamp(3rem,12vw,6rem);
+  color:white;line-height:0.9;position:relative;z-index:1;letter-spacing:2px;}
+.hero h1 em{color:var(--amarillo);font-style:normal;display:block;}
+.hero-sub{color:rgba(255,255,255,0.6);font-size:0.88rem;margin-top:14px;
+  font-weight:500;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.75);font-size:0.68rem;font-weight:600;
+  padding:4px 12px;border-radius:20px;}
+.hero-nota{margin:14px auto 0;max-width:500px;background:rgba(0,0,0,0.2);
+  border:1px solid rgba(255,255,255,0.2);border-radius:6px;
+  padding:10px 16px;color:rgba(255,255,255,0.8);font-size:0.82rem;
+  font-weight:500;position:relative;z-index:1;line-height:1.5;}
+.hero-nota strong{color:var(--amarillo);}
+
+/* ── STORY ── */
+.story{background:linear-gradient(90deg,var(--cafe),#5A340E);padding:15px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--amarillo);}
+
+/* ── WRAP ── */
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+
+/* ── SECCIÓN ── */
+.sec{padding:32px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;
+  border-bottom:3px solid var(--texto);padding-bottom:8px;}
+.sec-n{font-family:'Bebas Neue',cursive;font-size:2rem;color:var(--borde);letter-spacing:2px;}
+.sec-title{font-family:'Bebas Neue',cursive;font-size:1.5rem;color:var(--texto);letter-spacing:1px;}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--verde);color:white;}
+.br{background:var(--rojo);color:white;}
+.bn{background:var(--naranja);color:white;}
+.bc{background:var(--cafe);color:white;}
+.bm{background:var(--morado);color:white;}
+.hint{background:var(--suave);border-left:4px solid var(--naranja);
+  border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;
+  color:#5A3010;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.hint strong{color:var(--texto);}
+.hint .warn{color:var(--rojo);font-weight:700;}
+.hint .good{color:var(--verde);font-weight:700;}
+.divider{border:none;border-top:2px dashed var(--borde);margin:28px 0 0;}
+
+/* ── MENÚ INTERACTIVO ── */
+.menu-wrap{background:var(--carta);border-radius:18px;
+  box-shadow:0 4px 28px var(--sombra);border:2px solid var(--borde);overflow:hidden;}
+.menu-header{background:var(--texto);padding:16px 20px;text-align:center;}
+.menu-header h2{font-family:'Bebas Neue',cursive;font-size:1.8rem;color:var(--amarillo);letter-spacing:3px;}
+.menu-header p{color:rgba(255,255,255,0.5);font-size:0.75rem;margin-top:2px;}
+.menu-cats{display:flex;gap:0;border-bottom:2px solid var(--borde);overflow-x:auto;}
+.menu-cat-btn{flex:1;min-width:70px;padding:10px 8px;border:none;background:white;
+  font-family:'Manrope',sans-serif;font-size:0.72rem;font-weight:700;
+  cursor:pointer;transition:all 0.2s;border-bottom:3px solid transparent;
+  color:var(--gris);text-align:center;white-space:nowrap;}
+.menu-cat-btn.activo{color:var(--rojo);border-bottom-color:var(--rojo);background:var(--suave);}
+.menu-cat-btn:hover{background:var(--suave);}
+.menu-cat-icon{display:block;font-size:1.2rem;margin-bottom:2px;}
+.menu-content{padding:16px;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+.food-item{background:var(--suave);border-radius:12px;padding:12px 10px;
+  text-align:center;border:1.5px solid var(--borde);cursor:pointer;
+  transition:all 0.2s;position:relative;}
+.food-item:hover,.food-item.sel{border-color:var(--rojo);background:white;
+  transform:translateY(-2px);box-shadow:0 4px 12px var(--sombra);}
+.food-item.sel::after{content:'✓';position:absolute;top:6px;right:8px;
+  color:var(--verde);font-size:0.75rem;font-weight:800;}
+.fi-emoji{font-size:2rem;margin-bottom:5px;}
+.fi-en{font-family:'Bebas Neue',cursive;font-size:0.95rem;letter-spacing:1px;color:var(--texto);}
+.fi-pron{font-size:0.62rem;font-weight:700;color:var(--rojo);background:white;
+  border:1px solid var(--borde);border-radius:4px;padding:1px 5px;
+  display:inline-block;margin:2px 0;}
+.fi-es{font-size:0.68rem;color:var(--gris);}
+.menu-orden{background:var(--texto);padding:14px 20px;display:flex;
+  align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.orden-label{color:rgba(255,255,255,0.5);font-size:0.75rem;font-weight:600;}
+.orden-items{color:var(--amarillo);font-size:0.82rem;font-weight:700;flex:1;
+  text-align:center;}
+.orden-btn{background:var(--rojo);color:white;border:none;padding:8px 20px;
+  border-radius:8px;font-family:'Bebas Neue',cursive;font-size:0.95rem;
+  letter-spacing:1px;cursor:pointer;transition:transform 0.15s;}
+.orden-btn:hover{transform:scale(1.05);}
+
+/* ── CHUNKS ── */
+.chunks-food{display:flex;flex-direction:column;gap:12px;}
+.chunk-food{background:var(--carta);border-radius:14px;overflow:hidden;box-shadow:0 2px 14px var(--sombra);}
+.cf-head{padding:11px 16px;display:flex;align-items:center;gap:10px;}
+.cf-icon{font-size:1.3rem;}.cf-title{font-family:'Bebas Neue',cursive;font-size:1.1rem;letter-spacing:1px;color:white;flex:1;}
+.cf-badge{font-size:0.62rem;font-weight:700;background:rgba(255,255,255,0.2);color:white;padding:2px 8px;border-radius:10px;}
+.cf-frutas{background:linear-gradient(90deg,#E8272A,#C01820);}
+.cf-verduras{background:linear-gradient(90deg,#3A9E4A,#258034);}
+.cf-carnes{background:linear-gradient(90deg,#7B4A1E,#5A340E);}
+.cf-bebidas{background:linear-gradient(90deg,#2A6496,#1A4570);}
+.cf-col{background:linear-gradient(90deg,#F07B28,#C05A10);}
+.cf-body{padding:12px 16px;}
+.food-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--suave);}
+.food-row:last-child{border-bottom:none;}
+.fr-e{font-size:1.3rem;width:26px;text-align:center;flex-shrink:0;}
+.fr-en{font-family:'Bebas Neue',cursive;font-size:0.95rem;letter-spacing:0.5px;color:var(--texto);min-width:100px;}
+.fr-pron{font-size:0.66rem;font-weight:700;color:var(--rojo);background:var(--suave);
+  border-radius:4px;padding:2px 5px;display:inline-block;white-space:nowrap;}
+.fr-es{font-size:0.75rem;color:var(--gris);flex:1;}
+.fr-truco{font-size:0.66rem;color:#bbb;font-style:italic;line-height:1.3;text-align:right;max-width:160px;}
+
+/* ── VERBOS EAT / DRINK ── */
+.verbo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.verbo-card{border-radius:16px;overflow:hidden;box-shadow:0 2px 14px var(--sombra);}
+.vc-head{padding:18px;text-align:center;}
+.vc-head.eat{background:linear-gradient(135deg,var(--rojo),#B01820);}
+.vc-head.drink{background:linear-gradient(135deg,#2A6496,#1A4570);}
+.vc-verb{font-family:'Bebas Neue',cursive;font-size:2.5rem;color:white;letter-spacing:3px;}
+.vc-pron{font-size:0.75rem;color:rgba(255,255,255,0.6);font-weight:600;margin-top:2px;}
+.vc-es{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+.vc-body{background:white;padding:12px 14px;}
+.vc-conjugacion{display:flex;flex-direction:column;gap:5px;}
+.vc-conj{display:flex;gap:8px;font-size:0.78rem;padding:4px 0;border-bottom:1px solid var(--suave);}
+.vc-conj:last-child{border-bottom:none;}
+.vc-pron-sp{color:var(--gris);width:60px;flex-shrink:0;font-weight:600;}
+.vc-form{font-weight:700;color:var(--texto);flex:1;}
+.vc-form em{color:var(--rojo);font-style:normal;}
+.vc-ejemplo{font-size:0.68rem;color:var(--gris);flex:1;text-align:right;font-style:italic;}
+
+.verbo-regla{background:var(--texto);border-radius:12px;padding:16px 18px;color:white;margin-top:4px;}
+.vr-title{font-family:'Bebas Neue',cursive;font-size:1rem;color:var(--amarillo);letter-spacing:1px;margin-bottom:8px;}
+.vr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.vr-item{background:rgba(255,255,255,0.06);border-radius:8px;padding:10px 12px;}
+.vri-titulo{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:5px;}
+.vri-ej{font-size:0.82rem;font-weight:700;color:white;line-height:1.4;}
+.vri-es{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px;}
+.vri-pron{font-size:0.67rem;color:var(--amarillo);display:block;margin-top:2px;}
+
+/* ── FRASES RESTAURANTE ── */
+.rest-intro{background:linear-gradient(135deg,var(--cafe),#5A340E);
+  border-radius:14px;padding:18px;display:flex;gap:14px;
+  align-items:flex-start;margin-bottom:16px;}
+.ri-icon{font-size:2.5rem;flex-shrink:0;}
+.ri-title{font-family:'Bebas Neue',cursive;font-size:1.1rem;color:var(--amarillo);
+  letter-spacing:1px;margin-bottom:4px;}
+.ri-desc{font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.5;}
+.rest-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.rest-card{background:var(--carta);border-radius:12px;padding:14px;
+  box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--naranja);}
+.rc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--gris);margin-bottom:6px;}
+.rc-en{font-family:'Bebas Neue',cursive;font-size:1rem;letter-spacing:0.5px;
+  color:var(--texto);line-height:1.3;margin-bottom:3px;}
+.rc-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin-bottom:2px;}
+.rc-es{font-size:0.75rem;color:var(--gris);}
+.rest-card:nth-child(2){border-color:var(--rojo);}
+.rest-card:nth-child(3){border-color:var(--verde);}
+.rest-card:nth-child(4){border-color:var(--cafe);}
+.rest-card:nth-child(5){border-color:var(--morado);}
+.rest-card:nth-child(6){border-color:var(--amarillo);}
+.rest-card:nth-child(7){border-color:var(--rojo);}
+.rest-card:nth-child(8){border-color:var(--verde);}
+
+/* ── DIÁLOGO ── */
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gris);margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;
+  border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--rojo),#B01820);}
+.av.w{background:linear-gradient(135deg,var(--verde),#258034);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;
+  padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--texto);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--texto);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+/* ── FLIP ── */
+.flip-hint{background:var(--texto);border-radius:10px;padding:12px 16px;
+  color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--amarillo);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+  transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-family:'Bebas Neue',cursive;font-size:0.95rem;
+  letter-spacing:0.5px;color:var(--texto);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--texto);transform:rotateY(180deg);}
+.fb-es{color:var(--amarillo);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#FFBA7B;font-weight:700;margin-top:4px;
+  background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* ── QUIZ ── */
+.quiz-wrap{background:var(--texto);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--rojo);color:white;
+  font-family:'Bebas Neue',cursive;font-size:1rem;letter-spacing:1px;
+  display:flex;align-items:center;justify-content:center;}
+.qw-title{font-family:'Bebas Neue',cursive;font-size:1.6rem;color:white;letter-spacing:2px;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--rojo),var(--amarillo));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:700;
+  color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);
+  color:white;padding:12px 10px;border-radius:9px;font-family:'Manrope',sans-serif;
+  font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(58,158,74,0.25);border-color:var(--verde);color:#80E090;}
+.q-btn.mal{background:rgba(232,39,42,0.25);border-color:var(--rojo);color:#FF8A8A;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--amarillo);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--amarillo);color:var(--texto);border:none;
+  padding:11px 28px;border-radius:8px;font-family:'Bebas Neue',cursive;
+  font-size:1rem;letter-spacing:2px;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+
+/* ── REPASO ── */
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-family:'Bebas Neue',cursive;font-size:1.4rem;letter-spacing:2px;
+  color:var(--texto);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+  gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px var(--sombra);}
+.rep-top{height:5px;}
+.rep-body{padding:8px 8px 10px;text-align:center;}
+.rep-e{font-size:1.3rem;margin-bottom:2px;}
+.rep-en{font-family:'Bebas Neue',cursive;font-size:0.85rem;letter-spacing:0.5px;color:var(--texto);}
+.rep-pron{font-size:0.58rem;color:var(--rojo);font-weight:700;}
+.rep-es{font-size:0.62rem;color:var(--gris);margin-top:1px;}
+
+/* ── TIP ── */
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;
+  padding:22px 20px;box-shadow:0 2px 14px var(--sombra);
+  border-top:4px solid var(--naranja);text-align:center;}
+.tip h3{font-family:'Bebas Neue',cursive;font-size:1.1rem;letter-spacing:1px;margin-bottom:8px;color:var(--texto);}
+.tip p{font-size:0.84rem;color:#666;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);
+  border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;color:var(--texto);}
+
+.footer{background:var(--texto);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--amarillo);}
+
+@media(max-width:520px){
+  .verbo-grid{grid-template-columns:1fr;}
+  .vr-grid{grid-template-columns:1fr;}
+  .rest-grid{grid-template-columns:1fr;}
+  .q-ops{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-emojis-bg">🍕🌮🍔🥗🍜🥘🍣🧃🥤🍎🥑🥩🍗🥕🥦</div>
+  <div class="hero-tag">Cartilla 7 de 19 · Vocabulario + To Eat/Drink + Restaurante</div>
+  <h1>La Comida<br><em>Food</em></h1>
+  <p class="hero-sub">Cartilla 7 · Nivel A1 · 40 alimentos · Verbo to eat/drink · Frases de restaurante · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🍽️ Menú interactivo</span>
+    <span class="hp">📦 Chunks por categoría</span>
+    <span class="hp">🔵 To eat / To drink</span>
+    <span class="hp">🍴 Frases de restaurante</span>
+    <span class="hp">🇨🇴 Comida colombiana en inglés</span>
+  </div>
+  <div class="hero-nota">
+    ⚠️ <strong>Nota del maestro:</strong> "Hot dog" NO es "perro caliente" y "Corn" NO es "cuerno". El inglés culinario tiene trampas. <strong>Hoy aprendes los nombres reales, no traducciones literales.</strong>
+  </div>
+</div>
+
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos está en un restaurante americano en Miami. El mesero no habla español. <strong>Carlos tiene que pedir su comida completamente en inglés — tú lo ayudas.</strong></p>
+</div>
+
+<div class="wrap">
+
+<!-- 1. MENÚ INTERACTIVO -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">01</div>
+    <div class="sec-title">Menú interactivo — Practica ordenando</div>
+    <div class="sec-badge bv">Interactivo</div>
+  </div>
+  <div class="hint">🧠 <strong>Simulación real:</strong> Selecciona los platos que quieres "ordenar". Esto activa la memoria de acción — el cerebro retiene lo que practica como si fuera real.</div>
+  <div class="menu-wrap">
+    <div class="menu-header">
+      <h2>🍴 The American Diner 🍴</h2>
+      <p>Tap a dish to add it to your order · Toca un plato para añadirlo</p>
+    </div>
+    <div class="menu-cats">
+      <button class="menu-cat-btn activo" onclick="cambiarCat('breakfast',this)"><span class="menu-cat-icon">🌅</span>Breakfast</button>
+      <button class="menu-cat-btn" onclick="cambiarCat('main',this)"><span class="menu-cat-icon">🍽️</span>Main</button>
+      <button class="menu-cat-btn" onclick="cambiarCat('sides',this)"><span class="menu-cat-icon">🥗</span>Sides</button>
+      <button class="menu-cat-btn" onclick="cambiarCat('drinks',this)"><span class="menu-cat-icon">🥤</span>Drinks</button>
+      <button class="menu-cat-btn" onclick="cambiarCat('desserts',this)"><span class="menu-cat-icon">🍰</span>Desserts</button>
+    </div>
+    <div class="menu-content">
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+    <div class="menu-orden">
+      <span class="orden-label">🛒 My order:</span>
+      <span class="orden-items" id="ordenItems">Nothing selected yet — tap a dish!</span>
+      <button class="orden-btn" onclick="ordenar()">ORDER →</button>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 2. CHUNKS POR CATEGORÍA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">02</div>
+    <div class="sec-title">Alimentos por categoría — Chunks</div>
+    <div class="sec-badge bv">Vocabulario</div>
+  </div>
+  <div class="hint">🧠 <strong>Chunks por tipo:</strong> El cerebro organiza la comida por categorías naturales. Aprender por grupo es 3x más rápido que una lista mezclada.</div>
+  <div class="chunks-food">
+
+    <!-- FRUTAS -->
+    <div class="chunk-food">
+      <div class="cf-head cf-frutas"><div class="cf-icon">🍎</div><div class="cf-title">Fruits — Frutas</div><div class="cf-badge">Chunk 1</div></div>
+      <div class="cf-body">
+        <div class="food-row"><div class="fr-e">🍎</div><div class="fr-en">Apple</div><div class="fr-pron">Áepol</div><div class="fr-es">Manzana</div><div class="fr-truco">An apple a day… ¡frase famosa!</div></div>
+        <div class="food-row"><div class="fr-e">🍌</div><div class="fr-en">Banana</div><div class="fr-pron">Banána</div><div class="fr-es">Banano / Plátano</div><div class="fr-truco">Casi igual al español. Acento en la 2a sílaba.</div></div>
+        <div class="food-row"><div class="fr-e">🍊</div><div class="fr-en">Orange</div><div class="fr-pron">Órensh</div><div class="fr-es">Naranja</div><div class="fr-truco">⚠️ CH final suena SH. "Órensh".</div></div>
+        <div class="food-row"><div class="fr-e">🍇</div><div class="fr-en">Grapes</div><div class="fr-pron">Gréips</div><div class="fr-es">Uvas</div><div class="fr-truco">Siempre en plural: grapes (nunca "grape" solo).</div></div>
+        <div class="food-row"><div class="fr-e">🍓</div><div class="fr-en">Strawberry</div><div class="fr-pron">Stróberi</div><div class="fr-es">Fresa / Frutilla</div><div class="fr-truco">Straw + berry. La W suena U: "Stróberi".</div></div>
+        <div class="food-row"><div class="fr-e">🥭</div><div class="fr-en">Mango</div><div class="fr-pron">Maéngou</div><div class="fr-es">Mango</div><div class="fr-truco">¡Mismo nombre! Pero la a es más abierta en inglés.</div></div>
+        <div class="food-row"><div class="fr-e">🍍</div><div class="fr-en">Pineapple</div><div class="fr-pron">Páin-aepol</div><div class="fr-es">Piña / Ananas</div><div class="fr-truco">Pine + apple = "manzana de pino". Qué raro, ¿no?</div></div>
+        <div class="food-row"><div class="fr-e">🥑</div><div class="fr-en">Avocado</div><div class="fr-pron">Avokádou</div><div class="fr-es">Aguacate</div><div class="fr-truco">¡Viene del náhuatl! Casi igual al español.</div></div>
+      </div>
+    </div>
+
+    <!-- VERDURAS -->
+    <div class="chunk-food">
+      <div class="cf-head cf-verduras"><div class="cf-icon">🥦</div><div class="cf-title">Vegetables — Verduras</div><div class="cf-badge">Chunk 2</div></div>
+      <div class="cf-body">
+        <div class="food-row"><div class="fr-e">🥕</div><div class="fr-en">Carrot</div><div class="fr-pron">Káerot</div><div class="fr-es">Zanahoria</div><div class="fr-truco">Fácil: "Carro" + t. "Káerot".</div></div>
+        <div class="food-row"><div class="fr-e">🍅</div><div class="fr-en">Tomato</div><div class="fr-pron">Tomáto</div><div class="fr-es">Tomate</div><div class="fr-truco">Casi igual al español. Acento en la 2a sílaba.</div></div>
+        <div class="food-row"><div class="fr-e">🥔</div><div class="fr-en">Potato</div><div class="fr-pron">Potéito</div><div class="fr-es">Papa</div><div class="fr-truco">⚠️ No "patata" exacto. "Potéito". The potato is from Colombia/Peru!</div></div>
+        <div class="food-row"><div class="fr-e">🌽</div><div class="fr-en">Corn</div><div class="fr-pron">Korn</div><div class="fr-es">Maíz / Mazorca</div><div class="fr-truco">⚠️ Corn ≠ cuerno. Corn = maíz. Muy diferente.</div></div>
+        <div class="food-row"><div class="fr-e">🥦</div><div class="fr-en">Broccoli</div><div class="fr-pron">Brókoli</div><div class="fr-es">Brócoli</div><div class="fr-truco">¡Igual al español! Solo la pronunciación cambia ligeramente.</div></div>
+        <div class="food-row"><div class="fr-e">🧅</div><div class="fr-en">Onion</div><div class="fr-pron">Ánion</div><div class="fr-es">Cebolla</div><div class="fr-truco">"Ánion" — la O suena A. Recuerda: cebolla = onion.</div></div>
+        <div class="food-row"><div class="fr-e">🥬</div><div class="fr-en">Lettuce</div><div class="fr-pron">Létas</div><div class="fr-es">Lechuga</div><div class="fr-truco">⚠️ "Létas" — la e es larga y la ce final es S muda.</div></div>
+      </div>
+    </div>
+
+    <!-- CARNES Y PROTEÍNAS -->
+    <div class="chunk-food">
+      <div class="cf-head cf-carnes"><div class="cf-icon">🥩</div><div class="cf-title">Meat & Protein — Carnes y proteínas</div><div class="cf-badge">Chunk 3</div></div>
+      <div class="cf-body">
+        <div class="food-row"><div class="fr-e">🥩</div><div class="fr-en">Beef</div><div class="fr-pron">Biif</div><div class="fr-es">Carne de res</div><div class="fr-truco">Beef = res. Meat = carne en general. Steak = bistec.</div></div>
+        <div class="food-row"><div class="fr-e">🍗</div><div class="fr-en">Chicken</div><div class="fr-pron">Chíken</div><div class="fr-es">Pollo</div><div class="fr-truco">Chicken = pollo comido. Hen = gallina viva.</div></div>
+        <div class="food-row"><div class="fr-e">🐟</div><div class="fr-en">Fish</div><div class="fr-pron">Fish</div><div class="fr-es">Pescado</div><div class="fr-truco">Fish = pescado comido. I eat fish = como pescado.</div></div>
+        <div class="food-row"><div class="fr-e">🥓</div><div class="fr-en">Bacon</div><div class="fr-pron">Béikon</div><div class="fr-es">Tocineta / Tocino</div><div class="fr-truco">Bacon = tocineta ahumada. Muy americano.</div></div>
+        <div class="food-row"><div class="fr-e">🍳</div><div class="fr-en">Egg</div><div class="fr-pron">Eg</div><div class="fr-es">Huevo</div><div class="fr-truco">Scrambled eggs = huevos revueltos. Fried egg = huevo frito.</div></div>
+        <div class="food-row"><div class="fr-e">🫘</div><div class="fr-en">Beans</div><div class="fr-pron">Biins</div><div class="fr-es">Fríjoles</div><div class="fr-truco">¡Esencial en Colombia! Beans and rice = fríjoles con arroz.</div></div>
+      </div>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="chunk-food">
+      <div class="cf-head cf-bebidas"><div class="cf-icon">🥤</div><div class="cf-title">Drinks — Bebidas</div><div class="cf-badge">Chunk 4</div></div>
+      <div class="cf-body">
+        <div class="food-row"><div class="fr-e">💧</div><div class="fr-en">Water</div><div class="fr-pron">Uóter</div><div class="fr-es">Agua</div><div class="fr-truco">W = U. "Uóter". ¡La primera que pides en un restaurante!</div></div>
+        <div class="food-row"><div class="fr-e">☕</div><div class="fr-en">Coffee</div><div class="fr-pron">Kófi</div><div class="fr-es">Café</div><div class="fr-truco">Colombia is famous for its coffee! "Kófi".</div></div>
+        <div class="food-row"><div class="fr-e">🧃</div><div class="fr-en">Juice</div><div class="fr-pron">Yuus</div><div class="fr-es">Jugo</div><div class="fr-truco">Orange juice = jugo de naranja. "Yuus".</div></div>
+        <div class="food-row"><div class="fr-e">🥛</div><div class="fr-en">Milk</div><div class="fr-pron">Milk</div><div class="fr-es">Leche</div><div class="fr-truco">Fácil. Milk = leche. Got milk? ¡Frase famosa!</div></div>
+        <div class="food-row"><div class="fr-e">🍺</div><div class="fr-en">Beer</div><div class="fr-pron">Bíer</div><div class="fr-es">Cerveza</div><div class="fr-truco">"Bíer" — vocal larga. Una beer, please = una cerveza, por favor.</div></div>
+        <div class="food-row"><div class="fr-e">🍷</div><div class="fr-en">Wine</div><div class="fr-pron">Uáin</div><div class="fr-es">Vino</div><div class="fr-truco">Red wine = vino tinto. White wine = vino blanco.</div></div>
+      </div>
+    </div>
+
+    <!-- COMIDA COLOMBIANA EN INGLÉS -->
+    <div class="chunk-food">
+      <div class="cf-head cf-col"><div class="cf-icon">🇨🇴</div><div class="cf-title">Colombian Food in English — Comida colombiana</div><div class="cf-badge">Chunk 5</div></div>
+      <div class="cf-body">
+        <div class="food-row"><div class="fr-e">🫔</div><div class="fr-en">Arepa</div><div class="fr-pron">Arépa</div><div class="fr-es">Arepa</div><div class="fr-truco">Same name! Arepa is internationally known now.</div></div>
+        <div class="food-row"><div class="fr-e">🍲</div><div class="fr-en">Bandeja Paisa</div><div class="fr-pron">Bandéha Páisa</div><div class="fr-es">Bandeja paisa</div><div class="fr-truco">You can describe it: "It's a Colombian platter with rice, beans, meat, egg and arepa."</div></div>
+        <div class="food-row"><div class="fr-e">🥣</div><div class="fr-en">Ajiaco</div><div class="fr-pron">Ahiáko</div><div class="fr-es">Ajiaco</div><div class="fr-truco">"Colombian chicken and potato soup from Bogotá."</div></div>
+        <div class="food-row"><div class="fr-e">🫙</div><div class="fr-en">Hot chocolate</div><div class="fr-pron">Jot Chókoleit</div><div class="fr-es">Chocolate caliente / Agua de panela</div><div class="fr-truco">Con cheese = "Colombian hot chocolate with cheese" ¡les parece raro!</div></div>
+        <div class="food-row"><div class="fr-e">🍢</div><div class="fr-en">Churrasco</div><div class="fr-pron">Churrásko</div><div class="fr-es">Churrasco / Carne a la parrilla</div><div class="fr-truco">Or say: "Grilled beef" = carne a la parrilla.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3. VERBOS TO EAT / TO DRINK -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">03</div>
+    <div class="sec-title">To Eat / To Drink — Primera gramática real</div>
+    <div class="sec-badge br">Gramática ★</div>
+  </div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> Esta es la primera vez que introducimos el <strong>presente simple</strong> — el tiempo más usado en inglés. Aprende los dos verbos de comida y la regla de la <span class="warn">S en tercera persona</span> (he eats, she drinks).</div>
+  <div class="verbo-grid">
+    <div class="verbo-card">
+      <div class="vc-head eat">
+        <div class="vc-verb">TO EAT</div>
+        <div class="vc-pron">Tu Iit</div>
+        <div class="vc-es">Comer</div>
+      </div>
+      <div class="vc-body">
+        <div class="vc-conjugacion">
+          <div class="vc-conj"><span class="vc-pron-sp">I</span><span class="vc-form">eat</span><span class="vc-ejemplo">I eat rice.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">You</span><span class="vc-form">eat</span><span class="vc-ejemplo">You eat chicken.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">He/She</span><span class="vc-form"><em>eat<strong>s</strong></em></span><span class="vc-ejemplo">She eats fruit.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">We/They</span><span class="vc-form">eat</span><span class="vc-ejemplo">They eat beans.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="verbo-card">
+      <div class="vc-head drink">
+        <div class="vc-verb">TO DRINK</div>
+        <div class="vc-pron">Tu Drink</div>
+        <div class="vc-es">Beber / Tomar</div>
+      </div>
+      <div class="vc-body">
+        <div class="vc-conjugacion">
+          <div class="vc-conj"><span class="vc-pron-sp">I</span><span class="vc-form">drink</span><span class="vc-ejemplo">I drink coffee.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">You</span><span class="vc-form">drink</span><span class="vc-ejemplo">You drink water.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">He/She</span><span class="vc-form"><em>drink<strong>s</strong></em></span><span class="vc-ejemplo">He drinks milk.</span></div>
+          <div class="vc-conj"><span class="vc-pron-sp">We/They</span><span class="vc-form">drink</span><span class="vc-ejemplo">They drink juice.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verbo-regla">
+    <div class="vr-title">⚡ La regla de la S — Presente simple</div>
+    <div class="vr-grid">
+      <div class="vr-item">
+        <div class="vri-titulo">I / You / We / They</div>
+        <div class="vri-ej">I <strong>eat</strong> — You <strong>drink</strong><br>We <strong>eat</strong> — They <strong>drink</strong></div>
+        <div class="vri-es">Sin S — igual al infinitivo</div>
+      </div>
+      <div class="vr-item">
+        <div class="vri-titulo">⭐ He / She / It — +S siempre</div>
+        <div class="vri-ej">He <strong>eats</strong> — She <strong>drinks</strong><br>Carlos <strong>eats</strong> — Sarah <strong>drinks</strong></div>
+        <div class="vri-es">Con S — siempre para He/She/It</div>
+        <span class="vri-pron">Esta S es el error #1 del hispanohablante</span>
+      </div>
+      <div class="vr-item">
+        <div class="vri-titulo">✅ Ejemplo completo</div>
+        <div class="vri-ej">I eat chicken for lunch.<br>She eat<strong>s</strong> fruit every day.</div>
+        <div class="vri-es">Como pescado. Ella come fruta cada día.</div>
+      </div>
+      <div class="vr-item">
+        <div class="vri-titulo">❌ Error colombiano frecuente</div>
+        <div class="vri-ej">She eat fish. ✗<br>He drink coffee. ✗</div>
+        <div class="vri-es">Faltan las S. Siempre: She eat<strong>s</strong>, He drink<strong>s</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 4. FRASES DE RESTAURANTE -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">04</div>
+    <div class="sec-title">En el restaurante — Frases esenciales</div>
+    <div class="sec-badge bn">Uso real</div>
+  </div>
+  <div class="rest-intro">
+    <div class="ri-icon">🍴</div>
+    <div>
+      <div class="ri-title">¿Por qué son críticas estas frases?</div>
+      <div class="ri-desc">Ir a un restaurante es una de las primeras situaciones que enfrentas cuando viajas. <strong style="color:var(--amarillo)">Saber pedir comida en inglés = independencia total.</strong> Con estas 8 frases manejas cualquier restaurante de habla inglesa.</div>
+    </div>
+  </div>
+  <div class="rest-grid">
+    <div class="rest-card">
+      <div class="rc-ctx">🪑 Al sentarse</div>
+      <div class="rc-en">A table for two, please.</div>
+      <span class="rc-pron">A téibol for túu, pliis.</span>
+      <div class="rc-es">Una mesa para dos, por favor.</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">📋 Pidiendo el menú</div>
+      <div class="rc-en">Can I see the menu, please?</div>
+      <span class="rc-pron">Kaen ái sii de méniu, pliis?</span>
+      <div class="rc-es">¿Me puede traer el menú, por favor?</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">🍽️ Pidiendo comida — Formal</div>
+      <div class="rc-en">I'd like the chicken, please.</div>
+      <span class="rc-pron">Áid láik de chíken, pliis.</span>
+      <div class="rc-es">Quisiera el pollo, por favor.</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">🍽️ Pidiendo comida — Informal</div>
+      <div class="rc-en">Can I have the burger, please?</div>
+      <span class="rc-pron">Kaen ái jav de bérger, pliis?</span>
+      <div class="rc-es">¿Me puede traer la hamburguesa?</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">💧 Pidiendo agua</div>
+      <div class="rc-en">Can I have some water, please?</div>
+      <span class="rc-pron">Kaen ái jav sam uóter, pliis?</span>
+      <div class="rc-es">¿Me puede traer agua, por favor?</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">😋 Preguntando recomendación</div>
+      <div class="rc-en">What do you recommend?</div>
+      <span class="rc-pron">Uot du iú rekómmend?</span>
+      <div class="rc-es">¿Qué recomienda usted?</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">💳 Pidiendo la cuenta</div>
+      <div class="rc-en">The check, please. / The bill, please.</div>
+      <span class="rc-pron">De chek, pliis. / De bil, pliis.</span>
+      <div class="rc-es">La cuenta, por favor.</div>
+    </div>
+    <div class="rest-card">
+      <div class="rc-ctx">✅ Todo está bien</div>
+      <div class="rc-en">It was delicious, thank you!</div>
+      <span class="rc-pron">It uos delíshios, zaenk iú!</span>
+      <div class="rc-es">¡Estuvo delicioso, gracias!</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 5. DIÁLOGO -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">05</div>
+    <div class="sec-title">Carlos en el restaurante — Diálogo completo</div>
+    <div class="sec-badge bc">Uso real</div>
+  </div>
+  <div class="hint">🧠 <strong>Repetición espaciada:</strong> Todo el vocabulario de hoy aparece aquí. Léelo hoy, mañana y en 3 días. La tercera vez no necesitarás la traducción.</div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">🍽️ The American Diner · Miami, Florida · 1:00pm</div>
+    <div class="brow"><div class="av w">👨‍🍳</div><div><div class="b-name">Waiter (Mesero) 🇺🇸</div><div class="burbuja"><div class="b-en">Good afternoon! A table for two?</div><span class="b-pron">Gud áfternun! A téibol for túu?</span><div class="b-es">¡Buenas tardes! ¿Una mesa para dos?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes, please. Can I see the menu?</div><span class="b-pron">Ies, pliis. Kaen ái sii de méniu?</span><div class="b-es">Sí, por favor. ¿Me puede traer el menú?</div></div></div></div>
+    <div class="brow"><div class="av w">👨‍🍳</div><div><div class="b-name">Waiter 🇺🇸</div><div class="burbuja"><div class="b-en">Of course! Here you go. What would you like to drink?</div><span class="b-pron">Of kors! Jiir iú góu. Uot uud iú láik tu drink?</span><div class="b-es">¡Claro! Aquí tiene. ¿Qué le gustaría tomar?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">I'd like some water and an orange juice, please.</div><span class="b-pron">Áid láik sam uóter end an órensh yuus, pliis.</span><div class="b-es">Quisiera agua y un jugo de naranja, por favor.</div></div></div></div>
+    <div class="brow"><div class="av w">👨‍🍳</div><div><div class="b-name">Waiter 🇺🇸</div><div class="burbuja"><div class="b-en">Perfect! And are you ready to order?</div><span class="b-pron">Pérfekt! End ar iú rédi tu órder?</span><div class="b-es">¡Perfecto! ¿Y ya está listo para ordenar?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! I'd like the grilled chicken with a salad. And can I have some bread too?</div><span class="b-pron">Ies! Áid láik de grild chíken uid a saélad. End kaen ái jav sam bred túu?</span><div class="b-es">¡Sí! Quisiera el pollo a la plancha con una ensalada. ¿Y me puede traer pan también?</div></div></div></div>
+    <div class="brow"><div class="av w">👨‍🍳</div><div><div class="b-name">Waiter 🇺🇸</div><div class="burbuja"><div class="b-en">Great choice! Our chicken is delicious. Anything else?</div><span class="b-pron">Gréit chois! Áuer chíken is delíshios. Eniziing els?</span><div class="b-es">¡Excelente elección! Nuestro pollo es delicioso. ¿Algo más?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">No, that's all. Thank you! Oh — what do you recommend for dessert?</div><span class="b-pron">Nou, daets ol. Zaenk iú! Ou — uot du iú rekómmend for desért?</span><div class="b-es">No, eso es todo. ¡Gracias! Oh — ¿qué recomienda de postre?</div></div></div></div>
+    <div class="brow"><div class="av w">👨‍🍳</div><div><div class="b-name">Waiter 🇺🇸</div><div class="burbuja"><div class="b-en">The apple pie is amazing! Very popular.</div><span class="b-pron">De áepol pái is amézin! Véri pópiular.</span><div class="b-es">¡El pay de manzana es increíble! Muy popular.</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Perfect! I'll have the apple pie. And the check, please.</div><span class="b-pron">Pérfekt! Áil jav de áepol pái. End de chek, pliis.</span><div class="b-es">¡Perfecto! Voy a querer el pay de manzana. Y la cuenta, por favor.</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 6. FLIP CARDS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-n">06</div>
+    <div class="sec-title">Memorización — Toca las tarjetas</div>
+    <div class="sec-badge bv">Práctica</div>
+  </div>
+  <div class="flip-hint">🍽️ Mira el emoji → recuerda el nombre en inglés → toca para confirmar. <strong>3 veces para fijar.</strong></div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- QUIZ -->
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — LA COMIDA</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · To eat/drink · He/She+S · Restaurante</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div>
+      <div class="q-icon" id="qicon">🍽️</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">SIGUIENTE →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- REPASO -->
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🍽️ LOS 40 ALIMENTOS DE ESTA CARTILLA</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍎</div><div class="rep-en">Apple</div><div class="rep-pron">Áepol</div><div class="rep-es">Manzana</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍌</div><div class="rep-en">Banana</div><div class="rep-pron">Banána</div><div class="rep-es">Banano</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍊</div><div class="rep-en">Orange</div><div class="rep-pron">Órensh</div><div class="rep-es">Naranja</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍇</div><div class="rep-en">Grapes</div><div class="rep-pron">Gréips</div><div class="rep-es">Uvas</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍓</div><div class="rep-en">Strawberry</div><div class="rep-pron">Stróberi</div><div class="rep-es">Fresa</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🥭</div><div class="rep-en">Mango</div><div class="rep-pron">Maéngou</div><div class="rep-es">Mango</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🍍</div><div class="rep-en">Pineapple</div><div class="rep-pron">Páin-aepol</div><div class="rep-es">Piña</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--rojo);"></div><div class="rep-body"><div class="rep-e">🥑</div><div class="rep-en">Avocado</div><div class="rep-pron">Avokádou</div><div class="rep-es">Aguacate</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🥕</div><div class="rep-en">Carrot</div><div class="rep-pron">Káerot</div><div class="rep-es">Zanahoria</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🍅</div><div class="rep-en">Tomato</div><div class="rep-pron">Tomáto</div><div class="rep-es">Tomate</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🥔</div><div class="rep-en">Potato</div><div class="rep-pron">Potéito</div><div class="rep-es">Papa</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🌽</div><div class="rep-en">Corn</div><div class="rep-pron">Korn</div><div class="rep-es">Maíz</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🥦</div><div class="rep-en">Broccoli</div><div class="rep-pron">Brókoli</div><div class="rep-es">Brócoli</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🧅</div><div class="rep-en">Onion</div><div class="rep-pron">Ánion</div><div class="rep-es">Cebolla</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--verde);"></div><div class="rep-body"><div class="rep-e">🥬</div><div class="rep-en">Lettuce</div><div class="rep-pron">Létas</div><div class="rep-es">Lechuga</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🥩</div><div class="rep-en">Beef</div><div class="rep-pron">Biif</div><div class="rep-es">Carne res</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🍗</div><div class="rep-en">Chicken</div><div class="rep-pron">Chíken</div><div class="rep-es">Pollo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🐟</div><div class="rep-en">Fish</div><div class="rep-pron">Fish</div><div class="rep-es">Pescado</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🥓</div><div class="rep-en">Bacon</div><div class="rep-pron">Béikon</div><div class="rep-es">Tocineta</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🍳</div><div class="rep-en">Egg</div><div class="rep-pron">Eg</div><div class="rep-es">Huevo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--cafe);"></div><div class="rep-body"><div class="rep-e">🫘</div><div class="rep-en">Beans</div><div class="rep-pron">Biins</div><div class="rep-es">Fríjoles</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#2A6496;"></div><div class="rep-body"><div class="rep-e">💧</div><div class="rep-en">Water</div><div class="rep-pron">Uóter</div><div class="rep-es">Agua</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#2A6496;"></div><div class="rep-body"><div class="rep-e">☕</div><div class="rep-en">Coffee</div><div class="rep-pron">Kófi</div><div class="rep-es">Café</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#2A6496;"></div><div class="rep-body"><div class="rep-e">🧃</div><div class="rep-en">Juice</div><div class="rep-pron">Yuus</div><div class="rep-es">Jugo</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#2A6496;"></div><div class="rep-body"><div class="rep-e">🥛</div><div class="rep-en">Milk</div><div class="rep-pron">Milk</div><div class="rep-es">Leche</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:#2A6496;"></div><div class="rep-body"><div class="rep-e">🍺</div><div class="rep-en">Beer</div><div class="rep-pron">Bíer</div><div class="rep-es">Cerveza</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🍞</div><div class="rep-en">Bread</div><div class="rep-pron">Bred</div><div class="rep-es">Pan</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🍚</div><div class="rep-en">Rice</div><div class="rep-pron">Rais</div><div class="rep-es">Arroz</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🍔</div><div class="rep-en">Burger</div><div class="rep-pron">Bérger</div><div class="rep-es">Hamburguesa</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🍕</div><div class="rep-en">Pizza</div><div class="rep-pron">Piitza</div><div class="rep-es">Pizza</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🥗</div><div class="rep-en">Salad</div><div class="rep-pron">Saélad</div><div class="rep-es">Ensalada</div></div></div>
+      <div class="rep-c"><div class="rep-top" style="background:var(--naranja);"></div><div class="rep-body"><div class="rep-e">🧀</div><div class="rep-en">Cheese</div><div class="rep-pron">Chiiz</div><div class="rep-es">Queso</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIP -->
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div>
+    <h3>Reto del maestro — Esta semana</h3>
+    <p>La comida la ves y comes 3 veces al día — úsala para aprender. El cerebro fija lo que repite con emoción:</p>
+    <div class="tip-pasos">
+      <div class="tip-paso">🍳 Nombra en inglés lo que desayunas</div>
+      <div class="tip-paso">🛒 Lee etiquetas en inglés</div>
+      <div class="tip-paso">✍️ Escribe "I eat/drink ___" x5</div>
+      <div class="tip-paso">📱 Practica ordenar en voz alta</div>
+      <div class="tip-paso">🔄 Repite en 3 días</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer"><strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 7 de 19 · La Comida · Nivel A1</div>
+
+<script>
+// ── MENÚ INTERACTIVO ──
+const menuData = {
+  breakfast:[
+    {e:'🥞',en:'Pancakes',pron:'Paéncéiks',es:'Pancakes / Panqueques'},
+    {e:'🍳',en:'Scrambled eggs',pron:'Skraémbled egs',es:'Huevos revueltos'},
+    {e:'🥓',en:'Bacon',pron:'Béikon',es:'Tocineta'},
+    {e:'🍞',en:'Toast',pron:'Tóust',es:'Tostada'},
+    {e:'☕',en:'Coffee',pron:'Kófi',es:'Café'},
+    {e:'🧃',en:'Orange juice',pron:'Órensh yuus',es:'Jugo de naranja'},
+  ],
+  main:[
+    {e:'🍔',en:'Burger',pron:'Bérger',es:'Hamburguesa'},
+    {e:'🍗',en:'Grilled chicken',pron:'Grild chíken',es:'Pollo a la plancha'},
+    {e:'🥩',en:'Steak',pron:'Stéik',es:'Bistec / Churrasco'},
+    {e:'🐟',en:'Fish & chips',pron:'Fish end chips',es:'Pescado con papas'},
+    {e:'🍕',en:'Pizza',pron:'Piitza',es:'Pizza'},
+    {e:'🌮',en:'Tacos',pron:'Tácos',es:'Tacos'},
+  ],
+  sides:[
+    {e:'🥗',en:'Salad',pron:'Saélad',es:'Ensalada'},
+    {e:'🍟',en:'French fries',pron:'French frais',es:'Papas fritas'},
+    {e:'🌽',en:'Corn',pron:'Korn',es:'Mazorca / Maíz'},
+    {e:'🍞',en:'Bread',pron:'Bred',es:'Pan'},
+    {e:'🧀',en:'Cheese',pron:'Chiiz',es:'Queso'},
+    {e:'🥔',en:'Mashed potatoes',pron:'Maesht potéitos',es:'Puré de papas'},
+  ],
+  drinks:[
+    {e:'💧',en:'Water',pron:'Uóter',es:'Agua'},
+    {e:'🧃',en:'Juice',pron:'Yuus',es:'Jugo'},
+    {e:'☕',en:'Coffee',pron:'Kófi',es:'Café'},
+    {e:'🥤',en:'Soda',pron:'Sóuda',es:'Gaseosa / Refresco'},
+    {e:'🍺',en:'Beer',pron:'Bíer',es:'Cerveza'},
+    {e:'🍷',en:'Wine',pron:'Uáin',es:'Vino'},
+  ],
+  desserts:[
+    {e:'🍰',en:'Cake',pron:'Kéik',es:'Pastel / Torta'},
+    {e:'🍎',en:'Apple pie',pron:'Áepol pái',es:'Pay de manzana'},
+    {e:'🍨',en:'Ice cream',pron:'Áis kriim',es:'Helado'},
+    {e:'🍩',en:'Donut',pron:'Dónat',es:'Dona / Rosquilla'},
+    {e:'🍫',en:'Chocolate cake',pron:'Chókoleit kéik',es:'Torta de chocolate'},
+    {e:'🍮',en:'Pudding',pron:'Púding',es:'Pudín / Flan'},
+  ]
+};
+
+let catActual = 'breakfast';
+let seleccionados = [];
+
+function cambiarCat(cat, btn){
+  catActual = cat;
+  document.querySelectorAll('.menu-cat-btn').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  renderMenu();
+}
+
+function renderMenu(){
+  const grid = document.getElementById('menuGrid');
+  grid.innerHTML = '';
+  menuData[catActual].forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'food-item' + (seleccionados.find(s=>s.en===item.en)?'  sel':'');
+    div.innerHTML = `<div class="fi-emoji">${item.e}</div><div class="fi-en">${item.en}</div><div class="fi-pron">${item.pron}</div><div class="fi-es">${item.es}</div>`;
+    div.onclick = ()=>toggleItem(item,div);
+    grid.appendChild(div);
+  });
+}
+
+function toggleItem(item,el){
+  const idx = seleccionados.findIndex(s=>s.en===item.en);
+  if(idx>-1){ seleccionados.splice(idx,1); el.classList.remove('sel'); }
+  else{ seleccionados.push(item); el.classList.add('sel'); }
+  actualizarOrden();
+}
+
+function actualizarOrden(){
+  const span = document.getElementById('ordenItems');
+  if(seleccionados.length===0){ span.textContent='Nothing selected yet — tap a dish!'; }
+  else{ span.textContent = seleccionados.map(s=>s.en).join(' · '); }
+}
+
+function ordenar(){
+  if(seleccionados.length===0){ alert("Select something first! / ¡Selecciona algo primero!"); return; }
+  const items = seleccionados.map(s=>`${s.e} ${s.en}`).join(', ');
+  alert(`🎉 ¡Perfecto! Carlos would say:\n\n"I'd like ${items}, please."\n\n(Áid láik ${seleccionados.map(s=>s.en).join(', ')}, pliis.)\n\n✅ Order placed!`);
+}
+
+renderMenu();
+
+// ── FLIP CARDS ──
+const fd=[
+  {e:'🍎',en:'Apple',es:'Manzana',pron:'Áepol',ctx:'An apple a day…'},
+  {e:'🥑',en:'Avocado',es:'Aguacate',pron:'Avokádou',ctx:'Colombia lo exporta'},
+  {e:'🥔',en:'Potato',es:'Papa',pron:'Potéito',ctx:'French fries = papas fritas'},
+  {e:'🌽',en:'Corn',es:'Maíz ⚠️≠cuerno',pron:'Korn',ctx:'Corn ≠ cuerno'},
+  {e:'🍗',en:'Chicken',es:'Pollo',pron:'Chíken',ctx:'I eat chicken'},
+  {e:'🥩',en:'Beef',es:'Carne de res',pron:'Biif',ctx:'Steak = bistec'},
+  {e:'☕',en:'Coffee',es:'Café',pron:'Kófi',ctx:'Colombia is #1'},
+  {e:'🧃',en:'Juice',es:'Jugo',pron:'Yuus',ctx:'Orange juice'},
+  {e:'🍞',en:'Bread',es:'Pan',pron:'Bred',ctx:'Bread + butter'},
+  {e:'🧀',en:'Cheese',es:'Queso',pron:'Chiiz',ctx:'Colombian cheese!'},
+  {e:'🫘',en:'Beans',es:'Fríjoles',pron:'Biins',ctx:'Beans and rice'},
+  {e:'🍰',en:'Cake',es:'Torta/Pastel',pron:'Kéik',ctx:'Birthday cake'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{
+  const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);
+});
+
+// ── QUIZ ──
+const Qs=[
+  {t:'VOCABULARIO',i:'🌽',q:'Ves la palabra "Corn" en un menú americano. ¿Qué es?',ctx:'Falso amigo clásico que confunde a los colombianos',ops:['Cuerno de animal','Maíz / Mazorca','Queso de maíz','Harina de trigo'],r:1,ex:'✅ Corn = Maíz. ¡No tiene nada que ver con "cuerno"! En Colombia se llama maíz o mazorca. En inglés: corn.'},
+  {t:'GRAMÁTICA ★ — La S',i:'👩',q:'"Ella come frutas todos los días." ¿Cómo lo dices?',ctx:'Recuerda la regla: He/She/It siempre lleva S en presente',ops:['She eat fruits every day.','She eats fruits every day.','She eating fruits every day.','She is eat fruits every day.'],r:1,ex:'✅ She eats. La S es obligatoria con She/He/It en presente simple. Sin S = error gramatical. She eat ✗ → She eats ✓'},
+  {t:'RESTAURANTE ★',i:'🍽️',q:'Carlos quiere pedir el pollo. ¿Cuál frase es la más correcta y natural?',ctx:'En un restaurante americano formal',ops:["Give me chicken.","I want chicken now.","I'd like the grilled chicken, please.","Chicken for me."],r:2,ex:"✅ I'd like the grilled chicken, please. Es la forma más educada y natural. Give me = muy brusco. I want = informal pero aceptable."},
+  {t:'VOCABULARIO',i:'🍎',q:'"Strawberry" en español es:',ctx:'Una fruta roja muy popular en Colombia',ops:['Mora','Frambuesa','Fresa / Frutilla','Cereza'],r:2,ex:'✅ Strawberry = Fresa. Pronunciación: "Stróberi". La W suena U: "Stró-beri". Muy popular en Cundinamarca y Boyacá.'},
+  {t:'GRAMÁTICA ★ — La S',i:'👨',q:'"Carlos drinks coffee every morning." Qué significa:',ctx:'Comprensión de lectura con presente simple',ops:['Carlos bebió café esta mañana.','Carlos bebe café todas las mañanas.','Carlos quiere café mañana.','Carlos no bebe café.'],r:1,ex:'✅ Drinks = bebe (presente habitual). Every morning = todas las mañanas. El presente simple en inglés describe hábitos y rutinas.'},
+  {t:'VOCABULARIO',i:'🥑',q:'¿Cómo se dice "Aguacate" en inglés?',ctx:'Colombia es uno de los mayores exportadores del mundo',ops:['Guacamole','Avocado','Green fruit','Pear'],r:1,ex:'✅ Avocado = Aguacate. Pronunciación: "Avokádou". Viene del náhuatl "ahuacatl". El guacamole es una preparación con avocado.'},
+  {t:'RESTAURANTE ★',i:'💳',q:'Carlos termina de comer y quiere pagar. ¿Qué le dice al mesero?',ctx:'Final de la comida en el restaurante de Miami',ops:['I want pay now.','More food please.','The check, please.','Give me money.'],r:2,ex:'✅ The check, please. (americano) o The bill, please. (británico). Ambas son correctas. Check/Bill = cuenta del restaurante.'},
+  {t:'VOCABULARIO',i:'🫘',q:'"Beans" en español es:',ctx:'Esencial en la cocina colombiana — aparece en bandeja paisa',ops:['Lentejas','Fríjoles / Judías','Arvejas','Granos en general'],r:1,ex:'✅ Beans = Fríjoles. Pronunciación: "Biins". Beans and rice = fríjoles con arroz. Una combinación perfecta en Colombia y el Caribe.'},
+  {t:'GRAMÁTICA ★',i:'🍽️',q:'¿Cuál oración es gramaticalmente correcta?',ctx:'Aplicando la regla del presente simple con He/She',ops:['My father eat rice every day.','My mother drinks coffee in the morning.','She drink orange juice.','He eat chicken for lunch.'],r:1,ex:'✅ My mother drinks coffee in the morning. Mother = She → necesita S. Drinks ✓. Las otras opciones faltan la S obligatoria.'},
+  {t:'PRODUCCIÓN ★',i:'🛎️',q:'El mesero te pregunta "What would you like to drink?" ¿Cuál es la respuesta más natural?',ctx:'Primera pregunta que te hace el mesero en EE.UU.',ops:['Yes I drink.','Water, please. And an orange juice.','I want to drinking water.','Give me the water.'],r:1,ex:'✅ Water, please. And an orange juice. Simple, directo y educado. El "please" es esencial en inglés para ser cortés. Evita "give me" — suena brusco.'},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){
+  const q=Qs[qi];
+  document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;
+  document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;
+  document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;
+  qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});
+}
+function qResp(i,btn){
+  if(qr)return;qr=true;
+  const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';
+  if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 VER RESULTADO';
+}
+function qNext(){
+  qi++;
+  if(qi<Qs.length){qLoad();}
+  else{
+    const pct=Math.round(qs/Qs.length*100);
+    document.getElementById('qpf').style.width='100%';
+    document.getElementById('qtipo').textContent='RESULTADO FINAL';
+    document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+    document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+    document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Dominas la comida en inglés. Listo para Cartilla 8 🚀':pct>=60?'Bien. Repasa la regla de la S en He/She y las frases de restaurante.':'Vuelve a las secciones 3 (verbos) y 4 (restaurante) antes de continuar.';
+    document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+    document.getElementById('qnext').style.display='none';
+    document.getElementById('qscore').textContent='Cartilla 7 completada ✓';
+  }
+}
+qLoad();
+</script>
+</body>
+</html>

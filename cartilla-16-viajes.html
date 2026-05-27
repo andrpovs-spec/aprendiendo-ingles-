@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 16 — Viajes</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--naranja:#EA580C;--dorado:#D97706;--gris:#1C1917;--verde:#15803D;--azul:#1D4ED8;--crema:#FFFBEB;--borde:#FDE68A;--suave:#FEF3C7;--sombra:rgba(234,88,12,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:var(--crema);color:var(--gris);}
+.hero{background:linear-gradient(135deg,#431407,#7C2D12);padding:44px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'✈️🌎🗺️🏝️🗼🌋';position:absolute;bottom:-10px;font-size:3.5rem;opacity:0.08;white-space:nowrap;left:0;right:0;overflow:hidden;}
+.hero-tag{display:inline-block;background:var(--dorado);color:white;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:18px;position:relative;z-index:1;}
+.hero h1{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:900;color:white;line-height:1;position:relative;z-index:1;}
+.hero h1 em{color:var(--dorado);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-top:12px;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;position:relative;z-index:1;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.story{background:linear-gradient(90deg,var(--naranja),#C2410C);padding:14px 20px;text-align:center;}
+.story p{color:white;font-size:0.88rem;font-weight:500;line-height:1.6;max-width:600px;margin:0 auto;}
+.story strong{color:var(--dorado);}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px;}
+.sec{padding:30px 0 10px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;border-bottom:2px solid var(--gris);padding-bottom:8px;}
+.sec-n{font-size:1.8rem;font-weight:900;color:var(--borde);}
+.sec-title{font-size:1.15rem;font-weight:800;color:var(--gris);}
+.sec-badge{margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.bv{background:var(--naranja);color:white;}.bg{background:var(--gris);color:white;}.bu{background:var(--verde);color:white;}.bn{background:var(--dorado);color:white;}
+.hint{background:var(--suave);border-left:4px solid var(--naranja);border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.82rem;color:#431407;font-weight:500;margin-bottom:18px;line-height:1.55;}
+.divider{border:none;border-top:1px solid var(--borde);margin:28px 0 0;}
+
+.destinos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.dest-card{background:white;border-radius:14px;padding:14px 12px;box-shadow:0 2px 12px var(--sombra);border-top:3px solid var(--naranja);transition:transform 0.2s;}
+.dest-card:hover{transform:translateY(-3px);}
+.dc-emoji{font-size:2rem;margin-bottom:5px;text-align:center;}
+.dc-en{font-size:0.9rem;font-weight:800;color:var(--gris);}
+.dc-pron{font-size:0.64rem;font-weight:700;color:var(--naranja);background:var(--suave);border-radius:4px;padding:2px 5px;display:inline-block;margin:2px 0;}
+.dc-es{font-size:0.7rem;color:#6B7280;}
+.dc-ej{font-size:0.66rem;color:#9CA3AF;font-style:italic;margin-top:2px;}
+
+.have-ever-box{background:var(--gris);border-radius:14px;padding:20px;color:white;margin-bottom:12px;}
+.heb-title{font-size:1rem;font-weight:800;color:var(--dorado);margin-bottom:4px;}
+.heb-sub{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.he-tabla{width:100%;border-collapse:collapse;}
+.he-tabla th{background:rgba(255,255,255,0.08);padding:7px 10px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dorado);text-align:left;}
+.he-tabla td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:white;}
+.he-tabla td em{color:var(--dorado);font-style:normal;}
+.he-tabla tr:last-child td{border-bottom:none;}
+.he-part{margin-top:12px;background:rgba(217,119,6,0.1);border:1px solid rgba(217,119,6,0.2);border-radius:10px;padding:14px;}
+.hp-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dorado);margin-bottom:8px;}
+.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.hp-item{text-align:center;}
+.hp-base{font-size:0.7rem;color:rgba(255,255,255,0.4);}
+.hp-past{font-size:0.88rem;font-weight:700;color:white;}
+
+.frases-viaje{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.fv-card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 10px var(--sombra);border-left:4px solid var(--naranja);}
+.fv-card:nth-child(even){border-color:var(--verde);}
+.fc-ctx{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:6px;}
+.fc-en{font-size:0.88rem;font-weight:700;color:var(--gris);margin-bottom:3px;}
+.fc-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin-bottom:2px;}
+.fc-es{font-size:0.74rem;color:#6B7280;}
+
+.dialogo-scene{background:var(--suave);border-radius:16px;padding:20px;border:1.5px solid var(--borde);}
+.dialogo-titulo{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.brow{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;}
+.brow.der{flex-direction:row-reverse;}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:2px solid white;box-shadow:0 2px 8px var(--sombra);}
+.av.c{background:linear-gradient(135deg,var(--naranja),#C2410C);}
+.av.s{background:linear-gradient(135deg,var(--azul),#1E40AF);}
+.burbuja{max-width:76%;background:white;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 2px 8px var(--sombra);}
+.brow.der .burbuja{border-radius:16px 16px 4px 16px;background:var(--gris);}
+.b-en{font-size:0.9rem;font-weight:600;color:var(--gris);line-height:1.35;}
+.brow.der .b-en{color:white;}
+.b-pron{font-size:0.66rem;color:var(--naranja);font-weight:700;display:block;margin:2px 0;}
+.b-es{font-size:0.72rem;color:#aaa;}
+.brow.der .b-es{color:rgba(255,255,255,0.45);}
+.b-name{font-size:0.6rem;font-weight:700;color:#bbb;margin-bottom:3px;padding-left:2px;}
+.brow.der .b-name{text-align:right;}
+
+.flip-hint{background:var(--gris);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.7);font-size:0.8rem;text-align:center;margin-bottom:14px;}
+.flip-hint strong{color:var(--dorado);}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+.flip-card{perspective:600px;height:110px;cursor:pointer;}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+.flip-front{background:white;box-shadow:0 2px 10px var(--sombra);}
+.ff-e{font-size:1.9rem;}.ff-en{font-size:0.85rem;font-weight:700;color:var(--gris);margin-top:4px;}
+.ff-h{font-size:0.56rem;color:#ccc;margin-top:2px;}
+.flip-back{background:var(--gris);transform:rotateY(180deg);}
+.fb-es{color:var(--dorado);font-size:0.88rem;font-weight:700;}
+.fb-pron{font-size:0.68rem;color:#FCA5A5;font-weight:700;margin-top:4px;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;}
+.fb-ctx{font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+.quiz-wrap{background:var(--gris);padding:36px 16px;}
+.qw-head{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;}
+.qw-n{width:32px;height:32px;border-radius:50%;background:var(--naranja);color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.qw-title{font-size:1.3rem;font-weight:800;color:white;}
+.qw-sub{font-size:0.8rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.q-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;max-width:560px;margin:0 auto;}
+.q-prog{height:3px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.q-pf{height:100%;background:linear-gradient(90deg,var(--naranja),var(--dorado));border-radius:3px;transition:width 0.4s;}
+.q-tipo{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:8px;}
+.q-icon{font-size:2.4rem;text-align:center;margin-bottom:6px;}
+.q-pregunta{font-size:1.05rem;font-weight:700;color:white;text-align:center;line-height:1.35;margin-bottom:4px;}
+.q-ctx{font-size:0.76rem;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;line-height:1.4;}
+.q-ops{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.q-btn{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);color:white;padding:12px 10px;border-radius:9px;font-family:'Outfit',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.18s;line-height:1.3;}
+.q-btn:hover{background:rgba(255,255,255,0.13);}
+.q-btn.ok{background:rgba(21,128,61,0.2);border-color:var(--verde);color:#86EFAC;}
+.q-btn.mal{background:rgba(234,88,12,0.2);border-color:var(--naranja);color:#FED7AA;}
+.q-feedback{font-size:0.82rem;font-weight:600;color:var(--dorado);min-height:22px;text-align:center;line-height:1.5;}
+.q-next{display:none;margin:12px auto 0;background:var(--naranja);color:white;border:none;padding:11px 28px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.15s;}
+.q-next:hover{transform:scale(1.04);}
+.q-score{color:rgba(255,255,255,0.25);font-size:0.75rem;text-align:center;margin-top:10px;}
+.repaso-bg{background:var(--suave);padding:28px 16px;}
+.rep-title{font-size:1rem;font-weight:800;color:var(--gris);text-align:center;margin-bottom:14px;}
+.rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:8px;max-width:800px;margin:0 auto;}
+.rep-c{background:white;border-radius:10px;padding:10px 8px;text-align:center;box-shadow:0 1px 6px var(--sombra);border-top:3px solid var(--naranja);}
+.rep-e{font-size:1.3rem;margin-bottom:3px;}
+.rep-en{font-size:0.8rem;font-weight:700;color:var(--gris);}
+.rep-pron{font-size:0.6rem;color:var(--naranja);font-weight:700;}
+.rep-es{font-size:0.62rem;color:#6B7280;margin-top:1px;}
+.tip{max-width:560px;margin:26px auto 30px;background:white;border-radius:14px;padding:22px 20px;box-shadow:0 2px 14px var(--sombra);border-top:4px solid var(--naranja);text-align:center;}
+.tip h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.tip p{font-size:0.84rem;color:#555;line-height:1.6;}
+.tip-pasos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.tip-paso{background:var(--suave);border:1.5px solid var(--borde);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:700;}
+.footer{background:var(--gris);padding:16px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--dorado);}
+@media(max-width:520px){.frases-viaje{grid-template-columns:1fr;}.hp-grid{grid-template-columns:1fr 1fr;}.q-ops{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Cartilla 16 de 19 · Have you ever…? + Presente Perfecto</div>
+  <h1>Viajes<br><em>Travel</em></h1>
+  <p class="hero-sub">Cartilla 16 · Nivel A2→B1 · Destinos · Have you ever…? · Pasado participio · ≈ 25 min</p>
+  <div class="hero-pills">
+    <span class="hp">🌍 Vocabulario de viajes</span><span class="hp">❓ Have you ever been to…?</span>
+    <span class="hp">📚 Participio pasado</span><span class="hp">🗺️ Describir experiencias</span>
+  </div>
+</div>
+<div class="story">
+  <p>📖 <strong>La historia de hoy:</strong> Carlos y Sarah comparan sus experiencias de viaje. Carlos nunca ha salido de Colombia; Sarah ha viajado mucho. <strong>Hoy aprendes a hablar de experiencias de vida con Have you ever.</strong></p>
+</div>
+
+<div class="wrap">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">01</div><div class="sec-title">Vocabulario de viajes — Travel words</div><div class="sec-badge bv">Vocabulario</div></div>
+  <div class="hint">🧠 <strong>El mundo en palabras:</strong> Cada uno de estos términos abre una conversación. Un viajero que habla inglés puede ir a cualquier parte del mundo.</div>
+  <div class="destinos-grid">
+    <div class="dest-card"><div class="dc-emoji">🗺️</div><div class="dc-en">Destination</div><div class="dc-pron">Destinéishon</div><div class="dc-es">Destino</div><div class="dc-ej">My dream destination.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🛂</div><div class="dc-en">Passport</div><div class="dc-pron">Páesport</div><div class="dc-es">Pasaporte</div><div class="dc-ej">Don't forget your passport!</div></div>
+    <div class="dest-card"><div class="dc-emoji">📋</div><div class="dc-en">Visa</div><div class="dc-pron">Víisa</div><div class="dc-es">Visa</div><div class="dc-ej">I need a tourist visa.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🏨</div><div class="dc-en">Hotel / Hostel</div><div class="dc-pron">Joutél / Jóusel</div><div class="dc-es">Hotel / Hostal</div><div class="dc-ej">Book a hotel room.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🎒</div><div class="dc-en">Backpacker</div><div class="dc-pron">Baékpaeker</div><div class="dc-es">Mochilero</div><div class="dc-ej">I traveled as a backpacker.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🗼</div><div class="dc-en">Landmark</div><div class="dc-pron">Láendmark</div><div class="dc-es">Monumento/Lugar icónico</div><div class="dc-ej">The Eiffel Tower is a landmark.</div></div>
+    <div class="dest-card"><div class="dc-emoji">📸</div><div class="dc-en">Sightseeing</div><div class="dc-pron">Sáitsiing</div><div class="dc-es">Turismo/Ver atracciones</div><div class="dc-ej">We went sightseeing all day.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🗺️</div><div class="dc-en">Itinerary</div><div class="dc-pron">Aitínereri</div><div class="dc-es">Itinerario</div><div class="dc-ej">Plan your itinerary.</div></div>
+    <div class="dest-card"><div class="dc-emoji">💱</div><div class="dc-en">Currency exchange</div><div class="dc-pron">Kérrensi ikschéiny</div><div class="dc-es">Casa de cambio</div><div class="dc-ej">Where's the exchange office?</div></div>
+    <div class="dest-card"><div class="dc-emoji">🏖️</div><div class="dc-en">Beach resort</div><div class="dc-pron">Biich risórt</div><div class="dc-es">Resort de playa</div><div class="dc-ej">We stayed at a beach resort.</div></div>
+    <div class="dest-card"><div class="dc-emoji">🚢</div><div class="dc-en">Cruise</div><div class="dc-pron">Krúus</div><div class="dc-es">Crucero</div><div class="dc-ej">Have you been on a cruise?</div></div>
+    <div class="dest-card"><div class="dc-emoji">🌴</div><div class="dc-en">Tropical</div><div class="dc-pron">Trópikal</div><div class="dc-es">Tropical</div><div class="dc-ej">Colombia is a tropical country.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">02</div><div class="sec-title">Have you ever…? — Presente Perfecto</div><div class="sec-badge bg">Gramática ★</div></div>
+  <div class="hint">🎓 <strong>Maestro explica:</strong> "Have you ever…?" pregunta si alguien ha tenido una experiencia en algún momento de su vida. Es el tiempo presente perfecto — conecta el pasado con el presente. <strong>Have + ever + participio pasado.</strong></div>
+  <div class="have-ever-box">
+    <div class="heb-title">🌍 Have you ever…? — Estructura</div>
+    <div class="heb-sub">Para preguntar sobre experiencias de vida — sin especificar cuándo</div>
+    <table class="he-tabla">
+      <thead><tr><th>Tipo</th><th>Estructura</th><th>Ejemplo de viaje</th></tr></thead>
+      <tbody>
+        <tr><td>Pregunta</td><td><em>Have</em> you <em>ever</em> + participio?</td><td><em>Have</em> you <em>ever been</em> to Colombia?</td></tr>
+        <tr><td>Sí (respuesta)</td><td>Yes, I <em>have</em>. I <em>went</em> in 2023.</td><td>Yes! I went to Cartagena last year.</td></tr>
+        <tr><td>No (respuesta)</td><td>No, I <em>haven't</em>. But I'd love to!</td><td>No, I haven't. But it's on my list!</td></tr>
+        <tr><td>He/She</td><td><em>Has</em> he/she <em>ever</em> + participio?</td><td><em>Has</em> Carlos <em>traveled</em> abroad?</td></tr>
+        <tr><td>Afirmativo</td><td>I <em>have</em> visited…/ I <em>have</em> been to…</td><td>I <em>have</em> visited 10 countries.</td></tr>
+      </tbody>
+    </table>
+    <div class="he-part">
+      <div class="hp-title">📚 Participios irregulares de viaje — ¡Los más usados!</div>
+      <div class="hp-grid">
+        <div class="hp-item"><div class="hp-base">be →</div><div class="hp-past">been</div></div>
+        <div class="hp-item"><div class="hp-base">go →</div><div class="hp-past">gone/been</div></div>
+        <div class="hp-item"><div class="hp-base">see →</div><div class="hp-past">seen</div></div>
+        <div class="hp-item"><div class="hp-base">eat →</div><div class="hp-past">eaten</div></div>
+        <div class="hp-item"><div class="hp-base">fly →</div><div class="hp-past">flown</div></div>
+        <div class="hp-item"><div class="hp-base">meet →</div><div class="hp-past">met</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">03</div><div class="sec-title">Frases esenciales de viajero</div><div class="sec-badge bn">Frases clave</div></div>
+  <div class="frases-viaje">
+    <div class="fv-card"><div class="fc-ctx">🛂 En inmigración</div><div class="fc-en">What is the purpose of your visit?</div><span class="fc-pron">Uot is de párpos of ior vísit?</span><div class="fc-es">¿Cuál es el motivo de su visita?</div></div>
+    <div class="fv-card"><div class="fc-ctx">🏨 En el hotel</div><div class="fc-en">I have a reservation under Carlos García.</div><span class="fc-pron">Ái jav a reservéishon ánder Carlos García.</span><div class="fc-es">Tengo una reserva a nombre de Carlos García.</div></div>
+    <div class="fv-card"><div class="fc-ctx">📸 Turismo</div><div class="fc-en">Can you take a photo of us, please?</div><span class="fc-pron">Kaen iú téik a fóutou of as, pliis?</span><div class="fc-es">¿Nos puede tomar una foto, por favor?</div></div>
+    <div class="fv-card"><div class="fc-ctx">💱 Dinero</div><div class="fc-en">Where can I exchange money?</div><span class="fc-pron">Uér kaen ái ikschéiny máni?</span><div class="fc-es">¿Dónde puedo cambiar dinero?</div></div>
+    <div class="fv-card"><div class="fc-ctx">🚌 Transporte</div><div class="fc-en">How do I get to the city center?</div><span class="fc-pron">Jáu du ái get tu de síti sénter?</span><div class="fc-es">¿Cómo llego al centro de la ciudad?</div></div>
+    <div class="fv-card"><div class="fc-ctx">🗺️ Perdido</div><div class="fc-en">I'm lost. Can you help me find this address?</div><span class="fc-pron">Áim lost. Kaen iú jelp mii fáind dis áedres?</span><div class="fc-es">Estoy perdido/a. ¿Me puede ayudar a encontrar esta dirección?</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">04</div><div class="sec-title">Carlos y Sarah — Comparando viajes</div><div class="sec-badge bu">Uso real</div></div>
+  <div class="dialogo-scene">
+    <div class="dialogo-titulo">🌍 Carlos y Sarah hablan de sus experiencias de viaje</div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Carlos, have you ever traveled outside Colombia?</div><span class="b-pron">Carlos, jav iú éver tráveld áutsáid Colombia?</span><div class="b-es">Carlos, ¿alguna vez has viajado fuera de Colombia?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">No, I haven't — not yet! But I have visited many places in Colombia. I've been to Cartagena, the Coffee Region, and the Amazon!</div><span class="b-pron">Nou, ái javen't — not yet! Bot ái jav vísited méni pléises in Colombia. Áiv been tu Cartagena, de Kófi Ríiyon, end de Áemazon!</span><div class="b-es">¡No, todavía no! Pero he visitado muchos lugares en Colombia. ¡He estado en Cartagena, el Eje Cafetero y el Amazonas!</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Wow! Have you ever eaten exotic food in the Amazon?</div><span class="b-pron">Uáu! Jav iú éver íiten igzótik fuud in de Áemazon?</span><div class="b-es">¡Guao! ¿Alguna vez has comido comida exótica en el Amazonas?</div></div></div></div>
+    <div class="brow der"><div class="av c">👨🏽</div><div><div class="b-name" style="text-align:right">Carlos 🇨🇴</div><div class="burbuja"><div class="b-en">Yes! I've eaten insects and river fish. It was incredible! Have you ever been to South America?</div><span class="b-pron">Ies! Áiv íiten ínsekts end ríiver fish. It uos inkrédibol! Jav iú éver been tu Sáuz América?</span><div class="b-es">¡Sí! He comido insectos y pescado de río. ¡Fue increíble! ¿Alguna vez has estado en Sudamérica?</div></div></div></div>
+    <div class="brow"><div class="av s">👩🏼</div><div><div class="b-name">Sarah 🇺🇸</div><div class="burbuja"><div class="b-en">Yes, I have! I've been to Peru and Brazil. But I've never visited Colombia — that's why I'm coming!</div><span class="b-pron">Ies, ái jav! Áiv been tu Perú end Brazil. Bot áiv néver vísited Colombia — daets uái áim kaming!</span><div class="b-es">¡Sí! He estado en Perú y Brasil. ¡Pero nunca he visitado Colombia — ¡por eso voy!</div></div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="sec">
+  <div class="sec-head"><div class="sec-n">05</div><div class="sec-title">Memorización — Tarjetas</div><div class="sec-badge bv">Práctica</div></div>
+  <div class="flip-hint">🌍 Mira el emoji → di la palabra/frase en inglés → toca para confirmar.</div>
+  <div class="flip-grid" id="flipGrid"></div>
+</div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+    <div class="qw-head"><div class="qw-n">?</div><div class="qw-title">QUIZ — Viajes</div></div>
+    <p class="qw-sub">10 preguntas · Vocabulario · Have you ever? · Participios</p>
+    <div class="q-box">
+      <div class="q-prog"><div class="q-pf" id="qpf" style="width:0%"></div></div>
+      <div class="q-tipo" id="qtipo">—</div><div class="q-icon" id="qicon">✈️</div>
+      <div class="q-pregunta" id="qpregunta">Cargando…</div>
+      <div class="q-ctx" id="qctx"></div>
+      <div class="q-ops" id="qops"></div>
+      <div class="q-feedback" id="qfeedback"></div>
+      <button class="q-next" id="qnext" onclick="qNext()">Siguiente →</button>
+      <div class="q-score" id="qscore">Pregunta 1 de 10</div>
+    </div>
+  </div>
+</div>
+
+<div class="repaso-bg">
+  <div class="wrap">
+    <div class="rep-title">🌍 Vocabulario de viajes</div>
+    <div class="rep-grid">
+      <div class="rep-c"><div class="rep-e">🛂</div><div class="rep-en">Passport</div><div class="rep-pron">Páesport</div><div class="rep-es">Pasaporte</div></div>
+      <div class="rep-c"><div class="rep-e">📋</div><div class="rep-en">Visa</div><div class="rep-pron">Víisa</div><div class="rep-es">Visa</div></div>
+      <div class="rep-c"><div class="rep-e">🎒</div><div class="rep-en">Backpacker</div><div class="rep-pron">Baékpaeker</div><div class="rep-es">Mochilero</div></div>
+      <div class="rep-c"><div class="rep-e">📸</div><div class="rep-en">Sightseeing</div><div class="rep-pron">Sáitsiing</div><div class="rep-es">Turismo</div></div>
+      <div class="rep-c"><div class="rep-e">🗼</div><div class="rep-en">Landmark</div><div class="rep-pron">Láendmark</div><div class="rep-es">Monumento</div></div>
+      <div class="rep-c"><div class="rep-e">🚢</div><div class="rep-en">Cruise</div><div class="rep-pron">Krúus</div><div class="rep-es">Crucero</div></div>
+      <div class="rep-c"><div class="rep-e">📚</div><div class="rep-en">been</div><div class="rep-pron">biin</div><div class="rep-es">sido/estado (be)</div></div>
+      <div class="rep-c"><div class="rep-e">📚</div><div class="rep-en">seen</div><div class="rep-pron">siin</div><div class="rep-es">visto (see)</div></div>
+      <div class="rep-c"><div class="rep-e">📚</div><div class="rep-en">eaten</div><div class="rep-pron">íiten</div><div class="rep-es">comido (eat)</div></div>
+      <div class="rep-c"><div class="rep-e">📚</div><div class="rep-en">flown</div><div class="rep-pron">flóun</div><div class="rep-es">volado (fly)</div></div>
+      <div class="rep-c"><div class="rep-e">❓</div><div class="rep-en">Have you ever…?</div><div class="rep-pron">Jav iú éver?</div><div class="rep-es">¿Alguna vez has…?</div></div>
+      <div class="rep-c"><div class="rep-e">❌</div><div class="rep-en">I've never…</div><div class="rep-pron">Áiv néver</div><div class="rep-es">Nunca he…</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="tip">
+    <div style="font-size:1.8rem;margin-bottom:8px;">🌍</div>
+    <h3>Reto del maestro</h3>
+    <p>Escribe 5 oraciones sobre tus experiencias de viaje con Have you ever / I have / I've never. ¿Qué lugares has visitado? ¿Qué nunca has hecho pero quieres hacer?</p>
+    <div class="tip-pasos"><div class="tip-paso">✅ I've been to…</div><div class="tip-paso">❌ I've never…</div><div class="tip-paso">🌍 I've seen…</div><div class="tip-paso">🍽️ I've eaten…</div></div>
+  </div>
+</div>
+<div class="footer"><strong>Club de la Gente · Fusagasugá</strong> — Cartilla 16 de 19 · Viajes · A2→B1</div>
+<script>
+const fd=[
+  {e:'🛂',en:'Passport',es:'Pasaporte',pron:'Páesport',ctx:"Don't forget your passport!"},
+  {e:'📋',en:'Visa',es:'Visa',pron:'Víisa',ctx:'I need a tourist visa.'},
+  {e:'🎒',en:'Backpacker',es:'Mochilero/a',pron:'Baékpaeker',ctx:'Traveled as a backpacker.'},
+  {e:'📸',en:'Sightseeing',es:'Turismo/Ver atracciones',pron:'Sáitsiing',ctx:'We went sightseeing.'},
+  {e:'📚',en:'been',es:'sido/estado (be)',pron:'biin',ctx:'Have you ever been to...?'},
+  {e:'📚',en:'seen',es:'visto (see)',pron:'siin',ctx:'Have you ever seen snow?'},
+  {e:'📚',en:'eaten',es:'comido (eat)',pron:'íiten',ctx:'I have eaten exotic food.'},
+  {e:'📚',en:'flown',es:'volado (fly)',pron:'flóun',ctx:'Have you ever flown?'},
+  {e:'❓',en:'Have you ever…?',es:'¿Alguna vez has…?',pron:'Jav iú éver?',ctx:'Key travel question'},
+  {e:'❌',en:"I've never…",es:'Nunca he…',pron:"Áiv néver",ctx:"I've never been abroad."},
+  {e:'💱',en:'Currency exchange',es:'Casa de cambio',pron:'Kérrensi ikschéiny',ctx:'Where is the exchange?'},
+  {e:'🗺️',en:'Itinerary',es:'Itinerario',pron:'Aitínereri',ctx:'Plan your itinerary.'},
+];
+const fg=document.getElementById('flipGrid');
+fd.forEach(d=>{const c=document.createElement('div');c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="ff-e">${d.e}</div><div class="ff-en">${d.en}</div><div class="ff-h">👆 toca</div></div><div class="flip-back"><div class="fb-es">${d.es}</div><div class="fb-pron">${d.pron}</div><div class="fb-ctx">${d.ctx}</div></div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');fg.appendChild(c);});
+const Qs=[
+  {t:'HAVE YOU EVER ★',i:'❓',q:'"Have you ever ___ to Colombia?" — ¿Qué participio va?',ctx:'Preguntando sobre experiencia de visitar un país',ops:['go','went','been','gone to'],r:2,ex:'✅ Have you ever BEEN to Colombia? Been = participio de BE. Have you ever been to… es la fórmula para preguntar si alguien ha visitado un lugar. Went es pasado simple, no participio.'},
+  {t:'VOCABULARIO',i:'🎒',q:'"Backpacker" describe a alguien que:',ctx:'Carlos viajó por el Eje Cafetero así',ops:['Viaja en crucero de lujo','Viaja de mochilero con poco dinero','Trabaja en una aerolínea','Organiza tours turísticos'],r:1,ex:'✅ Backpacker = Mochilero. Alguien que viaja de forma económica con una mochila. Backpacking = mochileando. Very popular in Colombia!'},
+  {t:'HAVE YOU EVER ★',i:'📚',q:'"I have never ___ snow." — Participio de SEE',ctx:'Carlos nunca ha visto nieve real',ops:['saw','seed','seen','sawn'],r:2,ex:'✅ Seen. SEE es irregular: see → saw → seen. I have never seen snow. Have you ever seen snow? Saw = pasado simple. Seen = participio pasado.'},
+  {t:'VOCABULARIO',i:'📸',q:'"Sightseeing" en español significa:',ctx:'Carlos lleva a Sarah a conocer Fusagasugá',ops:['Tomar selfies','Hacer turismo / Ver atracciones','Buscar vuelos','Planear el itinerario'],r:1,ex:'✅ Sightseeing = Hacer turismo / Ver los sitios de interés. We went sightseeing = Fuimos a conocer los sitios. Sight = vista/lugar. Seeing = ver.'},
+  {t:'HAVE YOU EVER ★',i:'🌍',q:'Carlos dice: "I ___ visited many cities in Colombia." ¿Qué va?',ctx:'Afirmativo del presente perfecto',ops:['did','have','had','was'],r:1,ex:'✅ I HAVE visited many cities. HAVE + participio = presente perfecto. I have visited, she has visited, they have visited. Para HE/SHE/IT se usa HAS: She has been to Peru.'},
+  {t:'VOCABULARIO',i:'💱',q:'¿Qué significa "Currency exchange"?',ctx:'Carlos necesita cambiar dólares a pesos',ops:['Tarjeta de crédito internacional','Casa de cambio / Cambiar dinero','Cuenta bancaria en el exterior','Transferencia internacional'],r:1,ex:'✅ Currency exchange = Casa de cambio. Currency = moneda/divisa. Exchange = cambiar. Where can I exchange money? = ¿Dónde puedo cambiar dinero?'},
+  {t:'HAVE YOU EVER ★',i:'👩',q:'"Has she ever eaten Colombian food?" — Respuesta afirmativa:',ctx:'Sobre las experiencias culinarias de Sarah',ops:['Yes, she has.','Yes, she have.','Yes, she did.','Yes, she had.'],r:0,ex:"✅ Yes, she has. Para HE/SHE/IT se usa HAS (no HAVE). Has she…? → Yes, she has. / No, she hasn't. Have you…? → Yes, I have. / No, I haven't."},
+  {t:'VOCABULARIO',i:'🗼',q:'"Landmark" en el contexto de turismo significa:',ctx:'Visitando los lugares más famosos',ops:['Un mapa turístico','Un lugar o monumento icónico','Una señal de tránsito','Una marca en el suelo'],r:1,ex:'✅ Landmark = Lugar icónico / Monumento. The Eiffel Tower is a famous landmark. El Castillo de San Felipe es un landmark de Cartagena. Land = tierra. Mark = marca.'},
+  {t:'HAVE YOU EVER ★',i:'✈️',q:'"___ you ever flown in a helicopter?" ¿Qué auxiliar va?',ctx:'Sarah pregunta sobre experiencias de Carlos',ops:['Did','Do','Have','Had'],r:2,ex:'✅ Have you ever flown? HAVE se usa para presente perfecto con YOU. Flown = participio de fly (fly → flew → flown). Did se usa en pasado simple: Did you fly yesterday?'},
+  {t:'PRODUCCIÓN ★',i:'🗣️',q:'Carlos dice: "Nunca he viajado al exterior, ¡pero es mi sueño!" ¿Cómo lo dice?',ctx:'Compartiendo su sueño de viajar',ops:["I never travel abroad, but is my dream!","I've never traveled abroad, but it's my dream!","I didn't never travel outside, but my dream!","Never I have traveled abroad, it my dream!"],r:1,ex:"✅ I've never traveled abroad, but it's my dream! I've = I have. Never + participio. Abroad = al exterior / fuera del país. It's my dream = Es mi sueño."},
+];
+let qi=0,qs=0,qr=false;
+function qLoad(){const q=Qs[qi];document.getElementById('qpf').style.width=(qi/Qs.length*100)+'%';
+  document.getElementById('qtipo').textContent=q.t;document.getElementById('qicon').textContent=q.i;
+  document.getElementById('qpregunta').textContent=q.q;document.getElementById('qctx').textContent=q.ctx;
+  document.getElementById('qfeedback').textContent='';document.getElementById('qnext').style.display='none';
+  document.getElementById('qscore').textContent=`Pregunta ${qi+1} de ${Qs.length}  ·  ✅ ${qs} correctas`;qr=false;
+  const ops=document.getElementById('qops');ops.innerHTML='';
+  q.ops.forEach((op,i)=>{const b=document.createElement('button');b.className='q-btn';b.textContent=op;b.onclick=()=>qResp(i,b);ops.appendChild(b);});}
+function qResp(i,btn){if(qr)return;qr=true;const q=Qs[qi];
+  document.querySelectorAll('.q-btn').forEach(b=>b.style.pointerEvents='none');
+  if(i===q.r){btn.classList.add('ok');document.getElementById('qfeedback').textContent=q.ex;qs++;}
+  else{btn.classList.add('mal');document.querySelectorAll('.q-btn')[q.r].classList.add('ok');document.getElementById('qfeedback').textContent='❌ Casi. '+q.ex;}
+  document.getElementById('qnext').style.display='block';if(qi===Qs.length-1)document.getElementById('qnext').textContent='🏁 Ver resultado';}
+function qNext(){qi++;if(qi<Qs.length){qLoad();}else{const pct=Math.round(qs/Qs.length*100);
+  document.getElementById('qpf').style.width='100%';document.getElementById('qtipo').textContent='RESULTADO';
+  document.getElementById('qicon').textContent=pct>=80?'🏆':pct>=60?'👍':'💪';
+  document.getElementById('qpregunta').textContent=`${qs}/${Qs.length} correctas — ${pct}%`;
+  document.getElementById('qctx').textContent=pct>=80?'¡Excelente! Listo para Cartilla 17 🚀':'Repasa Have you ever y los participios been/seen/eaten/flown.';
+  document.getElementById('qops').innerHTML='';document.getElementById('qfeedback').textContent='';
+  document.getElementById('qnext').style.display='none';document.getElementById('qscore').textContent='Cartilla 16 completada ✓';}}
+qLoad();
+</script>
+</body>
+</html>
