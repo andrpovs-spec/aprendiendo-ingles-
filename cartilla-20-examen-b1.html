@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla 20 — Simulacro Cambridge B1 Preliminary (PET)</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#1A3A6B;--azul2:#2A5298;--dorado:#C8A951;--rojo:#B91C1C;
+  --verde:#15803D;--gris:#111827;--crema:#F9F7F4;--borde:#E5E0D8;
+  --suave:#F3EFE9;--sombra:rgba(26,58,107,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--gris);}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--azul),#0F2550);padding:50px 20px 56px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,0.015) 30px,rgba(255,255,255,0.015) 31px);}
+.hero-shield{font-size:3rem;margin-bottom:14px;position:relative;z-index:1;}
+.hero-tag{display:inline-block;background:var(--dorado);color:var(--azul);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 20px;border-radius:2px;margin-bottom:16px;position:relative;z-index:1;}
+.hero h1{font-family:'Crimson Pro',serif;font-size:clamp(2rem,7vw,4rem);font-weight:700;color:white;line-height:1;position:relative;z-index:1;margin-bottom:8px;}
+.hero h1 em{color:var(--dorado);font-style:italic;}
+.hero-sub{color:rgba(255,255,255,0.55);font-size:0.88rem;position:relative;z-index:1;margin-bottom:20px;line-height:1.6;max-width:580px;margin-left:auto;margin-right:auto;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;margin-bottom:20px;}
+.hp{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.68rem;font-weight:600;padding:4px 14px;border-radius:20px;}
+.hero-aviso{max-width:540px;margin:0 auto;background:rgba(200,169,81,0.15);border:1px solid rgba(200,169,81,0.3);border-radius:10px;padding:12px 16px;color:rgba(255,255,255,0.75);font-size:0.8rem;line-height:1.6;position:relative;z-index:1;}
+.hero-aviso strong{color:var(--dorado);}
+
+/* ── INFO EXAMEN ── */
+.info-wrap{max-width:860px;margin:0 auto;padding:50px 20px 0;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:36px;}
+.info-card{background:white;border-radius:12px;padding:18px 16px;box-shadow:0 2px 12px var(--sombra);border-top:3px solid var(--azul);text-align:center;}
+.ic-icon{font-size:1.6rem;margin-bottom:6px;}
+.ic-title{font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;}
+.ic-val{font-family:'Crimson Pro',serif;font-size:1.3rem;font-weight:700;color:var(--azul);}
+.ic-sub{font-size:0.68rem;color:#9CA3AF;margin-top:2px;}
+
+.estructura-box{background:white;border-radius:14px;padding:24px 20px;box-shadow:0 2px 14px var(--sombra);margin-bottom:30px;}
+.eb-title{font-family:'Crimson Pro',serif;font-size:1.3rem;font-weight:700;color:var(--azul);margin-bottom:4px;}
+.eb-sub{font-size:0.8rem;color:#6B7280;margin-bottom:18px;}
+.eb-tabla{width:100%;border-collapse:collapse;}
+.eb-tabla th{background:var(--azul);color:white;padding:10px 14px;font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:left;}
+.eb-tabla td{padding:10px 14px;border-bottom:1px solid var(--borde);font-size:0.84rem;color:var(--gris);}
+.eb-tabla tr:last-child td{border-bottom:none;}
+.eb-tabla tr:nth-child(even) td{background:#FAFAFA;}
+.parte-badge{display:inline-block;background:var(--azul);color:white;font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:4px;}
+.pts{font-weight:700;color:var(--azul);}
+
+/* ── SECCIONES DEL EXAMEN ── */
+.wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+.exam-sec{background:white;border-radius:16px;box-shadow:0 2px 14px var(--sombra);margin-bottom:28px;overflow:hidden;}
+.es-header{padding:18px 22px;border-bottom:1px solid var(--borde);}
+.es-meta{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.es-parte{font-size:0.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;}
+.es-parte.reading{background:#EFF6FF;color:#1D4ED8;}
+.es-parte.listening{background:#F0FDF4;color:#15803D;}
+.es-parte.writing{background:#FFF7ED;color:#C2410C;}
+.es-parte.use{background:#FAF5FF;color:#6D28D9;}
+.es-tiempo{font-size:0.7rem;color:#9CA3AF;font-weight:600;}
+.es-title{font-family:'Crimson Pro',serif;font-size:1.3rem;font-weight:700;color:var(--gris);}
+.es-instruc{font-size:0.82rem;color:#6B7280;margin-top:4px;line-height:1.5;}
+.es-body{padding:22px;}
+
+/* READING TEXTO */
+.reading-text{background:var(--suave);border-radius:10px;padding:18px;margin-bottom:20px;border-left:4px solid var(--azul);}
+.rt-titulo{font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--azul);margin-bottom:8px;}
+.rt-content{font-size:0.9rem;line-height:1.7;color:var(--gris);}
+.rt-content p{margin-bottom:10px;}
+.rt-content p:last-child{margin-bottom:0;}
+
+/* PREGUNTAS */
+.preguntas{display:flex;flex-direction:column;gap:18px;}
+.pregunta{background:var(--suave);border-radius:10px;padding:16px 18px;border:1.5px solid var(--borde);}
+.preg-num{font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;margin-bottom:6px;}
+.preg-texto{font-size:0.9rem;font-weight:600;color:var(--gris);margin-bottom:12px;line-height:1.4;}
+.preg-opciones{display:flex;flex-direction:column;gap:6px;}
+.preg-opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:7px;cursor:pointer;border:1.5px solid var(--borde);background:white;transition:all 0.15s;font-size:0.85rem;color:var(--gris);text-align:left;}
+.preg-opt:hover{border-color:var(--azul);background:#EFF6FF;}
+.preg-opt.seleccionada{border-color:var(--azul);background:#EFF6FF;font-weight:600;}
+.preg-opt.correcta{border-color:var(--verde);background:#F0FDF4;color:var(--verde);font-weight:700;}
+.preg-opt.incorrecta{border-color:var(--rojo);background:#FEF2F2;color:var(--rojo);}
+.opt-letra{width:24px;height:24px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;color:var(--gris);}
+.preg-opt.correcta .opt-letra{background:var(--verde);color:white;}
+.preg-opt.incorrecta .opt-letra{background:var(--rojo);color:white;}
+.preg-opt.seleccionada .opt-letra{background:var(--azul);color:white;}
+.preg-feedback{margin-top:10px;padding:10px 12px;border-radius:7px;font-size:0.8rem;font-weight:600;line-height:1.5;display:none;}
+.preg-feedback.visible{display:block;}
+.preg-feedback.ok{background:#F0FDF4;color:var(--verde);border:1px solid #BBF7D0;}
+.preg-feedback.mal{background:#FEF2F2;color:var(--rojo);border:1px solid #FECACA;}
+
+/* FILL IN THE BLANK */
+.fill-sentence{font-size:0.95rem;color:var(--gris);margin-bottom:12px;line-height:1.8;font-weight:500;}
+.fill-input{border:2px solid var(--borde);border-radius:6px;padding:6px 12px;font-family:'DM Sans',sans-serif;font-size:0.88rem;width:140px;text-align:center;outline:none;transition:border-color 0.15s;}
+.fill-input:focus{border-color:var(--azul);}
+.fill-input.correcto{border-color:var(--verde);background:#F0FDF4;color:var(--verde);font-weight:700;}
+.fill-input.incorrecto{border-color:var(--rojo);background:#FEF2F2;color:var(--rojo);}
+.fill-btn{background:var(--azul);color:white;border:none;padding:8px 20px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;margin-top:10px;transition:all 0.15s;}
+.fill-btn:hover{background:var(--azul2);}
+
+/* WRITING */
+.writing-task{background:var(--suave);border-radius:10px;padding:18px;margin-bottom:16px;}
+.wt-label{font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--azul);margin-bottom:8px;}
+.wt-prompt{font-size:0.88rem;color:var(--gris);line-height:1.6;}
+.writing-area{width:100%;min-height:120px;border:2px solid var(--borde);border-radius:8px;padding:12px;font-family:'DM Sans',sans-serif;font-size:0.88rem;line-height:1.6;outline:none;resize:vertical;transition:border-color 0.15s;}
+.writing-area:focus{border-color:var(--azul);}
+.word-count{font-size:0.72rem;color:#9CA3AF;margin-top:6px;text-align:right;}
+.writing-criteria{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.wc-item{background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--borde);}
+.wci-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;}
+.wci-desc{font-size:0.74rem;color:var(--gris);line-height:1.4;}
+
+/* LISTENING SIMULADO */
+.listening-track{background:var(--azul);border-radius:12px;padding:18px 20px;margin-bottom:18px;display:flex;align-items:center;gap:16px;}
+.lt-icon{font-size:2rem;flex-shrink:0;}
+.lt-info{flex:1;}
+.lt-title{font-size:0.9rem;font-weight:700;color:white;margin-bottom:4px;}
+.lt-desc{font-size:0.76rem;color:rgba(255,255,255,0.6);line-height:1.5;}
+.lt-play{background:var(--dorado);color:var(--azul);border:none;padding:10px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:800;cursor:pointer;flex-shrink:0;transition:all 0.15s;}
+.lt-play:hover{background:#E0BB60;}
+.transcript-box{background:#F9F7F4;border-radius:10px;padding:16px;border:1.5px dashed var(--borde);margin-bottom:16px;display:none;}
+.transcript-box.visible{display:block;}
+.tb-label{font-size:0.62rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;margin-bottom:8px;}
+.tb-text{font-size:0.86rem;color:var(--gris);line-height:1.7;font-style:italic;}
+
+/* SCORE PANEL */
+.score-panel{background:var(--azul);padding:40px 20px;text-align:center;display:none;}
+.score-panel.visible{display:block;}
+.sp-wrap{max-width:600px;margin:0 auto;}
+.sp-icon{font-size:4rem;margin-bottom:12px;}
+.sp-titulo{font-family:'Crimson Pro',serif;font-size:2rem;font-weight:700;color:white;margin-bottom:8px;}
+.sp-score{font-size:3rem;font-weight:800;color:var(--dorado);margin:16px 0;}
+.sp-nivel{display:inline-block;background:rgba(200,169,81,0.2);border:1px solid var(--dorado);border-radius:8px;padding:8px 24px;color:var(--dorado);font-size:0.9rem;font-weight:700;margin-bottom:16px;}
+.sp-desc{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:460px;margin:0 auto 24px;}
+.sp-secciones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+.sp-sec{background:rgba(255,255,255,0.06);border-radius:10px;padding:14px;}
+.sps-title{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.sps-score{font-size:1.4rem;font-weight:800;color:white;}
+.sps-sub{font-size:0.7rem;color:rgba(255,255,255,0.35);}
+.sp-btn{background:var(--dorado);color:var(--azul);border:none;padding:14px 36px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:800;cursor:pointer;transition:all 0.2s;margin-top:8px;}
+.sp-btn:hover{background:#E0BB60;transform:scale(1.03);}
+
+/* BOTÓN ENVIAR */
+.submit-wrap{text-align:center;padding:30px 20px;}
+.submit-btn{background:var(--azul);color:white;border:none;padding:16px 48px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.5px;}
+.submit-btn:hover{background:var(--azul2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,107,0.3);}
+
+/* CONSEJOS */
+.consejos{background:white;border-radius:14px;box-shadow:0 2px 14px var(--sombra);padding:24px;margin-bottom:28px;}
+.c-title{font-family:'Crimson Pro',serif;font-size:1.2rem;font-weight:700;color:var(--azul);margin-bottom:14px;}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.c-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--suave);border-radius:8px;}
+.ci-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.ci-text{font-size:0.78rem;color:var(--gris);line-height:1.5;}
+.ci-text strong{color:var(--azul);display:block;margin-bottom:2px;}
+
+/* PROGRESS */
+.prog-bar-wrap{background:var(--suave);padding:14px 20px;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--borde);}
+.prog-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.pi-label{font-size:0.72rem;font-weight:700;color:var(--azul);}
+.pi-score{font-size:0.72rem;font-weight:700;color:var(--gris);}
+.prog-bar{height:5px;background:var(--borde);border-radius:5px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--azul),var(--dorado));border-radius:5px;width:0%;transition:width 0.4s;}
+
+.footer{background:var(--azul);padding:20px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.72rem;}
+.footer strong{color:var(--dorado);}
+
+@media(max-width:560px){
+  .info-grid{grid-template-columns:1fr 1fr;}
+  .writing-criteria{grid-template-columns:1fr;}
+  .sp-secciones{grid-template-columns:1fr;}
+  .c-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-shield">🎓</div>
+  <div class="hero-tag">Cartilla 20 — Examen Internacional</div>
+  <h1>Simulacro<br><em>Cambridge B1</em><br>Preliminary (PET)</h1>
+  <p class="hero-sub">Preparación oficial para el examen Cambridge B1 Preliminary — el certificado de inglés más reconocido para ingreso universitario en Colombia y el mundo.</p>
+  <div class="hero-pills">
+    <span class="hp">📖 Reading — Comprensión lectora</span>
+    <span class="hp">👂 Listening — Comprensión auditiva</span>
+    <span class="hp">✍️ Writing — Producción escrita</span>
+    <span class="hp">📝 Language Use — Gramática</span>
+  </div>
+  <div class="hero-aviso">⚠️ <strong>¿Para qué sirve el B1 PET?</strong> Ingreso a universidades en Colombia (Externado, Javeriana, Los Andes), visa de estudios en Europa, trabajo en empresas multinacionales y acceso a becas internacionales. El examen real vale entre USD $150–$200 en centros Cambridge de Bogotá.
+  </div>
+</div>
+
+<!-- BARRA DE PROGRESO -->
+<div class="prog-bar-wrap">
+  <div class="prog-info">
+    <span class="pi-label">Progreso del simulacro</span>
+    <span class="pi-score" id="progScore">0 / 30 puntos</span>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+</div>
+
+<div class="wrap">
+
+<!-- INFO DEL EXAMEN -->
+<div style="padding:36px 0 0;">
+  <div class="info-grid">
+    <div class="info-card"><div class="ic-icon">⏱️</div><div class="ic-title">Duración real</div><div class="ic-val">2h 30min</div><div class="ic-sub">Este simulacro: ~45 min</div></div>
+    <div class="info-card"><div class="ic-icon">🎯</div><div class="ic-title">Nivel MCER</div><div class="ic-val">B1</div><div class="ic-sub">Marco Europeo Común</div></div>
+    <div class="info-card"><div class="ic-icon">✅</div><div class="ic-title">Puntaje aprobación</div><div class="ic-val">140/170</div><div class="ic-sub">Escala Cambridge (0–170)</div></div>
+    <div class="info-card"><div class="ic-icon">🏛️</div><div class="ic-title">Validez</div><div class="ic-val">De por vida</div><div class="ic-sub">Certificado permanente</div></div>
+    <div class="info-card"><div class="ic-icon">🌍</div><div class="ic-title">Reconocido en</div><div class="ic-val">25,000+</div><div class="ic-sub">Instituciones mundiales</div></div>
+    <div class="info-card"><div class="ic-icon">📍</div><div class="ic-title">Centros en Colombia</div><div class="ic-val">Bogotá</div><div class="ic-sub">British Council / CCI</div></div>
+  </div>
+
+  <div class="estructura-box">
+    <div class="eb-title">📋 Estructura del examen real Cambridge B1 PET</div>
+    <div class="eb-sub">El examen tiene 3 partes principales. Este simulacro cubre las 4 habilidades con preguntas de práctica tipo examen oficial.</div>
+    <table class="eb-tabla">
+      <thead><tr><th>Parte</th><th>Habilidad</th><th>Descripción</th><th>Pts</th></tr></thead>
+      <tbody>
+        <tr><td><span class="parte-badge">Paper 1</span></td><td>Reading + Writing</td><td>6 partes: textos cortos, frases, artículos, correos, redacción</td><td class="pts">80</td></tr>
+        <tr><td><span class="parte-badge">Paper 2</span></td><td>Listening</td><td>4 partes: monólogos, conversaciones, completar información</td><td class="pts">30</td></tr>
+        <tr><td><span class="parte-badge">Paper 3</span></td><td>Speaking</td><td>Con examinador: descripción de foto, conversación, discusión</td><td class="pts">30</td></tr>
+        <tr><td colspan="3" style="font-weight:700;">Total — Puntaje Cambridge</td><td class="pts">170</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECCIÓN 1: READING -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte reading">📖 Reading — Parte 1</span>
+      <span class="es-tiempo">⏱ ~8 minutos</span>
+    </div>
+    <div class="es-title">Comprensión lectora — Texto corto</div>
+    <div class="es-instruc">Lee el texto y responde las preguntas. Elige la opción correcta (A, B o C). En el examen real tendrás 5 textos de este tipo.</div>
+  </div>
+  <div class="es-body">
+    <div class="reading-text">
+      <div class="rt-titulo">📄 Texto 1 — Correo electrónico de negocios</div>
+      <div class="rt-content">
+        <p>From: Carlos García &lt;carlos@clubdelagente.org&gt;<br>To: Sarah Johnson &lt;sarah@gizpartners.org&gt;<br>Subject: Partnership meeting — next week</p>
+        <p>Dear Sarah,</p>
+        <p>I hope you are doing well. I am writing to confirm our meeting for next Tuesday at 10:00 am at the Club de la Gente offices in Fusagasugá. The meeting will last approximately two hours. We will discuss the new English and digital skills program that we want to launch in January.</p>
+        <p>Could you please send me a list of the topics you would like to cover? I have already prepared a presentation with our community data and project results from last year. I will send it to you by email before Friday.</p>
+        <p>If you need to change the time or date, please let me know as soon as possible. I look forward to seeing you.</p>
+        <p>Best regards,<br>Carlos García<br>Director, Corporación Club de la Gente</p>
+      </div>
+    </div>
+    <div class="preguntas" id="reading1">
+      <div class="pregunta" id="p1">
+        <div class="preg-num">Pregunta 1 de 6</div>
+        <div class="preg-texto">What is the main purpose of Carlos's email?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p1',0,1,this,'✅ Correct! The email\'s main purpose is to confirm the meeting details — time, place, and topics. This is a common B1 reading task.')">
+            <span class="opt-letra">A</span>To ask Sarah to cancel the meeting
+          </div>
+          <div class="preg-opt" onclick="responder('p1',1,1,this,'✅ Correct! The email\'s main purpose is to confirm the meeting details — time, place, and topics. This is a common B1 reading task.')">
+            <span class="opt-letra">B</span>To confirm meeting details and make a request
+          </div>
+          <div class="preg-opt" onclick="responder('p1',2,1,this,'✅ Correct! The email\'s main purpose is to confirm the meeting details — time, place, and topics. This is a common B1 reading task.')">
+            <span class="opt-letra">C</span>To send the presentation to Sarah
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p1"></div>
+      </div>
+
+      <div class="pregunta" id="p2">
+        <div class="preg-num">Pregunta 2 de 6</div>
+        <div class="preg-texto">When will Carlos send the presentation to Sarah?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p2',0,2,this,'📅 Before Friday. The email says: &quot;I will send it to you by email before Friday.&quot; By = antes de, en este contexto de deadline.')">
+            <span class="opt-letra">A</span>On Tuesday during the meeting
+          </div>
+          <div class="preg-opt" onclick="responder('p2',1,2,this,'📅 Before Friday. The email says: &quot;I will send it to you by email before Friday.&quot; By = antes de, en este contexto de deadline.')">
+            <span class="opt-letra">B</span>After the meeting in January
+          </div>
+          <div class="preg-opt" onclick="responder('p2',2,2,this,'📅 Before Friday. The email says: &quot;I will send it to you by email before Friday.&quot; By = antes de, en este contexto de deadline.')">
+            <span class="opt-letra">C</span>Before Friday
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p2"></div>
+      </div>
+
+      <div class="pregunta" id="p3">
+        <div class="preg-num">Pregunta 3 de 6</div>
+        <div class="preg-texto">What does Carlos ask Sarah to do?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p3',0,0,this,'✅ Correct! Carlos asks Sarah to send a list of topics: &quot;Could you please send me a list of the topics you would like to cover?&quot')">
+            <span class="opt-letra">A</span>Send a list of topics she wants to discuss
+          </div>
+          <div class="preg-opt" onclick="responder('p3',1,0,this,'✅ Correct! Carlos asks Sarah to send a list of topics: &quot;Could you please send me a list of the topics you would like to cover?&quot')">
+            <span class="opt-letra">B</span>Prepare a presentation about GIZ projects
+          </div>
+          <div class="preg-opt" onclick="responder('p3',2,0,this,'✅ Correct! Carlos asks Sarah to send a list of topics: &quot;Could you please send me a list of the topics you would like to cover?&quot')">
+            <span class="opt-letra">C</span>Come to Fusagasugá on Monday
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p3"></div>
+      </div>
+    </div>
+
+    <!-- TEXTO 2 -->
+    <div class="reading-text" style="margin-top:24px;">
+      <div class="rt-titulo">📄 Texto 2 — Artículo de revista</div>
+      <div class="rt-content">
+        <p><strong>Learning English in Colombia: Why it matters more than ever</strong></p>
+        <p>Colombia has made significant progress in English education over the past decade. According to recent reports, the number of Colombians who speak English at an intermediate level has doubled since 2015. However, experts say that there is still much work to be done, especially in rural areas and small cities.</p>
+        <p>Organizations like Club de la Gente in Fusagasugá are helping to close this gap by offering free English courses to community members. "We believe that language is the key to opportunity," says Carlos García, the organization's director. "When our students can communicate in English, they can access better jobs, international scholarships, and global networks."</p>
+        <p>The B1 level is particularly important because it is the minimum requirement for most Colombian universities and for many international visa applications. Experts recommend studying at least 300 hours of English to reach this level.</p>
+      </div>
+    </div>
+    <div class="preguntas">
+      <div class="pregunta" id="p4">
+        <div class="preg-num">Pregunta 4 de 6</div>
+        <div class="preg-texto">According to the article, what has happened to English speakers in Colombia since 2015?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p4',0,1,this,'✅ Doubled. The text says: &quot;the number of Colombians who speak English at an intermediate level has doubled since 2015.&quot; Doubled = se duplicó.')">
+            <span class="opt-letra">A</span>The number has stayed the same
+          </div>
+          <div class="preg-opt" onclick="responder('p4',1,1,this,'✅ Doubled. The text says: &quot;the number of Colombians who speak English at an intermediate level has doubled since 2015.&quot; Doubled = se duplicó.')">
+            <span class="opt-letra">B</span>The number has doubled
+          </div>
+          <div class="preg-opt" onclick="responder('p4',2,1,this,'✅ Doubled. The text says: &quot;the number of Colombians who speak English at an intermediate level has doubled since 2015.&quot; Doubled = se duplicó.')">
+            <span class="opt-letra">C</span>The number has decreased slightly
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p4"></div>
+      </div>
+
+      <div class="pregunta" id="p5">
+        <div class="preg-num">Pregunta 5 de 6</div>
+        <div class="preg-texto">Why is the B1 level particularly important according to the article?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p5',0,2,this,'✅ Correct! The article states: &quot;it is the minimum requirement for most Colombian universities and for many international visa applications.&quot')">
+            <span class="opt-letra">A</span>Because it allows people to work in the United States
+          </div>
+          <div class="preg-opt" onclick="responder('p5',1,2,this,'✅ Correct! The article states: &quot;it is the minimum requirement for most Colombian universities and for many international visa applications.&quot')">
+            <span class="opt-letra">B</span>Because it is the easiest English level to achieve
+          </div>
+          <div class="preg-opt" onclick="responder('p5',2,2,this,'✅ Correct! The article states: &quot;it is the minimum requirement for most Colombian universities and for many international visa applications.&quot')">
+            <span class="opt-letra">C</span>Because it is required by universities and visa applications
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p5"></div>
+      </div>
+
+      <div class="pregunta" id="p6">
+        <div class="preg-num">Pregunta 6 de 6 · Reading</div>
+        <div class="preg-texto">The word "gap" in paragraph 2 most likely means:</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p6',0,0,this,'✅ Gap = brecha / diferencia. In context, the &quot;gap&quot; refers to the difference in English education between cities and rural areas. Vocabulary in context is tested in every Cambridge Reading section.')">
+            <span class="opt-letra">A</span>A difference or space between two things
+          </div>
+          <div class="preg-opt" onclick="responder('p6',1,0,this,'✅ Gap = brecha / diferencia. In context, the &quot;gap&quot; refers to the difference in English education between cities and rural areas. Vocabulary in context is tested in every Cambridge Reading section.')">
+            <span class="opt-letra">B</span>A physical opening in a wall
+          </div>
+          <div class="preg-opt" onclick="responder('p6',2,0,this,'✅ Gap = brecha / diferencia. In context, the &quot;gap&quot; refers to the difference in English education between cities and rural areas. Vocabulary in context is tested in every Cambridge Reading section.')">
+            <span class="opt-letra">C</span>A free period of time
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 2: LANGUAGE USE (GRAMMAR) -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte use">📝 Language Use — Parte 2</span>
+      <span class="es-tiempo">⏱ ~8 minutos</span>
+    </div>
+    <div class="es-title">Uso del idioma — Gramática en contexto</div>
+    <div class="es-instruc">Completa las oraciones con la forma correcta. Escribe la palabra o frase en el espacio. En el B1 real, este tipo de ejercicio prueba gramática, vocabulario y conectores.</div>
+  </div>
+  <div class="es-body">
+    <div class="preguntas">
+
+      <div class="pregunta" id="p7">
+        <div class="preg-num">Pregunta 7 — Presente perfecto</div>
+        <div class="preg-texto">"Carlos ___ never visited another country, but he ___ traveled all over Colombia." (have / has)</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p7',0,2,this,'✅ has / has. With HE (third person singular), we use HAS in present perfect. Carlos HAS never visited. He HAS traveled. I HAVE / You HAVE / They HAVE — but He/She/It HAS.')">
+            <span class="opt-letra">A</span>have / have
+          </div>
+          <div class="preg-opt" onclick="responder('p7',1,2,this,'✅ has / has. With HE (third person singular), we use HAS in present perfect. Carlos HAS never visited. He HAS traveled. I HAVE / You HAVE / They HAVE — but He/She/It HAS.')">
+            <span class="opt-letra">B</span>has / have
+          </div>
+          <div class="preg-opt" onclick="responder('p7',2,2,this,'✅ has / has. With HE (third person singular), we use HAS in present perfect. Carlos HAS never visited. He HAS traveled. I HAVE / You HAVE / They HAVE — but He/She/It HAS.')">
+            <span class="opt-letra">C</span>has / has
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p7"></div>
+      </div>
+
+      <div class="pregunta" id="p8">
+        <div class="preg-num">Pregunta 8 — Pasado simple vs. Presente perfecto</div>
+        <div class="preg-texto">"I ___ the doctor yesterday because I ___ sick for three days." — Choose the correct forms:</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p8',0,1,this,'✅ visited / had been. &quot;Yesterday&quot; requires simple past: visited. &quot;For three days&quot; before a past point uses past perfect: had been. This contrast is tested in B1 and B2 exams.')">
+            <span class="opt-letra">A</span>have visited / was
+          </div>
+          <div class="preg-opt" onclick="responder('p8',1,1,this,'✅ visited / had been. &quot;Yesterday&quot; requires simple past: visited. &quot;For three days&quot; before a past point uses past perfect: had been. This contrast is tested in B1 and B2 exams.')">
+            <span class="opt-letra">B</span>visited / had been
+          </div>
+          <div class="preg-opt" onclick="responder('p8',2,1,this,'✅ visited / had been. &quot;Yesterday&quot; requires simple past: visited. &quot;For three days&quot; before a past point uses past perfect: had been. This contrast is tested in B1 and B2 exams.')">
+            <span class="opt-letra">C</span>visited / have been
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p8"></div>
+      </div>
+
+      <div class="pregunta" id="p9">
+        <div class="preg-num">Pregunta 9 — Comparativos y superlativos</div>
+        <div class="preg-texto">"The Cambridge B1 exam is ___ the IELTS, but the IELTS is ___ exam for university admission." (more accessible than / the most recognized)</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p9',0,0,this,'✅ more accessible than / the most recognized. Comparativo: more + adj + than. Superlativo: the most + adj. With long adjectives (accessible, recognized) we use MORE/MOST, not -ER/-EST.')">
+            <span class="opt-letra">A</span>more accessible than / the most recognized
+          </div>
+          <div class="preg-opt" onclick="responder('p9',1,0,this,'✅ more accessible than / the most recognized. Comparativo: more + adj + than. Superlativo: the most + adj. With long adjectives (accessible, recognized) we use MORE/MOST, not -ER/-EST.')">
+            <span class="opt-letra">B</span>more accessible that / most recognized
+          </div>
+          <div class="preg-opt" onclick="responder('p9',2,0,this,'✅ more accessible than / the most recognized. Comparativo: more + adj + than. Superlativo: the most + adj. With long adjectives (accessible, recognized) we use MORE/MOST, not -ER/-EST.')">
+            <span class="opt-letra">C</span>accessibler than / the most recognized
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p9"></div>
+      </div>
+
+      <div class="pregunta" id="p10">
+        <div class="preg-num">Pregunta 10 — Condicional tipo 1</div>
+        <div class="preg-texto">"If you ___ English at B1 level, you ___ to apply for a university scholarship." (speak / will be able)</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p10',0,2,this,'✅ speak / will be able. Conditional type 1: If + present simple → will + infinitive. If you speak → you will be able to. This is real/possible condition. Very common in B1 exams.')">
+            <span class="opt-letra">A</span>will speak / are able
+          </div>
+          <div class="preg-opt" onclick="responder('p10',1,2,this,'✅ speak / will be able. Conditional type 1: If + present simple → will + infinitive. If you speak → you will be able to. This is real/possible condition. Very common in B1 exams.')">
+            <span class="opt-letra">B</span>spoke / would be able
+          </div>
+          <div class="preg-opt" onclick="responder('p10',2,2,this,'✅ speak / will be able. Conditional type 1: If + present simple → will + infinitive. If you speak → you will be able to. This is real/possible condition. Very common in B1 exams.')">
+            <span class="opt-letra">C</span>speak / will be able
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p10"></div>
+      </div>
+
+      <div class="pregunta" id="p11">
+        <div class="preg-num">Pregunta 11 — Voz pasiva</div>
+        <div class="preg-texto">"The English course ___ by Club de la Gente every year." — Passive voice:</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p11',0,1,this,'✅ is offered. Passive voice: Subject + TO BE + past participle. The course (subject) + is (present to be) + offered (past participle of offer). By Club de la Gente = the agent. La voz pasiva aparece en todos los exámenes Cambridge B1+.')">
+            <span class="opt-letra">A</span>offers
+          </div>
+          <div class="preg-opt" onclick="responder('p11',1,1,this,'✅ is offered. Passive voice: Subject + TO BE + past participle. The course (subject) + is (present to be) + offered (past participle of offer). By Club de la Gente = the agent. La voz pasiva aparece en todos los exámenes Cambridge B1+.')">
+            <span class="opt-letra">B</span>is offered
+          </div>
+          <div class="preg-opt" onclick="responder('p11',2,1,this,'✅ is offered. Passive voice: Subject + TO BE + past participle. The course (subject) + is (present to be) + offered (past participle of offer). By Club de la Gente = the agent. La voz pasiva aparece en todos los exámenes Cambridge B1+.')">
+            <span class="opt-letra">C</span>was offered
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p11"></div>
+      </div>
+
+      <div class="pregunta" id="p12">
+        <div class="preg-num">Pregunta 12 — Reported speech</div>
+        <div class="preg-texto">Carlos said: "I will send the report tomorrow." In reported speech: Carlos said that he ___ the report the following day.</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p12',0,2,this,'✅ would send. Reported speech: will → would. tomorrow → the following day. Direct: &quot;I will send&quot; → Reported: he would send. This backshift of tenses is key in B1/B2 Cambridge exams.')">
+            <span class="opt-letra">A</span>will send
+          </div>
+          <div class="preg-opt" onclick="responder('p12',1,2,this,'✅ would send. Reported speech: will → would. tomorrow → the following day. Direct: &quot;I will send&quot; → Reported: he would send. This backshift of tenses is key in B1/B2 Cambridge exams.')">
+            <span class="opt-letra">B</span>sends
+          </div>
+          <div class="preg-opt" onclick="responder('p12',2,2,this,'✅ would send. Reported speech: will → would. tomorrow → the following day. Direct: &quot;I will send&quot; → Reported: he would send. This backshift of tenses is key in B1/B2 Cambridge exams.')">
+            <span class="opt-letra">C</span>would send
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p12"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 3: LISTENING SIMULADO -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte listening">👂 Listening — Parte 3</span>
+      <span class="es-tiempo">⏱ ~8 minutos</span>
+    </div>
+    <div class="es-title">Comprensión auditiva — Texto hablado</div>
+    <div class="es-instruc">En el examen real escucharás grabaciones de audio. Aquí tienes la transcripción del audio para practicar la comprensión. Lee como si estuvieras escuchando.</div>
+  </div>
+  <div class="es-body">
+    <div class="listening-track">
+      <div class="lt-icon">🎧</div>
+      <div class="lt-info">
+        <div class="lt-title">Audio 1 — Radio announcement about English programs</div>
+        <div class="lt-desc">Duración: ~90 segundos · Tipo: Anuncio informativo · Dificultad: B1</div>
+      </div>
+      <button class="lt-play" onclick="toggleTranscript('t1')">📄 Ver transcripción</button>
+    </div>
+    <div class="transcript-box" id="t1">
+      <div class="tb-label">📻 Transcripción — Radio announcement</div>
+      <div class="tb-text">
+        "Good morning, listeners. This is Radio Fusa, and we have an important announcement for our community. Starting next month, the Corporación Club de la Gente will be offering free English classes for adults in Fusagasugá. The program is designed for people who want to improve their English from a basic level to B1, which is the level required by most Colombian universities.
+        <br><br>
+        Classes will be held every Tuesday and Thursday from 6 to 8 in the evening at the Club de la Gente community center on Calle 7. There are 40 spots available, and registration opens this Saturday at 9 in the morning. Participants who complete the program will receive a certificate and will be prepared to take the Cambridge B1 Preliminary exam.
+        <br><br>
+        For more information, you can call 310-555-0192 or visit their website. This program is funded by an international cooperation agreement with GIZ, the German development organization. Don't miss this opportunity — spaces are limited!"
+      </div>
+    </div>
+    <div class="preguntas">
+      <div class="pregunta" id="p13">
+        <div class="preg-num">Pregunta 13 — Listening</div>
+        <div class="preg-texto">How many spots are available in the English program?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p13',0,2,this,'✅ 40 spots. The announcement says: &quot;There are 40 spots available.&quot; In listening exams, numbers are key details to catch. Spot = cupo/lugar.')">
+            <span class="opt-letra">A</span>14 spots
+          </div>
+          <div class="preg-opt" onclick="responder('p13',1,2,this,'✅ 40 spots. The announcement says: &quot;There are 40 spots available.&quot; In listening exams, numbers are key details to catch. Spot = cupo/lugar.')">
+            <span class="opt-letra">B</span>30 spots
+          </div>
+          <div class="preg-opt" onclick="responder('p13',2,2,this,'✅ 40 spots. The announcement says: &quot;There are 40 spots available.&quot; In listening exams, numbers are key details to catch. Spot = cupo/lugar.')">
+            <span class="opt-letra">C</span>40 spots
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p13"></div>
+      </div>
+
+      <div class="pregunta" id="p14">
+        <div class="preg-num">Pregunta 14 — Listening</div>
+        <div class="preg-texto">On which days are the English classes held?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p14',0,1,this,'✅ Tuesday and Thursday. The text says: &quot;Classes will be held every Tuesday and Thursday.&quot; Days of the week are common listening details.')">
+            <span class="opt-letra">A</span>Monday and Wednesday
+          </div>
+          <div class="preg-opt" onclick="responder('p14',1,1,this,'✅ Tuesday and Thursday. The text says: &quot;Classes will be held every Tuesday and Thursday.&quot; Days of the week are common listening details.')">
+            <span class="opt-letra">B</span>Tuesday and Thursday
+          </div>
+          <div class="preg-opt" onclick="responder('p14',2,1,this,'✅ Tuesday and Thursday. The text says: &quot;Classes will be held every Tuesday and Thursday.&quot; Days of the week are common listening details.')">
+            <span class="opt-letra">C</span>Friday and Saturday
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p14"></div>
+      </div>
+
+      <div class="pregunta" id="p15">
+        <div class="preg-num">Pregunta 15 — Listening</div>
+        <div class="preg-texto">Who is funding the English program?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p15',0,2,this,'✅ GIZ, the German development organization. The announcement says: &quot;This program is funded by an international cooperation agreement with GIZ, the German development organization.&quot; Funded by = financiado por.')">
+            <span class="opt-letra">A</span>The Colombian government
+          </div>
+          <div class="preg-opt" onclick="responder('p15',1,2,this,'✅ GIZ, the German development organization. The announcement says: &quot;This program is funded by an international cooperation agreement with GIZ, the German development organization.&quot; Funded by = financiado por.')">
+            <span class="opt-letra">B</span>Radio Fusa
+          </div>
+          <div class="preg-opt" onclick="responder('p15',2,2,this,'✅ GIZ, the German development organization. The announcement says: &quot;This program is funded by an international cooperation agreement with GIZ, the German development organization.&quot; Funded by = financiado por.')">
+            <span class="opt-letra">C</span>GIZ, the German development organization
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p15"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 4: WRITING -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte writing">✍️ Writing — Parte 4</span>
+      <span class="es-tiempo">⏱ ~12 minutos</span>
+    </div>
+    <div class="es-title">Producción escrita — Correo formal y redacción</div>
+    <div class="es-instruc">El examen B1 real tiene dos tareas de escritura. Aquí practicas ambas. En el examen debes escribir entre 100 y 190 palabras por tarea.</div>
+  </div>
+  <div class="es-body">
+
+    <!-- TASK 1 -->
+    <div class="writing-task">
+      <div class="wt-label">✉️ Writing Task 1 — Email formal (100 palabras mínimo)</div>
+      <div class="wt-prompt">
+        <strong>Situación:</strong> Has received an email from a university in Spain asking about your English level and why you want to study there. Write an email responding to their questions. Include:
+        <br>• Your current English level and how you learned it
+        <br>• Why you want to study at their university
+        <br>• Ask about scholarship opportunities
+      </div>
+    </div>
+    <textarea class="writing-area" id="writing1" placeholder="Write your email here... (minimum 100 words)&#10;&#10;Dear Admissions Team,&#10;&#10;I am writing in response to your email..." oninput="countWords('writing1','wc1')"></textarea>
+    <div class="word-count" id="wc1">0 words (minimum: 100)</div>
+
+    <div class="writing-criteria" style="margin-bottom:24px;">
+      <div class="wc-item"><div class="wci-title">📋 Contenido (25%)</div><div class="wci-desc">¿Respondiste todas las preguntas de la tarea? ¿Incluiste todos los puntos pedidos?</div></div>
+      <div class="wc-item"><div class="wci-title">📐 Organización (25%)</div><div class="wci-desc">¿Tiene saludo, cuerpo y cierre? ¿Usaste conectores como however, therefore, although?</div></div>
+      <div class="wc-item"><div class="wci-title">📚 Vocabulario (25%)</div><div class="wci-desc">¿Usaste variedad de palabras? Evita repetir el mismo vocabulario. Usa sinónimos.</div></div>
+      <div class="wc-item"><div class="wci-title">✅ Gramática (25%)</div><div class="wci-desc">¿Tiempos verbales correctos? ¿Concordancia? ¿Puntuación adecuada?</div></div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="writing-task">
+      <div class="wt-label">📝 Writing Task 2 — Artículo / Redacción (100–190 palabras)</div>
+      <div class="wt-prompt">
+        <strong>Tarea:</strong> Write an article for your local community newsletter about the importance of learning English in today's world. Include:
+        <br>• Why English is important for young Colombians
+        <br>• How learning English has changed or could change someone's life
+        <br>• What advice you would give to someone who wants to start learning
+      </div>
+    </div>
+    <textarea class="writing-area" id="writing2" placeholder="Write your article here... (100-190 words)&#10;&#10;English: The Key to a Better Future&#10;&#10;In today's globalized world..." oninput="countWords('writing2','wc2')"></textarea>
+    <div class="word-count" id="wc2">0 words (target: 100–190)</div>
+
+    <!-- CONECTORES ÚTILES -->
+    <div style="background:var(--suave);border-radius:10px;padding:16px;margin-top:16px;">
+      <div style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--azul);margin-bottom:10px;">🔗 Conectores B1 para tu escritura</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">However</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">Therefore</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">Although</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">Furthermore</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">In addition</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">As a result</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">For instance</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">On the other hand</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">In conclusion</span>
+        <span style="background:white;border:1px solid var(--borde);border-radius:5px;padding:4px 10px;font-size:0.74rem;font-weight:600;color:var(--gris);">To sum up</span>
+      </div>
+    </div>
+
+    <!-- PREGUNTAS EXTRA WRITING -->
+    <div style="margin-top:20px;">
+      <div style="font-family:'Crimson Pro',serif;font-size:1rem;font-weight:700;color:var(--azul);margin-bottom:14px;">📝 Preguntas de comprensión — Writing skills</div>
+      <div class="preguntas">
+        <div class="pregunta" id="p16">
+          <div class="preg-num">Pregunta 16 — Writing formal register</div>
+          <div class="preg-texto">Which opening is correct for a formal email to a university?</div>
+          <div class="preg-opciones">
+            <div class="preg-opt" onclick="responder('p16',0,1,this,'✅ Dear Admissions Committee. Formal emails use: Dear + title/name. Informal: Hi, Hey. In Cambridge B1 writing, formal register is required for business/academic emails. Avoid contractions (don\'t → do not).')">
+              <span class="opt-letra">A</span>Hey there! How are you?
+            </div>
+            <div class="preg-opt" onclick="responder('p16',1,1,this,'✅ Dear Admissions Committee. Formal emails use: Dear + title/name. Informal: Hi, Hey. In Cambridge B1 writing, formal register is required for business/academic emails. Avoid contractions (don\'t → do not).')">
+              <span class="opt-letra">B</span>Dear Admissions Committee,
+            </div>
+            <div class="preg-opt" onclick="responder('p16',2,1,this,'✅ Dear Admissions Committee. Formal emails use: Dear + title/name. Informal: Hi, Hey. In Cambridge B1 writing, formal register is required for business/academic emails. Avoid contractions (don\'t → do not).')">
+              <span class="opt-letra">C</span>Hello! I want to write to you.
+            </div>
+          </div>
+          <div class="preg-feedback" id="fb-p16"></div>
+        </div>
+
+        <div class="pregunta" id="p17">
+          <div class="preg-num">Pregunta 17 — Conectores</div>
+          <div class="preg-texto">"I love learning English. ___, it is sometimes very difficult." — Which connector fits best?</div>
+          <div class="preg-opciones">
+            <div class="preg-opt" onclick="responder('p17',0,2,this,'✅ However = Sin embargo. Introduces a contrast or unexpected idea. However is one of the most important B1 connectors. However + comma at the start of a sentence = standard formal English.')">
+              <span class="opt-letra">A</span>Therefore
+            </div>
+            <div class="preg-opt" onclick="responder('p17',1,2,this,'✅ However = Sin embargo. Introduces a contrast or unexpected idea. However is one of the most important B1 connectors. However + comma at the start of a sentence = standard formal English.')">
+              <span class="opt-letra">B</span>Furthermore
+            </div>
+            <div class="preg-opt" onclick="responder('p17',2,2,this,'✅ However = Sin embargo. Introduces a contrast or unexpected idea. However is one of the most important B1 connectors. However + comma at the start of a sentence = standard formal English.')">
+              <span class="opt-letra">C</span>However
+            </div>
+          </div>
+          <div class="preg-feedback" id="fb-p17"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 5: SPEAKING GUIDE -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte" style="background:#FFF3E0;color:#E65100;">🗣️ Speaking — Parte 5</span>
+      <span class="es-tiempo">⏱ Examen real: 12–17 min con examinador</span>
+    </div>
+    <div class="es-title">Expresión oral — Guía de preparación</div>
+    <div class="es-instruc">El Speaking es con un examinador real. No se puede simular en HTML, pero aquí tienes las 3 partes del examen y cómo prepararte.</div>
+  </div>
+  <div class="es-body">
+    <div style="display:grid;grid-template-columns:1fr;gap:14px;">
+
+      <div style="background:var(--suave);border-radius:10px;padding:16px 18px;border-left:4px solid var(--azul);">
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--azul);margin-bottom:8px;">Parte 1 — Interview (2–3 min)</div>
+        <div style="font-size:0.84rem;color:var(--gris);line-height:1.6;margin-bottom:10px;">El examinador te hace preguntas personales. Practica estas:</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="background:white;border-radius:7px;padding:10px 12px;font-size:0.82rem;"><strong>Q:</strong> "Tell me about yourself and your studies."<br><span style="color:#6B7280;font-size:0.78rem;">Habla de tu nombre, edad, estudios, trabajo y objetivos. 45–60 segundos.</span></div>
+          <div style="background:white;border-radius:7px;padding:10px 12px;font-size:0.82rem;"><strong>Q:</strong> "Why are you learning English?"<br><span style="color:#6B7280;font-size:0.78rem;">Menciona universidad, trabajo, cooperación internacional. Sé específico.</span></div>
+          <div style="background:white;border-radius:7px;padding:10px 12px;font-size:0.82rem;"><strong>Q:</strong> "What do you do in your free time?"<br><span style="color:#6B7280;font-size:0.78rem;">Usa Love/Like/Enjoy + ING. Describe 2–3 actividades con detalles.</span></div>
+        </div>
+      </div>
+
+      <div style="background:var(--suave);border-radius:10px;padding:16px 18px;border-left:4px solid var(--dorado);">
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#B45309;margin-bottom:8px;">Parte 2 — Long turn (3–4 min)</div>
+        <div style="font-size:0.84rem;color:var(--gris);line-height:1.6;margin-bottom:10px;">Te muestran una foto y debes describirla durante 1 minuto. Estructura sugerida:</div>
+        <div style="background:white;border-radius:7px;padding:12px;font-size:0.82rem;line-height:1.6;">
+          <strong>1. Describe the scene:</strong> "In this photo, I can see..."<br>
+          <strong>2. Describe people:</strong> "There is/are... They look... They seem to be..."<br>
+          <strong>3. Speculate:</strong> "I think they might be... Perhaps they are..."<br>
+          <strong>4. Connect to yourself:</strong> "This reminds me of... In my community..."
+        </div>
+      </div>
+
+      <div style="background:var(--suave);border-radius:10px;padding:16px 18px;border-left:4px solid var(--verde);">
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;">Parte 3 — Collaborative task (4–5 min)</div>
+        <div style="font-size:0.84rem;color:var(--gris);line-height:1.6;margin-bottom:10px;">Discutes con el otro candidato o con el examinador. Frases útiles:</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div style="background:white;border-radius:7px;padding:8px 10px;font-size:0.78rem;"><strong>Proponer:</strong><br>"What do you think about...?"</div>
+          <div style="background:white;border-radius:7px;padding:8px 10px;font-size:0.78rem;"><strong>Acordar:</strong><br>"I agree with you because..."</div>
+          <div style="background:white;border-radius:7px;padding:8px 10px;font-size:0.78rem;"><strong>Desacordar:</strong><br>"I see your point, but..."</div>
+          <div style="background:white;border-radius:7px;padding:8px 10px;font-size:0.78rem;"><strong>Concluir:</strong><br>"So, shall we say that...?"</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PREGUNTAS SPEAKING -->
+    <div style="margin-top:20px;" class="preguntas">
+      <div class="pregunta" id="p18">
+        <div class="preg-num">Pregunta 18 — Speaking phrases</div>
+        <div class="preg-texto">In the Speaking exam, you want to politely disagree with your partner. Which phrase is most appropriate for B1 level?</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p18',0,1,this,'✅ I see your point, but I think... Shows you listened + introduces your view politely. Cambridge examiners reward: interaction, turn-taking, and sophisticated language. Avoid: &quot;No, you are wrong&quot; — too blunt.')">
+            <span class="opt-letra">A</span>No, I don't agree with that at all.
+          </div>
+          <div class="preg-opt" onclick="responder('p18',1,1,this,'✅ I see your point, but I think... Shows you listened + introduces your view politely. Cambridge examiners reward: interaction, turn-taking, and sophisticated language. Avoid: &quot;No, you are wrong&quot; — too blunt.')">
+            <span class="opt-letra">B</span>I see your point, but I think there is another way to look at it.
+          </div>
+          <div class="preg-opt" onclick="responder('p18',2,1,this,'✅ I see your point, but I think... Shows you listened + introduces your view politely. Cambridge examiners reward: interaction, turn-taking, and sophisticated language. Avoid: &quot;No, you are wrong&quot; — too blunt.')">
+            <span class="opt-letra">C</span>Yes, yes, you are completely right.
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p18"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 6: VOCABULARY B1 -->
+<div class="exam-sec">
+  <div class="es-header">
+    <div class="es-meta">
+      <span class="es-parte use">📚 Vocabulary — Parte 6</span>
+      <span class="es-tiempo">⏱ ~5 minutos</span>
+    </div>
+    <div class="es-title">Vocabulario B1 — Palabras académicas y profesionales</div>
+    <div class="es-instruc">El B1 requiere vocabulario más sofisticado que el A2. Estas palabras aparecen frecuentemente en los textos del examen.</div>
+  </div>
+  <div class="es-body">
+    <div class="preguntas">
+      <div class="pregunta" id="p19">
+        <div class="preg-num">Pregunta 19 — Academic vocabulary</div>
+        <div class="preg-texto">"The government needs to ___ more resources to rural education." — Choose the correct word:</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p19',0,2,this,'✅ Allocate = asignar/destinar recursos. Academic B1 vocabulary: allocate (asignar), implement (implementar), facilitate (facilitar), evaluate (evaluar). These verbs appear in formal reading texts.')">
+            <span class="opt-letra">A</span>put
+          </div>
+          <div class="preg-opt" onclick="responder('p19',1,2,this,'✅ Allocate = asignar/destinar recursos. Academic B1 vocabulary: allocate (asignar), implement (implementar), facilitate (facilitar), evaluate (evaluar). These verbs appear in formal reading texts.')">
+            <span class="opt-letra">B</span>give
+          </div>
+          <div class="preg-opt" onclick="responder('p19',2,2,this,'✅ Allocate = asignar/destinar recursos. Academic B1 vocabulary: allocate (asignar), implement (implementar), facilitate (facilitar), evaluate (evaluar). These verbs appear in formal reading texts.')">
+            <span class="opt-letra">C</span>allocate
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p19"></div>
+      </div>
+
+      <div class="pregunta" id="p20">
+        <div class="preg-num">Pregunta 20 — Word formation</div>
+        <div class="preg-texto">"The ___ of English in Colombia has increased significantly." — Use the correct form of SPEAK:</div>
+        <div class="preg-opciones">
+          <div class="preg-opt" onclick="responder('p20',0,1,this,'✅ Knowledge of English. Wait — the correct form here would be: the KNOWLEDGE or LEVEL of English. BUT for the word SPEAK: speak (v) → speaker (n: hablante) → spoken (adj). Word formation is tested in every Cambridge exam: employ → employment → employer → employable.')">
+            <span class="opt-letra">A</span>speaking (gerund as subject)
+          </div>
+          <div class="preg-opt" onclick="responder('p20',1,1,this,'✅ Knowledge of English. Wait — the correct form here would be: the KNOWLEDGE or LEVEL of English. BUT for the word SPEAK: speak (v) → speaker (n: hablante) → spoken (adj). Word formation is tested in every Cambridge exam: employ → employment → employer → employable.')">
+            <span class="opt-letra">B</span>spoken (adjective)
+          </div>
+          <div class="preg-opt" onclick="responder('p20',2,1,this,'✅ Knowledge of English. Wait — the correct form here would be: the KNOWLEDGE or LEVEL of English. BUT for the word SPEAK: speak (v) → speaker (n: hablante) → spoken (adj). Word formation is tested in every Cambridge exam: employ → employment → employer → employable.')">
+            <span class="opt-letra">C</span>speakness (incorrect form)
+          </div>
+        </div>
+        <div class="preg-feedback" id="fb-p20"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSEJOS FINALES -->
+<div class="consejos">
+  <div class="c-title">🎯 Consejos para el examen Cambridge B1 real</div>
+  <div class="c-grid">
+    <div class="c-item"><div class="ci-icon">📖</div><div class="ci-text"><strong>Reading: Lee el texto completo primero.</strong> Luego lee las preguntas. Siempre vuelve al texto para confirmar — nunca uses solo tu memoria.</div></div>
+    <div class="c-item"><div class="ci-icon">👂</div><div class="ci-text"><strong>Listening: Lee las preguntas ANTES del audio.</strong> Tienes tiempo. Subraya palabras clave. Escucharás el audio DOS veces en el examen real.</div></div>
+    <div class="c-item"><div class="ci-icon">✍️</div><div class="ci-text"><strong>Writing: Planifica 5 minutos antes de escribir.</strong> Organiza tus ideas. Usa conectores (However, Furthermore, As a result). Revisa gramática al final.</div></div>
+    <div class="c-item"><div class="ci-icon">🗣️</div><div class="ci-text"><strong>Speaking: Habla con confianza, no perfección.</strong> Los examinadores valoran la comunicación efectiva. Si no sabes una palabra, descríbela. No te quedes en silencio.</div></div>
+    <div class="c-item"><div class="ci-icon">⏱️</div><div class="ci-text"><strong>Gestión del tiempo:</strong> Reading+Writing = 1h 20min. Listening = 35min. Speaking = 12–17min. No te quedes mucho en una sola pregunta.</div></div>
+    <div class="c-item"><div class="ci-icon">🏛️</div><div class="ci-text"><strong>Inscripción en Colombia:</strong> British Council Bogotá (britishcouncil.org.co) o Centro Colombo Americano. El examen se hace con computador (Computer-based) o papel.</div></div>
+    <div class="c-item"><div class="ci-icon">📅</div><div class="ci-text"><strong>Prepárate 3–6 meses:</strong> Con el curso de Club de la Gente (cartillas 0–19) como base, necesitas 3–6 meses adicionales de práctica intensiva para el examen oficial.</div></div>
+    <div class="c-item"><div class="ci-icon">🎓</div><div class="ci-text"><strong>Ruta recomendada:</strong> B1 PET → B2 First (FCE) → C1 Advanced (CAE). Cada nivel abre más puertas académicas y profesionales a nivel mundial.</div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- BOTÓN ENVIAR -->
+<div class="submit-wrap">
+  <button class="submit-btn" onclick="verResultado()">📊 Ver mi resultado del simulacro →</button>
+</div>
+
+<!-- SCORE PANEL -->
+<div class="score-panel" id="scorePanel">
+  <div class="sp-wrap">
+    <div class="sp-icon" id="spIcon">🎓</div>
+    <div class="sp-titulo">Resultado del Simulacro</div>
+    <div class="sp-titulo" style="font-size:1rem;color:rgba(255,255,255,0.5);">Cambridge B1 Preliminary — Club de la Gente</div>
+    <div class="sp-score" id="spScore">0/20</div>
+    <div class="sp-nivel" id="spNivel">Calculando…</div>
+    <div class="sp-desc" id="spDesc">—</div>
+    <div class="sp-secciones">
+      <div class="sp-sec"><div class="sps-title">Reading</div><div class="sps-score" id="sReading">—</div><div class="sps-sub">Preguntas 1–6</div></div>
+      <div class="sp-sec"><div class="sps-title">Language Use</div><div class="sps-score" id="sGram">—</div><div class="sps-sub">Preguntas 7–12</div></div>
+      <div class="sp-sec"><div class="sps-title">Listening</div><div class="sps-score" id="sListen">—</div><div class="sps-sub">Preguntas 13–15</div></div>
+      <div class="sp-sec"><div class="sps-title">Writing + Vocab</div><div class="sps-score" id="sWrite">—</div><div class="sps-sub">Preguntas 16–20</div></div>
+    </div>
+    <button class="sp-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">🔄 Intentar de nuevo</button>
+  </div>
+</div>
+
+<div class="footer"><strong>Club de la Gente · Fusagasugá, Colombia</strong> — Cartilla 20 · Simulacro Cambridge B1 Preliminary (PET) · Preparación para certificación internacional</div>
+
+<script>
+// ── SISTEMA DE RESPUESTAS ──
+const respuestas = {}; // {pregId: {respondida, correcta}}
+const correctas = {
+  p1:1, p2:2, p3:0, p4:1, p5:2, p6:0,
+  p7:2, p8:1, p9:0, p10:2, p11:1, p12:2,
+  p13:2, p14:1, p15:2,
+  p16:1, p17:2,
+  p18:1,
+  p19:2, p20:1
+};
+
+function responder(pregId, opcion, correcta, btn, explicacion){
+  if(respuestas[pregId]?.respondida) return;
+  respuestas[pregId] = {respondida:true, correcta: opcion === correcta};
+
+  // Deshabilitar todas las opciones
+  const opts = btn.closest('.preg-opciones').querySelectorAll('.preg-opt');
+  opts.forEach(o => o.style.pointerEvents='none');
+
+  // Marcar correcta e incorrecta
+  opts[correcta].classList.add('correcta');
+  if(opcion !== correcta) btn.classList.add('incorrecta');
+  else btn.classList.add('correcta');
+
+  // Mostrar feedback
+  const fb = document.getElementById('fb-'+pregId);
+  if(fb){
+    fb.textContent = (opcion === correcta ? '✅ ' : '❌ Respuesta incorrecta. ') + explicacion;
+    fb.className = 'preg-feedback visible ' + (opcion === correcta ? 'ok' : 'mal');
+  }
+
+  actualizarProgreso();
+}
+
+function actualizarProgreso(){
+  const total = Object.keys(correctas).length;
+  const resp = Object.keys(respuestas).length;
+  const aciertos = Object.values(respuestas).filter(r=>r.correcta).length;
+
+  document.getElementById('progFill').style.width = (resp/total*100)+'%';
+  document.getElementById('progScore').textContent = `${aciertos} / ${total} puntos`;
+}
+
+function toggleTranscript(id){
+  const box = document.getElementById(id);
+  box.classList.toggle('visible');
+}
+
+function countWords(id, countId){
+  const text = document.getElementById(id).value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const label = id === 'writing1' ? `${words} words (minimum: 100)` : `${words} words (target: 100–190)`;
+  const color = id === 'writing2' ? (words >= 100 && words <= 190 ? '#15803D' : words > 190 ? '#B91C1C' : '#6B7280') : (words >= 100 ? '#15803D' : '#6B7280');
+  const el = document.getElementById(countId);
+  el.textContent = label;
+  el.style.color = color;
+}
+
+function verResultado(){
+  const total = Object.keys(correctas).length;
+  const aciertos = Object.values(respuestas).filter(r=>r.correcta).length;
+  const pct = Math.round(aciertos/total*100);
+
+  // Secciones
+  const secciones = {
+    reading: ['p1','p2','p3','p4','p5','p6'],
+    gram: ['p7','p8','p9','p10','p11','p12'],
+    listen: ['p13','p14','p15'],
+    write: ['p16','p17','p18','p19','p20']
+  };
+  const calc = (ids) => {
+    const ok = ids.filter(id=>respuestas[id]?.correcta).length;
+    return `${ok}/${ids.length}`;
+  };
+  document.getElementById('sReading').textContent = calc(secciones.reading);
+  document.getElementById('sGram').textContent = calc(secciones.gram);
+  document.getElementById('sListen').textContent = calc(secciones.listen);
+  document.getElementById('sWrite').textContent = calc(secciones.write);
+  document.getElementById('spScore').textContent = `${aciertos}/${total}`;
+
+  let nivel, desc, icon;
+  if(pct >= 85){ icon='🏆'; nivel='Excelente — Listo para el B1 PET'; desc='Tu nivel demuestra que estás preparado para presentar el examen Cambridge B1 Preliminary oficial. Inscríbete en el British Council de Bogotá. Con 3 meses de práctica adicional estarás en condiciones óptimas. ¡Felicitaciones!';}
+  else if(pct >= 70){ icon='🎯'; nivel='Muy bien — Cerca del nivel B1'; desc='Tienes una base sólida. Refuerza las áreas donde tuviste dificultades — especialmente gramática (pasado perfecto, voz pasiva, reported speech) — y practica 2 horas diarias durante 3–4 meses para alcanzar el nivel del examen oficial.';}
+  else if(pct >= 55){ icon='📚'; nivel='Bien — Nivel A2+, avanzando hacia B1'; desc='Vas por buen camino. Repasa las cartillas del curso (especialmente 14–19) y practica los puntos gramaticales de nivel B1. Con 4–6 meses de estudio intensivo estarás listo para el examen oficial.';}
+  else{ icon='💪'; nivel='En desarrollo — Sigue practicando'; desc='No te desanimes. El B1 es un salto significativo desde el A2. Regresa a las cartillas del curso, enfócate en gramática B1 (condicionales, voz pasiva, reported speech) y practica lectura en inglés diariamente. ¡Cada día cuenta!';}
+
+  document.getElementById('spIcon').textContent = icon;
+  document.getElementById('spNivel').textContent = nivel;
+  document.getElementById('spDesc').textContent = desc;
+
+  const panel = document.getElementById('scorePanel');
+  panel.classList.add('visible');
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>
